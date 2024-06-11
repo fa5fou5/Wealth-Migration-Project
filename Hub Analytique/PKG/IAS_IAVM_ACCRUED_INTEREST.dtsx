@@ -1,0 +1,3489 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="11/27/2020 8:58:28 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="QL310856"
+  DTS:CreatorName="LIADOM01\li2bts"
+  DTS:DTSID="{CC5FBCF9-FA1B-4D2A-9E98-AC0F01471E4B}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.170"
+  DTS:LocaleID="3084"
+  DTS:ObjectName="IAS_IAVM_ACCRUED_INTEREST"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="0"
+  DTS:VersionBuild="204"
+  DTS:VersionGUID="{639188F4-7B69-433F-8B77-EE9BBC91A64C}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[ACCRUED_INTEREST.CSV]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{1F84165B-C951-4242-9643-2E1B13BC5711}"
+      DTS:ObjectName="ACCRUED_INTEREST.CSV">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::fileDepotFolder]  + "\\ACCRUED_INTEREST__" +  @[User::formattedCurrentDate] + ".csv"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="3084"
+          DTS:Unicode="True"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="\\ia.iafg.net\R01\Svc\WH\IAW\INTG\IN\IAS\IAVM\ACCRUED_INTEREST__2022-10-13.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="135"
+              DTS:TextQualified="True"
+              DTS:ObjectName="processDate"
+              DTS:DTSID="{A1A5C343-27E0-49A9-A1E8-7BF6CE93C687}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="productCode"
+              DTS:DTSID="{203F5CA3-C6BF-416F-AC71-F6633153915C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="fiId"
+              DTS:DTSID="{30B105B5-AFB1-4BB9-928B-1666B06E139D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="cusip"
+              DTS:DTSID="{53D5555A-7205-4F7F-A7CA-F6C615563C7E}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="isin"
+              DTS:DTSID="{41DE67AF-2AD2-4CE7-BCBB-9465CD7A8D2E}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="market"
+              DTS:DTSID="{C901EE22-60B7-40B6-8253-C1939DA68DF1}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="symbol"
+              DTS:DTSID="{93060D79-2539-41BF-9FE7-B52BC9F51BB7}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="303"
+              DTS:TextQualified="True"
+              DTS:ObjectName="interestRate"
+              DTS:DTSID="{D21FA532-A291-4AA3-99BC-301DB5C6BF2A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="accruedInterestMethod1"
+              DTS:DTSID="{A017825D-D54E-403E-9842-C15F499E69C8}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="accruedInterestMethod2"
+              DTS:DTSID="{0549DB42-CBD0-4D0A-9BA1-2FFBAEA6D9D9}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="dailyCountBasis"
+              DTS:DTSID="{25FEE4D7-2D7C-4958-83DC-C14EABE1C456}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="135"
+              DTS:TextQualified="True"
+              DTS:ObjectName="interestStartDate"
+              DTS:DTSID="{B9EC52DF-9643-49EF-BF97-AD250ADA71A2}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="303"
+              DTS:TextQualified="True"
+              DTS:ObjectName="yearFraction"
+              DTS:DTSID="{0380A056-590F-4EAD-85E9-9D929AE4FCC9}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="303"
+              DTS:TextQualified="True"
+              DTS:ObjectName="baseAccruedInterest"
+              DTS:DTSID="{0829217E-0DFF-4AA7-A180-01C49FA46AB7}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="135"
+              DTS:TextQualified="True"
+              DTS:ObjectName="MD_LOADDATE"
+              DTS:DTSID="{E1A8720D-1E08-46D5-BAF5-7EB41C95B581}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="MD_SRCSYSTEM"
+              DTS:DTSID="{4C012D9F-56CB-45A7-B291-4D1904C30F2D}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[ACCRUED_INTEREST.CSV.EXPORT]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{AA8ABB4A-22F2-4B03-AF42-BE9B6C4C638B}"
+      DTS:ObjectName="ACCRUED_INTEREST.CSV.EXPORT">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::fileDepotFolder]  + "\\ACCRUED_INTEREST__" +  @[User::formattedCurrentDate] + ".csv"+ ".export"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="3084"
+          DTS:Unicode="True"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="\\ia.iafg.net\R01\Svc\WH\IAW\INTG\IN\IAS\IAVM\ACCRUED_INTEREST__2022-10-13.csv.export">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="135"
+              DTS:TextQualified="True"
+              DTS:ObjectName="processDate"
+              DTS:DTSID="{7B204AD2-2B2C-45B9-B00E-52AE4D51FC63}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="productCode"
+              DTS:DTSID="{9B314D2D-EDC2-4430-96D7-76E526A460F7}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="fiId"
+              DTS:DTSID="{3A764B64-56A2-4BAA-AEA9-A283935DEB0F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="cusip"
+              DTS:DTSID="{FF6495E6-5760-49F7-AEA1-68E8D4B5F624}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="isin"
+              DTS:DTSID="{67BDA292-66DB-4BB7-A6B4-4947045D6EA1}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="market"
+              DTS:DTSID="{BE02FF44-C64B-41E7-A4FD-A07B36F26CD6}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="symbol"
+              DTS:DTSID="{08BBE636-8330-489D-A715-BFF257229DD5}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="303"
+              DTS:TextQualified="True"
+              DTS:ObjectName="interestRate"
+              DTS:DTSID="{6D9B77D4-0F4C-45B2-812B-3E62E734190E}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="accruedInterestMethod1"
+              DTS:DTSID="{515F6756-C28B-46D1-84FE-109893B92D4C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="accruedInterestMethod2"
+              DTS:DTSID="{9B832062-0B9C-427C-A9C6-2F60FA849FC4}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="dailyCountBasis"
+              DTS:DTSID="{A30039E6-DB0A-423D-B51A-45E40583E8AC}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="135"
+              DTS:TextQualified="True"
+              DTS:ObjectName="interestStartDate"
+              DTS:DTSID="{BF7EF5B3-784F-49A1-AF55-3CBFDE5E1B3D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="303"
+              DTS:TextQualified="True"
+              DTS:ObjectName="yearFraction"
+              DTS:DTSID="{1C59F915-E567-4A78-A90E-90D47A04F391}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="303"
+              DTS:TextQualified="True"
+              DTS:ObjectName="baseAccruedInterest"
+              DTS:DTSID="{29E2F5CF-E965-4F2F-8084-E1219FDFCF74}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="135"
+              DTS:TextQualified="True"
+              DTS:ObjectName="MD_LOADDATE"
+              DTS:DTSID="{0BCE3FED-AFED-4D7C-B175-8F6A70CA0E1C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="MD_SRCSYSTEM"
+              DTS:DTSID="{C40718E2-18DD-4B01-8BA8-5FACC392E863}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[BACKOFFICE]"
+      DTS:CreationName="ADO.NET:MySql.Data.MySqlClient.MySqlConnection, MySql.Data, Version=8.0.22.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d"
+      DTS:DTSID="{B245E38C-6056-4F0A-80C7-0B0F5C5161B6}"
+      DTS:ObjectName="BACKOFFICE">
+      <DTS:PropertyExpression
+        DTS:Name="InitialCatalog">@[User::database]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="Password">@[User::password]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="ServerName">@[User::server]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="UserName">@[User::user]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="server=02.database.iasportal.prod.iawealth.net;user id=ssrs;Initial Catalog=BACKOFFICE;database=BACKOFFICE;persistsecurityinfo=True;Integrated Security=False;allowzerodatetime=False;convertzerodatetime=True;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"></DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Configurations>
+    <DTS:Configuration
+      DTS:ConfigurationString="C:\Projets\HubAnalytiqueGestionPatrimoine\CTRL\FUN.CTRL"
+      DTS:ConfigurationType="1"
+      DTS:CreationName=""
+      DTS:DTSID="{8E91C0EB-9EB5-4F78-AE10-F48262B632E0}"
+      DTS:ObjectName="CONFIGURATION" />
+  </DTS:Configurations>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{0827626E-CDDC-41D2-8328-16FBA49C6D08}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::workingFolder] + &quot;\\cdb_bo.accrued_interest.control.csv&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="controlFilePath">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\Projets\HubAnalytiqueGestionPatrimoine\IN\cdb_bo.accrued_interest.control.csv</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{6F605160-78E0-423C-AE60-8C5DCE2248E8}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="GETDATE()"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="currentDate">
+      <DTS:VariableValue
+        DTS:DataType="7">10/13/2022 12:30:23 PM</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{4154C210-BC30-4022-8317-20FF6CC05557}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="database">
+      <DTS:VariableValue
+        DTS:DataType="8">BACKOFFICE</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{F0DD8EBA-37A2-49D7-B655-0FD15BB58764}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="dataDescription">
+      <DTS:VariableValue
+        DTS:DataType="8">IAVM</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{BCFA5485-253E-49DC-AA72-FFC18E350A0D}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="dataOwner">
+      <DTS:VariableValue
+        DTS:DataType="8">IAS</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{3D184716-87C0-4393-910E-D1089A9137B9}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="destinationFolder">
+      <DTS:VariableValue
+        DTS:DataType="8">\\ia.iafg.net\R01\Svc\WH\IAW\INTG\IN</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{C1B11101-B60A-47F3-A8B2-31368E927C91}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::destinationFolder] + &quot;\\&quot; +  @[User::dataOwner] + &quot;\\&quot; + @[User::dataDescription]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="fileDepotFolder">
+      <DTS:VariableValue
+        DTS:DataType="8">\\ia.iafg.net\R01\Svc\WH\IAW\INTG\IN\IAS\IAVM</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{6E77DFDC-F302-4BD7-9BF5-A68CE2BF138C}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="(DT_STR, 4,1254) YEAR(@[User::currentDate])  + &quot;-&quot; + RIGHT(&quot;0&quot; + (DT_STR, 2,1254) MONTH(@[User::currentDate]), 2) +   &quot;-&quot; +  RIGHT(&quot;0&quot; + (DT_STR, 2,1254) DAY(@[User::currentDate]), 2)"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="formattedCurrentDate">
+      <DTS:VariableValue
+        DTS:DataType="8">2022-10-13</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{A4D22107-89F3-456A-A10F-ECEAEB193571}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="(DT_STR, 4,1254) YEAR(@[User::lastUpdateDate])  + &quot;-&quot; + RIGHT(&quot;0&quot; + (DT_STR, 2,1254) MONTH(@[User::lastUpdateDate]), 2) +   &quot;-&quot; +  RIGHT(&quot;0&quot; + (DT_STR, 2,1254) DAY(@[User::lastUpdateDate]), 2) + &quot; &quot; + RIGHT(&quot;0&quot; + (DT_STR, 2,1254) DATEPART(&quot;HH&quot;,@[User::lastUpdateDate]), 2) + &quot;:&quot; + RIGHT(&quot;0&quot; + (DT_STR, 2,1254) DATEPART(&quot;mi&quot;,@[User::lastUpdateDate]), 2) + &quot;:&quot; + RIGHT(&quot;0&quot; + (DT_STR, 2,1254) DATEPART(&quot;ss&quot;,@[User::lastUpdateDate]), 2)"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="formattedLastUpdateDate">
+      <DTS:VariableValue
+        DTS:DataType="8">1899-12-30 00:00:00</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{4CFFACFB-FBD9-42E5-8EEA-3C4A9B11CE56}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="lastUpdateDate">
+      <DTS:VariableValue
+        DTS:DataType="7">12:00:00 AM</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{33AE6A3D-1B39-42B2-BE52-5D30B855B1FB}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="nbRows">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{AFE9118D-0E2F-46FC-90B1-4E97A5ED0B5C}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="pass">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{90362A92-ABC8-469E-8665-47EB0A5269D5}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="password">
+      <DTS:VariableValue
+        DTS:DataType="8">jK8EaF7yKHXR38RqbMX1</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{55B25E07-62BE-4FEA-B32E-2CA8D448EABF}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="query">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{9CE5472A-A83D-417A-A89B-B860F3A11569}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="server">
+      <DTS:VariableValue
+        DTS:DataType="8">02.database.iasportal.prod.iawealth.net</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{E807B44C-498F-4ACC-B0B4-ED436A2DD01D}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="user">
+      <DTS:VariableValue
+        DTS:DataType="8">ssrs</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{14C436A8-9274-4F73-B029-F17953E2B9A0}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="workingFolder">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\Projets\HubAnalytiqueGestionPatrimoine\IN</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:LoggingOptions
+    DTS:LoggingMode="1" />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Check Source Table Loading"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{704C4241-914B-4715-AA35-362FCD769A41}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Check Source Table Loading"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{B245E38C-6056-4F0A-80C7-0B0F5C5161B6}"
+          SQLTask:SqlStatementSource="select   &#xA;case &#xA;     when h.holidayDate IS NOT NULL THEN 1  #it is a holiday&#xA;     when a.CurDayOfWeek IN (1,7) THEN 1 #it is a week-end&#xA;     when b.k1 IS NOT NULL AND b2.k1 IS NOT NULL THEN 1 #data is loaded in the table&#xA;     ELSE 0 END as pass&#xA;from (select DATE_ADD(CURDATE(),INTERVAL -1 DAY) AS CurDay,DAYOFWEEK(DATE_ADD(CURDATE(),INTERVAL -1 DAY)) AS CurDayOfWeek ) a&#xA;left join IAVM.holiday h&#xA;on a.CurDay = h.holidayDate &#xA;left join IAVM.attrSet b&#xA;&#x9;ON b.type = 'system' and&#xA;&#x9;b.id = 'iavm' and&#xA;&#x9;b.k1 = 'accruedInterestImportJob' and&#xA;&#x9;b.k2 = 'status' and&#xA;&#x9;b.value = 'done'&#xA;left join IAVM.attrSet b2&#xA;&#x9;ON b2.type = 'system' and&#xA;&#x9;b2.id = 'iavm' and&#xA;&#x9;b2.k1 = 'accruedInterestImportJob' and&#xA;&#x9;b2.k2 = 'processDate' and&#xA;&#x9;b2.value = a.CurDay;"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::pass" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Copy from iavmpsn to FILE"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{0717CE01-1B70-4690-9090-2693CCA2E944}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Copy from iavmpsn to FILE"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Copy from iavmpsn to FILE\Flat File Destination"
+              componentClassID="Microsoft.FlatFileDestination"
+              contactInfo="Flat File Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Destination"
+              localeId="3084"
+              name="Flat File Destination">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether the data will overwrite or append to the destination file."
+                  name="Overwrite">true</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the text to write to the destination file before any data is written."
+                  expressionType="Notify"
+                  name="Header" />
+                <property
+                  dataType="System.Boolean"
+                  description="When text qualifier is enabled, specifies whether the text qualifier in the data written to the destination file will be escaped or not."
+                  name="EscapeQualifier">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Copy from iavmpsn to FILE\Flat File Destination.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[ACCRUED_INTEREST.CSV.EXPORT]"
+                  connectionManagerRefId="Package.ConnectionManagers[ACCRUED_INTEREST.CSV.EXPORT]"
+                  name="FlatFileConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Copy from iavmpsn to FILE\Flat File Destination.Inputs[Flat File Destination Input]"
+                  hasSideEffects="true"
+                  name="Flat File Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Copy from iavmpsn to FILE\Flat File Destination.Inputs[Flat File Destination Input].Columns[processDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="processDate"
+                      externalMetadataColumnId="Package\Copy from iavmpsn to FILE\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[processDate]"
+                      lineageId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].Columns[processDate]" />
+                    <inputColumn
+                      refId="Package\Copy from iavmpsn to FILE\Flat File Destination.Inputs[Flat File Destination Input].Columns[productCode]"
+                      cachedDataType="wstr"
+                      cachedLength="12"
+                      cachedName="productCode"
+                      externalMetadataColumnId="Package\Copy from iavmpsn to FILE\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[productCode]"
+                      lineageId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].Columns[productCode]" />
+                    <inputColumn
+                      refId="Package\Copy from iavmpsn to FILE\Flat File Destination.Inputs[Flat File Destination Input].Columns[fiId]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="fiId"
+                      externalMetadataColumnId="Package\Copy from iavmpsn to FILE\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[fiId]"
+                      lineageId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].Columns[fiId]" />
+                    <inputColumn
+                      refId="Package\Copy from iavmpsn to FILE\Flat File Destination.Inputs[Flat File Destination Input].Columns[cusip]"
+                      cachedDataType="wstr"
+                      cachedLength="9"
+                      cachedName="cusip"
+                      externalMetadataColumnId="Package\Copy from iavmpsn to FILE\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[cusip]"
+                      lineageId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].Columns[cusip]" />
+                    <inputColumn
+                      refId="Package\Copy from iavmpsn to FILE\Flat File Destination.Inputs[Flat File Destination Input].Columns[isin]"
+                      cachedDataType="wstr"
+                      cachedLength="12"
+                      cachedName="isin"
+                      externalMetadataColumnId="Package\Copy from iavmpsn to FILE\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[isin]"
+                      lineageId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].Columns[isin]" />
+                    <inputColumn
+                      refId="Package\Copy from iavmpsn to FILE\Flat File Destination.Inputs[Flat File Destination Input].Columns[market]"
+                      cachedDataType="wstr"
+                      cachedLength="12"
+                      cachedName="market"
+                      externalMetadataColumnId="Package\Copy from iavmpsn to FILE\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[market]"
+                      lineageId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].Columns[market]" />
+                    <inputColumn
+                      refId="Package\Copy from iavmpsn to FILE\Flat File Destination.Inputs[Flat File Destination Input].Columns[symbol]"
+                      cachedDataType="wstr"
+                      cachedLength="26"
+                      cachedName="symbol"
+                      externalMetadataColumnId="Package\Copy from iavmpsn to FILE\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[symbol]"
+                      lineageId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].Columns[symbol]" />
+                    <inputColumn
+                      refId="Package\Copy from iavmpsn to FILE\Flat File Destination.Inputs[Flat File Destination Input].Columns[interestRate]"
+                      cachedDataType="wstr"
+                      cachedLength="67"
+                      cachedName="interestRate"
+                      externalMetadataColumnId="Package\Copy from iavmpsn to FILE\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[interestRate]"
+                      lineageId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].Columns[interestRate]" />
+                    <inputColumn
+                      refId="Package\Copy from iavmpsn to FILE\Flat File Destination.Inputs[Flat File Destination Input].Columns[accruedInterestMethod1]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="accruedInterestMethod1"
+                      externalMetadataColumnId="Package\Copy from iavmpsn to FILE\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[accruedInterestMethod1]"
+                      lineageId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].Columns[accruedInterestMethod1]" />
+                    <inputColumn
+                      refId="Package\Copy from iavmpsn to FILE\Flat File Destination.Inputs[Flat File Destination Input].Columns[accruedInterestMethod2]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="accruedInterestMethod2"
+                      externalMetadataColumnId="Package\Copy from iavmpsn to FILE\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[accruedInterestMethod2]"
+                      lineageId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].Columns[accruedInterestMethod2]" />
+                    <inputColumn
+                      refId="Package\Copy from iavmpsn to FILE\Flat File Destination.Inputs[Flat File Destination Input].Columns[dailyCountBasis]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="dailyCountBasis"
+                      externalMetadataColumnId="Package\Copy from iavmpsn to FILE\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[dailyCountBasis]"
+                      lineageId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].Columns[dailyCountBasis]" />
+                    <inputColumn
+                      refId="Package\Copy from iavmpsn to FILE\Flat File Destination.Inputs[Flat File Destination Input].Columns[interestStartDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="interestStartDate"
+                      externalMetadataColumnId="Package\Copy from iavmpsn to FILE\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[interestStartDate]"
+                      lineageId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].Columns[interestStartDate]" />
+                    <inputColumn
+                      refId="Package\Copy from iavmpsn to FILE\Flat File Destination.Inputs[Flat File Destination Input].Columns[yearFraction]"
+                      cachedDataType="wstr"
+                      cachedLength="67"
+                      cachedName="yearFraction"
+                      externalMetadataColumnId="Package\Copy from iavmpsn to FILE\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[yearFraction]"
+                      lineageId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].Columns[yearFraction]" />
+                    <inputColumn
+                      refId="Package\Copy from iavmpsn to FILE\Flat File Destination.Inputs[Flat File Destination Input].Columns[baseAccruedInterest]"
+                      cachedDataType="wstr"
+                      cachedLength="67"
+                      cachedName="baseAccruedInterest"
+                      externalMetadataColumnId="Package\Copy from iavmpsn to FILE\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[baseAccruedInterest]"
+                      lineageId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].Columns[baseAccruedInterest]" />
+                    <inputColumn
+                      refId="Package\Copy from iavmpsn to FILE\Flat File Destination.Inputs[Flat File Destination Input].Columns[MD_LOADDATE]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="MD_LOADDATE"
+                      externalMetadataColumnId="Package\Copy from iavmpsn to FILE\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[MD_LOADDATE]"
+                      lineageId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].Columns[MD_LOADDATE]" />
+                    <inputColumn
+                      refId="Package\Copy from iavmpsn to FILE\Flat File Destination.Inputs[Flat File Destination Input].Columns[MD_SRCSYSTEM]"
+                      cachedDataType="wstr"
+                      cachedLength="3"
+                      cachedName="MD_SRCSYSTEM"
+                      externalMetadataColumnId="Package\Copy from iavmpsn to FILE\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[MD_SRCSYSTEM]"
+                      lineageId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].Columns[MD_SRCSYSTEM]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Copy from iavmpsn to FILE\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[processDate]"
+                      dataType="dbTimeStamp"
+                      name="processDate" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from iavmpsn to FILE\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[productCode]"
+                      dataType="wstr"
+                      length="50"
+                      name="productCode" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from iavmpsn to FILE\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[fiId]"
+                      dataType="wstr"
+                      length="50"
+                      name="fiId" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from iavmpsn to FILE\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[cusip]"
+                      dataType="wstr"
+                      length="50"
+                      name="cusip" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from iavmpsn to FILE\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[isin]"
+                      dataType="wstr"
+                      length="50"
+                      name="isin" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from iavmpsn to FILE\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[market]"
+                      dataType="wstr"
+                      length="50"
+                      name="market" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from iavmpsn to FILE\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[symbol]"
+                      dataType="wstr"
+                      length="50"
+                      name="symbol" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from iavmpsn to FILE\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[interestRate]"
+                      dataType="nText"
+                      name="interestRate" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from iavmpsn to FILE\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[accruedInterestMethod1]"
+                      dataType="wstr"
+                      length="50"
+                      name="accruedInterestMethod1" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from iavmpsn to FILE\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[accruedInterestMethod2]"
+                      dataType="wstr"
+                      length="50"
+                      name="accruedInterestMethod2" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from iavmpsn to FILE\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[dailyCountBasis]"
+                      dataType="wstr"
+                      length="50"
+                      name="dailyCountBasis" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from iavmpsn to FILE\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[interestStartDate]"
+                      dataType="dbTimeStamp"
+                      name="interestStartDate" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from iavmpsn to FILE\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[yearFraction]"
+                      dataType="nText"
+                      name="yearFraction" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from iavmpsn to FILE\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[baseAccruedInterest]"
+                      dataType="nText"
+                      name="baseAccruedInterest" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from iavmpsn to FILE\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[MD_LOADDATE]"
+                      dataType="dbTimeStamp"
+                      name="MD_LOADDATE" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from iavmpsn to FILE\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[MD_SRCSYSTEM]"
+                      dataType="wstr"
+                      length="50"
+                      name="MD_SRCSYSTEM" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+            </component>
+            <component
+              refId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server."
+              name="MySQL iavm Accrued_Interest"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement used by the component to extract data."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
+PS.processDate,
+REPLACE(REPLACE(PS.productCode, CHAR(13), ''), CHAR(10), '') AS productCode,
+REPLACE(REPLACE(PS.fiId, CHAR(13), ''), CHAR(10), '') AS fiId,
+REPLACE(REPLACE(PS.cusip, CHAR(13), ''), CHAR(10), '') AS cusip,
+REPLACE(REPLACE(PS.isin, CHAR(13), ''), CHAR(10), '') AS isin,
+REPLACE(REPLACE(PS.market, CHAR(13), ''), CHAR(10), '') AS market,
+REPLACE(REPLACE(PS.symbol, CHAR(13), ''), CHAR(10), '') AS symbol,
+CAST(PS.interestRate as CHAR) as interestRate,
+REPLACE(REPLACE(PS.accruedInterestMethod1, CHAR(13), ''), CHAR(10), '') AS accruedInterestMethod1,
+REPLACE(REPLACE(PS.accruedInterestMethod2, CHAR(13), ''), CHAR(10), '') AS accruedInterestMethod2,
+REPLACE(REPLACE(PS.dailyCountBasis, CHAR(13), ''), CHAR(10), '') AS dailyCountBasis,
+PS.interestStartDate,
+CAST(PS.yearFraction as CHAR) as yearFraction,
+CAST(PS.baseAccruedInterest as CHAR) as baseAccruedInterest,
+CURDATE() AS MD_LOADDATE,
+'IAS' AS MD_SRCSYSTEM
+FROM IAVM.accruedInterest PS
+where PS.processDate = SUBDATE(CURDATE(),1)</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether to allow non-string external columns to be implicitly converted to strings at the output columns."
+                  name="AllowImplicitStringConversion">true</property>
+                <property
+                  dataType="System.String"
+                  description="The Source database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the mode to retrieve external column information"
+                  name="AccessMode"
+                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter">2</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.DataReaderSourceAdapter</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[BACKOFFICE]"
+                  connectionManagerRefId="Package.ConnectionManagers[BACKOFFICE]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output]"
+                  name="ADO NET Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].Columns[processDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].ExternalColumns[processDate]"
+                      lineageId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].Columns[processDate]"
+                      name="processDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].Columns[productCode]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].ExternalColumns[productCode]"
+                      length="12"
+                      lineageId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].Columns[productCode]"
+                      name="productCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].Columns[fiId]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].ExternalColumns[fiId]"
+                      length="15"
+                      lineageId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].Columns[fiId]"
+                      name="fiId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].Columns[cusip]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].ExternalColumns[cusip]"
+                      length="9"
+                      lineageId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].Columns[cusip]"
+                      name="cusip"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].Columns[isin]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].ExternalColumns[isin]"
+                      length="12"
+                      lineageId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].Columns[isin]"
+                      name="isin"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].Columns[market]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].ExternalColumns[market]"
+                      length="12"
+                      lineageId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].Columns[market]"
+                      name="market"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].Columns[symbol]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].ExternalColumns[symbol]"
+                      length="26"
+                      lineageId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].Columns[symbol]"
+                      name="symbol"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].Columns[interestRate]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].ExternalColumns[interestRate]"
+                      length="67"
+                      lineageId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].Columns[interestRate]"
+                      name="interestRate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].Columns[accruedInterestMethod1]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].ExternalColumns[accruedInterestMethod1]"
+                      length="1"
+                      lineageId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].Columns[accruedInterestMethod1]"
+                      name="accruedInterestMethod1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].Columns[accruedInterestMethod2]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].ExternalColumns[accruedInterestMethod2]"
+                      length="1"
+                      lineageId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].Columns[accruedInterestMethod2]"
+                      name="accruedInterestMethod2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].Columns[dailyCountBasis]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].ExternalColumns[dailyCountBasis]"
+                      length="15"
+                      lineageId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].Columns[dailyCountBasis]"
+                      name="dailyCountBasis"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].Columns[interestStartDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].ExternalColumns[interestStartDate]"
+                      lineageId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].Columns[interestStartDate]"
+                      name="interestStartDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].Columns[yearFraction]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].ExternalColumns[yearFraction]"
+                      length="67"
+                      lineageId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].Columns[yearFraction]"
+                      name="yearFraction"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].Columns[baseAccruedInterest]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].ExternalColumns[baseAccruedInterest]"
+                      length="67"
+                      lineageId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].Columns[baseAccruedInterest]"
+                      name="baseAccruedInterest"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].Columns[MD_LOADDATE]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].ExternalColumns[MD_LOADDATE]"
+                      lineageId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].Columns[MD_LOADDATE]"
+                      name="MD_LOADDATE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].Columns[MD_SRCSYSTEM]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].ExternalColumns[MD_SRCSYSTEM]"
+                      length="3"
+                      lineageId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].Columns[MD_SRCSYSTEM]"
+                      name="MD_SRCSYSTEM"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].ExternalColumns[processDate]"
+                      dataType="dbTimeStamp"
+                      name="processDate" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].ExternalColumns[productCode]"
+                      dataType="wstr"
+                      length="12"
+                      name="productCode" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].ExternalColumns[fiId]"
+                      dataType="wstr"
+                      length="15"
+                      name="fiId" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].ExternalColumns[cusip]"
+                      dataType="wstr"
+                      length="9"
+                      name="cusip" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].ExternalColumns[isin]"
+                      dataType="wstr"
+                      length="12"
+                      name="isin" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].ExternalColumns[market]"
+                      dataType="wstr"
+                      length="12"
+                      name="market" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].ExternalColumns[symbol]"
+                      dataType="wstr"
+                      length="26"
+                      name="symbol" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].ExternalColumns[interestRate]"
+                      dataType="wstr"
+                      length="67"
+                      name="interestRate" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].ExternalColumns[accruedInterestMethod1]"
+                      dataType="wstr"
+                      length="1"
+                      name="accruedInterestMethod1" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].ExternalColumns[accruedInterestMethod2]"
+                      dataType="wstr"
+                      length="1"
+                      name="accruedInterestMethod2" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].ExternalColumns[dailyCountBasis]"
+                      dataType="wstr"
+                      length="15"
+                      name="dailyCountBasis" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].ExternalColumns[interestStartDate]"
+                      dataType="dbTimeStamp"
+                      name="interestStartDate" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].ExternalColumns[yearFraction]"
+                      dataType="wstr"
+                      length="67"
+                      name="yearFraction" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].ExternalColumns[baseAccruedInterest]"
+                      dataType="wstr"
+                      length="67"
+                      name="baseAccruedInterest" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].ExternalColumns[MD_LOADDATE]"
+                      dataType="dbTimeStamp"
+                      name="MD_LOADDATE" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output].ExternalColumns[MD_SRCSYSTEM]"
+                      dataType="wstr"
+                      length="3"
+                      name="MD_SRCSYSTEM" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Error Output]"
+                  isErrorOut="true"
+                  name="ADO NET Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Error Output].Columns[processDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Error Output].Columns[processDate]"
+                      name="processDate" />
+                    <outputColumn
+                      refId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Error Output].Columns[productCode]"
+                      dataType="wstr"
+                      length="12"
+                      lineageId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Error Output].Columns[productCode]"
+                      name="productCode" />
+                    <outputColumn
+                      refId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Error Output].Columns[fiId]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Error Output].Columns[fiId]"
+                      name="fiId" />
+                    <outputColumn
+                      refId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Error Output].Columns[cusip]"
+                      dataType="wstr"
+                      length="9"
+                      lineageId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Error Output].Columns[cusip]"
+                      name="cusip" />
+                    <outputColumn
+                      refId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Error Output].Columns[isin]"
+                      dataType="wstr"
+                      length="12"
+                      lineageId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Error Output].Columns[isin]"
+                      name="isin" />
+                    <outputColumn
+                      refId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Error Output].Columns[market]"
+                      dataType="wstr"
+                      length="12"
+                      lineageId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Error Output].Columns[market]"
+                      name="market" />
+                    <outputColumn
+                      refId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Error Output].Columns[symbol]"
+                      dataType="wstr"
+                      length="26"
+                      lineageId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Error Output].Columns[symbol]"
+                      name="symbol" />
+                    <outputColumn
+                      refId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Error Output].Columns[interestRate]"
+                      dataType="wstr"
+                      length="67"
+                      lineageId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Error Output].Columns[interestRate]"
+                      name="interestRate" />
+                    <outputColumn
+                      refId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Error Output].Columns[accruedInterestMethod1]"
+                      dataType="wstr"
+                      length="1"
+                      lineageId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Error Output].Columns[accruedInterestMethod1]"
+                      name="accruedInterestMethod1" />
+                    <outputColumn
+                      refId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Error Output].Columns[accruedInterestMethod2]"
+                      dataType="wstr"
+                      length="1"
+                      lineageId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Error Output].Columns[accruedInterestMethod2]"
+                      name="accruedInterestMethod2" />
+                    <outputColumn
+                      refId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Error Output].Columns[dailyCountBasis]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Error Output].Columns[dailyCountBasis]"
+                      name="dailyCountBasis" />
+                    <outputColumn
+                      refId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Error Output].Columns[interestStartDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Error Output].Columns[interestStartDate]"
+                      name="interestStartDate" />
+                    <outputColumn
+                      refId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Error Output].Columns[yearFraction]"
+                      dataType="wstr"
+                      length="67"
+                      lineageId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Error Output].Columns[yearFraction]"
+                      name="yearFraction" />
+                    <outputColumn
+                      refId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Error Output].Columns[baseAccruedInterest]"
+                      dataType="wstr"
+                      length="67"
+                      lineageId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Error Output].Columns[baseAccruedInterest]"
+                      name="baseAccruedInterest" />
+                    <outputColumn
+                      refId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Error Output].Columns[MD_LOADDATE]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Error Output].Columns[MD_LOADDATE]"
+                      name="MD_LOADDATE" />
+                    <outputColumn
+                      refId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Error Output].Columns[MD_SRCSYSTEM]"
+                      dataType="wstr"
+                      length="3"
+                      lineageId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Error Output].Columns[MD_SRCSYSTEM]"
+                      name="MD_SRCSYSTEM" />
+                    <outputColumn
+                      refId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Copy from iavmpsn to FILE\Row Count"
+              componentClassID="Microsoft.RowCount"
+              contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+              name="Row Count">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable to hold the row count."
+                  name="VariableName">User::nbRows</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Copy from iavmpsn to FILE\Row Count.Inputs[Row Count Input 1]"
+                  hasSideEffects="true"
+                  name="Row Count Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Copy from iavmpsn to FILE\Row Count.Outputs[Row Count Output 1]"
+                  name="Row Count Output 1"
+                  synchronousInputId="Package\Copy from iavmpsn to FILE\Row Count.Inputs[Row Count Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Copy from iavmpsn to FILE.Paths[ADO NET Source Output]"
+              endId="Package\Copy from iavmpsn to FILE\Row Count.Inputs[Row Count Input 1]"
+              name="ADO NET Source Output"
+              startId="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest.Outputs[ADO NET Source Output]" />
+            <path
+              refId="Package\Copy from iavmpsn to FILE.Paths[Row Count Output 1]"
+              endId="Package\Copy from iavmpsn to FILE\Flat File Destination.Inputs[Flat File Destination Input]"
+              name="Row Count Output 1"
+              startId="Package\Copy from iavmpsn to FILE\Row Count.Outputs[Row Count Output 1]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Create  file depot folders"
+      DTS:CreationName="Microsoft.FileSystemTask"
+      DTS:Description="File System Task"
+      DTS:DTSID="{B1609BA8-A5AC-4247-82FE-3DB5637BEEE0}"
+      DTS:ExecutableType="Microsoft.FileSystemTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Create  file depot folders"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <FileSystemData
+          TaskOperationType="CreateDirectory"
+          TaskOverwriteDestFile="True"
+          TaskSourcePath="User::fileDepotFolder"
+          TaskIsSourceVariable="True" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\File System Task"
+      DTS:CreationName="Microsoft.FileSystemTask"
+      DTS:Description="File System Task"
+      DTS:DTSID="{44D49C6A-43F5-4C3C-88CF-E93770453022}"
+      DTS:ExecutableType="Microsoft.FileSystemTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="File System Task"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <FileSystemData
+          TaskOperationType="RenameFile"
+          TaskOverwriteDestFile="True"
+          TaskSourcePath="{AA8ABB4A-22F2-4B03-AF42-BE9B6C4C638B}"
+          TaskDestinationPath="{1F84165B-C951-4242-9643-2E1B13BC5711}" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Script Task"
+      DTS:CreationName="Microsoft.ScriptTask"
+      DTS:Description="Script Task"
+      DTS:DTSID="{7F6EF647-462D-448D-A1F7-BD3FBF3EA04A}"
+      DTS:ExecutableType="Microsoft.ScriptTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Script Task"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ScriptProject
+          Name="ST_5244a367980a49febe7eba6420b9fd36"
+          VSTAMajorVersion="14"
+          VSTAMinorVersion="0"
+          Language="CSharp">
+          <ProjectItem
+            Name="ST_5244a367980a49febe7eba6420b9fd36.csproj"
+            Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?><Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003"><PropertyGroup><ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids><Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration><Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform><ProductVersion>8.0.30703</ProductVersion><SchemaVersion>2.0</SchemaVersion><ProjectGuid>{10fe749b-d9f1-4706-b023-07f10088041c}</ProjectGuid><OutputType>Library</OutputType><AppDesignerFolder>Properties</AppDesignerFolder><RootNamespace>ST_3b8651274c224955b1157a78283c309f</RootNamespace><AssemblyName>ST_5244a367980a49febe7eba6420b9fd36</AssemblyName><TargetFrameworkVersion>v4.5</TargetFrameworkVersion><FileAlignment>512</FileAlignment><ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch></PropertyGroup><PropertyGroup Condition=" '$(Configuration)' == 'Debug' "><DebugSymbols>true</DebugSymbols><DebugType>full</DebugType><Optimize>false</Optimize><OutputPath>.\bin\Debug\</OutputPath><EnableUnmanagedDebugging>false</EnableUnmanagedDebugging><DefineConstants>DEBUG;TRACE</DefineConstants><ErrorReport>prompt</ErrorReport><WarningLevel>4</WarningLevel></PropertyGroup><PropertyGroup Condition=" '$(Configuration)' == 'Release' "><DebugSymbols>false</DebugSymbols><Optimize>true</Optimize><OutputPath>.\bin\Release\</OutputPath><EnableUnmanagedDebugging>false</EnableUnmanagedDebugging><DefineConstants>TRACE</DefineConstants><ErrorReport>prompt</ErrorReport><WarningLevel>4</WarningLevel></PropertyGroup><ItemGroup><Reference Include="System" /><Reference Include="System.Data" /><Reference Include="System.Windows.Forms" /><Reference Include="System.Xml" /><Reference Include="Microsoft.SqlServer.ManagedDTS, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" /><Reference Include="Microsoft.SqlServer.ScriptTask, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" /></ItemGroup><ItemGroup><AppDesigner Include="Properties\" /><Compile Include="Properties\AssemblyInfo.cs"><SubType>Code</SubType></Compile><EmbeddedResource Include="Properties\Resources.resx"><Generator>ResXFileCodeGenerator</Generator><LastGenOutput>Resources.Designer.cs</LastGenOutput></EmbeddedResource><Compile Include="Properties\Resources.Designer.cs"><AutoGen>True</AutoGen><DependentUpon>Resources.resx</DependentUpon></Compile><None Include="Properties\Settings.settings"><Generator>SettingsSingleFileGenerator</Generator><LastGenOutput>Settings.Designer.cs</LastGenOutput></None><Compile Include="Properties\Settings.Designer.cs"><AutoGen>True</AutoGen><DependentUpon>Settings.settings</DependentUpon></Compile><Compile Include="ScriptMain.cs"><SubType>Code</SubType></Compile></ItemGroup><!-- Include the build rules for a C# project.--><Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" /><ProjectExtensions><VisualStudio><FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}"><ProjectProperties HostName="ScriptTask" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" DebugInfoCommandLine="" DebugInfoWorkingDir="" IconImageList="" /><Host Name="ScriptTask" GeneratedNamespace="$safeprojectname" IconIndex=""></Host><ProjectClient><HostIdentifier>SSIS_ST130</HostIdentifier></ProjectClient></FlavorProperties></VisualStudio></ProjectExtensions></Project>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Resources.resx"
+            Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+</root>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Settings.Designer.cs"
+            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_3b8651274c224955b1157a78283c309f.Properties.Settings.get_Default():ST_3b8651274c224955b1157a78283c309f.Properties.Sett" +
+    "ings")]
+
+namespace ST_3b8651274c224955b1157a78283c309f.Properties {
+    
+    
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+        
+        public static Settings Default {
+            get {
+                return defaultInstance;
+            }
+        }
+    }
+}]]></ProjectItem>
+          <ProjectItem
+            Name="ScriptMain.cs"
+            Encoding="UTF8"><![CDATA[#region Help:  Introduction to the script task
+/* The Script Task allows you to perform virtually any operation that can be accomplished in
+ * a .Net application within the context of an Integration Services control flow. 
+ * 
+ * Expand the other regions which have "Help" prefixes for examples of specific ways to use
+ * Integration Services features within this script task. */
+#endregion
+
+
+#region Namespaces
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Runtime;
+using System.Windows.Forms;
+#endregion
+
+namespace ST_3b8651274c224955b1157a78283c309f
+{
+    /// <summary>
+    /// ScriptMain is the entry point class of the script.  Do not change the name, attributes,
+    /// or parent of this class.
+    /// </summary>
+	[Microsoft.SqlServer.Dts.Tasks.ScriptTask.SSISScriptTaskEntryPointAttribute]
+	public partial class ScriptMain : Microsoft.SqlServer.Dts.Tasks.ScriptTask.VSTARTScriptObjectModelBase
+	{
+        #region Help:  Using Integration Services variables and parameters in a script
+        /* To use a variable in this script, first ensure that the variable has been added to 
+         * either the list contained in the ReadOnlyVariables property or the list contained in 
+         * the ReadWriteVariables property of this script task, according to whether or not your
+         * code needs to write to the variable.  To add the variable, save this script, close this instance of
+         * Visual Studio, and update the ReadOnlyVariables and 
+         * ReadWriteVariables properties in the Script Transformation Editor window.
+         * To use a parameter in this script, follow the same steps. Parameters are always read-only.
+         * 
+         * Example of reading from a variable:
+         *  DateTime startTime = (DateTime) Dts.Variables["System::StartTime"].Value;
+         * 
+         * Example of writing to a variable:
+         *  Dts.Variables["User::myStringVariable"].Value = "new value";
+         * 
+         * Example of reading from a package parameter:
+         *  int batchId = (int) Dts.Variables["$Package::batchId"].Value;
+         *  
+         * Example of reading from a project parameter:
+         *  int batchId = (int) Dts.Variables["$Project::batchId"].Value;
+         * 
+         * Example of reading from a sensitive project parameter:
+         *  int batchId = (int) Dts.Variables["$Project::batchId"].GetSensitiveValue();
+         * */
+
+        #endregion
+
+        #region Help:  Firing Integration Services events from a script
+        /* This script task can fire events for logging purposes.
+         * 
+         * Example of firing an error event:
+         *  Dts.Events.FireError(18, "Process Values", "Bad value", "", 0);
+         * 
+         * Example of firing an information event:
+         *  Dts.Events.FireInformation(3, "Process Values", "Processing has started", "", 0, ref fireAgain)
+         * 
+         * Example of firing a warning event:
+         *  Dts.Events.FireWarning(14, "Process Values", "No values received for input", "", 0);
+         * */
+        #endregion
+
+        #region Help:  Using Integration Services connection managers in a script
+        /* Some types of connection managers can be used in this script task.  See the topic 
+         * "Working with Connection Managers Programatically" for details.
+         * 
+         * Example of using an ADO.Net connection manager:
+         *  object rawConnection = Dts.Connections["Sales DB"].AcquireConnection(Dts.Transaction);
+         *  SqlConnection myADONETConnection = (SqlConnection)rawConnection;
+         *  //Use the connection in some code here, then release the connection
+         *  Dts.Connections["Sales DB"].ReleaseConnection(rawConnection);
+         *
+         * Example of using a File connection manager
+         *  object rawConnection = Dts.Connections["Prices.zip"].AcquireConnection(Dts.Transaction);
+         *  string filePath = (string)rawConnection;
+         *  //Use the connection in some code here, then release the connection
+         *  Dts.Connections["Prices.zip"].ReleaseConnection(rawConnection);
+         * */
+        #endregion
+
+
+		/// <summary>
+        /// This method is called when this script task executes in the control flow.
+        /// Before returning from this method, set the value of Dts.TaskResult to indicate success or failure.
+        /// To open Help, press F1.
+        /// </summary>
+		public void Main()
+		{
+            // TODO: Add your code here
+
+            Dts.Events.FireError(-1, "", "Source Table is not yet loaded", "", 0);
+			Dts.TaskResult = (int)ScriptResults.Success;
+		}
+
+        #region ScriptResults declaration
+        /// <summary>
+        /// This enum provides a convenient shorthand within the scope of this class for setting the
+        /// result of the script.
+        /// 
+        /// This code was generated automatically.
+        /// </summary>
+        enum ScriptResults
+        {
+            Success = Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Success,
+            Failure = Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Failure
+        };
+        #endregion
+
+	}
+}]]></ProjectItem>
+          <ProjectItem
+            Name="Project"
+            Encoding="UTF16LE"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="3.0" schemaVersion="1.0">
+	<msb:PropertyGroup>
+		<msb:CodeName>ST_3b8651274c224955b1157a78283c309f</msb:CodeName>
+		<msb:Language>msBuild</msb:Language>
+		<msb:DisplayName>ST_3b8651274c224955b1157a78283c309f</msb:DisplayName>
+		<msb:ProjectId>{1FCA62D4-7415-4FA1-BE09-2BC3D4149FFF}</msb:ProjectId>
+	</msb:PropertyGroup>
+	<msb:ItemGroup>
+		<msb:Project Include="ST_5244a367980a49febe7eba6420b9fd36.csproj"/>
+		<msb:File Include="Properties\AssemblyInfo.cs"/>
+		<msb:File Include="Properties\Settings.settings"/>
+		<msb:File Include="Properties\Resources.resx"/>
+		<msb:File Include="Properties\Resources.Designer.cs"/>
+		<msb:File Include="Properties\Settings.Designer.cs"/>
+		<msb:File Include="ScriptMain.cs"/>
+	</msb:ItemGroup>
+</c:Project>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\AssemblyInfo.cs"
+            Encoding="UTF8"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("ST_3b8651274c224955b1157a78283c309f")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("ST_3b8651274c224955b1157a78283c309f")]
+[assembly: AssemblyCopyright("Copyright @  2021")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Settings.settings"
+            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Resources.Designer.cs"
+            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_3b8651274c224955b1157a78283c309f.Properties.Resources.get_ResourceManager():System.Resources.Resou" +
+    "rceManager")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_3b8651274c224955b1157a78283c309f.Properties.Resources.get_Culture():System.Globalization.CultureIn" +
+    "fo")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_3b8651274c224955b1157a78283c309f.Properties.Resources.set_Culture(System.Globalization.CultureInfo" +
+    "):Void")]
+
+namespace ST_3b8651274c224955b1157a78283c309f.Properties {
+    
+    
+    /// <summary>
+    ///   A strongly-typed resource class, for looking up localized strings, etc.
+    /// </summary>
+    // This class was auto-generated by the StronglyTypedResourceBuilder
+    // class via a tool like ResGen or Visual Studio.
+    // To add or remove a member, edit your .ResX file then rerun ResGen
+    // with the /str option, or rebuild your VS project.
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    internal class Resources {
+        
+        private static global::System.Resources.ResourceManager resourceMan;
+        
+        private static global::System.Globalization.CultureInfo resourceCulture;
+        
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        internal Resources() {
+        }
+        
+        /// <summary>
+        ///   Returns the cached ResourceManager instance used by this class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if ((resourceMan == null)) {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ST_3b8651274c224955b1157a78283c309f.Properties.Resources", typeof(Resources).Assembly);
+                    resourceMan = temp;
+                }
+                return resourceMan;
+            }
+        }
+        
+        /// <summary>
+        ///   Overrides the current thread's CurrentUICulture property for all
+        ///   resource lookups using this strongly typed resource class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
+                return resourceCulture;
+            }
+            set {
+                resourceCulture = value;
+            }
+        }
+    }
+}]]></ProjectItem>
+          <BinaryItem
+            Name="ST_3b8651274c224955b1157a78283c309f.dll">TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDAHzqI2EAAAAAAAAAAOAAIiALATAAAA4AAAAIAAAAAAAAIi0A
+AAAgAAAAQAAAAAAAEAAgAAAAAgAABAAAAAAAAAAGAAAAAAAAAACAAAAAAgAAAAAAAAMAYIUAABAA
+ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAANAsAABPAAAAAEAAAHgEAAAAAAAAAAAAAAAAAAAA
+AAAAAGAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAAKA0AAAAgAAAADgAAAAIA
+AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAAHgEAAAAQAAAAAYAAAAQAAAAAAAAAAAAAAAAAABAAABA
+LnJlbG9jAAAMAAAAAGAAAAACAAAAFgAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAAAE
+LQAAAAAAAEgAAAACAAUA6CAAADALAAABAAAAAAAAABgsAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAL4CKBAAAApvEQAAChVyAQAAcHIDAABwcgEAAHAWbxIAAAom
+AigQAAAKFm8TAAAKKh4CKBQAAAoqHgIoFQAACiqufgEAAAQtHnJBAABw0AMAAAIoFgAACm8XAAAK
+cxgAAAqAAQAABH4BAAAEKhp+AgAABCoeAoACAAAEKhp+AwAABCoeAigZAAAKKi5zCAAABoADAAAE
+KgAAQlNKQgEAAQAAAAAADAAAAHY0LjAuMzAzMTkAAAAABQBsAAAAkAMAACN+AAD8AwAAFAUAACNT
+dHJpbmdzAAAAABAJAAC0AAAAI1VTAMQJAAAQAAAAI0dVSUQAAADUCQAAXAEAACNCbG9iAAAAAAAA
+AAIAAAFXHaABCQMAAAD6ATMAFgAAAQAAABwAAAAFAAAABgAAAAkAAAABAAAAGQAAAAIAAAAQAAAA
+AgAAAAMAAAAEAAAAAQAAAAMAAAABAAAAAQAAAAAAGgMBAAAAAAAGALkB/wMGAEgC/wMGAAUB7AMP
+AHMEAAAGADIBjwMGAJwBjwMGAH0BjwMGAC8CjwMGANkBjwMGAPIBjwMGAEkBjwMGAGQBkAIKAA0C
+yQIKAIQAyQIGAEkDQgMGAOgA7AMGAOMEQgMGALEDHwQGAKEDegMOALgABAMOABkBBAMOAKAAZQMG
+AM0A/wMKAPICyQIKAMEDyQIGAE8AQgMGACsAQgMGAAkFjwMAAAAAAQAAAAAAAQABAAEAEABaA2wC
+OQABAAEAAAAQACYEggRFAAEAAwAAARAAsQSCBFkAAwAHAAMBAADKBAAAPQAEAAoAEQBOA10AEQB0
+AGEAEQAbAGUABgYKAGkAVoC6BGwAVoBUAGwAUCAAAAAAhgBgAwYAAQCAIAAAAACGGN8DBgABAIgg
+AAAAAIMY3wMGAAEAkCAAAAAAkwitA3AAAQC8IAAAAACTCFwAdQABAMMgAAAAAJMIaAB6AAEAyyAA
+AAAAlgjqBIAAAgDSIAAAAACGGN8DBgACANogAAAAAJEY5QOFAAIAAAABAGYCCQDfAwEAEQDfAwYA
+GQDfAwoAKQDfAxAAMQDfAxAAOQDfAxAAQQDfAxAASQDfAxAAUQDfAxAAWQDfAxAAYQDfAxAAaQDf
+AwYAgQDfAwYAqQDfAxUAuQDfAwYAcQDCBBsAwQDYBCAAyQDVAyUAwQD2BAEAcQDfAwYAiQDfAwYA
+0QA9AC4A0QAFBTUAkQDfAzoAsQDfAwYACAAUAFMACAAYAFgAKQBzAMAALgALAJgALgATAKEALgAb
+AMAALgAjAMkALgArAPIALgAzAPIALgA7APIALgBDAMkALgBLAPgALgBTAPIALgBbAA8BQwBjAFgA
+SQBzAMAAYQB7AFgAYwBrAFgAAwABAAQAAwAAALEDiQAAAHwAjgAAAO4EkwACAAQAAwACAAUABQAB
+AAYABQACAAcABwAEgAAAAQAAAOEenmYAAAAAAABsAgAABAAAAAAAAAAAAAAAQQASAAAAAAANAAAA
+AAAAAAAAAABKAKoCAAAAAAQAAAAAAAAAAAAAAEEAQgMAAAAAAAAAAAEAAAAwBAAABQACAAAAADxN
+b2R1bGU+AHZhbHVlX18AbXNjb3JsaWIAZGVmYXVsdEluc3RhbmNlAFJ1bnRpbWVUeXBlSGFuZGxl
+AEdldFR5cGVGcm9tSGFuZGxlAFR5cGUARmFpbHVyZQBnZXRfQ3VsdHVyZQBzZXRfQ3VsdHVyZQBy
+ZXNvdXJjZUN1bHR1cmUAVlNUQVJUU2NyaXB0T2JqZWN0TW9kZWxCYXNlAEFwcGxpY2F0aW9uU2V0
+dGluZ3NCYXNlAEVkaXRvckJyb3dzYWJsZVN0YXRlAENvbXBpbGVyR2VuZXJhdGVkQXR0cmlidXRl
+AERlYnVnZ2VyTm9uVXNlckNvZGVBdHRyaWJ1dGUARGVidWdnYWJsZUF0dHJpYnV0ZQBFZGl0b3JC
+cm93c2FibGVBdHRyaWJ1dGUAQXNzZW1ibHlUaXRsZUF0dHJpYnV0ZQBBc3NlbWJseVRyYWRlbWFy
+a0F0dHJpYnV0ZQBUYXJnZXRGcmFtZXdvcmtBdHRyaWJ1dGUAQXNzZW1ibHlDb25maWd1cmF0aW9u
+QXR0cmlidXRlAEFzc2VtYmx5RGVzY3JpcHRpb25BdHRyaWJ1dGUAQ29tcGlsYXRpb25SZWxheGF0
+aW9uc0F0dHJpYnV0ZQBBc3NlbWJseVByb2R1Y3RBdHRyaWJ1dGUAQXNzZW1ibHlDb3B5cmlnaHRB
+dHRyaWJ1dGUAU1NJU1NjcmlwdFRhc2tFbnRyeVBvaW50QXR0cmlidXRlAEFzc2VtYmx5Q29tcGFu
+eUF0dHJpYnV0ZQBSdW50aW1lQ29tcGF0aWJpbGl0eUF0dHJpYnV0ZQB2YWx1ZQBTVF8zYjg2NTEy
+NzRjMjI0OTU1YjExNTdhNzgyODNjMzA5ZgBTeXN0ZW0uUnVudGltZS5WZXJzaW9uaW5nAE1pY3Jv
+c29mdC5TcWxTZXJ2ZXIuU2NyaXB0VGFzawBNaWNyb3NvZnQuU3FsU2VydmVyLkR0cy5UYXNrcy5T
+Y3JpcHRUYXNrAFNjcmlwdE9iamVjdE1vZGVsAFN5c3RlbS5Db21wb25lbnRNb2RlbABTVF8zYjg2
+NTEyNzRjMjI0OTU1YjExNTdhNzgyODNjMzA5Zi5kbGwAU3lzdGVtAEVudW0AcmVzb3VyY2VNYW4A
+U2NyaXB0TWFpbgBTeXN0ZW0uQ29uZmlndXJhdGlvbgBTeXN0ZW0uR2xvYmFsaXphdGlvbgBTeXN0
+ZW0uUmVmbGVjdGlvbgBDdWx0dXJlSW5mbwBnZXRfUmVzb3VyY2VNYW5hZ2VyAEV2ZW50c09iamVj
+dFdyYXBwZXIARmlyZUVycm9yAC5jdG9yAC5jY3RvcgBTeXN0ZW0uRGlhZ25vc3RpY3MAU3lzdGVt
+LlJ1bnRpbWUuQ29tcGlsZXJTZXJ2aWNlcwBTeXN0ZW0uUmVzb3VyY2VzAFNUXzNiODY1MTI3NGMy
+MjQ5NTViMTE1N2E3ODI4M2MzMDlmLlByb3BlcnRpZXMuUmVzb3VyY2VzLnJlc291cmNlcwBEZWJ1
+Z2dpbmdNb2RlcwBTVF8zYjg2NTEyNzRjMjI0OTU1YjExNTdhNzgyODNjMzA5Zi5Qcm9wZXJ0aWVz
+AFNldHRpbmdzAFN1Y2Nlc3MAZ2V0X0R0cwBTY3JpcHRSZXN1bHRzAGdldF9FdmVudHMAT2JqZWN0
+AGdldF9EZWZhdWx0AHNldF9UYXNrUmVzdWx0AGdldF9Bc3NlbWJseQAAAAABAD1TAG8AdQByAGMA
+ZQAgAFQAYQBiAGwAZQAgAGkAcwAgAG4AbwB0ACAAeQBlAHQAIABsAG8AYQBkAGUAZAAAcVMAVABf
+ADMAYgA4ADYANQAxADIANwA0AGMAMgAyADQAOQA1ADUAYgAxADEANQA3AGEANwA4ADIAOAAzAGMA
+MwAwADkAZgAuAFAAcgBvAHAAZQByAHQAaQBlAHMALgBSAGUAcwBvAHUAcgBjAGUAcwAAALcJU2WH
+4+xMuhosdmRnnCoABCABAQgDIAABBSABARERBCABAQ4FIAEBEVEEIAASYQQgABJlCCAFAggODg4I
+BgABEmkRbQQgABJxBiACAQ4ScQi3elxWGTTgiQiJhF3NgIDMkQQAAAAABAEAAAADBhJJAwYSTQMG
+EhACBggDBhEUBAAAEkkEAAASTQUAAQESTQQAABIQAwAAAQQIABJJBAgAEk0ECAASEAgBAAgAAAAA
+AB4BAAEAVAIWV3JhcE5vbkV4Y2VwdGlvblRocm93cwEIAQACAAAAAAAoAQAjU1RfM2I4NjUxMjc0
+YzIyNDk1NWIxMTU3YTc4MjgzYzMwOWYAAAUBAAAAABYBABFDb3B5cmlnaHQgQCAgMjAyMQAASQEA
+Gi5ORVRGcmFtZXdvcmssVmVyc2lvbj12NC41AQBUDhRGcmFtZXdvcmtEaXNwbGF5TmFtZRIuTkVU
+IEZyYW1ld29yayA0LjUAAAC0AAAAzsrvvgEAAACRAAAAbFN5c3RlbS5SZXNvdXJjZXMuUmVzb3Vy
+Y2VSZWFkZXIsIG1zY29ybGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVi
+bGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OSNTeXN0ZW0uUmVzb3VyY2VzLlJ1bnRpbWVSZXNv
+dXJjZVNldAIAAAAAAAAAAAAAAFBBRFBBRFC0AAAA+CwAAAAAAAAAAAAAEi0AAAAgAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAQtAAAAAAAAAAAAAAAAX0NvckRsbE1haW4AbXNjb3JlZS5kbGwAAAAAAP8l
+ACAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAQAQAAAAGAAAgAAAAAAAAAAAAAAAAAAAAQABAAAAMAAAgAAAAAAAAAAAAAAAAAAAAQAA
+AAAASAAAAFhAAAAaBAAAAAAAAAAAAAAaBDQAAABWAFMAXwBWAEUAUgBTAEkATwBOAF8ASQBOAEYA
+TwAAAAAAvQTv/gAAAQAAAAEAnmbhHgAAAQCeZuEePwAAAAAAAAAEAAAAAgAAAAAAAAAAAAAAAAAA
+AEQAAAABAFYAYQByAEYAaQBsAGUASQBuAGYAbwAAAAAAJAAEAAAAVAByAGEAbgBzAGwAYQB0AGkA
+bwBuAAAAAAAAALAEegMAAAEAUwB0AHIAaQBuAGcARgBpAGwAZQBJAG4AZgBvAAAAVgMAAAEAMAAw
+ADAAMAAwADQAYgAwAAAAGgABAAEAQwBvAG0AbQBlAG4AdABzAAAAAAAAACIAAQABAEMAbwBtAHAA
+YQBuAHkATgBhAG0AZQAAAAAAAAAAAHAAJAABAEYAaQBsAGUARABlAHMAYwByAGkAcAB0AGkAbwBu
+AAAAAABTAFQAXwAzAGIAOAA2ADUAMQAyADcANABjADIAMgA0ADkANQA1AGIAMQAxADUANwBhADcA
+OAAyADgAMwBjADMAMAA5AGYAAAA+AA8AAQBGAGkAbABlAFYAZQByAHMAaQBvAG4AAAAAADEALgAw
+AC4ANwA5ADAANQAuADIANgAyADcAMAAAAAAAcAAoAAEASQBuAHQAZQByAG4AYQBsAE4AYQBtAGUA
+AABTAFQAXwAzAGIAOAA2ADUAMQAyADcANABjADIAMgA0ADkANQA1AGIAMQAxADUANwBhADcAOAAy
+ADgAMwBjADMAMAA5AGYALgBkAGwAbAAAAEgAEgABAEwAZQBnAGEAbABDAG8AcAB5AHIAaQBnAGgA
+dAAAAEMAbwBwAHkAcgBpAGcAaAB0ACAAQAAgACAAMgAwADIAMQAAACoAAQABAEwAZQBnAGEAbABU
+AHIAYQBkAGUAbQBhAHIAawBzAAAAAAAAAAAAeAAoAAEATwByAGkAZwBpAG4AYQBsAEYAaQBsAGUA
+bgBhAG0AZQAAAFMAVABfADMAYgA4ADYANQAxADIANwA0AGMAMgAyADQAOQA1ADUAYgAxADEANQA3
+AGEANwA4ADIAOAAzAGMAMwAwADkAZgAuAGQAbABsAAAAaAAkAAEAUAByAG8AZAB1AGMAdABOAGEA
+bQBlAAAAAABTAFQAXwAzAGIAOAA2ADUAMQAyADcANABjADIAMgA0ADkANQA1AGIAMQAxADUANwBh
+ADcAOAAyADgAMwBjADMAMAA5AGYAAABCAA8AAQBQAHIAbwBkAHUAYwB0AFYAZQByAHMAaQBvAG4A
+AAAxAC4AMAAuADcAOQAwADUALgAyADYAMgA3ADAAAAAAAEYADwABAEEAcwBzAGUAbQBiAGwAeQAg
+AFYAZQByAHMAaQBvAG4AAAAxAC4AMAAuADcAOQAwADUALgAyADYAMgA3ADAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAMAAAAJD0A
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
+        </ScriptProject>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Update control file"
+      DTS:CreationName="Microsoft.ScriptTask"
+      DTS:Description="Script Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{BD241EE3-BEDD-4796-BEB8-DE3896534FD8}"
+      DTS:ExecutableType="Microsoft.ScriptTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Update control file"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ScriptProject
+          Name="ST_6850f2822fc44f6ba6d14bd68b12a07e"
+          VSTAMajorVersion="14"
+          VSTAMinorVersion="0"
+          Language="CSharp"
+          ReadOnlyVariables="User::controlFilePath,User::lastUpdateDate,User::nbRows">
+          <ProjectItem
+            Name="Properties\Resources.resx"
+            Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+</root>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Settings.Designer.cs"
+            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_6850f2822fc44f6ba6d14bd68b12a07e.Properties.Settings.get_Default():ST_6850f2822fc44f6ba6d14bd68b12a07e.Properties.Sett" +
+    "ings")]
+
+namespace ST_6850f2822fc44f6ba6d14bd68b12a07e.Properties {
+    
+    
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+        
+        public static Settings Default {
+            get {
+                return defaultInstance;
+            }
+        }
+    }
+}]]></ProjectItem>
+          <ProjectItem
+            Name="ST_6850f2822fc44f6ba6d14bd68b12a07e.csproj"
+            Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{545DC34D-5A4E-44AD-8133-AA0CB13C708B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ST_6850f2822fc44f6ba6d14bd68b12a07e</RootNamespace>
+    <AssemblyName>ST_6850f2822fc44f6ba6d14bd68b12a07e</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.SqlServer.ManagedDTS, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.ScriptTask, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptMain.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <!-- Include the build rules for a C# project.-->
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}">
+        <ProjectProperties HostName="VSTAHostName" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" />
+        <Host Name="ScriptTask" />
+        <ProjectClient>
+          <HostIdentifier>SSIS_ST130</HostIdentifier>
+        </ProjectClient>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>]]></ProjectItem>
+          <ProjectItem
+            Name="ScriptMain.cs"
+            Encoding="UTF8"><![CDATA[using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Runtime;
+using System.Windows.Forms;
+using System.IO;
+
+namespace ST_6850f2822fc44f6ba6d14bd68b12a07e
+{
+	[Microsoft.SqlServer.Dts.Tasks.ScriptTask.SSISScriptTaskEntryPointAttribute]
+	public partial class ScriptMain : Microsoft.SqlServer.Dts.Tasks.ScriptTask.VSTARTScriptObjectModelBase
+	{
+
+		public void Main()
+		{
+            string path = (string)Dts.Variables["User::controlFilePath"].Value;
+            DateTime lastUpdateDate = (DateTime)Dts.Variables["User::lastUpdateDate"].Value;
+            int nbRows = (int)Dts.Variables["User::nbRows"].Value;
+
+            Dts.TaskResult = (int)WriteFile(path, lastUpdateDate, nbRows);            
+		}
+
+        private DTSExecResult WriteFile(string path,DateTime currentDate,int nbRows)
+        {
+            string header = "LastUpdate;NbRows";
+            string colone = currentDate.ToString("yyyy-MM-dd HH:mm:ss") + ";" + nbRows.ToString();
+            StreamWriter writer = null;
+
+            try
+            {
+                writer = new StreamWriter(path, false);
+                writer.WriteLine(header);
+                writer.WriteLine(colone);
+                writer.Close();
+
+                return (int)DTSExecResult.Success;
+            }
+            catch (Exception ex)
+            {
+                Dts.Events.FireError(0, "IAS_IAVM_EXCH_RATE - Write control file", ex.Message + "\r\n" + ex.StackTrace, null, 0);
+            }
+            finally
+            {
+                if (writer != null)
+                {
+                    writer.Dispose();
+                }
+            }
+
+            return DTSExecResult.Failure;
+        }
+
+	}
+}]]></ProjectItem>
+          <ProjectItem
+            Name="Project"
+            Encoding="UTF16LE"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="3.0" schemaVersion="1.0">
+	<msb:PropertyGroup>
+		<msb:CodeName>ST_6850f2822fc44f6ba6d14bd68b12a07e</msb:CodeName>
+		<msb:Language>msBuild</msb:Language>
+		<msb:DisplayName>ST_6850f2822fc44f6ba6d14bd68b12a07e</msb:DisplayName>
+		<msb:ProjectId>{0C07D8D5-828E-44AF-9566-86DC34B757F5}</msb:ProjectId>
+	</msb:PropertyGroup>
+	<msb:ItemGroup>
+		<msb:Project Include="ST_6850f2822fc44f6ba6d14bd68b12a07e.csproj"/>
+		<msb:File Include="Properties\AssemblyInfo.cs"/>
+		<msb:File Include="Properties\Settings.settings"/>
+		<msb:File Include="Properties\Resources.resx"/>
+		<msb:File Include="Properties\Resources.Designer.cs"/>
+		<msb:File Include="Properties\Settings.Designer.cs"/>
+		<msb:File Include="ScriptMain.cs"/>
+	</msb:ItemGroup>
+</c:Project>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\AssemblyInfo.cs"
+            Encoding="UTF8"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("ST_6850f2822fc44f6ba6d14bd68b12a07e")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("ST_6850f2822fc44f6ba6d14bd68b12a07e")]
+[assembly: AssemblyCopyright("Copyright @  2020")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Settings.settings"
+            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Resources.Designer.cs"
+            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_6850f2822fc44f6ba6d14bd68b12a07e.Properties.Resources.get_ResourceManager():System.Resources.Resou" +
+    "rceManager")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_6850f2822fc44f6ba6d14bd68b12a07e.Properties.Resources.get_Culture():System.Globalization.CultureIn" +
+    "fo")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_6850f2822fc44f6ba6d14bd68b12a07e.Properties.Resources.set_Culture(System.Globalization.CultureInfo" +
+    "):Void")]
+
+namespace ST_6850f2822fc44f6ba6d14bd68b12a07e.Properties {
+    
+    
+    /// <summary>
+    ///   A strongly-typed resource class, for looking up localized strings, etc.
+    /// </summary>
+    // This class was auto-generated by the StronglyTypedResourceBuilder
+    // class via a tool like ResGen or Visual Studio.
+    // To add or remove a member, edit your .ResX file then rerun ResGen
+    // with the /str option, or rebuild your VS project.
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    internal class Resources {
+        
+        private static global::System.Resources.ResourceManager resourceMan;
+        
+        private static global::System.Globalization.CultureInfo resourceCulture;
+        
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        internal Resources() {
+        }
+        
+        /// <summary>
+        ///   Returns the cached ResourceManager instance used by this class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if ((resourceMan == null)) {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ST_6850f2822fc44f6ba6d14bd68b12a07e.Properties.Resources", typeof(Resources).Assembly);
+                    resourceMan = temp;
+                }
+                return resourceMan;
+            }
+        }
+        
+        /// <summary>
+        ///   Overrides the current thread's CurrentUICulture property for all
+        ///   resource lookups using this strongly typed resource class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
+                return resourceCulture;
+            }
+            set {
+                resourceCulture = value;
+            }
+        }
+    }
+}]]></ProjectItem>
+          <BinaryItem
+            Name="ST_6850f2822fc44f6ba6d14bd68b12a07e.dll">TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDAD/Q018AAAAAAAAAAOAAIiALATAAABIAAAAIAAAAAAAAojAA
+AAAgAAAAQAAAAAAAEAAgAAAAAgAABAAAAAAAAAAGAAAAAAAAAACAAAAAAgAAAAAAAAMAYIUAABAA
+ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAAFAwAABPAAAAAEAAAHgEAAAAAAAAAAAAAAAAAAAA
+AAAAAGAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAAqBAAAAAgAAAAEgAAAAIA
+AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAAHgEAAAAQAAAAAYAAAAUAAAAAAAAAAAAAAAAAABAAABA
+LnJlbG9jAAAMAAAAAGAAAAACAAAAGgAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAACE
+MAAAAAAAAEgAAAACAAUA8CEAAKgNAAABAAAAAAAAAJgvAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAABMwBQB1AAAAAQAAEQIoEAAACm8RAAAKcgEAAHBvEgAACm8T
+AAAKdB4AAAEKAigQAAAKbxEAAApyLQAAcG8SAAAKbxMAAAqlDwAAAQsCKBAAAApvEQAACnJXAABw
+bxIAAApvEwAACqUfAAABDAIoEAAACgIGBwgoAgAABm8UAAAKKgAAABswBgCJAAAAAgAAEXJxAABw
+Cg8CcpUAAHAoFQAACnK9AABwDwMoFgAACigXAAAKCxQMAxZzGAAACgwIBm8ZAAAKCAdvGQAACghv
+GgAAChYN3kETBAIoEAAACm8bAAAKFnLBAABwEQRvHAAACnIRAQBwEQRvHQAACigXAAAKFBZvHgAA
+CibeCggsBghvHwAACtwXKgkqAAAAARwAAAAAJgAgRgA1EgAAAQIAJgBVewAKAAAAAB4CKCAAAAoq
+HgIoIQAACiqufgEAAAQtHnIXAQBw0AMAAAIoIgAACm8jAAAKcyQAAAqAAQAABH4BAAAEKhp+AgAA
+BCoeAoACAAAEKhp+AwAABCoeAiglAAAKKi5zCQAABoADAAAEKgAAQlNKQgEAAQAAAAAADAAAAHY0
+LjAuMzAzMTkAAAAABQBsAAAADAQAACN+AAB4BAAAAAYAACNTdHJpbmdzAAAAAHgKAACMAQAAI1VT
+AAQMAAAQAAAAI0dVSUQAAAAUDAAAlAEAACNCbG9iAAAAAAAAAAIAAAFXFaIBCQEAAAD6ATMAFgAA
+AQAAACQAAAAEAAAAAwAAAAoAAAAEAAAAJQAAABAAAAACAAAAAgAAAAMAAAAEAAAAAQAAAAQAAAAB
+AAAAAADMAwEAAAAAAAYAdwLXBAYABgPXBAYAwwHEBA8ASwUAAAYA8AFFBAYAWgJFBAYAOwJFBAYA
+7QJFBAYAlwJFBAYAsAJFBAYABwJFBAYAIgI0AwoAywJ7AwoAKAF7AwYAyAD9Aw4A1AXRAAYAlQQQ
+AAYAVwT9AwYApgHEBAYAwQX9AwYAcQT3BAYAYQQwBBIAdgG2AxIA1wG2AxIARAEbBAYAiwHXBAoA
+pAN7Aw4AjQXRAA4AkQDRAAYAUAP9AwYAAQD9AwYAogQQAAoAgQR7AwYA+wD9AwYAmgD9AwYA9QVF
+BAAAAAAHAAAAAAABAAEAAQAQABAEQgA5AAEAAQAAABAA/gRaBVEAAQAEAAABEACXBVoFZQADAAgA
+EQAEBI8AEQAYAZMAEQB1AJcAUCAAAAAAhgAWBAYAAQDUIAAAAACBAL4AmwABAIghAAAAAIYYtwQG
+AAQAkCEAAAAAgxi3BAYABACYIQAAAACTCG0EpAAEAMQhAAAAAJMIAAGpAAQAyyEAAAAAkwgMAa4A
+BADTIQAAAACWCMgFtAAFANohAAAAAIYYtwQGAAUA4iEAAAAAkRi9BLkABQAAAAEAVwMAAAIAagEA
+AAMAswUAAAEALgMJALcEAQARALcEBgAZALcECgApALcEEAAxALcEEAA5ALcEEABBALcEEABJALcE
+EABRALcEEABZALcEEABhALcEEABpALcEBgCZALcEBgDBALcEFQDRALcEBgBxAKAFIgDZAIkFJwDh
+APQDLADpACQDMgDZAOIFAQB5AE4DQQD5AE4DRgDxALoFSgCJALcEUQABAfEAEAABAVwBBgDZAKgF
+VwCRAIUARgCRAGYARgAJAa0EXQABAWIBBgBxALcEBgChALcEBgARAawAZgARAfEFbwCpALcEdQDJ
+ALcEBgApAHMA9AAuAAsAzAAuABMA1QAuABsA9AAuACMA/QAuACsAJgEuADMAJgEuADsAJgEuAEMA
+/QAuAEsALAEuAFMAJgEuAFsAQwFDAGMAjQFJAHMA9ABhAHsAjQFjAGsAjQEbADYAAwABAAQAAwAA
+AHEEvQAAACABwgAAAMwFxwACAAUAAwACAAYABQABAAcABQACAAgABwAEgAAAAQAAAOIdt2kAAAAA
+AABCAAAABAAAAAAAAAAAAAAAfQA5AAAAAAANAAAAAAAAAAAAAACGAFwDAAAAAA0AAAAAAAAAAAAA
+AIYAGgAAAAAABAAAAAAAAAAAAAAAfQD9AwAAAAAAAAAAAQAAAAgFAAAAAABJbnQzMgA8TW9kdWxl
+PgBTeXN0ZW0uSU8ATWljcm9zb2Z0LlNxbFNlcnZlci5NYW5hZ2VkRFRTAG1zY29ybGliAFNUXzY4
+NTBmMjgyMmZjNDRmNmJhNmQxNGJkNjhiMTJhMDdlAGdldF9TdGFja1RyYWNlAGRlZmF1bHRJbnN0
+YW5jZQBnZXRfTWVzc2FnZQBWYXJpYWJsZQBSdW50aW1lVHlwZUhhbmRsZQBHZXRUeXBlRnJvbUhh
+bmRsZQBXcml0ZUZpbGUARGF0ZVRpbWUATWljcm9zb2Z0LlNxbFNlcnZlci5EdHMuUnVudGltZQBX
+cml0ZUxpbmUAVHlwZQBnZXRfQ3VsdHVyZQBzZXRfQ3VsdHVyZQByZXNvdXJjZUN1bHR1cmUAVlNU
+QVJUU2NyaXB0T2JqZWN0TW9kZWxCYXNlAEFwcGxpY2F0aW9uU2V0dGluZ3NCYXNlAENsb3NlAERp
+c3Bvc2UAY3VycmVudERhdGUARWRpdG9yQnJvd3NhYmxlU3RhdGUAQ29tcGlsZXJHZW5lcmF0ZWRB
+dHRyaWJ1dGUARGVidWdnZXJOb25Vc2VyQ29kZUF0dHJpYnV0ZQBEZWJ1Z2dhYmxlQXR0cmlidXRl
+AEVkaXRvckJyb3dzYWJsZUF0dHJpYnV0ZQBBc3NlbWJseVRpdGxlQXR0cmlidXRlAEFzc2VtYmx5
+VHJhZGVtYXJrQXR0cmlidXRlAFRhcmdldEZyYW1ld29ya0F0dHJpYnV0ZQBBc3NlbWJseUNvbmZp
+Z3VyYXRpb25BdHRyaWJ1dGUAQXNzZW1ibHlEZXNjcmlwdGlvbkF0dHJpYnV0ZQBDb21waWxhdGlv
+blJlbGF4YXRpb25zQXR0cmlidXRlAEFzc2VtYmx5UHJvZHVjdEF0dHJpYnV0ZQBBc3NlbWJseUNv
+cHlyaWdodEF0dHJpYnV0ZQBTU0lTU2NyaXB0VGFza0VudHJ5UG9pbnRBdHRyaWJ1dGUAQXNzZW1i
+bHlDb21wYW55QXR0cmlidXRlAFJ1bnRpbWVDb21wYXRpYmlsaXR5QXR0cmlidXRlAGdldF9WYWx1
+ZQB2YWx1ZQBTeXN0ZW0uUnVudGltZS5WZXJzaW9uaW5nAFRvU3RyaW5nAHBhdGgATWljcm9zb2Z0
+LlNxbFNlcnZlci5TY3JpcHRUYXNrAE1pY3Jvc29mdC5TcWxTZXJ2ZXIuRHRzLlRhc2tzLlNjcmlw
+dFRhc2sAU2NyaXB0T2JqZWN0TW9kZWwAU3lzdGVtLkNvbXBvbmVudE1vZGVsAFNUXzY4NTBmMjgy
+MmZjNDRmNmJhNmQxNGJkNjhiMTJhMDdlLmRsbABnZXRfSXRlbQBTeXN0ZW0AcmVzb3VyY2VNYW4A
+U2NyaXB0TWFpbgBTeXN0ZW0uQ29uZmlndXJhdGlvbgBTeXN0ZW0uR2xvYmFsaXphdGlvbgBTeXN0
+ZW0uUmVmbGVjdGlvbgBFeGNlcHRpb24AQ3VsdHVyZUluZm8AZ2V0X1Jlc291cmNlTWFuYWdlcgBF
+dmVudHNPYmplY3RXcmFwcGVyAFN0cmVhbVdyaXRlcgBUZXh0V3JpdGVyAEZpcmVFcnJvcgAuY3Rv
+cgAuY2N0b3IAU3lzdGVtLkRpYWdub3N0aWNzAFN5c3RlbS5SdW50aW1lLkNvbXBpbGVyU2Vydmlj
+ZXMAU3lzdGVtLlJlc291cmNlcwBTVF82ODUwZjI4MjJmYzQ0ZjZiYTZkMTRiZDY4YjEyYTA3ZS5Q
+cm9wZXJ0aWVzLlJlc291cmNlcy5yZXNvdXJjZXMARGVidWdnaW5nTW9kZXMAU1RfNjg1MGYyODIy
+ZmM0NGY2YmE2ZDE0YmQ2OGIxMmEwN2UuUHJvcGVydGllcwBnZXRfVmFyaWFibGVzAFNldHRpbmdz
+AGdldF9EdHMAZ2V0X0V2ZW50cwBuYlJvd3MAQ29uY2F0AE9iamVjdABnZXRfRGVmYXVsdABEVFNF
+eGVjUmVzdWx0AHNldF9UYXNrUmVzdWx0AGdldF9Bc3NlbWJseQAAAAArVQBzAGUAcgA6ADoAYwBv
+AG4AdAByAG8AbABGAGkAbABlAFAAYQB0AGgAAClVAHMAZQByADoAOgBsAGEAcwB0AFUAcABkAGEA
+dABlAEQAYQB0AGUAABlVAHMAZQByADoAOgBuAGIAUgBvAHcAcwAAI0wAYQBzAHQAVQBwAGQAYQB0
+AGUAOwBOAGIAUgBvAHcAcwAAJ3kAeQB5AHkALQBNAE0ALQBkAGQAIABIAEgAOgBtAG0AOgBzAHMA
+AQM7AABPSQBBAFMAXwBJAEEAVgBNAF8ARQBYAEMASABfAFIAQQBUAEUAIAAtACAAVwByAGkAdABl
+ACAAYwBvAG4AdAByAG8AbAAgAGYAaQBsAGUAAQUNAAoAAHFTAFQAXwA2ADgANQAwAGYAMgA4ADIA
+MgBmAGMANAA0AGYANgBiAGEANgBkADEANABiAGQANgA4AGIAMQAyAGEAMAA3AGUALgBQAHIAbwBw
+AGUAcgB0AGkAZQBzAC4AUgBlAHMAbwB1AHIAYwBlAHMAAAAAAJKseFwlQNlKnJjKudHLMtEABCAB
+AQgDIAABBSABARERBCABAQ4FIAEBEV0GBwMOET0IBCAAEm0EIAAScQUgARJ1HAMgABwKBwUODhJF
+EUESSQQgAQ4OAyAADgYAAw4ODg4FIAIBDgIFIAASgIUIIAUCCA4ODggIAAESgIkRgI0FIAASgJEH
+IAIBDhKAkQi3elxWGTTgiQiJhF3NgIDMkQMGElUDBhJZAwYSEAggAxFBDhE9CAQAABJVBAAAElkF
+AAEBElkEAAASEAMAAAEECAASVQQIABJZBAgAEhAIAQAIAAAAAAAeAQABAFQCFldyYXBOb25FeGNl
+cHRpb25UaHJvd3MBCAEAAgAAAAAAKAEAI1NUXzY4NTBmMjgyMmZjNDRmNmJhNmQxNGJkNjhiMTJh
+MDdlAAAFAQAAAAAWAQARQ29weXJpZ2h0IEAgIDIwMjAAAEkBABouTkVURnJhbWV3b3JrLFZlcnNp
+b249djQuNQEAVA4URnJhbWV3b3JrRGlzcGxheU5hbWUSLk5FVCBGcmFtZXdvcmsgNC41BAEAAAAA
+ALQAAADOyu++AQAAAJEAAABsU3lzdGVtLlJlc291cmNlcy5SZXNvdXJjZVJlYWRlciwgbXNjb3Js
+aWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdh
+NWM1NjE5MzRlMDg5I1N5c3RlbS5SZXNvdXJjZXMuUnVudGltZVJlc291cmNlU2V0AgAAAAAAAAAA
+AAAAUEFEUEFEULQAAAB4MAAAAAAAAAAAAACSMAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAhDAA
+AAAAAAAAAAAAAABfQ29yRGxsTWFpbgBtc2NvcmVlLmRsbAAAAAAA/yUAIAAQAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAEAEAAAABgAAIAAAAAAAAAAAAAAAAAAAAEAAQAAADAAAIAAAAAAAAAAAAAAAAAAAAEAAAAA
+AEgAAABYQAAAGgQAAAAAAAAAAAAAGgQ0AAAAVgBTAF8AVgBFAFIAUwBJAE8ATgBfAEkATgBGAE8A
+AAAAAL0E7/4AAAEAAAABALdp4h0AAAEAt2niHT8AAAAAAAAABAAAAAIAAAAAAAAAAAAAAAAAAABE
+AAAAAQBWAGEAcgBGAGkAbABlAEkAbgBmAG8AAAAAACQABAAAAFQAcgBhAG4AcwBsAGEAdABpAG8A
+bgAAAAAAAACwBHoDAAABAFMAdAByAGkAbgBnAEYAaQBsAGUASQBuAGYAbwAAAFYDAAABADAAMAAw
+ADAAMAA0AGIAMAAAABoAAQABAEMAbwBtAG0AZQBuAHQAcwAAAAAAAAAiAAEAAQBDAG8AbQBwAGEA
+bgB5AE4AYQBtAGUAAAAAAAAAAABwACQAAQBGAGkAbABlAEQAZQBzAGMAcgBpAHAAdABpAG8AbgAA
+AAAAUwBUAF8ANgA4ADUAMABmADIAOAAyADIAZgBjADQANABmADYAYgBhADYAZAAxADQAYgBkADYA
+OABiADEAMgBhADAANwBlAAAAPgAPAAEARgBpAGwAZQBWAGUAcgBzAGkAbwBuAAAAAAAxAC4AMAAu
+ADcANgA1ADAALgAyADcAMAA2ADMAAAAAAHAAKAABAEkAbgB0AGUAcgBuAGEAbABOAGEAbQBlAAAA
+UwBUAF8ANgA4ADUAMABmADIAOAAyADIAZgBjADQANABmADYAYgBhADYAZAAxADQAYgBkADYAOABi
+ADEAMgBhADAANwBlAC4AZABsAGwAAABIABIAAQBMAGUAZwBhAGwAQwBvAHAAeQByAGkAZwBoAHQA
+AABDAG8AcAB5AHIAaQBnAGgAdAAgAEAAIAAgADIAMAAyADAAAAAqAAEAAQBMAGUAZwBhAGwAVABy
+AGEAZABlAG0AYQByAGsAcwAAAAAAAAAAAHgAKAABAE8AcgBpAGcAaQBuAGEAbABGAGkAbABlAG4A
+YQBtAGUAAABTAFQAXwA2ADgANQAwAGYAMgA4ADIAMgBmAGMANAA0AGYANgBiAGEANgBkADEANABi
+AGQANgA4AGIAMQAyAGEAMAA3AGUALgBkAGwAbAAAAGgAJAABAFAAcgBvAGQAdQBjAHQATgBhAG0A
+ZQAAAAAAUwBUAF8ANgA4ADUAMABmADIAOAAyADIAZgBjADQANABmADYAYgBhADYAZAAxADQAYgBk
+ADYAOABiADEAMgBhADAANwBlAAAAQgAPAAEAUAByAG8AZAB1AGMAdABWAGUAcgBzAGkAbwBuAAAA
+MQAuADAALgA3ADYANQAwAC4AMgA3ADAANgAzAAAAAABGAA8AAQBBAHMAcwBlAG0AYgBsAHkAIABW
+AGUAcgBzAGkAbwBuAAAAMQAuADAALgA3ADYANQAwAC4AMgA3ADAANgAzAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAADAAAAKQwAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
+        </ScriptProject>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Update currentDate variable"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{C8DEBB35-4791-4339-B239-1F88D8C72072}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Update currentDate variable"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{B245E38C-6056-4F0A-80C7-0B0F5C5161B6}"
+          SQLTask:SqlStatementSource="SELECT TIMESTAMP(current_date) as lastUpdateDate FROM IAVMPSN"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::lastUpdateDate" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Validations"
+      DTS:CreationName="Microsoft.ScriptTask"
+      DTS:Description="Script Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{6911D41A-708D-4C6D-BA06-4F047D349056}"
+      DTS:ExecutableType="Microsoft.ScriptTask"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Validations"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ScriptProject
+          Name="ST_be48938f3e4540d9920966d865510067"
+          VSTAMajorVersion="14"
+          VSTAMinorVersion="0"
+          Language="CSharp"
+          ReadOnlyVariables="User::controlFilePath"
+          ReadWriteVariables="User::lastUpdateDate">
+          <ProjectItem
+            Name="Properties\Resources.resx"
+            Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+</root>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Settings.Designer.cs"
+            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_be48938f3e4540d9920966d865510067.Properties.Settings.get_Default():ST_be48938f3e4540d9920966d865510067.Properties.Sett" +
+    "ings")]
+
+namespace ST_be48938f3e4540d9920966d865510067.Properties {
+    
+    
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+        
+        public static Settings Default {
+            get {
+                return defaultInstance;
+            }
+        }
+    }
+}]]></ProjectItem>
+          <ProjectItem
+            Name="ST_be48938f3e4540d9920966d865510067.csproj"
+            Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5476DB27-F2C8-4143-9108-5DCF1FBB054E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ST_be48938f3e4540d9920966d865510067</RootNamespace>
+    <AssemblyName>ST_be48938f3e4540d9920966d865510067</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MySql.Data, Version=8.0.22.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.SqlServer.ManagedDTS, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.ScriptTask, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptMain.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <!-- Include the build rules for a C# project.-->
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}">
+        <ProjectProperties HostName="VSTAHostName" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" />
+        <Host Name="ScriptTask" />
+        <ProjectClient>
+          <HostIdentifier>SSIS_ST130</HostIdentifier>
+        </ProjectClient>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>]]></ProjectItem>
+          <ProjectItem
+            Name="ScriptMain.cs"
+            Encoding="UTF8"><![CDATA[using System;
+using MySql.Data.MySqlClient;
+using Microsoft.SqlServer.Dts.Runtime;
+using System.IO;
+
+namespace ST_be48938f3e4540d9920966d865510067
+{
+	[Microsoft.SqlServer.Dts.Tasks.ScriptTask.SSISScriptTaskEntryPointAttribute]
+	public partial class ScriptMain : Microsoft.SqlServer.Dts.Tasks.ScriptTask.VSTARTScriptObjectModelBase
+	{
+        private const string ComponentName = "IAS_CDB_BO_ADVISORS - Script task Validations";
+
+		public void Main()
+		{
+            // last update date default to yesterday since data is current date based
+            var lastUpdateDate = DateTime.Today.AddDays(-1);    
+            var controlFilePath = (string)Dts.Variables["controlFilePath"].Value;
+
+            if (ISAnyControlFile(controlFilePath) == DTSExecResult.Success)
+            {
+                DateTime? controlDate = ReadControlFileDate(controlFilePath);
+                if (controlDate.HasValue)
+                {
+                    lastUpdateDate = controlDate.Value;
+                }
+                else
+                {
+                    Dts.Events.FireWarning(0, ComponentName, "Control file contains no date", null, 0);
+                }
+            }
+            else
+            {
+                Dts.Events.FireWarning(0, ComponentName, "Control file not found", null, 0);
+            }
+
+            // write the last update date to the package variable (to be used in the query)
+            Dts.Variables["lastUpdateDate"].Value = lastUpdateDate;
+            Dts.TaskResult = (int)DTSExecResult.Success;
+            return;
+		}
+
+        private DTSExecResult IsAnyDataAvailable(DateTime currentDate)
+        {
+            var query = $"SELECT COUNT(*) AS 'nbRows' FROM IAVMPSN WHERE TIMESTAMP(current_date) > DATE_FORMAT('{currentDate.ToString("yyyy-MM-dd HH:mm:ss")}', '%Y-%m-%d %H:%i:%s')";
+            MySqlConnection db = null;
+
+            try
+            {
+                db = Dts.Connections["BACKOFFICE"].AcquireConnection(null) as MySqlConnection;
+ 
+                MySqlCommand cmd = new MySqlCommand(query, db);
+                var nbRows = (Int64)cmd.ExecuteScalar();
+
+                if (nbRows > 0)
+                {
+                    return DTSExecResult.Success;
+                }
+            }
+            catch(Exception ex)
+            {
+                Dts.Events.FireError(0, ComponentName, ex.Message + "\r" + ex.StackTrace, String.Empty, 0);
+            }
+            finally
+            {
+                if (db != null)
+                {
+                    Dts.Connections["BACKOFFICE"].ReleaseConnection(db);
+                }
+            }
+
+            return DTSExecResult.Failure; 
+        }
+        private DTSExecResult ISAnyControlFile(string controlFilePath)
+        {
+
+            if (File.Exists(controlFilePath) == true)
+            {
+                return DTSExecResult.Success;
+            }
+
+            return DTSExecResult.Failure;
+        }
+        private DTSExecResult IsNewUpdateRequired(DateTime currentDate,string controlFilePath)
+        {
+            StreamReader reader = null;
+
+            try
+            {
+                reader = new StreamReader(controlFilePath);
+                reader.ReadLine();//read the header
+                var values = reader.ReadLine().Split(';');//read the colones
+
+                reader.Close();
+
+                var lastUpdate = DateTime.Parse(values[0]);
+
+                if(lastUpdate.Year == currentDate.Year)
+                {
+                    if(lastUpdate.Month == currentDate.Month)
+                    {
+                        return DTSExecResult.Failure;//validations failed
+                    }
+                }
+
+                return DTSExecResult.Success;
+            }
+            catch(Exception ex)
+            {
+                Dts.Events.FireError(0, ComponentName, ex.Message + "\r\n" + ex.StackTrace, null, 0);
+            }
+            finally
+            {
+                if(reader != null)
+                {
+                    reader.Dispose();
+                }
+            }
+
+            return DTSExecResult.Failure;
+        }
+
+        private DateTime? ReadControlFileDate(string controlFilePath)
+        {
+            StreamReader reader = null;
+
+            try
+            {
+                reader = new StreamReader(controlFilePath);
+                reader.ReadLine();  //read the header & discard
+                var values = reader.ReadLine().Split(';');  //read the columns
+                reader.Close();
+
+                return DateTime.Parse(values[0]);
+            }
+            catch (Exception ex)
+            {
+                Dts.Events.FireError(0, ComponentName, ex.Message + "\r\n" + ex.StackTrace, null, 0);
+            }
+            finally
+            {
+                if (reader != null)
+                {
+                    reader.Dispose();
+                }
+            }
+
+            return null;
+        }
+    }
+}]]></ProjectItem>
+          <ProjectItem
+            Name="Project"
+            Encoding="UTF16LE"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="3.0" schemaVersion="1.0">
+	<msb:PropertyGroup>
+		<msb:CodeName>ST_be48938f3e4540d9920966d865510067</msb:CodeName>
+		<msb:Language>msBuild</msb:Language>
+		<msb:DisplayName>ST_be48938f3e4540d9920966d865510067</msb:DisplayName>
+		<msb:ProjectId>{5EE9BB99-8A34-46B8-B06D-5280A114A156}</msb:ProjectId>
+	</msb:PropertyGroup>
+	<msb:ItemGroup>
+		<msb:Project Include="ST_be48938f3e4540d9920966d865510067.csproj"/>
+		<msb:File Include="Properties\AssemblyInfo.cs"/>
+		<msb:File Include="Properties\Settings.settings"/>
+		<msb:File Include="Properties\Resources.resx"/>
+		<msb:File Include="Properties\Resources.Designer.cs"/>
+		<msb:File Include="Properties\Settings.Designer.cs"/>
+		<msb:File Include="ScriptMain.cs"/>
+	</msb:ItemGroup>
+</c:Project>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\AssemblyInfo.cs"
+            Encoding="UTF8"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("ST_be48938f3e4540d9920966d865510067")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("ST_be48938f3e4540d9920966d865510067")]
+[assembly: AssemblyCopyright("Copyright @  2020")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Settings.settings"
+            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Resources.Designer.cs"
+            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_be48938f3e4540d9920966d865510067.Properties.Resources.get_ResourceManager():System.Resources.Resou" +
+    "rceManager")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_be48938f3e4540d9920966d865510067.Properties.Resources.get_Culture():System.Globalization.CultureIn" +
+    "fo")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_be48938f3e4540d9920966d865510067.Properties.Resources.set_Culture(System.Globalization.CultureInfo" +
+    "):Void")]
+
+namespace ST_be48938f3e4540d9920966d865510067.Properties {
+    
+    
+    /// <summary>
+    ///   A strongly-typed resource class, for looking up localized strings, etc.
+    /// </summary>
+    // This class was auto-generated by the StronglyTypedResourceBuilder
+    // class via a tool like ResGen or Visual Studio.
+    // To add or remove a member, edit your .ResX file then rerun ResGen
+    // with the /str option, or rebuild your VS project.
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    internal class Resources {
+        
+        private static global::System.Resources.ResourceManager resourceMan;
+        
+        private static global::System.Globalization.CultureInfo resourceCulture;
+        
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        internal Resources() {
+        }
+        
+        /// <summary>
+        ///   Returns the cached ResourceManager instance used by this class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if ((resourceMan == null)) {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ST_be48938f3e4540d9920966d865510067.Properties.Resources", typeof(Resources).Assembly);
+                    resourceMan = temp;
+                }
+                return resourceMan;
+            }
+        }
+        
+        /// <summary>
+        ///   Overrides the current thread's CurrentUICulture property for all
+        ///   resource lookups using this strongly typed resource class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
+                return resourceCulture;
+            }
+            set {
+                resourceCulture = value;
+            }
+        }
+    }
+}]]></ProjectItem>
+          <BinaryItem
+            Name="ST_be48938f3e4540d9920966d865510067.dll">TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDAOenUGAAAAAAAAAAAOAAIiALATAAABgAAAAIAAAAAAAANjcA
+AAAgAAAAQAAAAAAAEAAgAAAAAgAABAAAAAAAAAAGAAAAAAAAAACAAAAAAgAAAAAAAAMAYIUAABAA
+ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAAOQ2AABPAAAAAEAAAHgEAAAAAAAAAAAAAAAAAAAA
+AAAAAGAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAAPBcAAAAgAAAAGAAAAAIA
+AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAAHgEAAAAQAAAAAYAAAAaAAAAAAAAAAAAAAAAAABAAABA
+LnJlbG9jAAAMAAAAAGAAAAACAAAAIAAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAAAY
+NwAAAAAAAEgAAAACAAUA5CMAAEgSAAABAAAAAAAAACw2AAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAABMwBgDEAAAAAQAAESgQAAAKDBICIwAAAAAAAPC/KBEAAAoK
+AigSAAAKbxMAAApyAQAAcG8UAAAKbxUAAAp0IAAAAQsCBygDAAAGLToCBygFAAAGDRIDKBYAAAos
+ChIDKBcAAAoKKzwCKBIAAApvGAAAChZyIQAAcHJ9AABwFBZvGQAACisdAigSAAAKbxgAAAoWciEA
+AHByuQAAcBQWbxkAAAoCKBIAAApvEwAACnLnAABwbxQAAAoGjA8AAAFvGgAACgIoEgAAChZvGwAA
+CiobMAYAswAAAAIAABFyBQEAcA8BcrQBAHAoHAAACnLcAQBwKB0AAAoKFAsCKBIAAApvHgAACnIM
+AgBwbx8AAAoUbyAAAAp1EgAAAQsGB3MhAAAKbyIAAAqlJgAAARZqMQQWDN5Z3lUNAigSAAAKbxgA
+AAoWciEAAHAJbyMAAApyIgIAcAlvJAAACigdAAAKfiUAAAoWbyYAAAom3h8HLBsCKBIAAApvHgAA
+CnIMAgBwbx8AAAoHbycAAArcFyoIKgABHAAAAAAeADxaADYTAAABAgAeAHKQAB8AAAAAMgMoKAAA
+CiwCFioXKgAAABswBgCcAAAAAwAAERQKBHMpAAAKCgZvKgAACiYGbyoAAAoXjSkAAAElFh87nW8r
+AAAKBm8sAAAKFpooLQAACgsSASguAAAKDwEoLgAACjMUEgEoLwAACg8BKC8AAAozBBcM3kIWDN4+
+DQIoEgAACm8YAAAKFnIhAABwCW8jAAAKciYCAHAJbyQAAAooHQAAChQWbyYAAAom3goGLAYGbzAA
+AArcFyoIKgEcAAAAAAIAWlwAMhMAAAECAAIAjI4ACgAAAAAbMAYAgwAAAAQAABEUCgNzKQAACgoG
+byoAAAomBm8qAAAKF40pAAABJRYfO51vKwAACgZvLAAAChaaKC0AAApzMQAACgveRgwCKBIAAApv
+GAAAChZyIQAAcAhvIwAACnImAgBwCG8kAAAKKB0AAAoUFm8mAAAKJt4KBiwGBm8wAAAK3BID/hUB
+AAAbCSoHKgABHAAAAAACADk7ADITAAABAgACAGttAAoAAAAAHgIoMgAACioeAigzAAAKKq5+AgAA
+BC0eciwCAHDQAwAAAig0AAAKbzUAAApzNgAACoACAAAEfgIAAAQqGn4DAAAEKh4CgAMAAAQqGn4E
+AAAEKh4CKDcAAAoqLnMMAAAGgAQAAAQqAABCU0pCAQABAAAAAAAMAAAAdjQuMC4zMDMxOQAAAAAF
+AGwAAAAgBQAAI34AAIwFAACABwAAI1N0cmluZ3MAAAAADA0AAKACAAAjVVMArA8AABAAAAAjR1VJ
+RAAAALwPAACMAgAAI0Jsb2IAAAAAAAAAAgAAAVcdogkJAQAAAPoBMwAWAAABAAAALAAAAAQAAAAE
+AAAADQAAAAYAAAA3AAAAAQAAABAAAAAEAAAAAgAAAAMAAAAEAAAAAQAAAAEAAAAGAAAAAQAAAAAA
+kgQBAAAAAAAGAAUDEgYGAJQDEgYGAFEC/wUPAIYGAAAGAH4CCwUGAOgCCwUGAMkCCwUGAHsDCwUG
+ACUDCwUGAD4DCwUGAJUCCwUGALAC2QMKAFkDQQQKAJwBQQQGAD0BwwQGAAEAwwQOAC0HRgESAEEF
+SgcGAFEFwwQGAJYFPwAGADQC/wUGABQHwwQGALIFMgYGAG4F9gQWAAQCfAQWAGUCfAQWALgB4QQG
+ABkCEgYKAGoEQQQOAMgGRgEOAN4ARgEGAAEEwwQKANQFQQQOAN8GRgEOAMIFRgESAKYASgcaAJwA
+WwUGAAwAwwQGACoBPwAGAKMFPwAGAIMFwwQGAG8BwwQGAPoAwwQGAG8HCwUAAAAANgAAAAAAAQAB
+AAEAEADWBBIAOQABAAEAAAAQADkGlQZZAAIABwAAARAA0gaVBm0ABAALAFGALwGfABEAygRyAREA
+jAF2AREAwgB6AVAgAAAAAIYA3AQGAAEAICEAAAAAgQDnAH4BAQD8IQAAAACBAB4BhQECAAwiAAAA
+AIEAiACLAQMA0CIAAAAAgQDkAZMBBQB8IwAAAACGGPIFBgAGAIQjAAAAAIMY8gUGAAYAjCMAAAAA
+kwiuBZ0BBgC4IwAAAACTCHQBogEGAL8jAAAAAJMIgAGnAQYAxyMAAAAAlgghB60BBwDOIwAAAACG
+GPIFBgAHANYjAAAAAJEY+AWyAQcAAAABAPgBAAABAAgEAAABAPgBAAACAAgEAAABAAgEAAABANMD
+CQDyBQEAEQDyBQYAGQDyBQoAKQDyBRAAMQDyBRAAOQDyBRAAQQDyBRAASQDyBRAAUQDyBRAAWQDy
+BRAAYQDyBRAAaQDyBQYAqQDyBQYA0QDyBRUA4QDyBQYAeQBhBykAeQAFBy4AcQDrBjQA6QDEBjkA
+8QC6BD4A+QCyA0QADADGA08ADACyA1MA6QDzBlgACQHzA14A+QC8A2cA6QA7BwEAeQD/A3YAAQEN
+B3sA6QDbBoIAEQG6BIgAGQEdBY8AIQHyBZQAKQGIBUQAmQDSAJsAmQCzAJsAAQF4B58ACQHoBaIA
+GQEvBWcAOQH+BqsAoQDyBRAAQQFmAZsAAQEbB7sAQQHQAQYAeQDeAcIAeQB6BcgAeQAYBMgAQQHW
+AQYADADyBd8AcQDyBQYAsQDyBQYAUQEMAeUAUQFrB+4AuQDyBfQA2QDyBQYADgAEABcBKQBzAO0B
+LgALAMUBLgATAM4BLgAbAO0BLgAjAPYBLgArAB8CLgAzAB8CLgA7AB8CLgBDAPYBLgBLACUCLgBT
+AB8CLgBbADwCQwBjAIYCSQBzAO0BYwBrAIYCgQB7AIYCGwBsALAAzAADAAEABAADAAAAsgW2AQAA
+lAG7AQAAJQfAAQIACAADAAIACQAFAAEACgAFAAIACwAHAEgABIAAAAEAAABBHlM9AAAAAAAAEgAA
+AAQAAAAAAAAAAAAAAPwAfwAAAAAADQAAAAAAAAAAAAAABQEiBAAAAAANAAAAAAAAAAAAAAAFAUkA
+AAAAAAgAAAAWAAAAAAAAAA4BaAAAAAAABAAAAAAAAAAAAAAA/ADDBAAAAAAEAAAAAAAAAAAAAAD8
+AHMAAAAAAAAAAAABAAAAQwYAAAAAAE51bGxhYmxlYDEASW50NjQAU1RfYmU0ODkzOGYzZTQ1NDBk
+OTkyMDk2NmQ4NjU1MTAwNjcAPE1vZHVsZT4AU3lzdGVtLklPAE1pY3Jvc29mdC5TcWxTZXJ2ZXIu
+TWFuYWdlZERUUwBNeVNxbC5EYXRhAFN5c3RlbS5EYXRhAG1zY29ybGliAElzTmV3VXBkYXRlUmVx
+dWlyZWQARGJDb21tYW5kAE15U3FsQ29tbWFuZABnZXRfU3RhY2tUcmFjZQBkZWZhdWx0SW5zdGFu
+Y2UAZ2V0X01lc3NhZ2UAVmFyaWFibGUASXNBbnlEYXRhQXZhaWxhYmxlAFJ1bnRpbWVUeXBlSGFu
+ZGxlAEdldFR5cGVGcm9tSGFuZGxlAElTQW55Q29udHJvbEZpbGUAQ29tcG9uZW50TmFtZQBEYXRl
+VGltZQBNaWNyb3NvZnQuU3FsU2VydmVyLkR0cy5SdW50aW1lAFJlYWRMaW5lAFR5cGUAZ2V0X0N1
+bHR1cmUAc2V0X0N1bHR1cmUAcmVzb3VyY2VDdWx0dXJlAFZTVEFSVFNjcmlwdE9iamVjdE1vZGVs
+QmFzZQBBcHBsaWNhdGlvblNldHRpbmdzQmFzZQBDbG9zZQBEaXNwb3NlAFBhcnNlAFJlYWRDb250
+cm9sRmlsZURhdGUAY3VycmVudERhdGUARWRpdG9yQnJvd3NhYmxlU3RhdGUAQ29tcGlsZXJHZW5l
+cmF0ZWRBdHRyaWJ1dGUARGVidWdnZXJOb25Vc2VyQ29kZUF0dHJpYnV0ZQBEZWJ1Z2dhYmxlQXR0
+cmlidXRlAEVkaXRvckJyb3dzYWJsZUF0dHJpYnV0ZQBBc3NlbWJseVRpdGxlQXR0cmlidXRlAEFz
+c2VtYmx5VHJhZGVtYXJrQXR0cmlidXRlAFRhcmdldEZyYW1ld29ya0F0dHJpYnV0ZQBBc3NlbWJs
+eUNvbmZpZ3VyYXRpb25BdHRyaWJ1dGUAQXNzZW1ibHlEZXNjcmlwdGlvbkF0dHJpYnV0ZQBDb21w
+aWxhdGlvblJlbGF4YXRpb25zQXR0cmlidXRlAEFzc2VtYmx5UHJvZHVjdEF0dHJpYnV0ZQBBc3Nl
+bWJseUNvcHlyaWdodEF0dHJpYnV0ZQBTU0lTU2NyaXB0VGFza0VudHJ5UG9pbnRBdHRyaWJ1dGUA
+QXNzZW1ibHlDb21wYW55QXR0cmlidXRlAFJ1bnRpbWVDb21wYXRpYmlsaXR5QXR0cmlidXRlAGdl
+dF9WYWx1ZQBzZXRfVmFsdWUAZ2V0X0hhc1ZhbHVlAHZhbHVlAFN5c3RlbS5SdW50aW1lLlZlcnNp
+b25pbmcARmlyZVdhcm5pbmcAVG9TdHJpbmcAY29udHJvbEZpbGVQYXRoAGdldF9Nb250aABNaWNy
+b3NvZnQuU3FsU2VydmVyLlNjcmlwdFRhc2sATWljcm9zb2Z0LlNxbFNlcnZlci5EdHMuVGFza3Mu
+U2NyaXB0VGFzawBTY3JpcHRPYmplY3RNb2RlbABTeXN0ZW0uQ29tcG9uZW50TW9kZWwAU1RfYmU0
+ODkzOGYzZTQ1NDBkOTkyMDk2NmQ4NjU1MTAwNjcuZGxsAGdldF9JdGVtAFN5c3RlbQByZXNvdXJj
+ZU1hbgBTY3JpcHRNYWluAFN5c3RlbS5Db25maWd1cmF0aW9uAFN5c3RlbS5HbG9iYWxpemF0aW9u
+AFN5c3RlbS5SZWZsZWN0aW9uAEFjcXVpcmVDb25uZWN0aW9uAFJlbGVhc2VDb25uZWN0aW9uAE15
+U3FsQ29ubmVjdGlvbgBFeGNlcHRpb24AU3lzdGVtLkRhdGEuQ29tbW9uAEN1bHR1cmVJbmZvAGdl
+dF9ZZWFyAENoYXIARXhlY3V0ZVNjYWxhcgBTdHJlYW1SZWFkZXIAVGV4dFJlYWRlcgBnZXRfUmVz
+b3VyY2VNYW5hZ2VyAENvbm5lY3Rpb25NYW5hZ2VyAEV2ZW50c09iamVjdFdyYXBwZXIARmlyZUVy
+cm9yAC5jdG9yAC5jY3RvcgBTeXN0ZW0uRGlhZ25vc3RpY3MAU3lzdGVtLlJ1bnRpbWUuQ29tcGls
+ZXJTZXJ2aWNlcwBTeXN0ZW0uUmVzb3VyY2VzAFNUX2JlNDg5MzhmM2U0NTQwZDk5MjA5NjZkODY1
+NTEwMDY3LlByb3BlcnRpZXMuUmVzb3VyY2VzLnJlc291cmNlcwBEZWJ1Z2dpbmdNb2RlcwBTVF9i
+ZTQ4OTM4ZjNlNDU0MGQ5OTIwOTY2ZDg2NTUxMDA2Ny5Qcm9wZXJ0aWVzAGdldF9WYXJpYWJsZXMA
+U2V0dGluZ3MAZ2V0X0Nvbm5lY3Rpb25zAGdldF9EdHMAZ2V0X0V2ZW50cwBFeGlzdHMAQWRkRGF5
+cwBDb25jYXQAT2JqZWN0AFNwbGl0AGdldF9EZWZhdWx0AERUU0V4ZWNSZXN1bHQAc2V0X1Rhc2tS
+ZXN1bHQATXlTcWwuRGF0YS5NeVNxbENsaWVudABnZXRfVG9kYXkAZ2V0X0Fzc2VtYmx5AEVtcHR5
+AAAAAB9jAG8AbgB0AHIAbwBsAEYAaQBsAGUAUABhAHQAaAAAW0kAQQBTAF8AQwBEAEIAXwBCAE8A
+XwBBAEQAVgBJAFMATwBSAFMAIAAtACAAUwBjAHIAaQBwAHQAIAB0AGEAcwBrACAAVgBhAGwAaQBk
+AGEAdABpAG8AbgBzAAE7QwBvAG4AdAByAG8AbAAgAGYAaQBsAGUAIABjAG8AbgB0AGEAaQBuAHMA
+IABuAG8AIABkAGEAdABlAAAtQwBvAG4AdAByAG8AbAAgAGYAaQBsAGUAIABuAG8AdAAgAGYAbwB1
+AG4AZAAAHWwAYQBzAHQAVQBwAGQAYQB0AGUARABhAHQAZQAAgK1TAEUATABFAEMAVAAgAEMATwBV
+AE4AVAAoACoAKQAgAEEAUwAgACcAbgBiAFIAbwB3AHMAJwAgAEYAUgBPAE0AIABJAEEAVgBNAFAA
+UwBOACAAVwBIAEUAUgBFACAAVABJAE0ARQBTAFQAQQBNAFAAKABjAHUAcgByAGUAbgB0AF8AZABh
+AHQAZQApACAAPgAgAEQAQQBUAEUAXwBGAE8AUgBNAEEAVAAoACcAASd5AHkAeQB5AC0ATQBNAC0A
+ZABkACAASABIADoAbQBtADoAcwBzAAEvJwAsACAAJwAlAFkALQAlAG0ALQAlAGQAIAAlAEgAOgAl
+AGkAOgAlAHMAJwApAAEVQgBBAEMASwBPAEYARgBJAEMARQAAAw0AAAUNAAoAAHFTAFQAXwBiAGUA
+NAA4ADkAMwA4AGYAMwBlADQANQA0ADAAZAA5ADkAMgAwADkANgA2AGQAOAA2ADUANQAxADAAMAA2
+ADcALgBQAHIAbwBwAGUAcgB0AGkAZQBzAC4AUgBlAHMAbwB1AHIAYwBlAHMAAAAALOUlQ5PxNUCk
+e/F8gqM+mwAEIAEBCAMgAAEFIAEBEREEIAEBDgUgAQERZQ0HBBE9DhE9FRFBARE9BAAAET0FIAER
+PQ0EIAASdQQgABJ5BSABEn0cAyAAHAYVEUEBET0DIAACBCAAEwAFIAASgIUIIAUBCA4ODggEIAEB
+HAkHBA4SSRFFEk0EIAEODgYAAw4ODg4FIAASgIkGIAESgI0cBCABHBwGIAIBDhJJAyAADgIGDggg
+BQIIDg4OCAQAAQIOCgcEElERPRFFEk0GIAEdDh0DBQABET0OAyAACBIHBBJRFRFBARE9Ek0VEUEB
+ET0FIAEBEwAIAAESgKkRgK0FIAASgLEHIAIBDhKAsQi3elxWGTTgiQiJhF3NgIDMkQjFaH/IiWnE
+TVpJAEEAUwBfAEMARABCAF8AQgBPAF8AQQBEAFYASQBTAE8AUgBTACAALQAgAFMAYwByAGkAcAB0
+ACAAdABhAHMAawAgAFYAYQBsAGkAZABhAHQAaQBvAG4AcwADBhJdAwYSYQMGEhAGIAERRRE9BSAB
+EUUOByACEUURPQ4JIAEVEUEBET0OBAAAEl0EAAASYQUAAQESYQQAABIQAwAAAQQIABJdBAgAEmEE
+CAASEAgBAAgAAAAAAB4BAAEAVAIWV3JhcE5vbkV4Y2VwdGlvblRocm93cwEIAQACAAAAAAAoAQAj
+U1RfYmU0ODkzOGYzZTQ1NDBkOTkyMDk2NmQ4NjU1MTAwNjcAAAUBAAAAABYBABFDb3B5cmlnaHQg
+QCAgMjAyMAAASQEAGi5ORVRGcmFtZXdvcmssVmVyc2lvbj12NC41AQBUDhRGcmFtZXdvcmtEaXNw
+bGF5TmFtZRIuTkVUIEZyYW1ld29yayA0LjUEAQAAAAC0AAAAzsrvvgEAAACRAAAAbFN5c3RlbS5S
+ZXNvdXJjZXMuUmVzb3VyY2VSZWFkZXIsIG1zY29ybGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1
+cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OSNTeXN0ZW0uUmVzb3Vy
+Y2VzLlJ1bnRpbWVSZXNvdXJjZVNldAIAAAAAAAAAAAAAAFBBRFBBRFC0AAAADDcAAAAAAAAAAAAA
+JjcAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAABg3AAAAAAAAAAAAAAAAX0NvckRsbE1haW4AbXNj
+b3JlZS5kbGwAAAAAAP8lACAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAEAEAAAABgAAIAAAAAAAAAAAAAAAAAAAAEAAQAAADAAAIAAAAAAAAAAAAAAAAAAAAEAAAAAAEgA
+AABYQAAAGgQAAAAAAAAAAAAAGgQ0AAAAVgBTAF8AVgBFAFIAUwBJAE8ATgBfAEkATgBGAE8AAAAA
+AL0E7/4AAAEAAAABAFM9QR4AAAEAUz1BHj8AAAAAAAAABAAAAAIAAAAAAAAAAAAAAAAAAABEAAAA
+AQBWAGEAcgBGAGkAbABlAEkAbgBmAG8AAAAAACQABAAAAFQAcgBhAG4AcwBsAGEAdABpAG8AbgAA
+AAAAAACwBHoDAAABAFMAdAByAGkAbgBnAEYAaQBsAGUASQBuAGYAbwAAAFYDAAABADAAMAAwADAA
+MAA0AGIAMAAAABoAAQABAEMAbwBtAG0AZQBuAHQAcwAAAAAAAAAiAAEAAQBDAG8AbQBwAGEAbgB5
+AE4AYQBtAGUAAAAAAAAAAABwACQAAQBGAGkAbABlAEQAZQBzAGMAcgBpAHAAdABpAG8AbgAAAAAA
+UwBUAF8AYgBlADQAOAA5ADMAOABmADMAZQA0ADUANAAwAGQAOQA5ADIAMAA5ADYANgBkADgANgA1
+ADUAMQAwADAANgA3AAAAPgAPAAEARgBpAGwAZQBWAGUAcgBzAGkAbwBuAAAAAAAxAC4AMAAuADcA
+NwA0ADUALgAxADUANgA5ADkAAAAAAHAAKAABAEkAbgB0AGUAcgBuAGEAbABOAGEAbQBlAAAAUwBU
+AF8AYgBlADQAOAA5ADMAOABmADMAZQA0ADUANAAwAGQAOQA5ADIAMAA5ADYANgBkADgANgA1ADUA
+MQAwADAANgA3AC4AZABsAGwAAABIABIAAQBMAGUAZwBhAGwAQwBvAHAAeQByAGkAZwBoAHQAAABD
+AG8AcAB5AHIAaQBnAGgAdAAgAEAAIAAgADIAMAAyADAAAAAqAAEAAQBMAGUAZwBhAGwAVAByAGEA
+ZABlAG0AYQByAGsAcwAAAAAAAAAAAHgAKAABAE8AcgBpAGcAaQBuAGEAbABGAGkAbABlAG4AYQBt
+AGUAAABTAFQAXwBiAGUANAA4ADkAMwA4AGYAMwBlADQANQA0ADAAZAA5ADkAMgAwADkANgA2AGQA
+OAA2ADUANQAxADAAMAA2ADcALgBkAGwAbAAAAGgAJAABAFAAcgBvAGQAdQBjAHQATgBhAG0AZQAA
+AAAAUwBUAF8AYgBlADQAOAA5ADMAOABmADMAZQA0ADUANAAwAGQAOQA5ADIAMAA5ADYANgBkADgA
+NgA1ADUAMQAwADAANgA3AAAAQgAPAAEAUAByAG8AZAB1AGMAdABWAGUAcgBzAGkAbwBuAAAAMQAu
+ADAALgA3ADcANAA1AC4AMQA1ADYAOQA5AAAAAABGAA8AAQBBAHMAcwBlAG0AYgBsAHkAIABWAGUA
+cgBzAGkAbwBuAAAAMQAuADAALgA3ADcANAA1AC4AMQA1ADYAOQA5AAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAADAAAADg3AAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
+        </ScriptProject>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{D849F413-BC10-4647-A3AA-18F1CB902436}"
+      DTS:From="Package\Validations"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Create  file depot folders" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{D1B8EE8D-FB4A-44B0-9B82-52D9F8CBA6D1}"
+      DTS:From="Package\Copy from iavmpsn to FILE"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Update currentDate variable" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{2C5374AD-C361-459E-A005-7BF9122F054F}"
+      DTS:From="Package\Create  file depot folders"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Copy from iavmpsn to FILE" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{8D4C4275-AE0F-41B7-86D9-5401E9565A00}"
+      DTS:From="Package\Update currentDate variable"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\Update control file" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Contrainte]"
+      DTS:CreationName=""
+      DTS:DTSID="{05A60160-A358-43E1-9B49-F0D85DDBBF92}"
+      DTS:From="Package\Update control file"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Contrainte"
+      DTS:To="Package\File System Task" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Contrainte 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{5EAB5FEB-0F25-46AA-A4DB-894A957B75C7}"
+      DTS:EvalOp="3"
+      DTS:Expression="@[User::pass] !=0"
+      DTS:From="Package\Check Source Table Loading"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Contrainte 1"
+      DTS:To="Package\Validations" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Contrainte 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{E4888C97-1986-40F5-800D-87CD6C729F97}"
+      DTS:EvalOp="3"
+      DTS:Expression="@[User::pass] ==0"
+      DTS:From="Package\Check Source Table Loading"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Contrainte 2"
+      DTS:To="Package\Script Task" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Cette section CDATA contient des informations sur la disposition du package. Elle comprend des informations telles que les coordonnées (x,y), la largeur et la hauteur.-->
+<!--Si vous modifiez manuellement cette section et commettez une erreur, vous pouvez la supprimer. -->
+<!--Le package pourra toujours se charger normalement, mais les informations de disposition précédente seront perdues et le concepteur réorganisera automatiquement les éléments sur l'aire de conception.-->
+<Objects
+  Version="8">
+  <!--Chaque nœud ci-dessous contiendra des propriétés qui n'affectent pas le comportement d'exécution.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="212,42"
+          Id="Package\Check Source Table Loading"
+          TopLeft="644,93" />
+        <NodeLayout
+          Size="208,43"
+          Id="Package\Copy from iavmpsn to FILE"
+          TopLeft="649,451" />
+        <NodeLayout
+          Size="198,42"
+          Id="Package\Create  file depot folders"
+          TopLeft="659,362" />
+        <NodeLayout
+          Size="158,42"
+          Id="Package\File System Task"
+          TopLeft="685,694" />
+        <NodeLayout
+          Size="131,42"
+          Id="Package\Script Task"
+          TopLeft="398,243" />
+        <NodeLayout
+          Size="168,42"
+          Id="Package\Update control file"
+          TopLeft="677.249999981373,603.105263969244" />
+        <NodeLayout
+          Size="213,43"
+          Id="Package\Update currentDate variable"
+          TopLeft="664.374990100041,524.789483562071" />
+        <NodeLayout
+          Size="132,43"
+          Id="Package\Validations"
+          TopLeft="689,256" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="756.5,298.666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,63.3333333333334"
+              Start="0,0"
+              End="0,55.8333333333334">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,55.8333333333334" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="753,493.666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="18.0416567667077,31.1228168954044"
+              Start="0,0"
+              End="18.0416567667077,23.6228168954044">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,11.5614084477022" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,11.5614084477022"
+                    Point2="0,15.5614084477022"
+                    Point3="4,15.5614084477022" />
+                  <mssgle:LineSegment
+                    End="14.0416567667077,15.5614084477022" />
+                  <mssgle:CubicBezierSegment
+                    Point1="14.0416567667077,15.5614084477022"
+                    Point2="18.0416567667077,15.5614084477022"
+                    Point3="18.0416567667077,19.5614084477022" />
+                  <mssgle:LineSegment
+                    End="18.0416567667077,23.6228168954044" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="755.5,404">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,47"
+              Start="0,0"
+              End="0,39.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="771.041656766708,567.456150228738">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-9.79165678533468,35.6491137405064"
+              Start="0,0"
+              End="-9.79165678533468,28.1491137405064">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13.8245568702532" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.8245568702532"
+                    Point2="0,17.8245568702532"
+                    Point3="-4,17.8245568702532" />
+                  <mssgle:LineSegment
+                    End="-5.79165678533468,17.8245568702532" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-5.79165678533468,17.8245568702532"
+                    Point2="-9.79165678533468,17.8245568702532"
+                    Point3="-9.79165678533468,21.8245568702532" />
+                  <mssgle:LineSegment
+                    End="-9.79165678533468,28.1491137405064" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Contrainte]"
+          TopLeft="762.624999990687,645.105263969244">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,48.894736030756"
+              Start="0,0"
+              End="0,41.394736030756">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.394736030756" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Contrainte 1]"
+          TopLeft="752.5,135">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,121"
+              Start="0,0"
+              End="0,113.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,113.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,48.75,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Contrainte 2]"
+          TopLeft="716,135">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-252.5,108"
+              Start="0,0"
+              End="-252.5,100.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.685393258427" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,39.685393258427"
+                    Point2="0,43.685393258427"
+                    Point3="-4,43.685393258427" />
+                  <mssgle:LineSegment
+                    End="-248.5,43.685393258427" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-248.5,43.685393258427"
+                    Point2="-252.5,43.685393258427"
+                    Point3="-252.5,47.685393258427" />
+                  <mssgle:LineSegment
+                    End="-252.5,100.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-134.25,48.685393258427,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Copy from iavmpsn to FILE">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="228,42"
+          Id="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest"
+          TopLeft="497,142" />
+        <NodeLayout
+          Size="176,42"
+          Id="Package\Copy from iavmpsn to FILE\Flat File Destination"
+          TopLeft="483,406" />
+        <NodeLayout
+          Size="133,42"
+          Id="Package\Copy from iavmpsn to FILE\Row Count"
+          TopLeft="511,304" />
+        <EdgeLayout
+          Id="Package\Copy from iavmpsn to FILE.Paths[ADO NET Source Output]"
+          TopLeft="611,184">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-33.5,120"
+              Start="0,0"
+              End="-33.5,112.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,56" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,56"
+                    Point2="0,60"
+                    Point3="-4,60" />
+                  <mssgle:LineSegment
+                    End="-29.5,60" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-29.5,60"
+                    Point2="-33.5,60"
+                    Point3="-33.5,64" />
+                  <mssgle:LineSegment
+                    End="-33.5,112.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Copy from iavmpsn to FILE.Paths[Row Count Output 1]"
+          TopLeft="574.25,346">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Copy from iavmpsn to FILE\MySQL iavm Accrued_Interest">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

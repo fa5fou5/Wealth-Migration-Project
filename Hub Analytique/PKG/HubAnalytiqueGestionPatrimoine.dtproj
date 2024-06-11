@@ -1,0 +1,731 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <DeploymentModel>Package</DeploymentModel>
+  <ProductVersion>15.0.2000.180</ProductVersion>
+  <SchemaVersion>9.0.1.0</SchemaVersion>
+  <State>$base64$PFNvdXJjZUNvbnRyb2xJbmZvIHhtbG5zOnhzZD0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEiIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiIHhtbG5zOmRkbDI9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDAzL2VuZ2luZS8yIiB4bWxuczpkZGwyXzI9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDAzL2VuZ2luZS8yLzIiIHhtbG5zOmRkbDEwMF8xMDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDA4L2VuZ2luZS8xMDAvMTAwIiB4bWxuczpkZGwyMDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDEwL2VuZ2luZS8yMDAiIHhtbG5zOmRkbDIwMF8yMDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDEwL2VuZ2luZS8yMDAvMjAwIiB4bWxuczpkZGwzMDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDExL2VuZ2luZS8zMDAiIHhtbG5zOmRkbDMwMF8zMDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDExL2VuZ2luZS8zMDAvMzAwIiB4bWxuczpkZGw0MDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDEyL2VuZ2luZS80MDAiIHhtbG5zOmRkbDQwMF80MDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDEyL2VuZ2luZS80MDAvNDAwIiB4bWxuczpkZGw1MDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDEzL2VuZ2luZS81MDAiIHhtbG5zOmRkbDUwMF81MDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDEzL2VuZ2luZS81MDAvNTAwIiB4bWxuczpkd2Q9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vRGF0YVdhcmVob3VzZS9EZXNpZ25lci8xLjAiPg0KICA8RW5hYmxlZD5mYWxzZTwvRW5hYmxlZD4NCiAgPFByb2plY3ROYW1lPjwvUHJvamVjdE5hbWU+DQogIDxBdXhQYXRoPjwvQXV4UGF0aD4NCiAgPExvY2FsUGF0aD48L0xvY2FsUGF0aD4NCiAgPFByb3ZpZGVyPjwvUHJvdmlkZXI+DQo8L1NvdXJjZUNvbnRyb2xJbmZvPg==</State>
+  <Database>
+    <Name>HubAnalytiqueGestionPatrimoine.database</Name>
+    <FullPath>HubAnalytiqueGestionPatrimoine.database</FullPath>
+  </Database>
+  <DataSources />
+  <DataSourceViews />
+  <DeploymentModelSpecificContent>
+    <Manifest>
+      <DTSPackages>
+        <DtsPackage FormatVersion="8">
+          <Name>ANON_IAS_COMMISSION_REPRESENTATIVES.dtsx</Name>
+          <FullPath>ANON_IAS_COMMISSION_REPRESENTATIVES.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>FUNDEX_UNIVERIS_ACCOUNTS.dtsx</Name>
+          <FullPath>FUNDEX_UNIVERIS_ACCOUNTS.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>FUNDEX_UNIVERIS_ADVISORS.dtsx</Name>
+          <FullPath>FUNDEX_UNIVERIS_ADVISORS.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>FUNDEX_UNIVERIS_CLIENT.dtsx</Name>
+          <FullPath>FUNDEX_UNIVERIS_CLIENT.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>FUNDEX_UNIVERIS_CLIENT_ADDR.dtsx</Name>
+          <FullPath>FUNDEX_UNIVERIS_CLIENT_ADDR.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>FUNDEX_UNIVERIS_COM_SRF.dtsx</Name>
+          <FullPath>FUNDEX_UNIVERIS_COM_SRF.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>FUNDEX_UNIVERIS_COUNTRY.dtsx</Name>
+          <FullPath>FUNDEX_UNIVERIS_COUNTRY.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>FUNDEX_UNIVERIS_HOLDING.dtsx</Name>
+          <FullPath>FUNDEX_UNIVERIS_HOLDING.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>FUNDEX_UNIVERIS_MARKETPRODUCTS.dtsx</Name>
+          <FullPath>FUNDEX_UNIVERIS_MARKETPRODUCTS.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>FUNDEX_UNIVERIS_MASTER_REPCODE.dtsx</Name>
+          <FullPath>FUNDEX_UNIVERIS_MASTER_REPCODE.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>FUNDEX_UNIVERIS_PLANS.dtsx</Name>
+          <FullPath>FUNDEX_UNIVERIS_PLANS.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>FUNDEX_UNIVERIS_PLN_SRF.dtsx</Name>
+          <FullPath>FUNDEX_UNIVERIS_PLN_SRF.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>FUNDEX_UNIVERIS_PROVINCE.dtsx</Name>
+          <FullPath>FUNDEX_UNIVERIS_PROVINCE.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>FUNDEX_UNIVERIS_REPRESENTATIVES.dtsx</Name>
+          <FullPath>FUNDEX_UNIVERIS_REPRESENTATIVES.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>FUNDEX_UNIVERIS_REVENU_PAYABLE.dtsx</Name>
+          <FullPath>FUNDEX_UNIVERIS_REVENU_PAYABLE.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>FUNDEX_UNIVERIS_S_COM_PROD.dtsx</Name>
+          <FullPath>FUNDEX_UNIVERIS_S_COM_PROD.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>FUNDEX_UNIVERIS_TRANSACTION.dtsx</Name>
+          <FullPath>FUNDEX_UNIVERIS_TRANSACTION.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>FUNDEX_UNIVERIS_WRAP_FEE.dtsx</Name>
+          <FullPath>FUNDEX_UNIVERIS_WRAP_FEE.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>IAPW_PORTAL_API_ACCOUNTSANDCLIENTSSUMMARY.dtsx</Name>
+          <FullPath>IAPW_PORTAL_API_ACCOUNTSANDCLIENTSSUMMARY.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>IAPW_PORTAL_API_ACCOUNTSANDCLIENTSSUMMARY_RVP.dtsx</Name>
+          <FullPath>IAPW_PORTAL_API_ACCOUNTSANDCLIENTSSUMMARY_RVP.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>IAPW_PORTAL_API_ASSETSSUMMARY_BYACCOUNTTYPE.dtsx</Name>
+          <FullPath>IAPW_PORTAL_API_ASSETSSUMMARY_BYACCOUNTTYPE.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>IAPW_PORTAL_API_ASSETSSUMMARY_BYACCOUNTTYPE_RVP.dtsx</Name>
+          <FullPath>IAPW_PORTAL_API_ASSETSSUMMARY_BYACCOUNTTYPE_RVP.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>IAPW_PORTAL_API_ASSETSSUMMARY_BYCOMMTYPE.dtsx</Name>
+          <FullPath>IAPW_PORTAL_API_ASSETSSUMMARY_BYCOMMTYPE.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>IAPW_PORTAL_API_ASSETSSUMMARY_BYCOMMTYPE_RVP.dtsx</Name>
+          <FullPath>IAPW_PORTAL_API_ASSETSSUMMARY_BYCOMMTYPE_RVP.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>IAPW_PORTAL_API_ASSETSSUMMARY_BYCOMMTYPEANDPRODUCT.dtsx</Name>
+          <FullPath>IAPW_PORTAL_API_ASSETSSUMMARY_BYCOMMTYPEANDPRODUCT.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>IAPW_PORTAL_API_ASSETSSUMMARY_BYCOMMTYPEANDPRODUCT_RVP.dtsx</Name>
+          <FullPath>IAPW_PORTAL_API_ASSETSSUMMARY_BYCOMMTYPEANDPRODUCT_RVP.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>IAPW_PORTAL_API_ASSETSSUMMARY_BYPRODUCT.dtsx</Name>
+          <FullPath>IAPW_PORTAL_API_ASSETSSUMMARY_BYPRODUCT.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>IAPW_PORTAL_API_ASSETSSUMMARY_BYPRODUCT_RVP.dtsx</Name>
+          <FullPath>IAPW_PORTAL_API_ASSETSSUMMARY_BYPRODUCT_RVP.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>IAPW_PORTAL_API_ASSETSSUMMARY_BYPROVINCE.dtsx</Name>
+          <FullPath>IAPW_PORTAL_API_ASSETSSUMMARY_BYPROVINCE.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>IAPW_PORTAL_API_ASSETSSUMMARY_BYPROVINCE_RVP.dtsx</Name>
+          <FullPath>IAPW_PORTAL_API_ASSETSSUMMARY_BYPROVINCE_RVP.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>IAS_CDB_BO_ACCOUNTS.dtsx</Name>
+          <FullPath>IAS_CDB_BO_ACCOUNTS.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>IAS_CDB_BO_ADVISORS.dtsx</Name>
+          <FullPath>IAS_CDB_BO_ADVISORS.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>IAS_CDB_BO_CASH_HOLDINGS.dtsx</Name>
+          <FullPath>IAS_CDB_BO_CASH_HOLDINGS.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>IAS_CDB_BO_CLIENT_ADDRESS.dtsx</Name>
+          <FullPath>IAS_CDB_BO_CLIENT_ADDRESS.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>IAS_CDB_BO_CLIENTS.dtsx</Name>
+          <FullPath>IAS_CDB_BO_CLIENTS.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>IAS_CDB_BO_CMSDT_TRANSACTIONS.dtsx</Name>
+          <FullPath>IAS_CDB_BO_CMSDT_TRANSACTIONS.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>IAS_CDB_BO_HOLDINGS.dtsx</Name>
+          <FullPath>IAS_CDB_BO_HOLDINGS.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>IAS_CDB_BO_MARKETPRODUCTS.dtsx</Name>
+          <FullPath>IAS_CDB_BO_MARKETPRODUCTS.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>IAS_CDB_BO_PLANS.dtsx</Name>
+          <FullPath>IAS_CDB_BO_PLANS.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>IAS_CDB_BO_TRANSACTIONS.dtsx</Name>
+          <FullPath>IAS_CDB_BO_TRANSACTIONS.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>IAS_CERTS.dtsx</Name>
+          <FullPath>IAS_CERTS.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>IAS_COMMISSION_EXTRACTION_SHARELIST.dtsx</Name>
+          <FullPath>IAS_COMMISSION_EXTRACTION_SHARELIST.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>IAS_COMMISSION_INSURANCE_REVENUES.dtsx</Name>
+          <FullPath>IAS_COMMISSION_INSURANCE_REVENUES.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>IAS_COMMISSION_MASTER_SHARE.dtsx</Name>
+          <FullPath>IAS_COMMISSION_MASTER_SHARE.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>IAS_COMMISSION_REPRESENTATIVES.dtsx</Name>
+          <FullPath>IAS_COMMISSION_REPRESENTATIVES.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>IAS_COMMISSION_REVENUES.dtsx</Name>
+          <FullPath>IAS_COMMISSION_REVENUES.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>IAS_COMMISSION_TRANSACTION_REVENUES.dtsx</Name>
+          <FullPath>IAS_COMMISSION_TRANSACTION_REVENUES.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>IAS_FUNDATA.dtsx</Name>
+          <FullPath>IAS_FUNDATA.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>IAS_IAVM_ACCRUED_INTEREST.dtsx</Name>
+          <FullPath>IAS_IAVM_ACCRUED_INTEREST.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>IAS_IAVM_EXCH_RATE.dtsx</Name>
+          <FullPath>IAS_IAVM_EXCH_RATE.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>IAS_IAVM_HOLDINGS.dtsx</Name>
+          <FullPath>IAS_IAVM_HOLDINGS.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>IAS_IAVM_HOLIDAY.dtsx</Name>
+          <FullPath>IAS_IAVM_HOLIDAY.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>IAS_IAVM_POSITION.dtsx</Name>
+          <FullPath>IAS_IAVM_POSITION.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>IAS_IAVM_REGISTERED_REPRESENTATIVE.dtsx</Name>
+          <FullPath>IAS_IAVM_REGISTERED_REPRESENTATIVE.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>IAS_UNIVERIS_ACCOUNTS.dtsx</Name>
+          <FullPath>IAS_UNIVERIS_ACCOUNTS.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>IAS_UNIVERIS_CLIENT_ADDRESS.dtsx</Name>
+          <FullPath>IAS_UNIVERIS_CLIENT_ADDRESS.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>IAS_UNIVERIS_CLIENTS.dtsx</Name>
+          <FullPath>IAS_UNIVERIS_CLIENTS.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>IAS_UNIVERIS_COM_SRF.dtsx</Name>
+          <FullPath>IAS_UNIVERIS_COM_SRF.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>IAS_UNIVERIS_COUNTRY.dtsx</Name>
+          <FullPath>IAS_UNIVERIS_COUNTRY.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>IAS_UNIVERIS_HOLDINGS.dtsx</Name>
+          <FullPath>IAS_UNIVERIS_HOLDINGS.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>IAS_UNIVERIS_MARKET_PRODUCTS.dtsx</Name>
+          <FullPath>IAS_UNIVERIS_MARKET_PRODUCTS.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>IAS_UNIVERIS_PLANS.dtsx</Name>
+          <FullPath>IAS_UNIVERIS_PLANS.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>IAS_UNIVERIS_PLN_SRF.dtsx</Name>
+          <FullPath>IAS_UNIVERIS_PLN_SRF.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>IAS_UNIVERIS_PROVINCE.dtsx</Name>
+          <FullPath>IAS_UNIVERIS_PROVINCE.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>IAS_UNIVERIS_REGISTERED_REPRESENTATIVE.dtsx</Name>
+          <FullPath>IAS_UNIVERIS_REGISTERED_REPRESENTATIVE.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>IAS_UNIVERIS_REVENUE_PAYABLE.dtsx</Name>
+          <FullPath>IAS_UNIVERIS_REVENUE_PAYABLE.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>IAS_UNIVERIS_S_COM_PROD.dtsx</Name>
+          <FullPath>IAS_UNIVERIS_S_COM_PROD.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>IAS_UNIVERIS_TRANSACTIONS.dtsx</Name>
+          <FullPath>IAS_UNIVERIS_TRANSACTIONS.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>INIT_LOADING_INVESTIA_UNIVERIS_COM_SRF.dtsx</Name>
+          <FullPath>INIT_LOADING_INVESTIA_UNIVERIS_COM_SRF.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>INIT_LOADING_INVESTIA_UNIVERIS_HOLDINGS.dtsx</Name>
+          <FullPath>INIT_LOADING_INVESTIA_UNIVERIS_HOLDINGS.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>INIT_LOADING_INVESTIA_UNIVERIS_PLN_SRF.dtsx</Name>
+          <FullPath>INIT_LOADING_INVESTIA_UNIVERIS_PLN_SRF.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>INIT_LOADING_INVESTIA_UNIVERIS_REVENUE_PAYABLE.dtsx</Name>
+          <FullPath>INIT_LOADING_INVESTIA_UNIVERIS_REVENUE_PAYABLE.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>INIT_LOADING_INVESTIA_UNIVERIS_TRANSACTIONS.dtsx</Name>
+          <FullPath>INIT_LOADING_INVESTIA_UNIVERIS_TRANSACTIONS.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>INVESTIA_UNIVERIS_ACCOUNTS.dtsx</Name>
+          <FullPath>INVESTIA_UNIVERIS_ACCOUNTS.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>INVESTIA_UNIVERIS_ADVISORS.dtsx</Name>
+          <FullPath>INVESTIA_UNIVERIS_ADVISORS.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>INVESTIA_UNIVERIS_CLIENT_ADDRESS.dtsx</Name>
+          <FullPath>INVESTIA_UNIVERIS_CLIENT_ADDRESS.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>INVESTIA_UNIVERIS_CLIENTS.dtsx</Name>
+          <FullPath>INVESTIA_UNIVERIS_CLIENTS.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>INVESTIA_UNIVERIS_COM_SRF.dtsx</Name>
+          <FullPath>INVESTIA_UNIVERIS_COM_SRF.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>INVESTIA_UNIVERIS_COUNTRY.dtsx</Name>
+          <FullPath>INVESTIA_UNIVERIS_COUNTRY.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>INVESTIA_UNIVERIS_HOLDINGS.dtsx</Name>
+          <FullPath>INVESTIA_UNIVERIS_HOLDINGS.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>INVESTIA_UNIVERIS_MARKET_PRODUCTS.dtsx</Name>
+          <FullPath>INVESTIA_UNIVERIS_MARKET_PRODUCTS.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>INVESTIA_UNIVERIS_PLANS.dtsx</Name>
+          <FullPath>INVESTIA_UNIVERIS_PLANS.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>INVESTIA_UNIVERIS_PLN_SRF.dtsx</Name>
+          <FullPath>INVESTIA_UNIVERIS_PLN_SRF.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>INVESTIA_UNIVERIS_PROVINCE.dtsx</Name>
+          <FullPath>INVESTIA_UNIVERIS_PROVINCE.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>INVESTIA_UNIVERIS_REGISTERED_REPRESENTATIVE.dtsx</Name>
+          <FullPath>INVESTIA_UNIVERIS_REGISTERED_REPRESENTATIVE.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>INVESTIA_UNIVERIS_REVENUE_PAYABLE.dtsx</Name>
+          <FullPath>INVESTIA_UNIVERIS_REVENUE_PAYABLE.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>INVESTIA_UNIVERIS_S_COM_PROD.dtsx</Name>
+          <FullPath>INVESTIA_UNIVERIS_S_COM_PROD.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>INVESTIA_UNIVERIS_TRANSACTIONS.dtsx</Name>
+          <FullPath>INVESTIA_UNIVERIS_TRANSACTIONS.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>INVESTIA_UNIVERIS_WRAP_FEE.dtsx</Name>
+          <FullPath>INVESTIA_UNIVERIS_WRAP_FEE.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>INVESTIA_UNIVERIS_x_DBB_MASTER_REP.dtsx</Name>
+          <FullPath>INVESTIA_UNIVERIS_x_DBB_MASTER_REP.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>MVP_FUNDEX_UNIVERIS_ACCOUNTS.dtsx</Name>
+          <FullPath>MVP_FUNDEX_UNIVERIS_ACCOUNTS.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>MVP_FUNDEX_UNIVERIS_ADVISORS.dtsx</Name>
+          <FullPath>MVP_FUNDEX_UNIVERIS_ADVISORS.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>MVP_FUNDEX_UNIVERIS_CLIENT.dtsx</Name>
+          <FullPath>MVP_FUNDEX_UNIVERIS_CLIENT.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>MVP_FUNDEX_UNIVERIS_CLIENT_ADDR.dtsx</Name>
+          <FullPath>MVP_FUNDEX_UNIVERIS_CLIENT_ADDR.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>MVP_FUNDEX_UNIVERIS_COM_SRF.dtsx</Name>
+          <FullPath>MVP_FUNDEX_UNIVERIS_COM_SRF.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>MVP_FUNDEX_UNIVERIS_COUNTRY.dtsx</Name>
+          <FullPath>MVP_FUNDEX_UNIVERIS_COUNTRY.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>MVP_FUNDEX_UNIVERIS_HOLDING.dtsx</Name>
+          <FullPath>MVP_FUNDEX_UNIVERIS_HOLDING.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>MVP_FUNDEX_UNIVERIS_MARKETPRODUCTS.dtsx</Name>
+          <FullPath>MVP_FUNDEX_UNIVERIS_MARKETPRODUCTS.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>MVP_FUNDEX_UNIVERIS_MASTER_REPCODE.dtsx</Name>
+          <FullPath>MVP_FUNDEX_UNIVERIS_MASTER_REPCODE.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>MVP_FUNDEX_UNIVERIS_PLANS.dtsx</Name>
+          <FullPath>MVP_FUNDEX_UNIVERIS_PLANS.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>MVP_FUNDEX_UNIVERIS_PLN_SRF.dtsx</Name>
+          <FullPath>MVP_FUNDEX_UNIVERIS_PLN_SRF.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>MVP_FUNDEX_UNIVERIS_PROVINCE.dtsx</Name>
+          <FullPath>MVP_FUNDEX_UNIVERIS_PROVINCE.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>MVP_FUNDEX_UNIVERIS_REPRESENTATIVES.dtsx</Name>
+          <FullPath>MVP_FUNDEX_UNIVERIS_REPRESENTATIVES.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>MVP_FUNDEX_UNIVERIS_REVENU_PAYABLE.dtsx</Name>
+          <FullPath>MVP_FUNDEX_UNIVERIS_REVENU_PAYABLE.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>MVP_FUNDEX_UNIVERIS_S_COM_PROD.dtsx</Name>
+          <FullPath>MVP_FUNDEX_UNIVERIS_S_COM_PROD.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>MVP_FUNDEX_UNIVERIS_TRANSACTION.dtsx</Name>
+          <FullPath>MVP_FUNDEX_UNIVERIS_TRANSACTION.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>MVP_FUNDEX_UNIVERIS_WRAP_FEE.dtsx</Name>
+          <FullPath>MVP_FUNDEX_UNIVERIS_WRAP_FEE.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>MVP_IAS_UNIVERIS_ACCOUNTS.dtsx</Name>
+          <FullPath>MVP_IAS_UNIVERIS_ACCOUNTS.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>MVP_IAS_UNIVERIS_CLIENT_ADDRESS.dtsx</Name>
+          <FullPath>MVP_IAS_UNIVERIS_CLIENT_ADDRESS.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>MVP_IAS_UNIVERIS_CLIENTS.dtsx</Name>
+          <FullPath>MVP_IAS_UNIVERIS_CLIENTS.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>MVP_IAS_UNIVERIS_COM_SRF.dtsx</Name>
+          <FullPath>MVP_IAS_UNIVERIS_COM_SRF.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>MVP_IAS_UNIVERIS_COUNTRY.dtsx</Name>
+          <FullPath>MVP_IAS_UNIVERIS_COUNTRY.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>MVP_IAS_UNIVERIS_HOLDINGS.dtsx</Name>
+          <FullPath>MVP_IAS_UNIVERIS_HOLDINGS.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>MVP_IAS_UNIVERIS_MARKET_PRODUCTS.dtsx</Name>
+          <FullPath>MVP_IAS_UNIVERIS_MARKET_PRODUCTS.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>MVP_IAS_UNIVERIS_PLANS.dtsx</Name>
+          <FullPath>MVP_IAS_UNIVERIS_PLANS.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>MVP_IAS_UNIVERIS_PLN_SRF.dtsx</Name>
+          <FullPath>MVP_IAS_UNIVERIS_PLN_SRF.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>MVP_IAS_UNIVERIS_PROVINCE.dtsx</Name>
+          <FullPath>MVP_IAS_UNIVERIS_PROVINCE.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>MVP_IAS_UNIVERIS_REGISTERED_REPRESENTATIVE.dtsx</Name>
+          <FullPath>MVP_IAS_UNIVERIS_REGISTERED_REPRESENTATIVE.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>MVP_IAS_UNIVERIS_REVENUE_PAYABLE.dtsx</Name>
+          <FullPath>MVP_IAS_UNIVERIS_REVENUE_PAYABLE.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>MVP_IAS_UNIVERIS_S_COM_PROD.dtsx</Name>
+          <FullPath>MVP_IAS_UNIVERIS_S_COM_PROD.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>MVP_IAS_UNIVERIS_TRANSACTIONS.dtsx</Name>
+          <FullPath>MVP_IAS_UNIVERIS_TRANSACTIONS.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>MVP_INVESTIA_UNIVERIS_ACCOUNTS.dtsx</Name>
+          <FullPath>MVP_INVESTIA_UNIVERIS_ACCOUNTS.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>MVP_INVESTIA_UNIVERIS_ADVISORS.dtsx</Name>
+          <FullPath>MVP_INVESTIA_UNIVERIS_ADVISORS.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>MVP_INVESTIA_UNIVERIS_CLIENT_ADDRESS.dtsx</Name>
+          <FullPath>MVP_INVESTIA_UNIVERIS_CLIENT_ADDRESS.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>MVP_INVESTIA_UNIVERIS_CLIENTS.dtsx</Name>
+          <FullPath>MVP_INVESTIA_UNIVERIS_CLIENTS.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>MVP_INVESTIA_UNIVERIS_COM_SRF.dtsx</Name>
+          <FullPath>MVP_INVESTIA_UNIVERIS_COM_SRF.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>MVP_INVESTIA_UNIVERIS_COUNTRY.dtsx</Name>
+          <FullPath>MVP_INVESTIA_UNIVERIS_COUNTRY.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>MVP_INVESTIA_UNIVERIS_HOLDINGS.dtsx</Name>
+          <FullPath>MVP_INVESTIA_UNIVERIS_HOLDINGS.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>MVP_INVESTIA_UNIVERIS_MARKET_PRODUCTS.dtsx</Name>
+          <FullPath>MVP_INVESTIA_UNIVERIS_MARKET_PRODUCTS.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>MVP_INVESTIA_UNIVERIS_PLANS.dtsx</Name>
+          <FullPath>MVP_INVESTIA_UNIVERIS_PLANS.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>MVP_INVESTIA_UNIVERIS_PLN_SRF.dtsx</Name>
+          <FullPath>MVP_INVESTIA_UNIVERIS_PLN_SRF.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>MVP_INVESTIA_UNIVERIS_PROVINCE.dtsx</Name>
+          <FullPath>MVP_INVESTIA_UNIVERIS_PROVINCE.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>MVP_INVESTIA_UNIVERIS_REGISTERED_REPRESENTATIVE.dtsx</Name>
+          <FullPath>MVP_INVESTIA_UNIVERIS_REGISTERED_REPRESENTATIVE.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>MVP_INVESTIA_UNIVERIS_REVENUE_PAYABLE.dtsx</Name>
+          <FullPath>MVP_INVESTIA_UNIVERIS_REVENUE_PAYABLE.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>MVP_INVESTIA_UNIVERIS_S_COM_PROD.dtsx</Name>
+          <FullPath>MVP_INVESTIA_UNIVERIS_S_COM_PROD.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>MVP_INVESTIA_UNIVERIS_TRANSACTIONS.dtsx</Name>
+          <FullPath>MVP_INVESTIA_UNIVERIS_TRANSACTIONS.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>MVP_INVESTIA_UNIVERIS_WRAP_FEE.dtsx</Name>
+          <FullPath>MVP_INVESTIA_UNIVERIS_WRAP_FEE.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="8">
+          <Name>MVP_INVESTIA_UNIVERIS_x_DBB_MASTER_REP.dtsx</Name>
+          <FullPath>MVP_INVESTIA_UNIVERIS_x_DBB_MASTER_REP.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+      </DTSPackages>
+    </Manifest>
+  </DeploymentModelSpecificContent>
+  <ControlFlowParts />
+  <Miscellaneous />
+  <Configurations>
+    <Configuration>
+      <Name>Development</Name>
+      <Options>
+        <OutputPath>bin</OutputPath>
+        <ConnectionMappings />
+        <ConnectionProviderMappings />
+        <ConnectionSecurityMappings />
+        <DatabaseStorageLocations />
+        <TargetServerVersion>SQLServer2016</TargetServerVersion>
+        <AzureMode>false</AzureMode>
+        <LinkedAzureTenantId />
+        <LinkedAzureAccountId />
+        <LinkedAzureSSISIR />
+        <LinkedAzureStorage />
+        <RemoteExecutionFolder />
+        <ParameterConfigurationValues />
+      </Options>
+    </Configuration>
+  </Configurations>
+</Project>

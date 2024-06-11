@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<DTSConfiguration>
+	<DTSConfigurationHeading>
+		<DTSConfigurationFileInfo GeneratedBy="LIADOM01\li2bts" GeneratedFromPackageName="IAPW_PORTAL_API" GeneratedFromPackageID="{25EAE4C1-E453-49EE-A282-4A63D21A2CF7}" GeneratedDate="2022-04-12 09:26:22"/>
+	</DTSConfigurationHeading>
+	<Configuration ConfiguredType="Property" Path="\Package.Variables[User::destinationFolder].Properties[Value]" ValueType="String">
+		<ConfiguredValue>\\ia.iafg.net\R01\Svc\WH\IAW\Intg\IN\</ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Variables[User::dbUser].Properties[Value]" ValueType="String">
+		<ConfiguredValue>ssrs</ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Variables[User::dbPassword].Properties[Value]" ValueType="String">
+		<ConfiguredValue>*****</ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Variables[User::dbServer].Properties[Value]" ValueType="String">
+		<ConfiguredValue>02.database.iasportal.prod.iawealth.net</ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Variables[User::apiServerURL].Properties[Value]" ValueType="String">
+		<ConfiguredValue>http://prod.portal.iagto.ca:90/iavm-ser-api/v1/assets/</ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Variables[User::token].Properties[Value]" ValueType="String">
+		<ConfiguredValue>*****</ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Variables[User::__Environnement].Properties[Value]" ValueType="String">
+		<ConfiguredValue>ACCP</ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Variables[User::__Etape].Properties[Value]" ValueType="String">
+		<ConfiguredValue></ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Variables[User::__Nomjob].Properties[Value]" ValueType="String">
+		<ConfiguredValue>IAPW-PORTAL-API</ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Variables[User::__RepertoireDATA].Properties[Value]" ValueType="String">
+		<ConfiguredValue>DATA</ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Variables[User::__RepertoireEntree].Properties[Value]" ValueType="String">
+		<ConfiguredValue>IN</ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Variables[User::__RepertoireRejet].Properties[Value]" ValueType="String">
+		<ConfiguredValue>REJET</ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Variables[User::__RepertoireSortie].Properties[Value]" ValueType="String">
+		<ConfiguredValue>OUT</ConfiguredValue>
+	</Configuration>
+</DTSConfiguration>

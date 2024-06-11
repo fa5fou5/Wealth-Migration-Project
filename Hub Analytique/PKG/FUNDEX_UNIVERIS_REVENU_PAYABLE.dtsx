@@ -1,0 +1,3236 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="11/27/2020 8:58:28 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="QL310856"
+  DTS:CreatorName="LIADOM01\li2bts"
+  DTS:DTSID="{25FFBA86-659F-42B9-BCA1-BE3920458D86}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.1301.433"
+  DTS:LocaleID="3084"
+  DTS:ObjectName="FUNDEX_UNIVERIS_REVENU_PAYABLE"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="0"
+  DTS:VersionBuild="150"
+  DTS:VersionGUID="{84792467-B455-4DC8-9590-2DF6AB17817B}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[FUNDEX_UNIVERIS_REVENU_PAYABLE]"
+      DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{0BEED0F0-EB19-4FA6-A02E-AF1F7B1860E3}"
+      DTS:ObjectName="FUNDEX_UNIVERIS_REVENU_PAYABLE">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::cs]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=10.95.0.144;User ID=dei_user;Initial Catalog=fs_mps_fundex_ia2019;Integrated Security=false;Persist Security Info=True;">
+          <DTS:Password
+            DTS:Name="PWD"
+            Sensitive="1"></DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[FUNDEX_UNIVERIS_REVENU_PAYABLE.CSV]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{5B5A4B6D-3314-49F7-A958-829DC44F912A}"
+      DTS:ObjectName="FUNDEX_UNIVERIS_REVENU_PAYABLE.CSV">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::fileDepotFolder]  + "\\REVENUE_PAYABLE__" +  @[User::formattedCurrentDate] + ".csv"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="3084"
+          DTS:Unicode="True"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="\\ia.iafg.net\R01\Svc\WH\IAW\INTG\IN\FUNDEX\UNIVERIS\REVENUE_PAYABLE__2021-08-09.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 0"
+              DTS:DTSID="{04AAEAA7-4CE3-4E1E-9295-57564E0A2876}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 1"
+              DTS:DTSID="{565360B0-0F6C-4F5C-8DDD-B11D71579EC3}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 2"
+              DTS:DTSID="{A3ACAA07-BCA7-4566-A821-874CCB49C4F1}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 3"
+              DTS:DTSID="{6631561F-DE3D-487A-93E4-3B5175AF04D2}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 4"
+              DTS:DTSID="{EA379183-40AE-4965-AC5B-CDDB9B61AEF2}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 5"
+              DTS:DTSID="{F4DBB725-F244-4EB3-AF19-CB86AC5BECB8}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 6"
+              DTS:DTSID="{4C8D5CDF-8962-44B3-9DE2-1C3A1A6AFDE7}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 7"
+              DTS:DTSID="{025A9367-8883-4B31-8884-4BEDFC7B6D8F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 8"
+              DTS:DTSID="{9A4EAEE9-9F66-4277-89CD-43EC035E9BBE}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 9"
+              DTS:DTSID="{9B405A5F-4FED-4B6F-9EF2-712D52A17320}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 10"
+              DTS:DTSID="{D623D4AC-056B-4941-AE2C-7C8CA63CDD92}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 11"
+              DTS:DTSID="{7C2CABBC-36A5-411A-BF6D-DA49B40512A4}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 12"
+              DTS:DTSID="{D5F82420-4D92-4421-B0F1-A9CA13C4D5C5}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 13"
+              DTS:DTSID="{680E0625-C9CF-4F61-B275-392C8446DE03}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 14"
+              DTS:DTSID="{E7FC12FE-A80D-45A8-ADB4-5504BBAA20EC}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 15"
+              DTS:DTSID="{97953F23-AF59-48DC-9C43-C5577C533A7B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 16"
+              DTS:DTSID="{54FB041A-6FD2-44F5-B5CA-C71F65BF5209}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 17"
+              DTS:DTSID="{7EEE1C69-F195-474D-BB47-A889558A035C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 18"
+              DTS:DTSID="{D1F4854F-C799-4CF0-9B03-9E248E15DE77}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 19"
+              DTS:DTSID="{A3C57929-E64D-48D6-893F-41C396E3EE36}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 20"
+              DTS:DTSID="{F2F28DD7-2E65-4DBC-B652-721280AC4716}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 21"
+              DTS:DTSID="{33CECA9A-7D98-4E0C-BB0F-5A278E9972F4}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 22"
+              DTS:DTSID="{544AE475-4D79-4EA0-93ED-ED2FDB56BD70}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 23"
+              DTS:DTSID="{6AF2B2A0-EB94-4A27-A88B-5566AC91F3DA}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 24"
+              DTS:DTSID="{6DD8D0FA-00BD-4266-8343-1FC72DC00A6D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 25"
+              DTS:DTSID="{A3339099-B293-49BF-A69C-30131BA26C68}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 26"
+              DTS:DTSID="{0ACB43BE-6FDA-47F4-B32D-37153CBA5D3F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 27"
+              DTS:DTSID="{1ED4C534-67D7-4ACC-8835-CE91C30805E2}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 28"
+              DTS:DTSID="{080B9F45-DDB3-4730-9CAC-C01955F93EBE}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 29"
+              DTS:DTSID="{96801192-9276-4491-8F5E-8D0223D7D5EF}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 30"
+              DTS:DTSID="{40F03887-0757-41F2-97CD-C3A3A019F18F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 31"
+              DTS:DTSID="{29413C96-3028-4F43-8ABC-F8E8B38920B2}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 32"
+              DTS:DTSID="{E928A3AC-3F15-4FA7-A709-E119228043A9}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 33"
+              DTS:DTSID="{2BA60F0E-F152-4C2F-A6E3-E668B23986CA}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 34"
+              DTS:DTSID="{1CDA76B3-4325-481C-86EC-176DF3B956AB}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 35"
+              DTS:DTSID="{D0A51889-66FE-496D-BCB4-5B9FBD1ADFCD}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 36"
+              DTS:DTSID="{D34B2E9F-2DD5-4A74-AB3B-10E17B352F62}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 37"
+              DTS:DTSID="{32CFF6B2-2D6D-4813-8CE3-EC75B619002B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 38"
+              DTS:DTSID="{7514411D-43FA-44BF-B99C-4659F4B97403}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 39"
+              DTS:DTSID="{A8B62524-E57F-407F-973E-AE73AAEDCC5A}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Configurations>
+    <DTS:Configuration
+      DTS:ConfigurationString="C:\Projets\HubAnalytiqueGestionPatrimoine\CTRL\FUN.CTRL"
+      DTS:ConfigurationType="1"
+      DTS:CreationName=""
+      DTS:DTSID="{B126554C-B1B4-43A7-892E-4F8C511C5858}"
+      DTS:ObjectName="CONFIGURATION" />
+  </DTS:Configurations>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{33E3C858-3A20-4DCD-996F-AB6D692708F2}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="controlFileName">
+      <DTS:VariableValue
+        DTS:DataType="8">fundex_univeris_revenu_payable.control.csv</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{F1BBE63F-89BC-4714-8CFC-AA234B931AD4}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="cs">
+      <DTS:VariableValue
+        DTS:DataType="8">Data Source=10.95.0.144;Integrated Security=false;User ID=dei_user;PWD=hh*3h&amp;DD22DW;Initial Catalog=fs_mps_fundex_ia2019;Persist Security Info=True;</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{EB2E6052-0AAE-4909-A62C-399B699BDAD0}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="GETDATE()"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="currentDate">
+      <DTS:VariableValue
+        DTS:DataType="7">8/9/2021 1:16:10 PM</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{F01983B0-58E8-44D3-A5D2-1479A32B81E5}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="dataDescription">
+      <DTS:VariableValue
+        DTS:DataType="8">UNIVERIS</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{1BD277B5-DF13-4B74-BEFC-E1CE014C31FB}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="dataOwner">
+      <DTS:VariableValue
+        DTS:DataType="8">FUNDEX</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{07DCE47D-366B-4009-A4BC-A5D181BDC663}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="destinationFolder">
+      <DTS:VariableValue
+        DTS:DataType="8">\\ia.iafg.net\R01\Svc\WH\IAW\INTG\IN</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{3465EFE5-EEB4-4650-9468-7DA42AE945C7}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::destinationFolder]  + &quot;\\&quot; +  @[User::dataOwner] + &quot;\\&quot; + @[User::dataDescription]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="fileDepotFolder">
+      <DTS:VariableValue
+        DTS:DataType="8">\\ia.iafg.net\R01\Svc\WH\IAW\INTG\IN\FUNDEX\UNIVERIS</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{2DB36F3C-6CFC-47D3-B06C-7DA0D812E13E}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="(DT_STR, 4,1254) YEAR(@[User::currentDate])  + &quot;-&quot; + RIGHT(&quot;0&quot; + (DT_STR, 2,1254) MONTH(@[User::currentDate]), 2) +   &quot;-&quot; +  RIGHT(&quot;0&quot; + (DT_STR, 2,1254) DAY(@[User::currentDate]), 2)"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="formattedCurrentDate">
+      <DTS:VariableValue
+        DTS:DataType="8">2021-08-09</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{7A546BDF-B0AF-43EF-BC05-13D78A60C336}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="nbRows">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{05358AC3-F103-4B4A-B3E0-486905C1C682}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="workingFolder">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\Projets\HubAnalytiqueGestionPatrimoine\IN</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:LoggingOptions
+    DTS:LoggingMode="1" />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Copy from Univeris to FILE"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{F3BD7174-6B7D-4B5D-A10F-C9D79FA4383F}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Copy from Univeris to FILE"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE"
+              componentClassID="Microsoft.FlatFileDestination"
+              contactInfo="Flat File Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Destination"
+              localeId="3084"
+              name="Flat File REVENU PAYABLE">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether the data will overwrite or append to the destination file."
+                  name="Overwrite">true</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the text to write to the destination file before any data is written."
+                  expressionType="Notify"
+                  name="Header" />
+                <property
+                  dataType="System.Boolean"
+                  description="When text qualifier is enabled, specifies whether the text qualifier in the data written to the destination file will be escaped or not."
+                  name="EscapeQualifier">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[FUNDEX_UNIVERIS_REVENU_PAYABLE.CSV]"
+                  connectionManagerRefId="Package.ConnectionManagers[FUNDEX_UNIVERIS_REVENU_PAYABLE.CSV]"
+                  name="FlatFileConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input]"
+                  hasSideEffects="true"
+                  name="Flat File Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].Columns[PAY_SYSID]"
+                      cachedDataType="i4"
+                      cachedName="PAY_SYSID"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 0]"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[PAY_SYSID]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].Columns[PYBL_STATUS]"
+                      cachedDataType="nText"
+                      cachedName="PYBL_STATUS"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 1]"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[PYBL_STATUS]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].Columns[EVENT_PROC_SYSID]"
+                      cachedDataType="i4"
+                      cachedName="EVENT_PROC_SYSID"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 2]"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[EVENT_PROC_SYSID]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].Columns[EVENT_RPT_SYSID]"
+                      cachedDataType="i4"
+                      cachedName="EVENT_RPT_SYSID"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 3]"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[EVENT_RPT_SYSID]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].Columns[BEN_SYSID]"
+                      cachedDataType="i4"
+                      cachedName="BEN_SYSID"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 4]"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[BEN_SYSID]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].Columns[REP_SYSID]"
+                      cachedDataType="i4"
+                      cachedName="REP_SYSID"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 5]"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[REP_SYSID]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].Columns[DEAL_SYSID]"
+                      cachedDataType="i4"
+                      cachedName="DEAL_SYSID"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 6]"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[DEAL_SYSID]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].Columns[COM_SYSID]"
+                      cachedDataType="i4"
+                      cachedName="COM_SYSID"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 7]"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[COM_SYSID]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].Columns[DIST_SYSID]"
+                      cachedDataType="i4"
+                      cachedName="DIST_SYSID"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 8]"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[DIST_SYSID]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].Columns[TRX_SYSID]"
+                      cachedDataType="i4"
+                      cachedName="TRX_SYSID"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 9]"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[TRX_SYSID]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].Columns[IVR_SYSID]"
+                      cachedDataType="i4"
+                      cachedName="IVR_SYSID"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 10]"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[IVR_SYSID]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].Columns[PLN_SYSID]"
+                      cachedDataType="i4"
+                      cachedName="PLN_SYSID"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 11]"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[PLN_SYSID]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].Columns[ACT_SYSID]"
+                      cachedDataType="i4"
+                      cachedName="ACT_SYSID"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 12]"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[ACT_SYSID]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].Columns[IVD_SYSID]"
+                      cachedDataType="i4"
+                      cachedName="IVD_SYSID"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 13]"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[IVD_SYSID]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].Columns[MGT_CD]"
+                      cachedDataType="nText"
+                      cachedName="MGT_CD"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 14]"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[MGT_CD]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].Columns[TRX_CD]"
+                      cachedDataType="nText"
+                      cachedName="TRX_CD"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 15]"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[TRX_CD]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].Columns[PROC_DT]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="PROC_DT"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 16]"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[PROC_DT]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].Columns[PAID_DT]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="PAID_DT"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 17]"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[PAID_DT]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].Columns[TAX_YEAR]"
+                      cachedDataType="wstr"
+                      cachedLength="4"
+                      cachedName="TAX_YEAR"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 18]"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[TAX_YEAR]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].Columns[PAY_PERIOD]"
+                      cachedDataType="wstr"
+                      cachedLength="5"
+                      cachedName="PAY_PERIOD"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 19]"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[PAY_PERIOD]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].Columns[TRADE_DT]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="TRADE_DT"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 20]"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[TRADE_DT]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].Columns[GRSS_AMT]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="GRSS_AMT"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 21]"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[GRSS_AMT]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].Columns[COM_DLR]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="COM_DLR"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 22]"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[COM_DLR]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].Columns[COM_PYBL]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="COM_PYBL"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 23]"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[COM_PYBL]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].Columns[COM_BEN_PYBL]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="COM_BEN_PYBL"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 24]"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[COM_BEN_PYBL]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].Columns[TICKET_CHG]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="TICKET_CHG"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 25]"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[TICKET_CHG]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].Columns[PAY_CD]"
+                      cachedDataType="nText"
+                      cachedName="PAY_CD"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 26]"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[PAY_CD]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].Columns[COM_PROD_CD]"
+                      cachedDataType="nText"
+                      cachedName="COM_PROD_CD"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 27]"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[COM_PROD_CD]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].Columns[AMOUNT]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="AMOUNT"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 28]"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[AMOUNT]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].Columns[USR_SYSID]"
+                      cachedDataType="i4"
+                      cachedName="USR_SYSID"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 29]"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[USR_SYSID]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].Columns[OTX_SYSID]"
+                      cachedDataType="i4"
+                      cachedName="OTX_SYSID"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 30]"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[OTX_SYSID]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].Columns[DISPLAY_FLAG]"
+                      cachedDataType="i4"
+                      cachedName="DISPLAY_FLAG"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 31]"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[DISPLAY_FLAG]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].Columns[DLR_MINIMUM]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="DLR_MINIMUM"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 32]"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[DLR_MINIMUM]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].Columns[ORIG_PAY_PER]"
+                      cachedDataType="wstr"
+                      cachedLength="18"
+                      cachedName="ORIG_PAY_PER"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 33]"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[ORIG_PAY_PER]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].Columns[IVT_TYPE]"
+                      cachedDataType="nText"
+                      cachedName="IVT_TYPE"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 34]"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[IVT_TYPE]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].Columns[COM_PAY_SYSID]"
+                      cachedDataType="i4"
+                      cachedName="COM_PAY_SYSID"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 35]"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[COM_PAY_SYSID]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].Columns[INTERNAL_COMM]"
+                      cachedDataType="bool"
+                      cachedName="INTERNAL_COMM"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 36]"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[INTERNAL_COMM]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].Columns[WRHS_IND]"
+                      cachedDataType="bool"
+                      cachedName="WRHS_IND"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 37]"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[WRHS_IND]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].Columns[MD_LOADDATE]"
+                      cachedDataType="dbDate"
+                      cachedName="MD_LOADDATE"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 38]"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[MD_LOADDATE]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].Columns[MD_SRCSYSTEM]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="MD_SRCSYSTEM"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 39]"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[MD_SRCSYSTEM]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 0]"
+                      dataType="wstr"
+                      length="255"
+                      name="Column 0" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 1]"
+                      dataType="wstr"
+                      length="255"
+                      name="Column 1" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 2]"
+                      dataType="wstr"
+                      length="255"
+                      name="Column 2" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 3]"
+                      dataType="wstr"
+                      length="255"
+                      name="Column 3" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 4]"
+                      dataType="wstr"
+                      length="255"
+                      name="Column 4" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 5]"
+                      dataType="wstr"
+                      length="255"
+                      name="Column 5" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 6]"
+                      dataType="wstr"
+                      length="255"
+                      name="Column 6" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 7]"
+                      dataType="wstr"
+                      length="255"
+                      name="Column 7" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 8]"
+                      dataType="wstr"
+                      length="255"
+                      name="Column 8" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 9]"
+                      dataType="wstr"
+                      length="255"
+                      name="Column 9" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 10]"
+                      dataType="wstr"
+                      length="255"
+                      name="Column 10" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 11]"
+                      dataType="wstr"
+                      length="255"
+                      name="Column 11" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 12]"
+                      dataType="wstr"
+                      length="255"
+                      name="Column 12" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 13]"
+                      dataType="wstr"
+                      length="255"
+                      name="Column 13" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 14]"
+                      dataType="wstr"
+                      length="255"
+                      name="Column 14" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 15]"
+                      dataType="wstr"
+                      length="255"
+                      name="Column 15" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 16]"
+                      dataType="wstr"
+                      length="255"
+                      name="Column 16" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 17]"
+                      dataType="wstr"
+                      length="255"
+                      name="Column 17" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 18]"
+                      dataType="wstr"
+                      length="255"
+                      name="Column 18" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 19]"
+                      dataType="wstr"
+                      length="255"
+                      name="Column 19" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 20]"
+                      dataType="wstr"
+                      length="255"
+                      name="Column 20" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 21]"
+                      dataType="wstr"
+                      length="255"
+                      name="Column 21" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 22]"
+                      dataType="wstr"
+                      length="255"
+                      name="Column 22" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 23]"
+                      dataType="wstr"
+                      length="255"
+                      name="Column 23" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 24]"
+                      dataType="wstr"
+                      length="255"
+                      name="Column 24" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 25]"
+                      dataType="wstr"
+                      length="255"
+                      name="Column 25" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 26]"
+                      dataType="wstr"
+                      length="255"
+                      name="Column 26" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 27]"
+                      dataType="wstr"
+                      length="255"
+                      name="Column 27" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 28]"
+                      dataType="wstr"
+                      length="255"
+                      name="Column 28" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 29]"
+                      dataType="wstr"
+                      length="255"
+                      name="Column 29" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 30]"
+                      dataType="wstr"
+                      length="255"
+                      name="Column 30" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 31]"
+                      dataType="wstr"
+                      length="255"
+                      name="Column 31" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 32]"
+                      dataType="wstr"
+                      length="255"
+                      name="Column 32" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 33]"
+                      dataType="wstr"
+                      length="255"
+                      name="Column 33" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 34]"
+                      dataType="wstr"
+                      length="255"
+                      name="Column 34" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 35]"
+                      dataType="wstr"
+                      length="255"
+                      name="Column 35" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 36]"
+                      dataType="wstr"
+                      length="255"
+                      name="Column 36" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 37]"
+                      dataType="wstr"
+                      length="255"
+                      name="Column 37" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 38]"
+                      dataType="wstr"
+                      length="255"
+                      name="Column 38" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input].ExternalColumns[Column 39]"
+                      dataType="wstr"
+                      length="255"
+                      name="Column 39" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+            </component>
+            <component
+              refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server."
+              name="Source REVENU PAYABLE"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement used by the component to extract data."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT
+	p.PAY_SYSID,
+	NULLIF(REPLACE(REPLACE(PYBL_STATUS,CHAR(13), ''), CHAR(10), ''),'') AS PYBL_STATUS,
+	EVENT_PROC_SYSID,
+	EVENT_RPT_SYSID,
+	COALESCE(p.BEN_SYSID,cm.BEN_SYSID) AS BEN_SYSID,
+	REP_SYSID,
+	DEAL_SYSID,
+	COM_SYSID,
+	DIST_SYSID,
+	TRX_SYSID,
+	COALESCE(p.IVR_SYSID,cm.LNK_IVR_SYSID) AS IVR_SYSID,
+	COALESCE(p.PLN_SYSID,cm.LNK_PLN_SYSID) AS PLN_SYSID,
+	ACT_SYSID,
+	IVD_SYSID,
+	NULLIF(REPLACE(REPLACE(MGT_CD,CHAR(13), ''), CHAR(10), ''),'') AS MGT_CD,
+	NULLIF(REPLACE(REPLACE(TRX_CD,CHAR(13), ''), CHAR(10), ''),'') AS TRX_CD,
+	PROC_DT,
+	PAID_DT,
+	PAY_PERIOD,
+	TAX_YEAR,
+	TRADE_DT,
+	CAST( GRSS_AMT as VARCHAR) AS GRSS_AMT,
+	CAST( COM_DLR as VARCHAR) AS COM_DLR,
+	CAST( COM_PYBL as VARCHAR) AS COM_PYBL,
+	CAST( COM_BEN_PYBL as VARCHAR) AS COM_BEN_PYBL,
+	CAST( TICKET_CHG as VARCHAR) AS TICKET_CHG,
+	NULLIF(REPLACE(REPLACE(PAY_CD,CHAR(13), ''), CHAR(10), ''),'') AS PAY_CD,
+	NULLIF(REPLACE(REPLACE(COALESCE(p.COM_PROD_CD,cm.COM_PROD_CD),CHAR(13), ''), CHAR(10), ''),'') AS COM_PROD_CD,
+	CAST( AMOUNT as VARCHAR) AS AMOUNT,
+	USR_SYSID,
+	OTX_SYSID,
+	DISPLAY_FLAG,
+	DLR_MINIMUM,
+	ORIG_PAY_PER,
+	NULLIF(REPLACE(REPLACE(COALESCE(p.IVT_TYPE,cm.IVT_TYPE),CHAR(13), ''), CHAR(10), ''),'') AS IVT_TYPE,
+	COM_PAY_SYSID,
+	INTERNAL_COMM,
+	WRHS_IND,
+	CONVERT(DATE, GETDATE()) AS MD_LOADDATE,
+	'FUNDEX-UNIVERIS' AS MD_SRCSYSTEM
+FROM
+	dbo.PAYABLE p (nolock)
+LEFT OUTER JOIN dbo.COM_MANUAL cm (nolock) ON cm.COM_MANUAL_SYSID =p.COM_SYSID 
+WHERE YEAR(PAID_DT)= YEAR(GETDATE()) AND MONTH(PAID_DT)= MONTH(GETDATE())-1</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether to allow non-string external columns to be implicitly converted to strings at the output columns."
+                  name="AllowImplicitStringConversion">true</property>
+                <property
+                  dataType="System.String"
+                  description="The Source database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the mode to retrieve external column information"
+                  name="AccessMode"
+                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter">2</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.DataReaderSourceAdapter</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[FUNDEX_UNIVERIS_REVENU_PAYABLE]"
+                  connectionManagerRefId="Package.ConnectionManagers[FUNDEX_UNIVERIS_REVENU_PAYABLE]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output]"
+                  name="ADO NET Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[PAY_SYSID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[PAY_SYSID]"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[PAY_SYSID]"
+                      name="PAY_SYSID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[PYBL_STATUS]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[PYBL_STATUS]"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[PYBL_STATUS]"
+                      name="PYBL_STATUS"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[EVENT_PROC_SYSID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[EVENT_PROC_SYSID]"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[EVENT_PROC_SYSID]"
+                      name="EVENT_PROC_SYSID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[EVENT_RPT_SYSID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[EVENT_RPT_SYSID]"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[EVENT_RPT_SYSID]"
+                      name="EVENT_RPT_SYSID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[BEN_SYSID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[BEN_SYSID]"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[BEN_SYSID]"
+                      name="BEN_SYSID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[REP_SYSID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[REP_SYSID]"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[REP_SYSID]"
+                      name="REP_SYSID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[DEAL_SYSID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[DEAL_SYSID]"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[DEAL_SYSID]"
+                      name="DEAL_SYSID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[COM_SYSID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[COM_SYSID]"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[COM_SYSID]"
+                      name="COM_SYSID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[DIST_SYSID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[DIST_SYSID]"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[DIST_SYSID]"
+                      name="DIST_SYSID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[TRX_SYSID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[TRX_SYSID]"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[TRX_SYSID]"
+                      name="TRX_SYSID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[IVR_SYSID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[IVR_SYSID]"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[IVR_SYSID]"
+                      name="IVR_SYSID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[PLN_SYSID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[PLN_SYSID]"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[PLN_SYSID]"
+                      name="PLN_SYSID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[ACT_SYSID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[ACT_SYSID]"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[ACT_SYSID]"
+                      name="ACT_SYSID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[IVD_SYSID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[IVD_SYSID]"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[IVD_SYSID]"
+                      name="IVD_SYSID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[MGT_CD]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[MGT_CD]"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[MGT_CD]"
+                      name="MGT_CD"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[TRX_CD]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[TRX_CD]"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[TRX_CD]"
+                      name="TRX_CD"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[PROC_DT]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[PROC_DT]"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[PROC_DT]"
+                      name="PROC_DT"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[PAID_DT]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[PAID_DT]"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[PAID_DT]"
+                      name="PAID_DT"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[PAY_PERIOD]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[PAY_PERIOD]"
+                      length="5"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[PAY_PERIOD]"
+                      name="PAY_PERIOD"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[TAX_YEAR]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[TAX_YEAR]"
+                      length="4"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[TAX_YEAR]"
+                      name="TAX_YEAR"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[TRADE_DT]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[TRADE_DT]"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[TRADE_DT]"
+                      name="TRADE_DT"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[GRSS_AMT]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[GRSS_AMT]"
+                      length="30"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[GRSS_AMT]"
+                      name="GRSS_AMT"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[COM_DLR]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[COM_DLR]"
+                      length="30"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[COM_DLR]"
+                      name="COM_DLR"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[COM_PYBL]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[COM_PYBL]"
+                      length="30"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[COM_PYBL]"
+                      name="COM_PYBL"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[COM_BEN_PYBL]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[COM_BEN_PYBL]"
+                      length="30"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[COM_BEN_PYBL]"
+                      name="COM_BEN_PYBL"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[TICKET_CHG]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[TICKET_CHG]"
+                      length="30"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[TICKET_CHG]"
+                      name="TICKET_CHG"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[PAY_CD]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[PAY_CD]"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[PAY_CD]"
+                      name="PAY_CD"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[COM_PROD_CD]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[COM_PROD_CD]"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[COM_PROD_CD]"
+                      name="COM_PROD_CD"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[AMOUNT]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[AMOUNT]"
+                      length="30"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[AMOUNT]"
+                      name="AMOUNT"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[USR_SYSID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[USR_SYSID]"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[USR_SYSID]"
+                      name="USR_SYSID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[OTX_SYSID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[OTX_SYSID]"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[OTX_SYSID]"
+                      name="OTX_SYSID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[DISPLAY_FLAG]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[DISPLAY_FLAG]"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[DISPLAY_FLAG]"
+                      name="DISPLAY_FLAG"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[DLR_MINIMUM]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[DLR_MINIMUM]"
+                      length="1"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[DLR_MINIMUM]"
+                      name="DLR_MINIMUM"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[ORIG_PAY_PER]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[ORIG_PAY_PER]"
+                      length="18"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[ORIG_PAY_PER]"
+                      name="ORIG_PAY_PER"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[IVT_TYPE]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[IVT_TYPE]"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[IVT_TYPE]"
+                      name="IVT_TYPE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[COM_PAY_SYSID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[COM_PAY_SYSID]"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[COM_PAY_SYSID]"
+                      name="COM_PAY_SYSID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[INTERNAL_COMM]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[INTERNAL_COMM]"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[INTERNAL_COMM]"
+                      name="INTERNAL_COMM"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[WRHS_IND]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[WRHS_IND]"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[WRHS_IND]"
+                      name="WRHS_IND"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[MD_LOADDATE]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[MD_LOADDATE]"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[MD_LOADDATE]"
+                      name="MD_LOADDATE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[MD_SRCSYSTEM]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[MD_SRCSYSTEM]"
+                      length="15"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].Columns[MD_SRCSYSTEM]"
+                      name="MD_SRCSYSTEM"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[PAY_SYSID]"
+                      dataType="i4"
+                      name="PAY_SYSID" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[PYBL_STATUS]"
+                      dataType="nText"
+                      name="PYBL_STATUS" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[EVENT_PROC_SYSID]"
+                      dataType="i4"
+                      name="EVENT_PROC_SYSID" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[EVENT_RPT_SYSID]"
+                      dataType="i4"
+                      name="EVENT_RPT_SYSID" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[BEN_SYSID]"
+                      dataType="i4"
+                      name="BEN_SYSID" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[REP_SYSID]"
+                      dataType="i4"
+                      name="REP_SYSID" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[DEAL_SYSID]"
+                      dataType="i4"
+                      name="DEAL_SYSID" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[COM_SYSID]"
+                      dataType="i4"
+                      name="COM_SYSID" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[DIST_SYSID]"
+                      dataType="i4"
+                      name="DIST_SYSID" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[TRX_SYSID]"
+                      dataType="i4"
+                      name="TRX_SYSID" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[IVR_SYSID]"
+                      dataType="i4"
+                      name="IVR_SYSID" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[PLN_SYSID]"
+                      dataType="i4"
+                      name="PLN_SYSID" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[ACT_SYSID]"
+                      dataType="i4"
+                      name="ACT_SYSID" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[IVD_SYSID]"
+                      dataType="i4"
+                      name="IVD_SYSID" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[MGT_CD]"
+                      dataType="nText"
+                      name="MGT_CD" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[TRX_CD]"
+                      dataType="nText"
+                      name="TRX_CD" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[PROC_DT]"
+                      dataType="dbTimeStamp"
+                      name="PROC_DT" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[PAID_DT]"
+                      dataType="dbTimeStamp"
+                      name="PAID_DT" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[PAY_PERIOD]"
+                      dataType="wstr"
+                      length="5"
+                      name="PAY_PERIOD" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[TAX_YEAR]"
+                      dataType="wstr"
+                      length="4"
+                      name="TAX_YEAR" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[TRADE_DT]"
+                      dataType="dbTimeStamp"
+                      name="TRADE_DT" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[GRSS_AMT]"
+                      dataType="wstr"
+                      length="30"
+                      name="GRSS_AMT" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[COM_DLR]"
+                      dataType="wstr"
+                      length="30"
+                      name="COM_DLR" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[COM_PYBL]"
+                      dataType="wstr"
+                      length="30"
+                      name="COM_PYBL" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[COM_BEN_PYBL]"
+                      dataType="wstr"
+                      length="30"
+                      name="COM_BEN_PYBL" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[TICKET_CHG]"
+                      dataType="wstr"
+                      length="30"
+                      name="TICKET_CHG" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[PAY_CD]"
+                      dataType="nText"
+                      name="PAY_CD" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[COM_PROD_CD]"
+                      dataType="nText"
+                      name="COM_PROD_CD" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[AMOUNT]"
+                      dataType="wstr"
+                      length="30"
+                      name="AMOUNT" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[USR_SYSID]"
+                      dataType="i4"
+                      name="USR_SYSID" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[OTX_SYSID]"
+                      dataType="i4"
+                      name="OTX_SYSID" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[DISPLAY_FLAG]"
+                      dataType="i4"
+                      name="DISPLAY_FLAG" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[DLR_MINIMUM]"
+                      dataType="wstr"
+                      length="1"
+                      name="DLR_MINIMUM" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[ORIG_PAY_PER]"
+                      dataType="wstr"
+                      length="18"
+                      name="ORIG_PAY_PER" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[IVT_TYPE]"
+                      dataType="nText"
+                      name="IVT_TYPE" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[COM_PAY_SYSID]"
+                      dataType="i4"
+                      name="COM_PAY_SYSID" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[INTERNAL_COMM]"
+                      dataType="bool"
+                      name="INTERNAL_COMM" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[WRHS_IND]"
+                      dataType="bool"
+                      name="WRHS_IND" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[MD_LOADDATE]"
+                      dataType="dbDate"
+                      name="MD_LOADDATE" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output].ExternalColumns[MD_SRCSYSTEM]"
+                      dataType="wstr"
+                      length="15"
+                      name="MD_SRCSYSTEM" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output]"
+                  isErrorOut="true"
+                  name="ADO NET Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[PAY_SYSID]"
+                      dataType="i4"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[PAY_SYSID]"
+                      name="PAY_SYSID" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[PYBL_STATUS]"
+                      dataType="nText"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[PYBL_STATUS]"
+                      name="PYBL_STATUS" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[EVENT_PROC_SYSID]"
+                      dataType="i4"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[EVENT_PROC_SYSID]"
+                      name="EVENT_PROC_SYSID" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[EVENT_RPT_SYSID]"
+                      dataType="i4"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[EVENT_RPT_SYSID]"
+                      name="EVENT_RPT_SYSID" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[BEN_SYSID]"
+                      dataType="i4"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[BEN_SYSID]"
+                      name="BEN_SYSID" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[REP_SYSID]"
+                      dataType="i4"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[REP_SYSID]"
+                      name="REP_SYSID" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[DEAL_SYSID]"
+                      dataType="i4"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[DEAL_SYSID]"
+                      name="DEAL_SYSID" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[COM_SYSID]"
+                      dataType="i4"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[COM_SYSID]"
+                      name="COM_SYSID" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[DIST_SYSID]"
+                      dataType="i4"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[DIST_SYSID]"
+                      name="DIST_SYSID" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[TRX_SYSID]"
+                      dataType="i4"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[TRX_SYSID]"
+                      name="TRX_SYSID" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[IVR_SYSID]"
+                      dataType="i4"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[IVR_SYSID]"
+                      name="IVR_SYSID" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[PLN_SYSID]"
+                      dataType="i4"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[PLN_SYSID]"
+                      name="PLN_SYSID" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[ACT_SYSID]"
+                      dataType="i4"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[ACT_SYSID]"
+                      name="ACT_SYSID" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[IVD_SYSID]"
+                      dataType="i4"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[IVD_SYSID]"
+                      name="IVD_SYSID" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[MGT_CD]"
+                      dataType="nText"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[MGT_CD]"
+                      name="MGT_CD" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[TRX_CD]"
+                      dataType="nText"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[TRX_CD]"
+                      name="TRX_CD" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[PROC_DT]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[PROC_DT]"
+                      name="PROC_DT" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[PAID_DT]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[PAID_DT]"
+                      name="PAID_DT" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[PAY_PERIOD]"
+                      dataType="wstr"
+                      length="5"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[PAY_PERIOD]"
+                      name="PAY_PERIOD" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[TAX_YEAR]"
+                      dataType="wstr"
+                      length="4"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[TAX_YEAR]"
+                      name="TAX_YEAR" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[TRADE_DT]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[TRADE_DT]"
+                      name="TRADE_DT" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[GRSS_AMT]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[GRSS_AMT]"
+                      name="GRSS_AMT" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[COM_DLR]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[COM_DLR]"
+                      name="COM_DLR" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[COM_PYBL]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[COM_PYBL]"
+                      name="COM_PYBL" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[COM_BEN_PYBL]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[COM_BEN_PYBL]"
+                      name="COM_BEN_PYBL" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[TICKET_CHG]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[TICKET_CHG]"
+                      name="TICKET_CHG" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[PAY_CD]"
+                      dataType="nText"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[PAY_CD]"
+                      name="PAY_CD" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[COM_PROD_CD]"
+                      dataType="nText"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[COM_PROD_CD]"
+                      name="COM_PROD_CD" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[AMOUNT]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[AMOUNT]"
+                      name="AMOUNT" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[USR_SYSID]"
+                      dataType="i4"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[USR_SYSID]"
+                      name="USR_SYSID" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[OTX_SYSID]"
+                      dataType="i4"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[OTX_SYSID]"
+                      name="OTX_SYSID" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[DISPLAY_FLAG]"
+                      dataType="i4"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[DISPLAY_FLAG]"
+                      name="DISPLAY_FLAG" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[DLR_MINIMUM]"
+                      dataType="wstr"
+                      length="1"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[DLR_MINIMUM]"
+                      name="DLR_MINIMUM" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[ORIG_PAY_PER]"
+                      dataType="wstr"
+                      length="18"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[ORIG_PAY_PER]"
+                      name="ORIG_PAY_PER" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[IVT_TYPE]"
+                      dataType="nText"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[IVT_TYPE]"
+                      name="IVT_TYPE" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[COM_PAY_SYSID]"
+                      dataType="i4"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[COM_PAY_SYSID]"
+                      name="COM_PAY_SYSID" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[INTERNAL_COMM]"
+                      dataType="bool"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[INTERNAL_COMM]"
+                      name="INTERNAL_COMM" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[WRHS_IND]"
+                      dataType="bool"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[WRHS_IND]"
+                      name="WRHS_IND" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[MD_LOADDATE]"
+                      dataType="dbDate"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[MD_LOADDATE]"
+                      name="MD_LOADDATE" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[MD_SRCSYSTEM]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[MD_SRCSYSTEM]"
+                      name="MD_SRCSYSTEM" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Copy from Univeris to FILE.Paths[ADO NET Source Output]"
+              endId="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE.Inputs[Flat File Destination Input]"
+              name="ADO NET Source Output"
+              startId="Package\Copy from Univeris to FILE\Source REVENU PAYABLE.Outputs[ADO NET Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Create  file depot folders"
+      DTS:CreationName="Microsoft.FileSystemTask"
+      DTS:Description="File System Task"
+      DTS:DTSID="{FB15B182-D9CD-4B96-B7CA-8F408D7D3838}"
+      DTS:ExecutableType="Microsoft.FileSystemTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Create  file depot folders"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <FileSystemData
+          TaskOperationType="CreateDirectory"
+          TaskOverwriteDestFile="True"
+          TaskSourcePath="User::fileDepotFolder"
+          TaskIsSourceVariable="True" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Update control file"
+      DTS:CreationName="Microsoft.ScriptTask"
+      DTS:Description="Script Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{65CCCD1F-5539-427A-9B27-B3334446D31D}"
+      DTS:ExecutableType="Microsoft.ScriptTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Update control file"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ScriptProject
+          Name="ST_6850f2822fc44f6ba6d14bd68b12a07e"
+          VSTAMajorVersion="14"
+          VSTAMinorVersion="0"
+          Language="CSharp"
+          ReadOnlyVariables="User::controlFileName,User::currentDate,User::nbRows,User::workingFolder">
+          <ProjectItem
+            Name="Properties\Resources.resx"
+            Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+</root>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Settings.Designer.cs"
+            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_6850f2822fc44f6ba6d14bd68b12a07e.Properties.Settings.get_Default():ST_6850f2822fc44f6ba6d14bd68b12a07e.Properties.Sett" +
+    "ings")]
+
+namespace ST_6850f2822fc44f6ba6d14bd68b12a07e.Properties {
+    
+    
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+        
+        public static Settings Default {
+            get {
+                return defaultInstance;
+            }
+        }
+    }
+}]]></ProjectItem>
+          <ProjectItem
+            Name="ST_6850f2822fc44f6ba6d14bd68b12a07e.csproj"
+            Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{545DC34D-5A4E-44AD-8133-AA0CB13C708B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ST_6850f2822fc44f6ba6d14bd68b12a07e</RootNamespace>
+    <AssemblyName>ST_6850f2822fc44f6ba6d14bd68b12a07e</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.SqlServer.ManagedDTS, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.ScriptTask, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptMain.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <!-- Include the build rules for a C# project.-->
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}">
+        <ProjectProperties HostName="VSTAHostName" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" />
+        <Host Name="ScriptTask" />
+        <ProjectClient>
+          <HostIdentifier>SSIS_ST130</HostIdentifier>
+        </ProjectClient>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>]]></ProjectItem>
+          <ProjectItem
+            Name="ScriptMain.cs"
+            Encoding="UTF8"><![CDATA[using System;
+using Microsoft.SqlServer.Dts.Runtime;
+using System.IO;
+
+namespace ST_6850f2822fc44f6ba6d14bd68b12a07e
+{
+	[Microsoft.SqlServer.Dts.Tasks.ScriptTask.SSISScriptTaskEntryPointAttribute]
+	public partial class ScriptMain : Microsoft.SqlServer.Dts.Tasks.ScriptTask.VSTARTScriptObjectModelBase
+	{
+
+		public void Main()
+		{
+            string path = (string)Dts.Variables["User::workingFolder"].Value + "\\" + (string)Dts.Variables["User::controlFileName"].Value;
+            DateTime currentDate = (DateTime)Dts.Variables["User::currentDate"].Value;
+
+            Dts.TaskResult = (int)WriteFile(path, currentDate);            
+		}
+
+        private DTSExecResult WriteFile(string path,DateTime currentDate)
+        {
+            string header = "LastUpdates";
+            string colone = currentDate.Date.ToString();
+            StreamWriter writer = null;
+
+            try
+            {
+                writer = new StreamWriter(path, false);
+                writer.WriteLine(header);
+                writer.WriteLine(colone);
+                writer.Close();
+
+                return (int)DTSExecResult.Success;
+            }
+            catch (Exception ex)
+            {
+                Dts.Events.FireError(0, "FUNDEX_UNIVERIS_REVENU_PAYABLE - Write control file", ex.Message + "\r\n" + ex.StackTrace, null, 0);
+            }
+            finally
+            {
+                if (writer != null)
+                {
+                    writer.Dispose();
+                }
+            }
+
+            return DTSExecResult.Failure;
+        }
+
+	}
+}]]></ProjectItem>
+          <ProjectItem
+            Name="Project"
+            Encoding="UTF16LE"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="3.0" schemaVersion="1.0">
+	<msb:PropertyGroup>
+		<msb:Language>msBuild</msb:Language>
+		<msb:CodeName>ST_6850f2822fc44f6ba6d14bd68b12a07e</msb:CodeName>
+		<msb:DisplayName>ST_6850f2822fc44f6ba6d14bd68b12a07e</msb:DisplayName>
+		<msb:ProjectId>{0C07D8D5-828E-44AF-9566-86DC34B757F5}</msb:ProjectId>
+	</msb:PropertyGroup>
+	<msb:ItemGroup>
+		<msb:Project Include="ST_6850f2822fc44f6ba6d14bd68b12a07e.csproj"/>
+		<msb:File Include="Properties\Settings.settings"/>
+		<msb:File Include="Properties\AssemblyInfo.cs"/>
+		<msb:File Include="Properties\Resources.resx"/>
+		<msb:File Include="Properties\Resources.Designer.cs"/>
+		<msb:File Include="Properties\Settings.Designer.cs"/>
+		<msb:File Include="ScriptMain.cs"/>
+	</msb:ItemGroup>
+</c:Project>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\AssemblyInfo.cs"
+            Encoding="UTF8"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("ST_6850f2822fc44f6ba6d14bd68b12a07e")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("ST_6850f2822fc44f6ba6d14bd68b12a07e")]
+[assembly: AssemblyCopyright("Copyright @  2020")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Settings.settings"
+            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Resources.Designer.cs"
+            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_6850f2822fc44f6ba6d14bd68b12a07e.Properties.Resources.get_ResourceManager():System.Resources.Resou" +
+    "rceManager")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_6850f2822fc44f6ba6d14bd68b12a07e.Properties.Resources.get_Culture():System.Globalization.CultureIn" +
+    "fo")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_6850f2822fc44f6ba6d14bd68b12a07e.Properties.Resources.set_Culture(System.Globalization.CultureInfo" +
+    "):Void")]
+
+namespace ST_6850f2822fc44f6ba6d14bd68b12a07e.Properties {
+    
+    
+    /// <summary>
+    ///   A strongly-typed resource class, for looking up localized strings, etc.
+    /// </summary>
+    // This class was auto-generated by the StronglyTypedResourceBuilder
+    // class via a tool like ResGen or Visual Studio.
+    // To add or remove a member, edit your .ResX file then rerun ResGen
+    // with the /str option, or rebuild your VS project.
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    internal class Resources {
+        
+        private static global::System.Resources.ResourceManager resourceMan;
+        
+        private static global::System.Globalization.CultureInfo resourceCulture;
+        
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        internal Resources() {
+        }
+        
+        /// <summary>
+        ///   Returns the cached ResourceManager instance used by this class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if ((resourceMan == null)) {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ST_6850f2822fc44f6ba6d14bd68b12a07e.Properties.Resources", typeof(Resources).Assembly);
+                    resourceMan = temp;
+                }
+                return resourceMan;
+            }
+        }
+        
+        /// <summary>
+        ///   Overrides the current thread's CurrentUICulture property for all
+        ///   resource lookups using this strongly typed resource class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
+                return resourceCulture;
+            }
+            set {
+                resourceCulture = value;
+            }
+        }
+    }
+}]]></ProjectItem>
+          <BinaryItem
+            Name="ST_6850f2822fc44f6ba6d14bd68b12a07e.dll">TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDAOoj2l8AAAAAAAAAAOAAIiALATAAABIAAAAIAAAAAAAAejAA
+AAAgAAAAQAAAAAAAEAAgAAAAAgAABAAAAAAAAAAGAAAAAAAAAACAAAAAAgAAAAAAAAMAYIUAABAA
+ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAACgwAABPAAAAAEAAAHgEAAAAAAAAAAAAAAAAAAAA
+AAAAAGAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAAgBAAAAAgAAAAEgAAAAIA
+AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAAHgEAAAAQAAAAAYAAAAUAAAAAAAAAAAAAAAAAABAAABA
+LnJlbG9jAAAMAAAAAGAAAAACAAAAGgAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAABc
+MAAAAAAAAEgAAAACAAUA7CEAAIQNAAABAAAAAAAAAHAvAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAABMwBAB9AAAAAQAAEQIoEAAACm8RAAAKcgEAAHBvEgAACm8T
+AAAKdB4AAAFyKQAAcAIoEAAACm8RAAAKci0AAHBvEgAACm8TAAAKdB4AAAEoFAAACgoCKBAAAApv
+EQAACnJZAABwbxIAAApvEwAACqUPAAABCwIoEAAACgIGBygCAAAGbxUAAAoqAAAAGzAGAH0AAAAC
+AAARcn0AAHAKDwIoFgAACg0SAygXAAAKCxQMAxZzGAAACgwIBm8ZAAAKCAdvGQAACghvGgAAChYT
+BN5BEwUCKBAAAApvGwAAChZylQAAcBEFbxwAAApy/QAAcBEFbx0AAAooFAAAChQWbx4AAAom3goI
+LAYIbx8AAArcFyoRBCoAAAABHAAAAAAYACE5ADUSAAABAgAYAFZuAAoAAAAAHgIoIAAACioeAigh
+AAAKKq5+AQAABC0ecgMBAHDQAwAAAigiAAAKbyMAAApzJAAACoABAAAEfgEAAAQqGn4CAAAEKh4C
+gAIAAAQqGn4DAAAEKh4CKCUAAAoqLnMJAAAGgAMAAAQqAABCU0pCAQABAAAAAAAMAAAAdjQuMC4z
+MDMxOQAAAAAFAGwAAAAABAAAI34AAGwEAAD8BQAAI1N0cmluZ3MAAAAAaAoAAHgBAAAjVVMA4AsA
+ABAAAAAjR1VJRAAAAPALAACUAQAAI0Jsb2IAAAAAAAAAAgAAAVcVogEJAQAAAPoBMwAWAAABAAAA
+IwAAAAQAAAADAAAACgAAAAMAAAAlAAAAEAAAAAIAAAACAAAAAwAAAAQAAAABAAAABAAAAAEAAAAA
+AM8DAQAAAAAABgB6AtoEBgAJA9oEBgDGAccEDwBOBQAABgDzAUgEBgBdAkgEBgA+AkgEBgDwAkgE
+BgCaAkgEBgCzAkgEBgAKAkgEBgAlAjcDCgDOAn4DCgAiAX4DBgDCAAAEDgDQBcsABgCYBAoABgBa
+BAAEBgCpAccEBgC9BQAEBgB0BPoEBgBkBDMEEgB5AbkDEgDaAbkDEgA+AR4EBgCOAdoECgCnA34D
+DgCQBcsADgCLAMsABgBTAwAEBgClBAoACgCEBH4DBgD1AAAEBgCUAAAEBgDxBUgEAAAAAAEAAAAA
+AAEAAQABABAAEwQ8ADkAAQABAAAAEAABBV0FUQABAAQAAAEQAJoFXQVlAAMACAARAAcEkAARABIB
+lAARAG8AmABQIAAAAACGABkEBgABANwgAAAAAIEAuACcAAEAhCEAAAAAhhi6BAYAAwCMIQAAAACD
+GLoEBgADAJQhAAAAAJMIcASkAAMAwCEAAAAAkwj6AKkAAwDHIQAAAACTCAYBrgADAM8hAAAAAJYI
+xAW0AAQA1iEAAAAAhhi6BAYABADeIQAAAACRGMAEuQAEAAAAAQBaAwAAAgBtAQAAAQAxAwkAugQB
+ABEAugQGABkAugQKACkAugQQADEAugQQADkAugQQAEEAugQQAEkAugQQAFEAugQQAFkAugQQAGEA
+ugQQAGkAugQGAJkAugQGAMEAugQVANEAugQGAHEAowUhANkAjAUmAOEA9wMrAOkAJwMxAPEAtgU1
+ANkA3gUBAHkAZAFJAHkAUQNOAIkAugRSAPkA6wAQAPkAVgEGANkAqwVYAJEAfwBOAJEAYABOAAEB
+sAReAPkAXAEGAHEAugQGAKEAugQGAAkBpgBnAAkB7QVwAKkAugR2AMkAugQGACkAcwD0AC4ACwDM
+AC4AEwDVAC4AGwD0AC4AIwD9AC4AKwAmAS4AMwAmAS4AOwAmAS4AQwD9AC4ASwAsAS4AUwAmAS4A
+WwBDAUMAYwCNAUkAcwD0AGEAewCNAWMAawCNARsAPAADAAEABAADAAAAdAS9AAAAGgHCAAAAyAXH
+AAIABQADAAIABgAFAAEABwAFAAIACAAHAASAAAABAAAA5x3NRwAAAAAAADwAAAAEAAAAAAAAAAAA
+AAB+ADMAAAAAAA0AAAAAAAAAAAAAAIcAXwMAAAAADQAAAAAAAAAAAAAAhwAUAAAAAAAEAAAAAAAA
+AAAAAAB+AAAEAAAAAAAAAAABAAAACwUAAAAAADxNb2R1bGU+AFN5c3RlbS5JTwBNaWNyb3NvZnQu
+U3FsU2VydmVyLk1hbmFnZWREVFMAbXNjb3JsaWIAU1RfNjg1MGYyODIyZmM0NGY2YmE2ZDE0YmQ2
+OGIxMmEwN2UAZ2V0X1N0YWNrVHJhY2UAZGVmYXVsdEluc3RhbmNlAGdldF9NZXNzYWdlAFZhcmlh
+YmxlAFJ1bnRpbWVUeXBlSGFuZGxlAEdldFR5cGVGcm9tSGFuZGxlAFdyaXRlRmlsZQBEYXRlVGlt
+ZQBNaWNyb3NvZnQuU3FsU2VydmVyLkR0cy5SdW50aW1lAFdyaXRlTGluZQBUeXBlAGdldF9DdWx0
+dXJlAHNldF9DdWx0dXJlAHJlc291cmNlQ3VsdHVyZQBWU1RBUlRTY3JpcHRPYmplY3RNb2RlbEJh
+c2UAQXBwbGljYXRpb25TZXR0aW5nc0Jhc2UAQ2xvc2UARGlzcG9zZQBnZXRfRGF0ZQBjdXJyZW50
+RGF0ZQBFZGl0b3JCcm93c2FibGVTdGF0ZQBDb21waWxlckdlbmVyYXRlZEF0dHJpYnV0ZQBEZWJ1
+Z2dlck5vblVzZXJDb2RlQXR0cmlidXRlAERlYnVnZ2FibGVBdHRyaWJ1dGUARWRpdG9yQnJvd3Nh
+YmxlQXR0cmlidXRlAEFzc2VtYmx5VGl0bGVBdHRyaWJ1dGUAQXNzZW1ibHlUcmFkZW1hcmtBdHRy
+aWJ1dGUAVGFyZ2V0RnJhbWV3b3JrQXR0cmlidXRlAEFzc2VtYmx5Q29uZmlndXJhdGlvbkF0dHJp
+YnV0ZQBBc3NlbWJseURlc2NyaXB0aW9uQXR0cmlidXRlAENvbXBpbGF0aW9uUmVsYXhhdGlvbnNB
+dHRyaWJ1dGUAQXNzZW1ibHlQcm9kdWN0QXR0cmlidXRlAEFzc2VtYmx5Q29weXJpZ2h0QXR0cmli
+dXRlAFNTSVNTY3JpcHRUYXNrRW50cnlQb2ludEF0dHJpYnV0ZQBBc3NlbWJseUNvbXBhbnlBdHRy
+aWJ1dGUAUnVudGltZUNvbXBhdGliaWxpdHlBdHRyaWJ1dGUAZ2V0X1ZhbHVlAHZhbHVlAFN5c3Rl
+bS5SdW50aW1lLlZlcnNpb25pbmcAVG9TdHJpbmcAcGF0aABNaWNyb3NvZnQuU3FsU2VydmVyLlNj
+cmlwdFRhc2sATWljcm9zb2Z0LlNxbFNlcnZlci5EdHMuVGFza3MuU2NyaXB0VGFzawBTY3JpcHRP
+YmplY3RNb2RlbABTeXN0ZW0uQ29tcG9uZW50TW9kZWwAU1RfNjg1MGYyODIyZmM0NGY2YmE2ZDE0
+YmQ2OGIxMmEwN2UuZGxsAGdldF9JdGVtAFN5c3RlbQByZXNvdXJjZU1hbgBTY3JpcHRNYWluAFN5
+c3RlbS5Db25maWd1cmF0aW9uAFN5c3RlbS5HbG9iYWxpemF0aW9uAFN5c3RlbS5SZWZsZWN0aW9u
+AEV4Y2VwdGlvbgBDdWx0dXJlSW5mbwBnZXRfUmVzb3VyY2VNYW5hZ2VyAEV2ZW50c09iamVjdFdy
+YXBwZXIAU3RyZWFtV3JpdGVyAFRleHRXcml0ZXIARmlyZUVycm9yAC5jdG9yAC5jY3RvcgBTeXN0
+ZW0uRGlhZ25vc3RpY3MAU3lzdGVtLlJ1bnRpbWUuQ29tcGlsZXJTZXJ2aWNlcwBTeXN0ZW0uUmVz
+b3VyY2VzAFNUXzY4NTBmMjgyMmZjNDRmNmJhNmQxNGJkNjhiMTJhMDdlLlByb3BlcnRpZXMuUmVz
+b3VyY2VzLnJlc291cmNlcwBEZWJ1Z2dpbmdNb2RlcwBTVF82ODUwZjI4MjJmYzQ0ZjZiYTZkMTRi
+ZDY4YjEyYTA3ZS5Qcm9wZXJ0aWVzAGdldF9WYXJpYWJsZXMAU2V0dGluZ3MAZ2V0X0R0cwBnZXRf
+RXZlbnRzAENvbmNhdABPYmplY3QAZ2V0X0RlZmF1bHQARFRTRXhlY1Jlc3VsdABzZXRfVGFza1Jl
+c3VsdABnZXRfQXNzZW1ibHkAAAAAJ1UAcwBlAHIAOgA6AHcAbwByAGsAaQBuAGcARgBvAGwAZABl
+AHIAAANcAAArVQBzAGUAcgA6ADoAYwBvAG4AdAByAG8AbABGAGkAbABlAE4AYQBtAGUAACNVAHMA
+ZQByADoAOgBjAHUAcgByAGUAbgB0AEQAYQB0AGUAABdMAGEAcwB0AFUAcABkAGEAdABlAHMAAGdG
+AFUATgBEAEUAWABfAFUATgBJAFYARQBSAEkAUwBfAFIARQBWAEUATgBVAF8AUABBAFkAQQBCAEwA
+RQAgAC0AIABXAHIAaQB0AGUAIABjAG8AbgB0AHIAbwBsACAAZgBpAGwAZQABBQ0ACgAAcVMAVABf
+ADYAOAA1ADAAZgAyADgAMgAyAGYAYwA0ADQAZgA2AGIAYQA2AGQAMQA0AGIAZAA2ADgAYgAxADIA
+YQAwADcAZQAuAFAAcgBvAHAAZQByAHQAaQBlAHMALgBSAGUAcwBvAHUAcgBjAGUAcwAAAAAA7epW
+Oltw5UiJGDqhZvV29AAEIAEBCAMgAAEFIAEBEREEIAEBDgUgAQERXQUHAg4RPQQgABJtBCAAEnEF
+IAESdRwDIAAcBgADDg4ODgwHBg4OEkURPRFBEkkEIAARPQMgAA4FIAIBDgIFIAASgIEIIAUCCA4O
+DggIAAESgIURgIkFIAASgI0HIAIBDhKAjQi3elxWGTTgiQiJhF3NgIDMkQMGElUDBhJZAwYSEAcg
+AhFBDhE9BAAAElUEAAASWQUAAQESWQQAABIQAwAAAQQIABJVBAgAElkECAASEAgBAAgAAAAAAB4B
+AAEAVAIWV3JhcE5vbkV4Y2VwdGlvblRocm93cwEIAQACAAAAAAAoAQAjU1RfNjg1MGYyODIyZmM0
+NGY2YmE2ZDE0YmQ2OGIxMmEwN2UAAAUBAAAAABYBABFDb3B5cmlnaHQgQCAgMjAyMAAASQEAGi5O
+RVRGcmFtZXdvcmssVmVyc2lvbj12NC41AQBUDhRGcmFtZXdvcmtEaXNwbGF5TmFtZRIuTkVUIEZy
+YW1ld29yayA0LjUEAQAAAAAAtAAAAM7K774BAAAAkQAAAGxTeXN0ZW0uUmVzb3VyY2VzLlJlc291
+cmNlUmVhZGVyLCBtc2NvcmxpYiwgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1
+YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkjU3lzdGVtLlJlc291cmNlcy5SdW50aW1lUmVz
+b3VyY2VTZXQCAAAAAAAAAAAAAABQQURQQURQtAAAAFAwAAAAAAAAAAAAAGowAAAAIAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAABcMAAAAAAAAAAAAAAAAF9Db3JEbGxNYWluAG1zY29yZWUuZGxsAAAAAAD/
+JQAgABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAEAEAAAABgAAIAAAAAAAAAAAAAAAAAAAAEAAQAAADAAAIAAAAAAAAAAAAAAAAAAAAEAAAAA
+AEgAAABYQAAAGgQAAAAAAAAAAAAAGgQ0AAAAVgBTAF8AVgBFAFIAUwBJAE8ATgBfAEkATgBGAE8A
+AAAAAL0E7/4AAAEAAAABAM1H5x0AAAEAzUfnHT8AAAAAAAAABAAAAAIAAAAAAAAAAAAAAAAAAABE
+AAAAAQBWAGEAcgBGAGkAbABlAEkAbgBmAG8AAAAAACQABAAAAFQAcgBhAG4AcwBsAGEAdABpAG8A
+bgAAAAAAAACwBHoDAAABAFMAdAByAGkAbgBnAEYAaQBsAGUASQBuAGYAbwAAAFYDAAABADAAMAAw
+ADAAMAA0AGIAMAAAABoAAQABAEMAbwBtAG0AZQBuAHQAcwAAAAAAAAAiAAEAAQBDAG8AbQBwAGEA
+bgB5AE4AYQBtAGUAAAAAAAAAAABwACQAAQBGAGkAbABlAEQAZQBzAGMAcgBpAHAAdABpAG8AbgAA
+AAAAUwBUAF8ANgA4ADUAMABmADIAOAAyADIAZgBjADQANABmADYAYgBhADYAZAAxADQAYgBkADYA
+OABiADEAMgBhADAANwBlAAAAPgAPAAEARgBpAGwAZQBWAGUAcgBzAGkAbwBuAAAAAAAxAC4AMAAu
+ADcANgA1ADUALgAxADgAMwA4ADEAAAAAAHAAKAABAEkAbgB0AGUAcgBuAGEAbABOAGEAbQBlAAAA
+UwBUAF8ANgA4ADUAMABmADIAOAAyADIAZgBjADQANABmADYAYgBhADYAZAAxADQAYgBkADYAOABi
+ADEAMgBhADAANwBlAC4AZABsAGwAAABIABIAAQBMAGUAZwBhAGwAQwBvAHAAeQByAGkAZwBoAHQA
+AABDAG8AcAB5AHIAaQBnAGgAdAAgAEAAIAAgADIAMAAyADAAAAAqAAEAAQBMAGUAZwBhAGwAVABy
+AGEAZABlAG0AYQByAGsAcwAAAAAAAAAAAHgAKAABAE8AcgBpAGcAaQBuAGEAbABGAGkAbABlAG4A
+YQBtAGUAAABTAFQAXwA2ADgANQAwAGYAMgA4ADIAMgBmAGMANAA0AGYANgBiAGEANgBkADEANABi
+AGQANgA4AGIAMQAyAGEAMAA3AGUALgBkAGwAbAAAAGgAJAABAFAAcgBvAGQAdQBjAHQATgBhAG0A
+ZQAAAAAAUwBUAF8ANgA4ADUAMABmADIAOAAyADIAZgBjADQANABmADYAYgBhADYAZAAxADQAYgBk
+ADYAOABiADEAMgBhADAANwBlAAAAQgAPAAEAUAByAG8AZAB1AGMAdABWAGUAcgBzAGkAbwBuAAAA
+MQAuADAALgA3ADYANQA1AC4AMQA4ADMAOAAxAAAAAABGAA8AAQBBAHMAcwBlAG0AYgBsAHkAIABW
+AGUAcgBzAGkAbwBuAAAAMQAuADAALgA3ADYANQA1AC4AMQA4ADMAOAAxAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAADAAAAHwwAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
+        </ScriptProject>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Validations"
+      DTS:CreationName="Microsoft.ScriptTask"
+      DTS:Description="Script Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{E364001A-D245-4EB6-9664-65EAE9E9D90C}"
+      DTS:ExecutableType="Microsoft.ScriptTask"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Validations"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ScriptProject
+          Name="ST_be48938f3e4540d9920966d865510067"
+          VSTAMajorVersion="14"
+          VSTAMinorVersion="0"
+          Language="CSharp"
+          ReadOnlyVariables="User::controlFileName,User::currentDate,User::workingFolder">
+          <ProjectItem
+            Name="Properties\Resources.resx"
+            Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+</root>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Settings.Designer.cs"
+            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_be48938f3e4540d9920966d865510067.Properties.Settings.get_Default():ST_be48938f3e4540d9920966d865510067.Properties.Sett" +
+    "ings")]
+
+namespace ST_be48938f3e4540d9920966d865510067.Properties {
+    
+    
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+        
+        public static Settings Default {
+            get {
+                return defaultInstance;
+            }
+        }
+    }
+}]]></ProjectItem>
+          <ProjectItem
+            Name="ST_be48938f3e4540d9920966d865510067.csproj"
+            Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5476DB27-F2C8-4143-9108-5DCF1FBB054E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ST_be48938f3e4540d9920966d865510067</RootNamespace>
+    <AssemblyName>ST_be48938f3e4540d9920966d865510067</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.SqlServer.ManagedDTS, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.ScriptTask, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptMain.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <!-- Include the build rules for a C# project.-->
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}">
+        <ProjectProperties HostName="VSTAHostName" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" />
+        <Host Name="ScriptTask" />
+        <ProjectClient>
+          <HostIdentifier>SSIS_ST130</HostIdentifier>
+        </ProjectClient>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>]]></ProjectItem>
+          <ProjectItem
+            Name="ScriptMain.cs"
+            Encoding="UTF8"><![CDATA[using System;
+using Microsoft.SqlServer.Dts.Runtime;
+using System.IO;
+
+namespace ST_be48938f3e4540d9920966d865510067
+{
+	[Microsoft.SqlServer.Dts.Tasks.ScriptTask.SSISScriptTaskEntryPointAttribute]
+	public partial class ScriptMain : Microsoft.SqlServer.Dts.Tasks.ScriptTask.VSTARTScriptObjectModelBase
+	{
+        private const string ComponentName = "FUNDEX_UNIVERIS_REVENU_PAYABLE - Script task Validations";
+
+		public void Main()
+		{
+            var currentDate = (DateTime)Dts.Variables["currentDate"].Value;
+            var controlFilePath = (string)Dts.Variables["workingFolder"].Value + "\\" + (string)Dts.Variables["controlFileName"].Value;
+
+            if (ISAnyControlFile(controlFilePath) == DTSExecResult.Success)
+            {
+                if (IsNewUpdateRequired(currentDate, controlFilePath) == DTSExecResult.Success)
+                {
+                    Dts.TaskResult = (int)DTSExecResult.Success;
+                    return;
+                }
+            }
+            else
+            {
+                Dts.Events.FireWarning(0, ComponentName, "Control file not found", null, 0);
+                Dts.TaskResult = (int)DTSExecResult.Success;
+                return;
+            }
+
+            Dts.TaskResult = (int)DTSExecResult.Completion;
+		}
+
+        private DTSExecResult ISAnyControlFile(string controlFilePath)
+        {
+            if (File.Exists(controlFilePath) == true)
+            {
+                return DTSExecResult.Success;
+            }
+
+            return DTSExecResult.Failure;
+        }
+        private DTSExecResult IsNewUpdateRequired(DateTime currentDate,string controlFilePath)
+        {
+            StreamReader reader = null;
+
+            try
+            {
+                reader = new StreamReader(controlFilePath);
+                reader.ReadLine();//read the header
+                var values = reader.ReadLine().Split(';');//read the colones
+
+                reader.Close();
+
+                var lastUpdate = DateTime.Parse(values[0]);
+
+                if(lastUpdate.Year == currentDate.Year)
+                {
+                    if(lastUpdate.Month == currentDate.Month)
+                    {
+                        if (lastUpdate.Day == currentDate.Day)
+                        {
+                            return DTSExecResult.Failure;//validations failed
+                        }
+                    }
+                }
+
+                return DTSExecResult.Success;
+            }
+            catch(Exception ex)
+            {
+                Dts.Events.FireError(0, ComponentName, ex.Message + "\r\n" + ex.StackTrace, null, 0);
+            }
+            finally
+            {
+                if(reader != null)
+                {
+                    reader.Dispose();
+                }
+            }
+
+            return DTSExecResult.Failure;
+        }
+    }
+}]]></ProjectItem>
+          <ProjectItem
+            Name="Project"
+            Encoding="UTF16LE"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="3.0" schemaVersion="1.0">
+	<msb:PropertyGroup>
+		<msb:CodeName>ST_be48938f3e4540d9920966d865510067</msb:CodeName>
+		<msb:Language>msBuild</msb:Language>
+		<msb:DisplayName>ST_be48938f3e4540d9920966d865510067</msb:DisplayName>
+		<msb:ProjectId>{5EE9BB99-8A34-46B8-B06D-5280A114A156}</msb:ProjectId>
+	</msb:PropertyGroup>
+	<msb:ItemGroup>
+		<msb:Project Include="ST_be48938f3e4540d9920966d865510067.csproj"/>
+		<msb:File Include="Properties\AssemblyInfo.cs"/>
+		<msb:File Include="Properties\Settings.settings"/>
+		<msb:File Include="Properties\Resources.resx"/>
+		<msb:File Include="Properties\Resources.Designer.cs"/>
+		<msb:File Include="Properties\Settings.Designer.cs"/>
+		<msb:File Include="ScriptMain.cs"/>
+	</msb:ItemGroup>
+</c:Project>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\AssemblyInfo.cs"
+            Encoding="UTF8"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("ST_be48938f3e4540d9920966d865510067")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("ST_be48938f3e4540d9920966d865510067")]
+[assembly: AssemblyCopyright("Copyright @  2020")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Settings.settings"
+            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Resources.Designer.cs"
+            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_be48938f3e4540d9920966d865510067.Properties.Resources.get_ResourceManager():System.Resources.Resou" +
+    "rceManager")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_be48938f3e4540d9920966d865510067.Properties.Resources.get_Culture():System.Globalization.CultureIn" +
+    "fo")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_be48938f3e4540d9920966d865510067.Properties.Resources.set_Culture(System.Globalization.CultureInfo" +
+    "):Void")]
+
+namespace ST_be48938f3e4540d9920966d865510067.Properties {
+    
+    
+    /// <summary>
+    ///   A strongly-typed resource class, for looking up localized strings, etc.
+    /// </summary>
+    // This class was auto-generated by the StronglyTypedResourceBuilder
+    // class via a tool like ResGen or Visual Studio.
+    // To add or remove a member, edit your .ResX file then rerun ResGen
+    // with the /str option, or rebuild your VS project.
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    internal class Resources {
+        
+        private static global::System.Resources.ResourceManager resourceMan;
+        
+        private static global::System.Globalization.CultureInfo resourceCulture;
+        
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        internal Resources() {
+        }
+        
+        /// <summary>
+        ///   Returns the cached ResourceManager instance used by this class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if ((resourceMan == null)) {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ST_be48938f3e4540d9920966d865510067.Properties.Resources", typeof(Resources).Assembly);
+                    resourceMan = temp;
+                }
+                return resourceMan;
+            }
+        }
+        
+        /// <summary>
+        ///   Overrides the current thread's CurrentUICulture property for all
+        ///   resource lookups using this strongly typed resource class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
+                return resourceCulture;
+            }
+            set {
+                resourceCulture = value;
+            }
+        }
+    }
+}]]></ProjectItem>
+          <BinaryItem
+            Name="ST_be48938f3e4540d9920966d865510067.dll">TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDAJQi2l8AAAAAAAAAAOAAIiALATAAABQAAAAIAAAAAAAANjIA
+AAAgAAAAQAAAAAAAEAAgAAAAAgAABAAAAAAAAAAGAAAAAAAAAACAAAAAAgAAAAAAAAMAYIUAABAA
+ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAAOQxAABPAAAAAEAAAHgEAAAAAAAAAAAAAAAAAAAA
+AAAAAGAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAAPBIAAAAgAAAAFAAAAAIA
+AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAAHgEAAAAQAAAAAYAAAAWAAAAAAAAAAAAAAAAAABAAABA
+LnJlbG9jAAAMAAAAAGAAAAACAAAAHAAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAAAY
+MgAAAAAAAEgAAAACAAUAaCIAAMQOAAABAAAAAAAAACwxAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAABMwBgDAAAAAAQAAEQIoEAAACm8RAAAKcgEAAHBvEgAACm8T
+AAAKpQ8AAAEKAigQAAAKbxEAAApyGQAAcG8SAAAKbxMAAAp0HgAAAXI1AABwAigQAAAKbxEAAApy
+OQAAcG8SAAAKbxMAAAp0HgAAASgUAAAKCwIHKAIAAAYtFwIGBygDAAAGLTcCKBAAAAoWbxUAAAoq
+AigQAAAKbxYAAAoWclkAAHByywAAcBQWbxcAAAoCKBAAAAoWbxUAAAoqAigQAAAKGG8VAAAKKjID
+KBgAAAosAhYqFyoAAAAbMAYArAAAAAIAABEUCgRzGQAACgoGbxoAAAomBm8aAAAKF40iAAABJRYf
+O51vGwAACgZvHAAAChaaKB0AAAoLEgEoHgAACg8BKB4AAAozJBIBKB8AAAoPASgfAAAKMxQSASgg
+AAAKDwEoIAAACjMEFwzeQhYM3j4NAigQAAAKbxYAAAoWclkAAHAJbyEAAApy+QAAcAlvIgAACigU
+AAAKFBZvIwAACibeCgYsBgZvJAAACtwXKggqARwAAAAAAgBqbAAyEgAAAQIAAgCcngAKAAAAAB4C
+KCUAAAoqHgIoJgAACiqufgIAAAQtHnL/AABw0AMAAAIoJwAACm8oAAAKcykAAAqAAgAABH4CAAAE
+Khp+AwAABCoeAoADAAAEKhp+BAAABCoeAigqAAAKKi5zCgAABoAEAAAEKgAAQlNKQgEAAQAAAAAA
+DAAAAHY0LjAuMzAzMTkAAAAABQBsAAAAUAQAACN+AAC8BAAAZAYAACNTdHJpbmdzAAAAACALAAB0
+AQAAI1VTAJQMAAAQAAAAI0dVSUQAAACkDAAAIAIAACNCbG9iAAAAAAAAAAIAAAFXHaIBCQEAAAD6
+ATMAFgAAAQAAACUAAAAEAAAABAAAAAsAAAAEAAAAKgAAAAEAAAAQAAAAAgAAAAIAAAADAAAABAAA
+AAEAAAAEAAAAAQAAAAAAEwQBAAAAAAAGAJ8CLAUGAC4DLAUGAOsBGQUPAKAFAAAGABgCjAQGAIIC
+jAQGAGMCjAQGABUDjAQGAL8CjAQGANgCjAQGAC8CjAQGAEoCXAMKAPMCwgMKAEoBwgMGAOsARAQO
+AC8G9AAGAMIELgAGAJ4ERAQGAM4BGQUGABYGRAQGAN4ETAUGAKgEdwQSAJ4B/QMSAP8B/QMSAGYB
+YgQGALMBLAUKAOsDwgMOAOIF9AAOAJ8A9AAGAIIDRAQKAO4EwgMGANgALgAGAM8ELgAGAL0ERAQG
+AB0BRAQGAKgARAQGAFgGjAQAAAAAJQAAAAAAAQABAAEAEABXBAEAOQABAAEAAAAQAFMFrwVRAAIA
+BQAAARAA7AWvBWUABAAJAFGA3QASAREASwQVAREAOgEZAREAgwAdAVAgAAAAAIYAXQQGAAEAHCEA
+AAAAgQDMACEBAQAsIQAAAACBAGAAJwECAAAiAAAAAIYYDAUGAAQACCIAAAAAgxgMBQYABAAQIgAA
+AACTCNoELwEEADwiAAAAAJMIIgE0AQQAQyIAAAAAkwguATkBBABLIgAAAACWCCMGPwEFAFIiAAAA
+AIYYDAUGAAUAWiIAAAAAkRgSBUQBBQAAAAEAiQMAAAEAkgEAAAIAiQMAAAEAVgMJAAwFAQARAAwF
+BgAZAAwFCgApAAwFEAAxAAwFEAA5AAwFEABBAAwFEABJAAwFEABRAAwFEABZAAwFEABhAAwFEABp
+AAwFBgCZAAwFBgDBAAwFFQDRAAwFBgBxAPUFIQDZAN4FJgDhADsEKwDpAEwDMQDxAA8GNQDZAD0G
+AQDZAP0FPAD5AHYDQQABAQgGSgCJAAwFEAAJARQBWgDxAB0GXgAJAX4BBgB5AIwBZQB5ALQEawB5
+AJkDawB5AEwGawCRAJMAWgCRAHQAWgD5AAIFbwAJAYQBBgBxAAwFBgChAAwFBgAZAboAeAAZAVQG
+gQCpAAwFhwDJAAwFBgAOAAQAoQApAHMAfwEuAAsAVwEuABMAYAEuABsAfwEuACMAiAEuACsAsQEu
+ADMAsQEuADsAsQEuAEMAiAEuAEsAtwEuAFMAsQEuAFsAzgFDAGMAGAJJAHMAfwFjAGsAGAKBAHsA
+GAIbAE8AAwABAAQAAwAAAN4ESAEAAEIBTQEAACcGUgECAAYAAwACAAcABQABAAgABQACAAkABwAE
+gAAAAQAAAOcdIkcAAAAAAAABAAAABAAAAAAAAAAAAAAAjwBXAAAAAAANAAAAAAAAAAAAAACYAKMD
+AAAAAA0AAAAAAAAAAAAAAJgAOAAAAAAABAAAAAAAAAAAAAAAjwBEBAAAAAAAAAAAAQAAAF0FAAAA
+AAAAAFNUX2JlNDg5MzhmM2U0NTQwZDk5MjA5NjZkODY1NTEwMDY3ADxNb2R1bGU+AFN5c3RlbS5J
+TwBNaWNyb3NvZnQuU3FsU2VydmVyLk1hbmFnZWREVFMAbXNjb3JsaWIASXNOZXdVcGRhdGVSZXF1
+aXJlZABnZXRfU3RhY2tUcmFjZQBkZWZhdWx0SW5zdGFuY2UAZ2V0X01lc3NhZ2UAVmFyaWFibGUA
+UnVudGltZVR5cGVIYW5kbGUAR2V0VHlwZUZyb21IYW5kbGUASVNBbnlDb250cm9sRmlsZQBDb21w
+b25lbnROYW1lAERhdGVUaW1lAE1pY3Jvc29mdC5TcWxTZXJ2ZXIuRHRzLlJ1bnRpbWUAUmVhZExp
+bmUAVHlwZQBnZXRfQ3VsdHVyZQBzZXRfQ3VsdHVyZQByZXNvdXJjZUN1bHR1cmUAVlNUQVJUU2Ny
+aXB0T2JqZWN0TW9kZWxCYXNlAEFwcGxpY2F0aW9uU2V0dGluZ3NCYXNlAENsb3NlAERpc3Bvc2UA
+UGFyc2UAY3VycmVudERhdGUARWRpdG9yQnJvd3NhYmxlU3RhdGUAQ29tcGlsZXJHZW5lcmF0ZWRB
+dHRyaWJ1dGUARGVidWdnZXJOb25Vc2VyQ29kZUF0dHJpYnV0ZQBEZWJ1Z2dhYmxlQXR0cmlidXRl
+AEVkaXRvckJyb3dzYWJsZUF0dHJpYnV0ZQBBc3NlbWJseVRpdGxlQXR0cmlidXRlAEFzc2VtYmx5
+VHJhZGVtYXJrQXR0cmlidXRlAFRhcmdldEZyYW1ld29ya0F0dHJpYnV0ZQBBc3NlbWJseUNvbmZp
+Z3VyYXRpb25BdHRyaWJ1dGUAQXNzZW1ibHlEZXNjcmlwdGlvbkF0dHJpYnV0ZQBDb21waWxhdGlv
+blJlbGF4YXRpb25zQXR0cmlidXRlAEFzc2VtYmx5UHJvZHVjdEF0dHJpYnV0ZQBBc3NlbWJseUNv
+cHlyaWdodEF0dHJpYnV0ZQBTU0lTU2NyaXB0VGFza0VudHJ5UG9pbnRBdHRyaWJ1dGUAQXNzZW1i
+bHlDb21wYW55QXR0cmlidXRlAFJ1bnRpbWVDb21wYXRpYmlsaXR5QXR0cmlidXRlAGdldF9WYWx1
+ZQB2YWx1ZQBTeXN0ZW0uUnVudGltZS5WZXJzaW9uaW5nAEZpcmVXYXJuaW5nAFN0cmluZwBjb250
+cm9sRmlsZVBhdGgAZ2V0X01vbnRoAE1pY3Jvc29mdC5TcWxTZXJ2ZXIuU2NyaXB0VGFzawBNaWNy
+b3NvZnQuU3FsU2VydmVyLkR0cy5UYXNrcy5TY3JpcHRUYXNrAFNjcmlwdE9iamVjdE1vZGVsAFN5
+c3RlbS5Db21wb25lbnRNb2RlbABTVF9iZTQ4OTM4ZjNlNDU0MGQ5OTIwOTY2ZDg2NTUxMDA2Ny5k
+bGwAZ2V0X0l0ZW0AU3lzdGVtAHJlc291cmNlTWFuAFNjcmlwdE1haW4AU3lzdGVtLkNvbmZpZ3Vy
+YXRpb24AU3lzdGVtLkdsb2JhbGl6YXRpb24AU3lzdGVtLlJlZmxlY3Rpb24ARXhjZXB0aW9uAEN1
+bHR1cmVJbmZvAGdldF9ZZWFyAENoYXIAU3RyZWFtUmVhZGVyAFRleHRSZWFkZXIAZ2V0X1Jlc291
+cmNlTWFuYWdlcgBFdmVudHNPYmplY3RXcmFwcGVyAEZpcmVFcnJvcgAuY3RvcgAuY2N0b3IAU3lz
+dGVtLkRpYWdub3N0aWNzAFN5c3RlbS5SdW50aW1lLkNvbXBpbGVyU2VydmljZXMAU3lzdGVtLlJl
+c291cmNlcwBTVF9iZTQ4OTM4ZjNlNDU0MGQ5OTIwOTY2ZDg2NTUxMDA2Ny5Qcm9wZXJ0aWVzLlJl
+c291cmNlcy5yZXNvdXJjZXMARGVidWdnaW5nTW9kZXMAU1RfYmU0ODkzOGYzZTQ1NDBkOTkyMDk2
+NmQ4NjU1MTAwNjcuUHJvcGVydGllcwBnZXRfVmFyaWFibGVzAFNldHRpbmdzAGdldF9EdHMAZ2V0
+X0V2ZW50cwBFeGlzdHMAQ29uY2F0AE9iamVjdABTcGxpdABnZXRfRGVmYXVsdABEVFNFeGVjUmVz
+dWx0AHNldF9UYXNrUmVzdWx0AGdldF9EYXkAZ2V0X0Fzc2VtYmx5AAAAAAAXYwB1AHIAcgBlAG4A
+dABEAGEAdABlAAAbdwBvAHIAawBpAG4AZwBGAG8AbABkAGUAcgAAA1wAAB9jAG8AbgB0AHIAbwBs
+AEYAaQBsAGUATgBhAG0AZQAAcUYAVQBOAEQARQBYAF8AVQBOAEkAVgBFAFIASQBTAF8AUgBFAFYA
+RQBOAFUAXwBQAEEAWQBBAEIATABFACAALQAgAFMAYwByAGkAcAB0ACAAdABhAHMAawAgAFYAYQBs
+AGkAZABhAHQAaQBvAG4AcwABLUMAbwBuAHQAcgBvAGwAIABmAGkAbABlACAAbgBvAHQAIABmAG8A
+dQBuAGQAAAUNAAoAAHFTAFQAXwBiAGUANAA4ADkAMwA4AGYAMwBlADQANQA0ADAAZAA5ADkAMgAw
+ADkANgA2AGQAOAA2ADUANQAxADAAMAA2ADcALgBQAHIAbwBwAGUAcgB0AGkAZQBzAC4AUgBlAHMA
+bwB1AHIAYwBlAHMAAAAAAIMbZmOffrxKqw8Xae5PPUYABCABAQgDIAABBSABARERBCABAQ4FIAEB
+EV0FBwIRPQ4EIAASbQQgABJxBSABEnUcAyAAHAYAAw4ODg4EIAASfQggBQEIDg4OCAQAAQIOCgcE
+EkURPRFBEkkDIAAOBiABHQ4dAwUAARE9DgMgAAgIIAUCCA4ODggIAAESgI0RgJEFIAASgJUHIAIB
+DhKAlQi3elxWGTTgiQiJhF3NgIDMkXBGAFUATgBEAEUAWABfAFUATgBJAFYARQBSAEkAUwBfAFIA
+RQBWAEUATgBVAF8AUABBAFkAQQBCAEwARQAgAC0AIABTAGMAcgBpAHAAdAAgAHQAYQBzAGsAIABW
+AGEAbABpAGQAYQB0AGkAbwBuAHMAAgYOAwYSVQMGElkDBhIQBSABEUEOByACEUERPQ4EAAASVQQA
+ABJZBQABARJZBAAAEhADAAABBAgAElUECAASWQQIABIQCAEACAAAAAAAHgEAAQBUAhZXcmFwTm9u
+RXhjZXB0aW9uVGhyb3dzAQgBAAIAAAAAACgBACNTVF9iZTQ4OTM4ZjNlNDU0MGQ5OTIwOTY2ZDg2
+NTUxMDA2NwAABQEAAAAAFgEAEUNvcHlyaWdodCBAICAyMDIwAABJAQAaLk5FVEZyYW1ld29yayxW
+ZXJzaW9uPXY0LjUBAFQOFEZyYW1ld29ya0Rpc3BsYXlOYW1lEi5ORVQgRnJhbWV3b3JrIDQuNQQB
+AAAAAAAAtAAAAM7K774BAAAAkQAAAGxTeXN0ZW0uUmVzb3VyY2VzLlJlc291cmNlUmVhZGVyLCBt
+c2NvcmxpYiwgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2Vu
+PWI3N2E1YzU2MTkzNGUwODkjU3lzdGVtLlJlc291cmNlcy5SdW50aW1lUmVzb3VyY2VTZXQCAAAA
+AAAAAAAAAABQQURQQURQtAAAAAwyAAAAAAAAAAAAACYyAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAYMgAAAAAAAAAAAAAAAF9Db3JEbGxNYWluAG1zY29yZWUuZGxsAAAAAAD/JQAgABAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAQAQAAAAGAAAgAAAAAAAAAAAAAAAAAAAAQABAAAAMAAAgAAAAAAAAAAAAAAAAAAAAQAAAAAA
+SAAAAFhAAAAaBAAAAAAAAAAAAAAaBDQAAABWAFMAXwBWAEUAUgBTAEkATwBOAF8ASQBOAEYATwAA
+AAAAvQTv/gAAAQAAAAEAIkfnHQAAAQAiR+cdPwAAAAAAAAAEAAAAAgAAAAAAAAAAAAAAAAAAAEQA
+AAABAFYAYQByAEYAaQBsAGUASQBuAGYAbwAAAAAAJAAEAAAAVAByAGEAbgBzAGwAYQB0AGkAbwBu
+AAAAAAAAALAEegMAAAEAUwB0AHIAaQBuAGcARgBpAGwAZQBJAG4AZgBvAAAAVgMAAAEAMAAwADAA
+MAAwADQAYgAwAAAAGgABAAEAQwBvAG0AbQBlAG4AdABzAAAAAAAAACIAAQABAEMAbwBtAHAAYQBu
+AHkATgBhAG0AZQAAAAAAAAAAAHAAJAABAEYAaQBsAGUARABlAHMAYwByAGkAcAB0AGkAbwBuAAAA
+AABTAFQAXwBiAGUANAA4ADkAMwA4AGYAMwBlADQANQA0ADAAZAA5ADkAMgAwADkANgA2AGQAOAA2
+ADUANQAxADAAMAA2ADcAAAA+AA8AAQBGAGkAbABlAFYAZQByAHMAaQBvAG4AAAAAADEALgAwAC4A
+NwA2ADUANQAuADEAOAAyADEAMAAAAAAAcAAoAAEASQBuAHQAZQByAG4AYQBsAE4AYQBtAGUAAABT
+AFQAXwBiAGUANAA4ADkAMwA4AGYAMwBlADQANQA0ADAAZAA5ADkAMgAwADkANgA2AGQAOAA2ADUA
+NQAxADAAMAA2ADcALgBkAGwAbAAAAEgAEgABAEwAZQBnAGEAbABDAG8AcAB5AHIAaQBnAGgAdAAA
+AEMAbwBwAHkAcgBpAGcAaAB0ACAAQAAgACAAMgAwADIAMAAAACoAAQABAEwAZQBnAGEAbABUAHIA
+YQBkAGUAbQBhAHIAawBzAAAAAAAAAAAAeAAoAAEATwByAGkAZwBpAG4AYQBsAEYAaQBsAGUAbgBh
+AG0AZQAAAFMAVABfAGIAZQA0ADgAOQAzADgAZgAzAGUANAA1ADQAMABkADkAOQAyADAAOQA2ADYA
+ZAA4ADYANQA1ADEAMAAwADYANwAuAGQAbABsAAAAaAAkAAEAUAByAG8AZAB1AGMAdABOAGEAbQBl
+AAAAAABTAFQAXwBiAGUANAA4ADkAMwA4AGYAMwBlADQANQA0ADAAZAA5ADkAMgAwADkANgA2AGQA
+OAA2ADUANQAxADAAMAA2ADcAAABCAA8AAQBQAHIAbwBkAHUAYwB0AFYAZQByAHMAaQBvAG4AAAAx
+AC4AMAAuADcANgA1ADUALgAxADgAMgAxADAAAAAAAEYADwABAEEAcwBzAGUAbQBiAGwAeQAgAFYA
+ZQByAHMAaQBvAG4AAAAxAC4AMAAuADcANgA1ADUALgAxADgAMgAxADAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAMAAAAODIAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
+        </ScriptProject>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{C55A6028-8662-464F-B456-1C4B4A450BB7}"
+      DTS:From="Package\Validations"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Create  file depot folders" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{6A13A8D6-B18D-42C8-BB03-BD334E9A7625}"
+      DTS:From="Package\Copy from Univeris to FILE"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Update control file" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{92D1E1FC-9676-427E-BD6B-3B27838399C7}"
+      DTS:From="Package\Create  file depot folders"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Copy from Univeris to FILE" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Cette section CDATA contient des informations sur la disposition du package. Elle comprend des informations telles que les coordonnées (x,y), la largeur et la hauteur.-->
+<!--Si vous modifiez manuellement cette section et commettez une erreur, vous pouvez la supprimer. -->
+<!--Le package pourra toujours se charger normalement, mais les informations de disposition précédente seront perdues et le concepteur réorganisera automatiquement les éléments sur l'aire de conception.-->
+<Objects
+  Version="8">
+  <!--Chaque nœud ci-dessous contiendra des propriétés qui n'affectent pas le comportement d'exécution.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="211,42"
+          Id="Package\Copy from Univeris to FILE"
+          TopLeft="649,451" />
+        <NodeLayout
+          Size="198,42"
+          Id="Package\Create  file depot folders"
+          TopLeft="659,362" />
+        <NodeLayout
+          Size="168,42"
+          Id="Package\Update control file"
+          TopLeft="676,560" />
+        <NodeLayout
+          Size="133,42"
+          Id="Package\Validations"
+          TopLeft="689,256" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="756.75,298">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,64"
+              Start="0,0"
+              End="0,56.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,56.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="757.25,493">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,67"
+              Start="0,0"
+              End="0,59.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,59.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="756.25,404">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,47"
+              Start="0,0"
+              End="0,39.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Copy from Univeris to FILE">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="199,42"
+          Id="Package\Copy from Univeris to FILE\Source REVENU PAYABLE"
+          TopLeft="537,91" />
+        <NodeLayout
+          Size="204,42"
+          Id="Package\Copy from Univeris to FILE\Flat File REVENU PAYABLE"
+          TopLeft="534,237" />
+        <EdgeLayout
+          Id="Package\Copy from Univeris to FILE.Paths[ADO NET Source Output]"
+          TopLeft="636.25,133">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,104"
+              Start="0,0"
+              End="0,96.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,96.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Copy from Univeris to FILE\Source REVENU PAYABLE">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

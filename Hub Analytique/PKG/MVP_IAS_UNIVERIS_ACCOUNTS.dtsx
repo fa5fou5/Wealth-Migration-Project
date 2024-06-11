@@ -1,0 +1,2419 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="11/27/2020 8:58:28 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="QL310856"
+  DTS:CreatorName="LIADOM01\li2bts"
+  DTS:DTSID="{E88D937B-4824-481E-9D4F-6CF977DD5A1F}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.166"
+  DTS:LocaleID="3084"
+  DTS:ObjectName="MVP_IAS_UNIVERIS_ACCOUNTS"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="0"
+  DTS:VersionBuild="198"
+  DTS:VersionGUID="{24FEC3B7-E94B-46FF-836D-EB1202CA39ED}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[ACCOUNTS.CSV]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{99081528-DD95-4105-B868-9866CA00F25D}"
+      DTS:ObjectName="ACCOUNTS.CSV">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::fileDepotFolder]  + "\\" +
+@[User::resultFileName] +"__" +  @[User::formattedCurrentDate] + ".csv"</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="Name">@[User::resultFileName] + ".CSV"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="11276"
+          DTS:Unicode="True"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="\\ia.iafg.net\R01\Svc\WH\IAW\Prod\MVP\IAS\UNIVERIS\2021-08-05\ACCOUNTS__2021-08-05.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="PLN_SYSID"
+              DTS:DTSID="{1940AFF9-1738-49E1-9AE0-1BB578551522}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="IVR_SYSID"
+              DTS:DTSID="{AA9B21A7-9B2F-4396-B269-F25605093ACE}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="303"
+              DTS:TextQualified="True"
+              DTS:ObjectName="PLN_CD"
+              DTS:DTSID="{36E57714-9869-4D13-A947-C09FFF490680}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="303"
+              DTS:TextQualified="True"
+              DTS:ObjectName="PLN_STATUS"
+              DTS:DTSID="{B16A1C98-1F38-4BFA-88EE-4280A5E775A4}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="303"
+              DTS:TextQualified="True"
+              DTS:ObjectName="PLN_ADM_CD"
+              DTS:DTSID="{F60198F3-6C71-45E5-AD82-8ADE8A12983E}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="135"
+              DTS:TextQualified="True"
+              DTS:ObjectName="SETUP_DT"
+              DTS:DTSID="{8461B1B1-DE9C-4EC7-A43C-8D8D0D5D27F4}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="135"
+              DTS:TextQualified="True"
+              DTS:ObjectName="CLOSE_DT"
+              DTS:DTSID="{20DB7AFB-7710-4F77-9B5B-ED8DDF54C68B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="303"
+              DTS:TextQualified="True"
+              DTS:ObjectName="PEN_JUR_CD"
+              DTS:DTSID="{5808E9DE-78AA-4EC4-86E1-762AC2F3AD55}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="17"
+              DTS:TextQualified="True"
+              DTS:ObjectName="FEE_EXMP_IND"
+              DTS:DTSID="{A90D5443-1E38-443D-A993-BD50DF36E00B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="303"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ADMINISTRATOR_TYPE"
+              DTS:DTSID="{C80B760E-6BF0-4707-8DAE-438DC08F4417}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="304"
+              DTS:DataScale="7"
+              DTS:TextQualified="True"
+              DTS:ObjectName="MD_LOADDATE"
+              DTS:DTSID="{FA0EF4B0-4D50-4002-9E36-C68DB4B50F20}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="17"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="MD_SRCSYSTEM"
+              DTS:DTSID="{B4644590-5512-41C2-9C09-58E130E3DF36}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="REP_SYSID"
+              DTS:DTSID="{5A359F8D-D45A-4C58-9D3A-B5DC85C3AB9F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:DataType="303"
+              DTS:TextQualified="True"
+              DTS:ObjectName="REP_CD"
+              DTS:DTSID="{B6E21FE8-57CA-43A7-8971-CAED12E94692}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[ACCOUNTS.CSV.EXPORT]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{3CA1AC31-3D96-460B-8427-9A97F3184EB8}"
+      DTS:ObjectName="ACCOUNTS.CSV.EXPORT">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::fileDepotFolder]  + "\\" +
+@[User::resultFileName] +"__" +  @[User::formattedCurrentDate] + ".csv"+ ".export"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="11276"
+          DTS:Unicode="True"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="\\ia.iafg.net\R01\Svc\WH\IAW\Prod\MVP\IAS\UNIVERIS\2021-08-05\ACCOUNTS__2021-08-05.csv.export">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="PLN_SYSID"
+              DTS:DTSID="{1940AFF9-1738-49E1-9AE0-1BB578551522}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="IVR_SYSID"
+              DTS:DTSID="{AA9B21A7-9B2F-4396-B269-F25605093ACE}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="303"
+              DTS:TextQualified="True"
+              DTS:ObjectName="PLN_CD"
+              DTS:DTSID="{36E57714-9869-4D13-A947-C09FFF490680}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="303"
+              DTS:TextQualified="True"
+              DTS:ObjectName="PLN_STATUS"
+              DTS:DTSID="{B16A1C98-1F38-4BFA-88EE-4280A5E775A4}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="303"
+              DTS:TextQualified="True"
+              DTS:ObjectName="PLN_ADM_CD"
+              DTS:DTSID="{F60198F3-6C71-45E5-AD82-8ADE8A12983E}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="135"
+              DTS:TextQualified="True"
+              DTS:ObjectName="SETUP_DT"
+              DTS:DTSID="{8461B1B1-DE9C-4EC7-A43C-8D8D0D5D27F4}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="135"
+              DTS:TextQualified="True"
+              DTS:ObjectName="CLOSE_DT"
+              DTS:DTSID="{20DB7AFB-7710-4F77-9B5B-ED8DDF54C68B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="303"
+              DTS:TextQualified="True"
+              DTS:ObjectName="PEN_JUR_CD"
+              DTS:DTSID="{5808E9DE-78AA-4EC4-86E1-762AC2F3AD55}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="17"
+              DTS:TextQualified="True"
+              DTS:ObjectName="FEE_EXMP_IND"
+              DTS:DTSID="{A90D5443-1E38-443D-A993-BD50DF36E00B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="303"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ADMINISTRATOR_TYPE"
+              DTS:DTSID="{C80B760E-6BF0-4707-8DAE-438DC08F4417}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="304"
+              DTS:DataScale="7"
+              DTS:TextQualified="True"
+              DTS:ObjectName="MD_LOADDATE"
+              DTS:DTSID="{FA0EF4B0-4D50-4002-9E36-C68DB4B50F20}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="17"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="MD_SRCSYSTEM"
+              DTS:DTSID="{B4644590-5512-41C2-9C09-58E130E3DF36}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="REP_SYSID"
+              DTS:DTSID="{5A359F8D-D45A-4C58-9D3A-B5DC85C3AB9F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:DataType="303"
+              DTS:TextQualified="True"
+              DTS:ObjectName="REP_CD"
+              DTS:DTSID="{B6E21FE8-57CA-43A7-8971-CAED12E94692}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[univeris]"
+      DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{AFADB360-E35C-478B-BDBA-B6B19254F802}"
+      DTS:ObjectName="univeris">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::cs]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=10.95.0.145;User ID=dei_user;Initial Catalog=fs_mps_iavm_t;Integrated Security=false;Persist Security Info=True;">
+          <DTS:Password
+            DTS:Name="PWD"
+            Sensitive="1"></DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Configurations>
+    <DTS:Configuration
+      DTS:ConfigurationString="C:\Projets\HubAnalytiqueGestionPatrimoine\CTRL\FUN.CTRL"
+      DTS:ConfigurationType="1"
+      DTS:CreationName=""
+      DTS:DTSID="{7E77C649-42DC-4B98-93B3-367E44B036BF}"
+      DTS:ObjectName="CONFIGURATION" />
+  </DTS:Configurations>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{BE931CA5-15AC-4CF3-A5B5-E999B8F52077}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="LOWER( @[User::dataOwner] + &quot;_&quot; + @[User::dataDescription] + &quot;_&quot; + @[User::resultFileName] + &quot;.control.csv&quot;  )"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="controlFileName">
+      <DTS:VariableValue
+        DTS:DataType="8">ias_univeris_accounts.control.csv</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{0AD4D2F0-A547-47C2-A8DE-2599DA594FD6}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="cs">
+      <DTS:VariableValue
+        DTS:DataType="8">Data Source=10.95.0.145;Integrated Security=false;User ID=dei_user;PWD=hh*3h&amp;DD22DW;Initial Catalog=fs_mps_iavm_t;Persist Security Info=True;</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{10104D60-FF30-4AB9-B7C2-2373C34C49CB}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="GETDATE()"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="currentDate">
+      <DTS:VariableValue
+        DTS:DataType="7">8/5/2021 10:10:24 AM</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{9C56B807-DFFA-4D71-B595-BAD6B33F3B75}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="dataDescription">
+      <DTS:VariableValue
+        DTS:DataType="8">UNIVERIS</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{ED27371B-C58F-421A-A44B-A03ACC9747E4}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="dataOwner">
+      <DTS:VariableValue
+        DTS:DataType="8">IAS</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{C795529A-1CB5-4894-86E6-DDBE0B59C936}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="destinationFolder">
+      <DTS:VariableValue
+        DTS:DataType="8">\\ia.iafg.net\R01\Svc\WH\IAW\INTG\IN</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{A8A57F91-1BFD-4FA7-8422-5EB1548B977D}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="destinationFolderMVP">
+      <DTS:VariableValue
+        DTS:DataType="8">\\ia.iafg.net\R01\Svc\WH\IAW\Prod\MVP</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{090E757D-F72D-4DE6-830A-02BAC3F87B87}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::destinationFolderMVP]  + &quot;\\&quot; +  @[User::dataOwner] + &quot;\\&quot; + @[User::dataDescription] + &quot;\\&quot; +  @[User::formattedCurrentDate]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="fileDepotFolder">
+      <DTS:VariableValue
+        DTS:DataType="8">\\ia.iafg.net\R01\Svc\WH\IAW\Prod\MVP\IAS\UNIVERIS\2021-08-05</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{67235CF5-D986-4886-9686-13946BB9968D}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="(DT_STR, 4,1254) YEAR(@[User::currentDate])  + &quot;-&quot; + RIGHT(&quot;0&quot; + (DT_STR, 2,1254) MONTH(@[User::currentDate]), 2) +   &quot;-&quot; +  RIGHT(&quot;0&quot; + (DT_STR, 2,1254) DAY(@[User::currentDate]), 2)"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="formattedCurrentDate">
+      <DTS:VariableValue
+        DTS:DataType="8">2021-08-05</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{513609DF-AC3F-4E81-AD77-98FD4C07E4AC}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="resultFileName">
+      <DTS:VariableValue
+        DTS:DataType="8">ACCOUNTS</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{EF756560-1187-4233-8ACC-89E567098040}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="workingFolder">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\Projets\HubAnalytiqueGestionPatrimoine\IN</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:LoggingOptions
+    DTS:LoggingMode="1" />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Copy from Univeris to FILE"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{548D5AE5-D70A-4EA8-B652-137C0F3D3AA9}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Copy from Univeris to FILE"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Copy from Univeris to FILE\Data Load"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server."
+              name="Data Load"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement used by the component to extract data."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
+       PLN.[PLN_SYSID]
+      ,PLN.[IVR_SYSID]
+      ,NULLIF(REPLACE(REPLACE(PLN.[PLN_CD], CHAR(13), ''), CHAR(10), ''),'') AS [PLN_CD]
+      ,NULLIF(REPLACE(REPLACE(PLN_S.[PLN_ST_NAME], CHAR(13), ''), CHAR(10), ''),'') AS [PLN_STATUS]
+      ,NULLIF(REPLACE(REPLACE(PLN.[PLN_ADM_CD], CHAR(13), ''), CHAR(10), ''),'') AS [PLN_ADM_CD]
+      ,PLN.[SETUP_DT]
+      ,PLN.[CLOSE_DT]
+      ,NULLIF(REPLACE(REPLACE(PLN.[PEN_JUR_CD], CHAR(13), ''), CHAR(10), ''),'') AS [PEN_JUR_CD]
+      ,PLN.[FEE_EXMP_IND]
+	  ,NULLIF(REPLACE(REPLACE(DSGN.DSGN_DESC, CHAR(13), ''), CHAR(10), ''),'') AS ADMINISTRATOR_TYPE
+	  ,CONVERT(DATE, GETDATE()) AS MD_LOADDATE 
+	  ,'IAS-UNIVERIS' AS MD_SRCSYSTEM
+	  ,IVR.REP_SYSID
+	  ,NULLIF(REPLACE(REPLACE(R.[REP_CD], CHAR(13), ''), CHAR(10), ''),'') AS REP_CD
+
+  FROM [dbo].[PLN] PLN (nolock)
+  LEFT JOIN [dbo].[IVR] IVR (nolock)
+  ON PLN.IVR_SYSID= IVR.IVR_SYSID
+  LEFT JOIN [dbo].[REP] R (nolock)
+  ON IVR.REP_SYSID= R.REP_SYSID
+  LEFT JOIN [dbo].[S_PLN_STATUS] PLN_S (nolock)
+  ON PLN.PLN_STATUS=PLN_S.PLN_STATUS
+  LEFT JOIN [dbo].ADM   (nolock)
+  ON PLN.PLN_ADM_CD = ADM.ADM_CD
+  LEFT JOIN [dbo].[S_DESIGNATION] DSGN (nolock)
+  ON ISNULL(ADM.DESIGNATION_CD,1)=DSGN.DSGN_CD
+  ORDER BY PLN.[PLN_SYSID]</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">300</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether to allow non-string external columns to be implicitly converted to strings at the output columns."
+                  name="AllowImplicitStringConversion">true</property>
+                <property
+                  dataType="System.String"
+                  description="The Source database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the mode to retrieve external column information"
+                  name="AccessMode"
+                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter">2</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.DataReaderSourceAdapter</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Copy from Univeris to FILE\Data Load.Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[univeris]"
+                  connectionManagerRefId="Package.ConnectionManagers[univeris]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Output]"
+                  name="ADO NET Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Output].Columns[PLN_SYSID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Output].ExternalColumns[PLN_SYSID]"
+                      lineageId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Output].Columns[PLN_SYSID]"
+                      name="PLN_SYSID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Output].Columns[IVR_SYSID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Output].ExternalColumns[IVR_SYSID]"
+                      lineageId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Output].Columns[IVR_SYSID]"
+                      name="IVR_SYSID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Output].Columns[PLN_CD]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Output].ExternalColumns[PLN_CD]"
+                      lineageId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Output].Columns[PLN_CD]"
+                      name="PLN_CD"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Output].Columns[PLN_STATUS]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Output].ExternalColumns[PLN_STATUS]"
+                      lineageId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Output].Columns[PLN_STATUS]"
+                      name="PLN_STATUS"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Output].Columns[PLN_ADM_CD]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Output].ExternalColumns[PLN_ADM_CD]"
+                      lineageId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Output].Columns[PLN_ADM_CD]"
+                      name="PLN_ADM_CD"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Output].Columns[SETUP_DT]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Output].ExternalColumns[SETUP_DT]"
+                      lineageId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Output].Columns[SETUP_DT]"
+                      name="SETUP_DT"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Output].Columns[CLOSE_DT]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Output].ExternalColumns[CLOSE_DT]"
+                      lineageId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Output].Columns[CLOSE_DT]"
+                      name="CLOSE_DT"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Output].Columns[PEN_JUR_CD]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Output].ExternalColumns[PEN_JUR_CD]"
+                      lineageId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Output].Columns[PEN_JUR_CD]"
+                      name="PEN_JUR_CD"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Output].Columns[FEE_EXMP_IND]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Output].ExternalColumns[FEE_EXMP_IND]"
+                      lineageId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Output].Columns[FEE_EXMP_IND]"
+                      name="FEE_EXMP_IND"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Output].Columns[ADMINISTRATOR_TYPE]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Output].ExternalColumns[ADMINISTRATOR_TYPE]"
+                      lineageId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Output].Columns[ADMINISTRATOR_TYPE]"
+                      name="ADMINISTRATOR_TYPE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Output].Columns[MD_LOADDATE]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Output].ExternalColumns[MD_LOADDATE]"
+                      lineageId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Output].Columns[MD_LOADDATE]"
+                      name="MD_LOADDATE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Output].Columns[MD_SRCSYSTEM]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Output].ExternalColumns[MD_SRCSYSTEM]"
+                      length="12"
+                      lineageId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Output].Columns[MD_SRCSYSTEM]"
+                      name="MD_SRCSYSTEM"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Output].Columns[REP_SYSID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Output].ExternalColumns[REP_SYSID]"
+                      lineageId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Output].Columns[REP_SYSID]"
+                      name="REP_SYSID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Output].Columns[REP_CD]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Output].ExternalColumns[REP_CD]"
+                      lineageId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Output].Columns[REP_CD]"
+                      name="REP_CD"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Output].ExternalColumns[PLN_SYSID]"
+                      dataType="i4"
+                      name="PLN_SYSID" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Output].ExternalColumns[IVR_SYSID]"
+                      dataType="i4"
+                      name="IVR_SYSID" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Output].ExternalColumns[PLN_CD]"
+                      dataType="nText"
+                      name="PLN_CD" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Output].ExternalColumns[PLN_STATUS]"
+                      dataType="nText"
+                      name="PLN_STATUS" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Output].ExternalColumns[PLN_ADM_CD]"
+                      dataType="nText"
+                      name="PLN_ADM_CD" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Output].ExternalColumns[SETUP_DT]"
+                      dataType="dbTimeStamp"
+                      name="SETUP_DT" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Output].ExternalColumns[CLOSE_DT]"
+                      dataType="dbTimeStamp"
+                      name="CLOSE_DT" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Output].ExternalColumns[PEN_JUR_CD]"
+                      dataType="nText"
+                      name="PEN_JUR_CD" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Output].ExternalColumns[FEE_EXMP_IND]"
+                      dataType="ui1"
+                      name="FEE_EXMP_IND" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Output].ExternalColumns[ADMINISTRATOR_TYPE]"
+                      dataType="nText"
+                      name="ADMINISTRATOR_TYPE" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Output].ExternalColumns[MD_LOADDATE]"
+                      dataType="dbDate"
+                      name="MD_LOADDATE" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Output].ExternalColumns[MD_SRCSYSTEM]"
+                      dataType="wstr"
+                      length="12"
+                      name="MD_SRCSYSTEM" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Output].ExternalColumns[REP_SYSID]"
+                      dataType="i4"
+                      name="REP_SYSID" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Output].ExternalColumns[REP_CD]"
+                      dataType="nText"
+                      name="REP_CD" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Error Output]"
+                  isErrorOut="true"
+                  name="ADO NET Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Error Output].Columns[PLN_SYSID]"
+                      dataType="i4"
+                      lineageId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Error Output].Columns[PLN_SYSID]"
+                      name="PLN_SYSID" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Error Output].Columns[IVR_SYSID]"
+                      dataType="i4"
+                      lineageId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Error Output].Columns[IVR_SYSID]"
+                      name="IVR_SYSID" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Error Output].Columns[PLN_CD]"
+                      dataType="nText"
+                      lineageId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Error Output].Columns[PLN_CD]"
+                      name="PLN_CD" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Error Output].Columns[PLN_STATUS]"
+                      dataType="nText"
+                      lineageId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Error Output].Columns[PLN_STATUS]"
+                      name="PLN_STATUS" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Error Output].Columns[PLN_ADM_CD]"
+                      dataType="nText"
+                      lineageId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Error Output].Columns[PLN_ADM_CD]"
+                      name="PLN_ADM_CD" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Error Output].Columns[SETUP_DT]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Error Output].Columns[SETUP_DT]"
+                      name="SETUP_DT" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Error Output].Columns[CLOSE_DT]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Error Output].Columns[CLOSE_DT]"
+                      name="CLOSE_DT" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Error Output].Columns[PEN_JUR_CD]"
+                      dataType="nText"
+                      lineageId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Error Output].Columns[PEN_JUR_CD]"
+                      name="PEN_JUR_CD" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Error Output].Columns[FEE_EXMP_IND]"
+                      dataType="ui1"
+                      lineageId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Error Output].Columns[FEE_EXMP_IND]"
+                      name="FEE_EXMP_IND" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Error Output].Columns[ADMINISTRATOR_TYPE]"
+                      dataType="nText"
+                      lineageId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Error Output].Columns[ADMINISTRATOR_TYPE]"
+                      name="ADMINISTRATOR_TYPE" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Error Output].Columns[MD_LOADDATE]"
+                      dataType="dbDate"
+                      lineageId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Error Output].Columns[MD_LOADDATE]"
+                      name="MD_LOADDATE" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Error Output].Columns[MD_SRCSYSTEM]"
+                      dataType="wstr"
+                      length="12"
+                      lineageId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Error Output].Columns[MD_SRCSYSTEM]"
+                      name="MD_SRCSYSTEM" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Error Output].Columns[REP_SYSID]"
+                      dataType="i4"
+                      lineageId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Error Output].Columns[REP_SYSID]"
+                      name="REP_SYSID" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Error Output].Columns[REP_CD]"
+                      dataType="nText"
+                      lineageId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Error Output].Columns[REP_CD]"
+                      name="REP_CD" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Copy from Univeris to FILE\Flat File Destination"
+              componentClassID="Microsoft.FlatFileDestination"
+              contactInfo="Flat File Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Destination"
+              localeId="11276"
+              name="Flat File Destination">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether the data will overwrite or append to the destination file."
+                  name="Overwrite">true</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the text to write to the destination file before any data is written."
+                  expressionType="Notify"
+                  name="Header" />
+                <property
+                  dataType="System.Boolean"
+                  description="When text qualifier is enabled, specifies whether the text qualifier in the data written to the destination file will be escaped or not."
+                  name="EscapeQualifier">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Copy from Univeris to FILE\Flat File Destination.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[ACCOUNTS.CSV.EXPORT]"
+                  connectionManagerRefId="Package.ConnectionManagers[ACCOUNTS.CSV.EXPORT]"
+                  name="FlatFileConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Copy from Univeris to FILE\Flat File Destination.Inputs[Flat File Destination Input]"
+                  hasSideEffects="true"
+                  name="Flat File Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File Destination.Inputs[Flat File Destination Input].Columns[MD_LOADDATE]"
+                      cachedDataType="dbDate"
+                      cachedName="MD_LOADDATE"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[MD_LOADDATE]"
+                      lineageId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Output].Columns[MD_LOADDATE]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File Destination.Inputs[Flat File Destination Input].Columns[MD_SRCSYSTEM]"
+                      cachedDataType="wstr"
+                      cachedLength="12"
+                      cachedName="MD_SRCSYSTEM"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[MD_SRCSYSTEM]"
+                      lineageId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Output].Columns[MD_SRCSYSTEM]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File Destination.Inputs[Flat File Destination Input].Columns[PLN_SYSID]"
+                      cachedDataType="i4"
+                      cachedName="PLN_SYSID"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[PLN_SYSID]"
+                      lineageId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Output].Columns[PLN_SYSID]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File Destination.Inputs[Flat File Destination Input].Columns[IVR_SYSID]"
+                      cachedDataType="i4"
+                      cachedName="IVR_SYSID"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[IVR_SYSID]"
+                      lineageId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Output].Columns[IVR_SYSID]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File Destination.Inputs[Flat File Destination Input].Columns[PLN_CD]"
+                      cachedDataType="nText"
+                      cachedName="PLN_CD"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[PLN_CD]"
+                      lineageId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Output].Columns[PLN_CD]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File Destination.Inputs[Flat File Destination Input].Columns[PLN_STATUS]"
+                      cachedDataType="nText"
+                      cachedName="PLN_STATUS"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[PLN_STATUS]"
+                      lineageId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Output].Columns[PLN_STATUS]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File Destination.Inputs[Flat File Destination Input].Columns[PLN_ADM_CD]"
+                      cachedDataType="nText"
+                      cachedName="PLN_ADM_CD"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[PLN_ADM_CD]"
+                      lineageId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Output].Columns[PLN_ADM_CD]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File Destination.Inputs[Flat File Destination Input].Columns[SETUP_DT]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="SETUP_DT"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[SETUP_DT]"
+                      lineageId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Output].Columns[SETUP_DT]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File Destination.Inputs[Flat File Destination Input].Columns[CLOSE_DT]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="CLOSE_DT"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[CLOSE_DT]"
+                      lineageId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Output].Columns[CLOSE_DT]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File Destination.Inputs[Flat File Destination Input].Columns[PEN_JUR_CD]"
+                      cachedDataType="nText"
+                      cachedName="PEN_JUR_CD"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[PEN_JUR_CD]"
+                      lineageId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Output].Columns[PEN_JUR_CD]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File Destination.Inputs[Flat File Destination Input].Columns[FEE_EXMP_IND]"
+                      cachedDataType="ui1"
+                      cachedName="FEE_EXMP_IND"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[FEE_EXMP_IND]"
+                      lineageId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Output].Columns[FEE_EXMP_IND]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File Destination.Inputs[Flat File Destination Input].Columns[ADMINISTRATOR_TYPE]"
+                      cachedDataType="nText"
+                      cachedName="ADMINISTRATOR_TYPE"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[ADMINISTRATOR_TYPE]"
+                      lineageId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Output].Columns[ADMINISTRATOR_TYPE]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File Destination.Inputs[Flat File Destination Input].Columns[REP_SYSID]"
+                      cachedDataType="i4"
+                      cachedName="REP_SYSID"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[REP_SYSID]"
+                      lineageId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Output].Columns[REP_SYSID]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File Destination.Inputs[Flat File Destination Input].Columns[REP_CD]"
+                      cachedDataType="nText"
+                      cachedName="REP_CD"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[REP_CD]"
+                      lineageId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Output].Columns[REP_CD]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[MD_LOADDATE]"
+                      dataType="dbTimeStamp2"
+                      name="MD_LOADDATE"
+                      scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[MD_SRCSYSTEM]"
+                      dataType="wstr"
+                      length="17"
+                      name="MD_SRCSYSTEM" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[PLN_SYSID]"
+                      dataType="i4"
+                      name="PLN_SYSID" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[IVR_SYSID]"
+                      dataType="i4"
+                      name="IVR_SYSID" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[PLN_CD]"
+                      dataType="nText"
+                      name="PLN_CD" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[PLN_STATUS]"
+                      dataType="nText"
+                      name="PLN_STATUS" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[PLN_ADM_CD]"
+                      dataType="nText"
+                      name="PLN_ADM_CD" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[SETUP_DT]"
+                      dataType="dbTimeStamp"
+                      name="SETUP_DT" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[CLOSE_DT]"
+                      dataType="dbTimeStamp"
+                      name="CLOSE_DT" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[PEN_JUR_CD]"
+                      dataType="nText"
+                      name="PEN_JUR_CD" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[FEE_EXMP_IND]"
+                      dataType="ui1"
+                      name="FEE_EXMP_IND" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[ADMINISTRATOR_TYPE]"
+                      dataType="nText"
+                      name="ADMINISTRATOR_TYPE" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[REP_SYSID]"
+                      dataType="i4"
+                      name="REP_SYSID" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[REP_CD]"
+                      dataType="nText"
+                      name="REP_CD" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Copy from Univeris to FILE.Paths[ADO NET Source Output]"
+              endId="Package\Copy from Univeris to FILE\Flat File Destination.Inputs[Flat File Destination Input]"
+              name="ADO NET Source Output"
+              startId="Package\Copy from Univeris to FILE\Data Load.Outputs[ADO NET Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Create  file depot folders"
+      DTS:CreationName="Microsoft.FileSystemTask"
+      DTS:Description="File System Task"
+      DTS:DTSID="{79B30E16-277B-426D-851F-22C05596C1FC}"
+      DTS:ExecutableType="Microsoft.FileSystemTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Create  file depot folders"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <FileSystemData
+          TaskOperationType="CreateDirectory"
+          TaskOverwriteDestFile="True"
+          TaskSourcePath="User::fileDepotFolder"
+          TaskIsSourceVariable="True" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\File System Task"
+      DTS:CreationName="Microsoft.FileSystemTask"
+      DTS:Description="File System Task"
+      DTS:DTSID="{88F3BB5C-1A73-49E5-A578-690DC0B61741}"
+      DTS:ExecutableType="Microsoft.FileSystemTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="File System Task"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <FileSystemData
+          TaskOperationType="RenameFile"
+          TaskOverwriteDestFile="True"
+          TaskSourcePath="{3CA1AC31-3D96-460B-8427-9A97F3184EB8}"
+          TaskDestinationPath="{99081528-DD95-4105-B868-9866CA00F25D}" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Update control file"
+      DTS:CreationName="Microsoft.ScriptTask"
+      DTS:Description="Script Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{0F24AE0D-523E-42A7-8435-47F3F0DE9224}"
+      DTS:ExecutableType="Microsoft.ScriptTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Update control file"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ScriptProject
+          Name="ST_177ec984988f4d85b50a3f84d5d721c1"
+          VSTAMajorVersion="14"
+          VSTAMinorVersion="0"
+          Language="CSharp"
+          ReadOnlyVariables="User::controlFileName,User::currentDate,User::dataDescription,User::resultFileName,User::workingFolder">
+          <ProjectItem
+            Name="Properties\AssemblyInfo.cs"
+            Encoding="UTF8"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("ST_177ec984988f4d85b50a3f84d5d721c1")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("ST_177ec984988f4d85b50a3f84d5d721c1")]
+[assembly: AssemblyCopyright("Copyright @  2020")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Resources.resx"
+            Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+</root>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Settings.settings"
+            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
+          <ProjectItem
+            Name="ScriptMain.cs"
+            Encoding="UTF8"><![CDATA[using System;
+using Microsoft.SqlServer.Dts.Runtime;
+using System.IO;
+
+namespace ST_6850f2822fc44f6ba6d14bd68b12a07e
+{
+    [Microsoft.SqlServer.Dts.Tasks.ScriptTask.SSISScriptTaskEntryPointAttribute]
+    public partial class ScriptMain : Microsoft.SqlServer.Dts.Tasks.ScriptTask.VSTARTScriptObjectModelBase
+    {
+
+        public void Main()
+        {
+            string path = (string)Dts.Variables["User::workingFolder"].Value + "\\" + (string)Dts.Variables["User::controlFileName"].Value;
+            DateTime currentDate = (DateTime)Dts.Variables["User::currentDate"].Value;
+
+            var resultFile = (string)Dts.Variables["User::resultFileName"].Value + "_" +
+                             (string)Dts.Variables["User::dataDescription"].Value + "_" +
+                             (string)Dts.Variables["User::resultFileName"].Value;
+
+            Dts.TaskResult = (int)WriteFile(path, currentDate, resultFile);
+        }
+
+        private DTSExecResult WriteFile(string path, DateTime currentDate, string resultFile)
+        {
+            string header = "LastUpdates";
+            string colone = currentDate.Date.ToString();
+            StreamWriter writer = null;
+
+            try
+            {
+                writer = new StreamWriter(path, false);
+                writer.WriteLine(header);
+                writer.WriteLine(colone);
+                writer.Close();
+
+                return (int)DTSExecResult.Success;
+            }
+            catch (Exception ex)
+            {
+                Dts.Events.FireError(0, resultFile + " - Write control file", ex.Message + "\r\n" + ex.StackTrace, null, 0);
+            }
+            finally
+            {
+                if (writer != null)
+                {
+                    writer.Dispose();
+                }
+            }
+
+            return DTSExecResult.Failure;
+        }
+
+    }
+}]]></ProjectItem>
+          <ProjectItem
+            Name="Project"
+            Encoding="UTF16LE"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="3.0" schemaVersion="1.0">
+	<msb:PropertyGroup>
+		<msb:CodeName>ST_177ec984988f4d85b50a3f84d5d721c1</msb:CodeName>
+		<msb:Language>msBuild</msb:Language>
+		<msb:DisplayName>ST_177ec984988f4d85b50a3f84d5d721c1</msb:DisplayName>
+		<msb:ProjectId>{A5D8C69A-5153-4552-AEE0-815C61A624A6}</msb:ProjectId>
+	</msb:PropertyGroup>
+	<msb:ItemGroup>
+		<msb:Project Include="ST_177ec984988f4d85b50a3f84d5d721c1.csproj"/>
+		<msb:File Include="Properties\AssemblyInfo.cs"/>
+		<msb:File Include="Properties\Settings.settings"/>
+		<msb:File Include="Properties\Resources.resx"/>
+		<msb:File Include="Properties\Resources.Designer.cs"/>
+		<msb:File Include="Properties\Settings.Designer.cs"/>
+		<msb:File Include="ScriptMain.cs"/>
+	</msb:ItemGroup>
+</c:Project>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Settings.Designer.cs"
+            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_177ec984988f4d85b50a3f84d5d721c1.Properties.Settings.get_Default():ST_177ec984988f4d85b50a3f84d5d721c1.Properties.Sett" +
+    "ings")]
+
+namespace ST_177ec984988f4d85b50a3f84d5d721c1.Properties {
+    
+    
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+        
+        public static Settings Default {
+            get {
+                return defaultInstance;
+            }
+        }
+    }
+}]]></ProjectItem>
+          <ProjectItem
+            Name="ST_177ec984988f4d85b50a3f84d5d721c1.csproj"
+            Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A8481890-E996-4C61-AC03-0902C811844A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ST_177ec984988f4d85b50a3f84d5d721c1</RootNamespace>
+    <AssemblyName>ST_177ec984988f4d85b50a3f84d5d721c1</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.SqlServer.ManagedDTS, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.ScriptTask, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptMain.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <!-- Include the build rules for a C# project.-->
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}">
+        <ProjectProperties HostName="VSTAHostName" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" />
+        <Host Name="ScriptTask" />
+        <ProjectClient>
+          <HostIdentifier>SSIS_ST130</HostIdentifier>
+        </ProjectClient>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Resources.Designer.cs"
+            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_177ec984988f4d85b50a3f84d5d721c1.Properties.Resources.get_ResourceManager():System.Resources.Resou" +
+    "rceManager")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_177ec984988f4d85b50a3f84d5d721c1.Properties.Resources.get_Culture():System.Globalization.CultureIn" +
+    "fo")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_177ec984988f4d85b50a3f84d5d721c1.Properties.Resources.set_Culture(System.Globalization.CultureInfo" +
+    "):Void")]
+
+namespace ST_177ec984988f4d85b50a3f84d5d721c1.Properties {
+    
+    
+    /// <summary>
+    ///   A strongly-typed resource class, for looking up localized strings, etc.
+    /// </summary>
+    // This class was auto-generated by the StronglyTypedResourceBuilder
+    // class via a tool like ResGen or Visual Studio.
+    // To add or remove a member, edit your .ResX file then rerun ResGen
+    // with the /str option, or rebuild your VS project.
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    internal class Resources {
+        
+        private static global::System.Resources.ResourceManager resourceMan;
+        
+        private static global::System.Globalization.CultureInfo resourceCulture;
+        
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        internal Resources() {
+        }
+        
+        /// <summary>
+        ///   Returns the cached ResourceManager instance used by this class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if ((resourceMan == null)) {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ST_177ec984988f4d85b50a3f84d5d721c1.Properties.Resources", typeof(Resources).Assembly);
+                    resourceMan = temp;
+                }
+                return resourceMan;
+            }
+        }
+        
+        /// <summary>
+        ///   Overrides the current thread's CurrentUICulture property for all
+        ///   resource lookups using this strongly typed resource class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
+                return resourceCulture;
+            }
+            set {
+                resourceCulture = value;
+            }
+        }
+    }
+}]]></ProjectItem>
+          <BinaryItem
+            Name="ST_177ec984988f4d85b50a3f84d5d721c1.dll">TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDAG9E4V8AAAAAAAAAAOAAIiALATAAABIAAAAIAAAAAAAAajEA
+AAAgAAAAQAAAAAAAEAAgAAAAAgAABAAAAAAAAAAGAAAAAAAAAACAAAAAAgAAAAAAAAMAYIUAABAA
+ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAABgxAABPAAAAAEAAAHgEAAAAAAAAAAAAAAAAAAAA
+AAAAAGAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAAcBEAAAAgAAAAEgAAAAIA
+AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAAHgEAAAAQAAAAAYAAAAUAAAAAAAAAAAAAAAAAABAAABA
+LnJlbG9jAAAMAAAAAGAAAAACAAAAGgAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAABM
+MQAAAAAAAEgAAAACAAUAcCIAAPANAAABAAAAAAAAAGAwAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAABMwBQAAAQAAAQAAEQIoEAAACm8RAAAKcgEAAHBvEgAACm8T
+AAAKdB4AAAFyKQAAcAIoEAAACm8RAAAKci0AAHBvEgAACm8TAAAKdB4AAAEoFAAACgoCKBAAAApv
+EQAACnJZAABwbxIAAApvEwAACqUPAAABCxuNHgAAASUWAigQAAAKbxEAAApyfQAAcG8SAAAKbxMA
+AAp0HgAAAaIlF3KnAABwoiUYAigQAAAKbxEAAApyqwAAcG8SAAAKbxMAAAp0HgAAAaIlGXKnAABw
+oiUaAigQAAAKbxEAAApyfQAAcG8SAAAKbxMAAAp0HgAAAaIoFQAACgwCKBAAAAoCBgcIKAIAAAZv
+FgAACiobMAYAgwAAAAIAABFy1wAAcAoPAigXAAAKDRIDKBgAAAoLFAwDFnMZAAAKDAgGbxoAAAoI
+B28aAAAKCG8bAAAKFhME3kcTBQIoEAAACm8cAAAKFgVy7wAAcCgdAAAKEQVvHgAACnIbAQBwEQVv
+HwAACigUAAAKFBZvIAAACibeCggsBghvIQAACtwXKhEEKgABHAAAAAAYACE5ADsSAAABAgAYAFx0
+AAoAAAAAHgIoIgAACioeAigjAAAKKq5+AQAABC0eciEBAHDQAwAAAigkAAAKbyUAAApzJgAACoAB
+AAAEfgEAAAQqGn4CAAAEKh4CgAIAAAQqGn4DAAAEKh4CKCcAAAoqLnMJAAAGgAMAAAQqAABCU0pC
+AQABAAAAAAAMAAAAdjQuMC4zMDMxOQAAAAAFAGwAAAAUBAAAI34AAIAEAAAsBgAAI1N0cmluZ3MA
+AAAArAoAAJQBAAAjVVMAQAwAABAAAAAjR1VJRAAAAFAMAACgAQAAI0Jsb2IAAAAAAAAAAgAAAVcV
+ogEJAQAAAPoBMwAWAAABAAAAIwAAAAQAAAADAAAACgAAAAQAAAAnAAAAEAAAAAIAAAACAAAAAwAA
+AAQAAAABAAAABAAAAAEAAAAAAP4DAQAAAAAABgCpAgkFBgA4AwkFBgD1AfYEDwB9BQAABgAiAncE
+BgCMAncEBgBtAncEBgAfA3cEBgDJAncEBgDiAncEBgA5AncEBgBUAmYDCgD9Aq0DCgBRAa0DBgDx
+AC8EDgD/BfoABgDHBC4ABgCJBC8EBgDYAfYEBgDsBS8EBgCjBCkFBgCTBGIEEgCoAegDEgAJAugD
+EgBtAU0EBgC9AQkFCgDWA60DDgC/BfoADgCvAPoABgCCAy8EBgDUBC4ACgCzBK0DBgAkAS8EBgC4
+AC8EBgAgBncEAAAAACUAAAAAAAEAAQABABAAQgRgADkAAQABAAAAEAAwBYwFUQABAAQAAAEQAMkF
+jAVlAAMACAARADYEnQARAEEBoQARAJMApQBQIAAAAACGAEgEBgABAFwhAAAAAIEA3ACpAAEACCIA
+AAAAhhjpBAYABAAQIgAAAACDGOkEBgAEABgiAAAAAJMInwSyAAQARCIAAAAAkwgpAbcABABLIgAA
+AACTCDUBvAAEAFMiAAAAAJYI8wXCAAUAWiIAAAAAhhjpBAYABQBiIgAAAACRGO8ExwAFAAAAAQCJ
+AwAAAgCcAQAAAwDmAAAAAQBgAwkA6QQBABEA6QQGABkA6QQKACkA6QQQADEA6QQQADkA6QQQAEEA
+6QQQAEkA6QQQAFEA6QQQAFkA6QQQAGEA6QQQAGkA6QQGAJkA6QQGAMEA6QQVANEA6QQGAHEA0gUi
+ANkAuwUnAOEAJgQsAOkAVgMyAPEA5QU2APEA5QU9ANkADQYBAHkAkwFQAHkAgANVAIkA6QRZAPkA
+GgEQAPkAhQEGANkA2gVfAPEA5QVlAJEAowBVAJEAhABVAAEB3wRrAPkAiwEGAHEA6QQGAKEA6QQG
+AAkBygB0AAkBHAZ9AKkA6QSDAMkA6QQGACkAcwACAS4ACwDaAC4AEwDjAC4AGwACAS4AIwALAS4A
+KwA0AS4AMwA0AS4AOwA0AS4AQwALAS4ASwA6AS4AUwA0AS4AWwBRAUMAYwCbAUkAcwACAWEAewCb
+AWMAawCbARsAQwADAAEABAADAAAAowTLAAAASQHQAAAA9wXVAAIABQADAAIABgAFAAEABwAFAAIA
+CAAHAASAAAABAAAA7B1PjAAAAAAAAAEAAAAEAAAAAAAAAAAAAACLAFcAAAAAAA0AAAAAAAAAAAAA
+AJQAjgMAAAAADQAAAAAAAAAAAAAAlAA4AAAAAAAEAAAAAAAAAAAAAACLAC8EAAAAAAAAAAABAAAA
+OgUAAAAAAAAAU1RfMTc3ZWM5ODQ5ODhmNGQ4NWI1MGEzZjg0ZDVkNzIxYzEAPE1vZHVsZT4AU3lz
+dGVtLklPAE1pY3Jvc29mdC5TcWxTZXJ2ZXIuTWFuYWdlZERUUwBtc2NvcmxpYgBTVF82ODUwZjI4
+MjJmYzQ0ZjZiYTZkMTRiZDY4YjEyYTA3ZQBnZXRfU3RhY2tUcmFjZQBkZWZhdWx0SW5zdGFuY2UA
+Z2V0X01lc3NhZ2UAVmFyaWFibGUAUnVudGltZVR5cGVIYW5kbGUAR2V0VHlwZUZyb21IYW5kbGUA
+V3JpdGVGaWxlAHJlc3VsdEZpbGUARGF0ZVRpbWUATWljcm9zb2Z0LlNxbFNlcnZlci5EdHMuUnVu
+dGltZQBXcml0ZUxpbmUAVHlwZQBnZXRfQ3VsdHVyZQBzZXRfQ3VsdHVyZQByZXNvdXJjZUN1bHR1
+cmUAVlNUQVJUU2NyaXB0T2JqZWN0TW9kZWxCYXNlAEFwcGxpY2F0aW9uU2V0dGluZ3NCYXNlAENs
+b3NlAERpc3Bvc2UAZ2V0X0RhdGUAY3VycmVudERhdGUARWRpdG9yQnJvd3NhYmxlU3RhdGUAQ29t
+cGlsZXJHZW5lcmF0ZWRBdHRyaWJ1dGUARGVidWdnZXJOb25Vc2VyQ29kZUF0dHJpYnV0ZQBEZWJ1
+Z2dhYmxlQXR0cmlidXRlAEVkaXRvckJyb3dzYWJsZUF0dHJpYnV0ZQBBc3NlbWJseVRpdGxlQXR0
+cmlidXRlAEFzc2VtYmx5VHJhZGVtYXJrQXR0cmlidXRlAFRhcmdldEZyYW1ld29ya0F0dHJpYnV0
+ZQBBc3NlbWJseUNvbmZpZ3VyYXRpb25BdHRyaWJ1dGUAQXNzZW1ibHlEZXNjcmlwdGlvbkF0dHJp
+YnV0ZQBDb21waWxhdGlvblJlbGF4YXRpb25zQXR0cmlidXRlAEFzc2VtYmx5UHJvZHVjdEF0dHJp
+YnV0ZQBBc3NlbWJseUNvcHlyaWdodEF0dHJpYnV0ZQBTU0lTU2NyaXB0VGFza0VudHJ5UG9pbnRB
+dHRyaWJ1dGUAQXNzZW1ibHlDb21wYW55QXR0cmlidXRlAFJ1bnRpbWVDb21wYXRpYmlsaXR5QXR0
+cmlidXRlAGdldF9WYWx1ZQB2YWx1ZQBTeXN0ZW0uUnVudGltZS5WZXJzaW9uaW5nAFRvU3RyaW5n
+AHBhdGgATWljcm9zb2Z0LlNxbFNlcnZlci5TY3JpcHRUYXNrAE1pY3Jvc29mdC5TcWxTZXJ2ZXIu
+RHRzLlRhc2tzLlNjcmlwdFRhc2sAU2NyaXB0T2JqZWN0TW9kZWwAU3lzdGVtLkNvbXBvbmVudE1v
+ZGVsAFNUXzE3N2VjOTg0OTg4ZjRkODViNTBhM2Y4NGQ1ZDcyMWMxLmRsbABnZXRfSXRlbQBTeXN0
+ZW0AcmVzb3VyY2VNYW4AU2NyaXB0TWFpbgBTeXN0ZW0uQ29uZmlndXJhdGlvbgBTeXN0ZW0uR2xv
+YmFsaXphdGlvbgBTeXN0ZW0uUmVmbGVjdGlvbgBFeGNlcHRpb24AQ3VsdHVyZUluZm8AZ2V0X1Jl
+c291cmNlTWFuYWdlcgBFdmVudHNPYmplY3RXcmFwcGVyAFN0cmVhbVdyaXRlcgBUZXh0V3JpdGVy
+AEZpcmVFcnJvcgAuY3RvcgAuY2N0b3IAU3lzdGVtLkRpYWdub3N0aWNzAFN5c3RlbS5SdW50aW1l
+LkNvbXBpbGVyU2VydmljZXMAU3lzdGVtLlJlc291cmNlcwBTVF8xNzdlYzk4NDk4OGY0ZDg1YjUw
+YTNmODRkNWQ3MjFjMS5Qcm9wZXJ0aWVzLlJlc291cmNlcy5yZXNvdXJjZXMARGVidWdnaW5nTW9k
+ZXMAU1RfMTc3ZWM5ODQ5ODhmNGQ4NWI1MGEzZjg0ZDVkNzIxYzEuUHJvcGVydGllcwBnZXRfVmFy
+aWFibGVzAFNldHRpbmdzAGdldF9EdHMAZ2V0X0V2ZW50cwBDb25jYXQAT2JqZWN0AGdldF9EZWZh
+dWx0AERUU0V4ZWNSZXN1bHQAc2V0X1Rhc2tSZXN1bHQAZ2V0X0Fzc2VtYmx5AAAAAAAnVQBzAGUA
+cgA6ADoAdwBvAHIAawBpAG4AZwBGAG8AbABkAGUAcgAAA1wAACtVAHMAZQByADoAOgBjAG8AbgB0
+AHIAbwBsAEYAaQBsAGUATgBhAG0AZQAAI1UAcwBlAHIAOgA6AGMAdQByAHIAZQBuAHQARABhAHQA
+ZQAAKVUAcwBlAHIAOgA6AHIAZQBzAHUAbAB0AEYAaQBsAGUATgBhAG0AZQAAA18AACtVAHMAZQBy
+ADoAOgBkAGEAdABhAEQAZQBzAGMAcgBpAHAAdABpAG8AbgAAF0wAYQBzAHQAVQBwAGQAYQB0AGUA
+cwAAKyAALQAgAFcAcgBpAHQAZQAgAGMAbwBuAHQAcgBvAGwAIABmAGkAbABlAAEFDQAKAABxUwBU
+AF8AMQA3ADcAZQBjADkAOAA0ADkAOAA4AGYANABkADgANQBiADUAMABhADMAZgA4ADQAZAA1AGQA
+NwAyADEAYwAxAC4AUAByAG8AcABlAHIAdABpAGUAcwAuAFIAZQBzAG8AdQByAGMAZQBzAAAAdSCx
+yr2P50agGtKWN6oz3QAEIAEBCAMgAAEFIAEBEREEIAEBDgUgAQERXQYHAw4RPQ4EIAASbQQgABJx
+BSABEnUcAyAAHAYAAw4ODg4FAAEOHQ4MBwYODhJFET0RQRJJBCAAET0DIAAOBSACAQ4CBSAAEoCB
+BQACDg4OCCAFAggODg4ICAABEoCFEYCJBSAAEoCNByACAQ4SgI0It3pcVhk04IkIiYRdzYCAzJED
+BhJVAwYSWQMGEhAIIAMRQQ4RPQ4EAAASVQQAABJZBQABARJZBAAAEhADAAABBAgAElUECAASWQQI
+ABIQCAEACAAAAAAAHgEAAQBUAhZXcmFwTm9uRXhjZXB0aW9uVGhyb3dzAQgBAAIAAAAAACgBACNT
+VF8xNzdlYzk4NDk4OGY0ZDg1YjUwYTNmODRkNWQ3MjFjMQAABQEAAAAAFgEAEUNvcHlyaWdodCBA
+ICAyMDIwAABJAQAaLk5FVEZyYW1ld29yayxWZXJzaW9uPXY0LjUBAFQOFEZyYW1ld29ya0Rpc3Bs
+YXlOYW1lEi5ORVQgRnJhbWV3b3JrIDQuNQQBAAAAtAAAAM7K774BAAAAkQAAAGxTeXN0ZW0uUmVz
+b3VyY2VzLlJlc291cmNlUmVhZGVyLCBtc2NvcmxpYiwgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJl
+PW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkjU3lzdGVtLlJlc291cmNl
+cy5SdW50aW1lUmVzb3VyY2VTZXQCAAAAAAAAAAAAAABQQURQQURQtAAAAEAxAAAAAAAAAAAAAFox
+AAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAABMMQAAAAAAAAAAAAAAAF9Db3JEbGxNYWluAG1zY29y
+ZWUuZGxsAAAAAAD/JQAgABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAEAEAAAABgAAIAAAAAAAAAAAAAAAAAAAAEAAQAAADAAAIAAAAAAAAAAAAAAAAAAAAEAAAAA
+AEgAAABYQAAAGgQAAAAAAAAAAAAAGgQ0AAAAVgBTAF8AVgBFAFIAUwBJAE8ATgBfAEkATgBGAE8A
+AAAAAL0E7/4AAAEAAAABAE+M7B0AAAEAT4zsHT8AAAAAAAAABAAAAAIAAAAAAAAAAAAAAAAAAABE
+AAAAAQBWAGEAcgBGAGkAbABlAEkAbgBmAG8AAAAAACQABAAAAFQAcgBhAG4AcwBsAGEAdABpAG8A
+bgAAAAAAAACwBHoDAAABAFMAdAByAGkAbgBnAEYAaQBsAGUASQBuAGYAbwAAAFYDAAABADAAMAAw
+ADAAMAA0AGIAMAAAABoAAQABAEMAbwBtAG0AZQBuAHQAcwAAAAAAAAAiAAEAAQBDAG8AbQBwAGEA
+bgB5AE4AYQBtAGUAAAAAAAAAAABwACQAAQBGAGkAbABlAEQAZQBzAGMAcgBpAHAAdABpAG8AbgAA
+AAAAUwBUAF8AMQA3ADcAZQBjADkAOAA0ADkAOAA4AGYANABkADgANQBiADUAMABhADMAZgA4ADQA
+ZAA1AGQANwAyADEAYwAxAAAAPgAPAAEARgBpAGwAZQBWAGUAcgBzAGkAbwBuAAAAAAAxAC4AMAAu
+ADcANgA2ADAALgAzADUAOQAxADkAAAAAAHAAKAABAEkAbgB0AGUAcgBuAGEAbABOAGEAbQBlAAAA
+UwBUAF8AMQA3ADcAZQBjADkAOAA0ADkAOAA4AGYANABkADgANQBiADUAMABhADMAZgA4ADQAZAA1
+AGQANwAyADEAYwAxAC4AZABsAGwAAABIABIAAQBMAGUAZwBhAGwAQwBvAHAAeQByAGkAZwBoAHQA
+AABDAG8AcAB5AHIAaQBnAGgAdAAgAEAAIAAgADIAMAAyADAAAAAqAAEAAQBMAGUAZwBhAGwAVABy
+AGEAZABlAG0AYQByAGsAcwAAAAAAAAAAAHgAKAABAE8AcgBpAGcAaQBuAGEAbABGAGkAbABlAG4A
+YQBtAGUAAABTAFQAXwAxADcANwBlAGMAOQA4ADQAOQA4ADgAZgA0AGQAOAA1AGIANQAwAGEAMwBm
+ADgANABkADUAZAA3ADIAMQBjADEALgBkAGwAbAAAAGgAJAABAFAAcgBvAGQAdQBjAHQATgBhAG0A
+ZQAAAAAAUwBUAF8AMQA3ADcAZQBjADkAOAA0ADkAOAA4AGYANABkADgANQBiADUAMABhADMAZgA4
+ADQAZAA1AGQANwAyADEAYwAxAAAAQgAPAAEAUAByAG8AZAB1AGMAdABWAGUAcgBzAGkAbwBuAAAA
+MQAuADAALgA3ADYANgAwAC4AMwA1ADkAMQA5AAAAAABGAA8AAQBBAHMAcwBlAG0AYgBsAHkAIABW
+AGUAcgBzAGkAbwBuAAAAMQAuADAALgA3ADYANgAwAC4AMwA1ADkAMQA5AAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAADAAAAGwxAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
+        </ScriptProject>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Validating task runs only once a day"
+      DTS:CreationName="Microsoft.ScriptTask"
+      DTS:Description="Script Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{A65209ED-85AC-47D1-A99A-27DCD0506335}"
+      DTS:ExecutableType="Microsoft.ScriptTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Validating task runs only once a day"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ScriptProject
+          Name="ST_87e0b1b06e1c4a2ab356526b445bb950"
+          VSTAMajorVersion="14"
+          VSTAMinorVersion="0"
+          Language="CSharp"
+          ReadOnlyVariables="User::controlFileName,User::currentDate,User::workingFolder">
+          <ProjectItem
+            Name="Properties\Settings.settings"
+            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Resources.resx"
+            Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+</root>]]></ProjectItem>
+          <ProjectItem
+            Name="ST_87e0b1b06e1c4a2ab356526b445bb950.csproj"
+            Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{91ED6E4B-0646-4CB3-AA56-7EAA1A636CE3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ST_87e0b1b06e1c4a2ab356526b445bb950</RootNamespace>
+    <AssemblyName>ST_87e0b1b06e1c4a2ab356526b445bb950</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.SqlServer.ManagedDTS, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.ScriptTask, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptMain.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <!-- Include the build rules for a C# project.-->
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}">
+        <ProjectProperties HostName="VSTAHostName" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" />
+        <Host Name="ScriptTask" />
+        <ProjectClient>
+          <HostIdentifier>SSIS_ST130</HostIdentifier>
+        </ProjectClient>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>]]></ProjectItem>
+          <ProjectItem
+            Name="ScriptMain.cs"
+            Encoding="UTF8"><![CDATA[using System;
+using Microsoft.SqlServer.Dts.Runtime;
+using System.IO;
+
+namespace ST_be48938f3e4540d9920966d865510067
+{
+    [Microsoft.SqlServer.Dts.Tasks.ScriptTask.SSISScriptTaskEntryPointAttribute]
+    public partial class ScriptMain : Microsoft.SqlServer.Dts.Tasks.ScriptTask.VSTARTScriptObjectModelBase
+    {
+        private const string ComponentName = "INVESTIA_UNIVERIS" + " - Script task Validations";
+
+        public void Main()
+        {
+            var currentDate = (DateTime)Dts.Variables["currentDate"].Value;
+            var controlFilePath = (string)Dts.Variables["workingFolder"].Value + "\\" + (string)Dts.Variables["controlFileName"].Value;
+
+            if (ISAnyControlFile(controlFilePath) == DTSExecResult.Success)
+            {
+                if (IsNewUpdateRequired(currentDate, controlFilePath) == DTSExecResult.Success)
+                {
+                    Dts.TaskResult = (int)DTSExecResult.Success;
+                    return;
+                }
+            }
+            else
+            {
+                Dts.Events.FireWarning(0, ComponentName, "Control file not found", null, 0);
+                Dts.TaskResult = (int)DTSExecResult.Success;
+                return;
+            }
+
+            Dts.TaskResult = (int)DTSExecResult.Completion;
+        }
+
+        private DTSExecResult ISAnyControlFile(string controlFilePath)
+        {
+            if (File.Exists(controlFilePath) == true)
+            {
+                return DTSExecResult.Success;
+            }
+
+            return DTSExecResult.Failure;
+        }
+        private DTSExecResult IsNewUpdateRequired(DateTime currentDate, string controlFilePath)
+        {
+            StreamReader reader = null;
+
+            try
+            {
+                reader = new StreamReader(controlFilePath);
+                reader.ReadLine();//read the header
+                var values = reader.ReadLine().Split(';');//read the colones
+
+                reader.Close();
+
+                var lastUpdate = DateTime.Parse(values[0]);
+
+                if (lastUpdate.Date == currentDate.Date) //should run no more than once a day 
+                {
+                    return DTSExecResult.Failure;
+                }
+
+                return DTSExecResult.Success;
+            }
+            catch (Exception ex)
+            {
+                Dts.Events.FireError(0, ComponentName, ex.Message + "\r\n" + ex.StackTrace, null, 0);
+            }
+            finally
+            {
+                if (reader != null)
+                {
+                    reader.Dispose();
+                }
+            }
+
+            return DTSExecResult.Failure;
+        }
+    }
+}]]></ProjectItem>
+          <ProjectItem
+            Name="Project"
+            Encoding="UTF16LE"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="3.0" schemaVersion="1.0">
+	<msb:PropertyGroup>
+		<msb:CodeName>ST_87e0b1b06e1c4a2ab356526b445bb950</msb:CodeName>
+		<msb:Language>msBuild</msb:Language>
+		<msb:DisplayName>ST_87e0b1b06e1c4a2ab356526b445bb950</msb:DisplayName>
+		<msb:ProjectId>{0ED2E580-11BB-42A5-A174-CEB8EDD30315}</msb:ProjectId>
+	</msb:PropertyGroup>
+	<msb:ItemGroup>
+		<msb:Project Include="ST_87e0b1b06e1c4a2ab356526b445bb950.csproj"/>
+		<msb:File Include="Properties\AssemblyInfo.cs"/>
+		<msb:File Include="Properties\Settings.settings"/>
+		<msb:File Include="Properties\Resources.resx"/>
+		<msb:File Include="Properties\Resources.Designer.cs"/>
+		<msb:File Include="Properties\Settings.Designer.cs"/>
+		<msb:File Include="ScriptMain.cs"/>
+	</msb:ItemGroup>
+</c:Project>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Settings.Designer.cs"
+            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_87e0b1b06e1c4a2ab356526b445bb950.Properties.Settings.get_Default():ST_87e0b1b06e1c4a2ab356526b445bb950.Properties.Sett" +
+    "ings")]
+
+namespace ST_87e0b1b06e1c4a2ab356526b445bb950.Properties {
+    
+    
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+        
+        public static Settings Default {
+            get {
+                return defaultInstance;
+            }
+        }
+    }
+}]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\AssemblyInfo.cs"
+            Encoding="UTF8"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("ST_87e0b1b06e1c4a2ab356526b445bb950")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("ST_87e0b1b06e1c4a2ab356526b445bb950")]
+[assembly: AssemblyCopyright("Copyright @  2020")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Resources.Designer.cs"
+            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_87e0b1b06e1c4a2ab356526b445bb950.Properties.Resources.get_ResourceManager():System.Resources.Resou" +
+    "rceManager")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_87e0b1b06e1c4a2ab356526b445bb950.Properties.Resources.get_Culture():System.Globalization.CultureIn" +
+    "fo")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_87e0b1b06e1c4a2ab356526b445bb950.Properties.Resources.set_Culture(System.Globalization.CultureInfo" +
+    "):Void")]
+
+namespace ST_87e0b1b06e1c4a2ab356526b445bb950.Properties {
+    
+    
+    /// <summary>
+    ///   A strongly-typed resource class, for looking up localized strings, etc.
+    /// </summary>
+    // This class was auto-generated by the StronglyTypedResourceBuilder
+    // class via a tool like ResGen or Visual Studio.
+    // To add or remove a member, edit your .ResX file then rerun ResGen
+    // with the /str option, or rebuild your VS project.
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    internal class Resources {
+        
+        private static global::System.Resources.ResourceManager resourceMan;
+        
+        private static global::System.Globalization.CultureInfo resourceCulture;
+        
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        internal Resources() {
+        }
+        
+        /// <summary>
+        ///   Returns the cached ResourceManager instance used by this class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if ((resourceMan == null)) {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ST_87e0b1b06e1c4a2ab356526b445bb950.Properties.Resources", typeof(Resources).Assembly);
+                    resourceMan = temp;
+                }
+                return resourceMan;
+            }
+        }
+        
+        /// <summary>
+        ///   Overrides the current thread's CurrentUICulture property for all
+        ///   resource lookups using this strongly typed resource class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
+                return resourceCulture;
+            }
+            set {
+                resourceCulture = value;
+            }
+        }
+    }
+}]]></ProjectItem>
+          <BinaryItem
+            Name="ST_87e0b1b06e1c4a2ab356526b445bb950.dll">TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDAJlE4V8AAAAAAAAAAOAAIiALATAAABQAAAAIAAAAAAAAAjIA
+AAAgAAAAQAAAAAAAEAAgAAAAAgAABAAAAAAAAAAGAAAAAAAAAACAAAAAAgAAAAAAAAMAYIUAABAA
+ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAALAxAABPAAAAAEAAAHgEAAAAAAAAAAAAAAAAAAAA
+AAAAAGAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAACBIAAAAgAAAAFAAAAAIA
+AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAAHgEAAAAQAAAAAYAAAAWAAAAAAAAAAAAAAAAAABAAABA
+LnJlbG9jAAAMAAAAAGAAAAACAAAAHAAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAADk
+MQAAAAAAAEgAAAACAAUAUCIAAKgOAAABAAAAAAAAAPgwAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAABMwBgDAAAAAAQAAEQIoEAAACm8RAAAKcgEAAHBvEgAACm8T
+AAAKpQ8AAAEKAigQAAAKbxEAAApyGQAAcG8SAAAKbxMAAAp0HgAAAXI1AABwAigQAAAKbxEAAApy
+OQAAcG8SAAAKbxMAAAp0HgAAASgUAAAKCwIHKAIAAAYtFwIGBygDAAAGLTcCKBAAAAoWbxUAAAoq
+AigQAAAKbxYAAAoWclkAAHBysQAAcBQWbxcAAAoCKBAAAAoWbxUAAAoqAigQAAAKGG8VAAAKKjID
+KBgAAAosAhYqFyoAAAAbMAYAkQAAAAIAABEUCgRzGQAACgoGbxoAAAomBm8aAAAKF40iAAABJRYf
+O51vGwAACgZvHAAAChaaKB0AAAoLEgEoHgAACg8BKB4AAAooHwAACiwEFwzeQhYM3j4NAigQAAAK
+bxYAAAoWclkAAHAJbyAAAApy3wAAcAlvIQAACigUAAAKFBZvIgAACibeCgYsBgZvIwAACtwXKggq
+AAAAARwAAAAAAgBPUQAyEgAAAQIAAgCBgwAKAAAAAB4CKCQAAAoqHgIoJQAACiqufgIAAAQtHnLl
+AABw0AMAAAIoJgAACm8nAAAKcygAAAqAAgAABH4CAAAEKhp+AwAABCoeAoADAAAEKhp+BAAABCoe
+AigpAAAKKi5zCgAABoAEAAAEKgAAQlNKQgEAAQAAAAAADAAAAHY0LjAuMzAzMTkAAAAABQBsAAAA
+SAQAACN+AAC0BAAAgAYAACNTdHJpbmdzAAAAADQLAABYAQAAI1VTAIwMAAAQAAAAI0dVSUQAAACc
+DAAADAIAACNCbG9iAAAAAAAAAAIAAAFXHaIBCQEAAAD6ATMAFgAAAQAAACUAAAAEAAAABAAAAAsA
+AAAEAAAAKQAAAAEAAAAQAAAAAgAAAAIAAAADAAAABAAAAAEAAAAEAAAAAQAAAAAANgQBAAAAAAAG
+AMwCRgUGAFsDRgUGABgCMwUPALoFAAAGAEUCrwQGAK8CrwQGAJACrwQGAEIDrwQGAOwCrwQGAAUD
+rwQGAFwCrwQGAHcCiQMKACAD5QMKAG4B5QMGAA8BZwQOAEkGGAEGANwEUgAGAMEEZwQGAPsBMwUG
+ADAGZwQGAPgEZgUGAMsEmgQSAMsBIAQSACwCIAQSAIoBhQQGAOABRgUKAA4E5QMOAPwFGAEOAMMA
+GAEGAK8DZwQKAAgF5QMGAPwAUgAGAOkEUgAGANcEZwQGAEEBZwQGAMwAZwQGAGoGrwQAAAAASQAA
+AAAAAQABAAEAEAB6BCUAOQABAAEAAAAQAG0FyQVRAAIABQAAARAABgbJBWUABAAJAFGAAQEBAREA
+bgQEAREAXgEIAREApwAMAVAgAAAAAIYAgAQGAAEAHCEAAAAAgQDwABABAQAsIQAAAACBAIQAFgEC
+AOghAAAAAIYYJgUGAAQA8CEAAAAAgxgmBQYABAD4IQAAAACTCPQEHgEEACQiAAAAAJMIRgEjAQQA
+KyIAAAAAkwhSASgBBAAzIgAAAACWCD0GLgEFADoiAAAAAIYYJgUGAAUAQiIAAAAAkRgsBTMBBQAA
+AAEAtgMAAAEAvwEAAAIAtgMAAAEAgwMJACYFAQARACYFBgAZACYFCgApACYFEAAxACYFEAA5ACYF
+EABBACYFEABJACYFEABRACYFEABZACYFEABhACYFEABpACYFBgCZACYFBgDBACYFFQDRACYFBgBx
+AA8GIQDZAPgFJgDhAF4EKwDpAHkDMQDxACkGNQDZAFcGAQDZABcGPAD5AKMDQQABASIGSgCJACYF
+EAAJATgBWgDxADcGXgAJAaIBBgB5ALABZQB5ALYBawB5AHMGcACRALcAWgCRAJgAWgD5ABwFeAAJ
+AagBBgBxACYFBgChACYFBgAZAd4AgQAZAWYGigCpACYFkADJACYFBgAOAAQAqgApAHMAbgEuAAsA
+RgEuABMATwEuABsAbgEuACMAdwEuACsAoAEuADMAoAEuADsAoAEuAEMAdwEuAEsApgEuAFMAoAEu
+AFsAvQFDAGMABwJJAHMAbgFjAGsABwKBAHsABwIbAE8AAwABAAQAAwAAAPgENwEAAGYBPAEAAEEG
+QQECAAYAAwACAAcABQABAAgABQACAAkABwAEgAAAAQAAAOwdZIwAAAAAAAABAAAABAAAAAAAAAAA
+AAAAmAB7AAAAAAANAAAAAAAAAAAAAAChAMYDAAAAAA0AAAAAAAAAAAAAAKEAXAAAAAAABAAAAAAA
+AAAAAAAAmABnBAAAAAAAAAAAAQAAAHcFAAAAAABTVF84N2UwYjFiMDZlMWM0YTJhYjM1NjUyNmI0
+NDViYjk1MABTVF9iZTQ4OTM4ZjNlNDU0MGQ5OTIwOTY2ZDg2NTUxMDA2NwA8TW9kdWxlPgBTeXN0
+ZW0uSU8ATWljcm9zb2Z0LlNxbFNlcnZlci5NYW5hZ2VkRFRTAG1zY29ybGliAElzTmV3VXBkYXRl
+UmVxdWlyZWQAZ2V0X1N0YWNrVHJhY2UAZGVmYXVsdEluc3RhbmNlAGdldF9NZXNzYWdlAFZhcmlh
+YmxlAFJ1bnRpbWVUeXBlSGFuZGxlAEdldFR5cGVGcm9tSGFuZGxlAElTQW55Q29udHJvbEZpbGUA
+Q29tcG9uZW50TmFtZQBEYXRlVGltZQBNaWNyb3NvZnQuU3FsU2VydmVyLkR0cy5SdW50aW1lAFJl
+YWRMaW5lAFR5cGUAZ2V0X0N1bHR1cmUAc2V0X0N1bHR1cmUAcmVzb3VyY2VDdWx0dXJlAFZTVEFS
+VFNjcmlwdE9iamVjdE1vZGVsQmFzZQBBcHBsaWNhdGlvblNldHRpbmdzQmFzZQBDbG9zZQBEaXNw
+b3NlAFBhcnNlAGdldF9EYXRlAGN1cnJlbnREYXRlAEVkaXRvckJyb3dzYWJsZVN0YXRlAENvbXBp
+bGVyR2VuZXJhdGVkQXR0cmlidXRlAERlYnVnZ2VyTm9uVXNlckNvZGVBdHRyaWJ1dGUARGVidWdn
+YWJsZUF0dHJpYnV0ZQBFZGl0b3JCcm93c2FibGVBdHRyaWJ1dGUAQXNzZW1ibHlUaXRsZUF0dHJp
+YnV0ZQBBc3NlbWJseVRyYWRlbWFya0F0dHJpYnV0ZQBUYXJnZXRGcmFtZXdvcmtBdHRyaWJ1dGUA
+QXNzZW1ibHlDb25maWd1cmF0aW9uQXR0cmlidXRlAEFzc2VtYmx5RGVzY3JpcHRpb25BdHRyaWJ1
+dGUAQ29tcGlsYXRpb25SZWxheGF0aW9uc0F0dHJpYnV0ZQBBc3NlbWJseVByb2R1Y3RBdHRyaWJ1
+dGUAQXNzZW1ibHlDb3B5cmlnaHRBdHRyaWJ1dGUAU1NJU1NjcmlwdFRhc2tFbnRyeVBvaW50QXR0
+cmlidXRlAEFzc2VtYmx5Q29tcGFueUF0dHJpYnV0ZQBSdW50aW1lQ29tcGF0aWJpbGl0eUF0dHJp
+YnV0ZQBnZXRfVmFsdWUAdmFsdWUAU3lzdGVtLlJ1bnRpbWUuVmVyc2lvbmluZwBGaXJlV2Fybmlu
+ZwBTdHJpbmcAY29udHJvbEZpbGVQYXRoAE1pY3Jvc29mdC5TcWxTZXJ2ZXIuU2NyaXB0VGFzawBN
+aWNyb3NvZnQuU3FsU2VydmVyLkR0cy5UYXNrcy5TY3JpcHRUYXNrAFNjcmlwdE9iamVjdE1vZGVs
+AFN5c3RlbS5Db21wb25lbnRNb2RlbABTVF84N2UwYjFiMDZlMWM0YTJhYjM1NjUyNmI0NDViYjk1
+MC5kbGwAZ2V0X0l0ZW0AU3lzdGVtAHJlc291cmNlTWFuAFNjcmlwdE1haW4AU3lzdGVtLkNvbmZp
+Z3VyYXRpb24AU3lzdGVtLkdsb2JhbGl6YXRpb24AU3lzdGVtLlJlZmxlY3Rpb24ARXhjZXB0aW9u
+AEN1bHR1cmVJbmZvAENoYXIAU3RyZWFtUmVhZGVyAFRleHRSZWFkZXIAZ2V0X1Jlc291cmNlTWFu
+YWdlcgBFdmVudHNPYmplY3RXcmFwcGVyAEZpcmVFcnJvcgAuY3RvcgAuY2N0b3IAU3lzdGVtLkRp
+YWdub3N0aWNzAFN5c3RlbS5SdW50aW1lLkNvbXBpbGVyU2VydmljZXMAU3lzdGVtLlJlc291cmNl
+cwBTVF84N2UwYjFiMDZlMWM0YTJhYjM1NjUyNmI0NDViYjk1MC5Qcm9wZXJ0aWVzLlJlc291cmNl
+cy5yZXNvdXJjZXMARGVidWdnaW5nTW9kZXMAU1RfODdlMGIxYjA2ZTFjNGEyYWIzNTY1MjZiNDQ1
+YmI5NTAuUHJvcGVydGllcwBnZXRfVmFyaWFibGVzAFNldHRpbmdzAGdldF9EdHMAZ2V0X0V2ZW50
+cwBFeGlzdHMAQ29uY2F0AE9iamVjdABTcGxpdABnZXRfRGVmYXVsdABEVFNFeGVjUmVzdWx0AHNl
+dF9UYXNrUmVzdWx0AGdldF9Bc3NlbWJseQBvcF9FcXVhbGl0eQAAABdjAHUAcgByAGUAbgB0AEQA
+YQB0AGUAABt3AG8AcgBrAGkAbgBnAEYAbwBsAGQAZQByAAADXAAAH2MAbwBuAHQAcgBvAGwARgBp
+AGwAZQBOAGEAbQBlAABXSQBOAFYARQBTAFQASQBBAF8AVQBOAEkAVgBFAFIASQBTACAALQAgAFMA
+YwByAGkAcAB0ACAAdABhAHMAawAgAFYAYQBsAGkAZABhAHQAaQBvAG4AcwABLUMAbwBuAHQAcgBv
+AGwAIABmAGkAbABlACAAbgBvAHQAIABmAG8AdQBuAGQAAAUNAAoAAHFTAFQAXwA4ADcAZQAwAGIA
+MQBiADAANgBlADEAYwA0AGEAMgBhAGIAMwA1ADYANQAyADYAYgA0ADQANQBiAGIAOQA1ADAALgBQ
+AHIAbwBwAGUAcgB0AGkAZQBzAC4AUgBlAHMAbwB1AHIAYwBlAHMAAADlCNZVt320Tbkod9AhkigO
+AAQgAQEIAyAAAQUgAQEREQQgAQEOBSABARFdBQcCET0OBCAAEm0EIAAScQUgARJ1HAMgABwGAAMO
+Dg4OBCAAEn0IIAUBCA4ODggEAAECDgoHBBJFET0RQRJJAyAADgYgAR0OHQMFAAERPQ4EIAARPQcA
+AgIRPRE9CCAFAggODg4ICAABEoCNEYCRBSAAEoCVByACAQ4SgJUIt3pcVhk04IkIiYRdzYCAzJFW
+SQBOAFYARQBTAFQASQBBAF8AVQBOAEkAVgBFAFIASQBTACAALQAgAFMAYwByAGkAcAB0ACAAdABh
+AHMAawAgAFYAYQBsAGkAZABhAHQAaQBvAG4AcwACBg4DBhJVAwYSWQMGEhAFIAERQQ4HIAIRQRE9
+DgQAABJVBAAAElkFAAEBElkEAAASEAMAAAEECAASVQQIABJZBAgAEhAIAQAIAAAAAAAeAQABAFQC
+FldyYXBOb25FeGNlcHRpb25UaHJvd3MBCAEAAgAAAAAAKAEAI1NUXzg3ZTBiMWIwNmUxYzRhMmFi
+MzU2NTI2YjQ0NWJiOTUwAAAFAQAAAAAWAQARQ29weXJpZ2h0IEAgIDIwMjAAAEkBABouTkVURnJh
+bWV3b3JrLFZlcnNpb249djQuNQEAVA4URnJhbWV3b3JrRGlzcGxheU5hbWUSLk5FVCBGcmFtZXdv
+cmsgNC41BAEAAAC0AAAAzsrvvgEAAACRAAAAbFN5c3RlbS5SZXNvdXJjZXMuUmVzb3VyY2VSZWFk
+ZXIsIG1zY29ybGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5
+VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OSNTeXN0ZW0uUmVzb3VyY2VzLlJ1bnRpbWVSZXNvdXJjZVNl
+dAIAAAAAAAAAAAAAAFBBRFBBRFC0AAAA2DEAAAAAAAAAAAAA8jEAAAAgAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAOQxAAAAAAAAAAAAAAAAX0NvckRsbE1haW4AbXNjb3JlZS5kbGwAAAAAAP8lACAAEAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAQAQAAAAGAAAgAAAAAAAAAAAAAAAAAAAAQABAAAAMAAAgAAAAAAAAAAAAAAAAAAAAQAAAAAA
+SAAAAFhAAAAaBAAAAAAAAAAAAAAaBDQAAABWAFMAXwBWAEUAUgBTAEkATwBOAF8ASQBOAEYATwAA
+AAAAvQTv/gAAAQAAAAEAZIzsHQAAAQBkjOwdPwAAAAAAAAAEAAAAAgAAAAAAAAAAAAAAAAAAAEQA
+AAABAFYAYQByAEYAaQBsAGUASQBuAGYAbwAAAAAAJAAEAAAAVAByAGEAbgBzAGwAYQB0AGkAbwBu
+AAAAAAAAALAEegMAAAEAUwB0AHIAaQBuAGcARgBpAGwAZQBJAG4AZgBvAAAAVgMAAAEAMAAwADAA
+MAAwADQAYgAwAAAAGgABAAEAQwBvAG0AbQBlAG4AdABzAAAAAAAAACIAAQABAEMAbwBtAHAAYQBu
+AHkATgBhAG0AZQAAAAAAAAAAAHAAJAABAEYAaQBsAGUARABlAHMAYwByAGkAcAB0AGkAbwBuAAAA
+AABTAFQAXwA4ADcAZQAwAGIAMQBiADAANgBlADEAYwA0AGEAMgBhAGIAMwA1ADYANQAyADYAYgA0
+ADQANQBiAGIAOQA1ADAAAAA+AA8AAQBGAGkAbABlAFYAZQByAHMAaQBvAG4AAAAAADEALgAwAC4A
+NwA2ADYAMAAuADMANQA5ADQAMAAAAAAAcAAoAAEASQBuAHQAZQByAG4AYQBsAE4AYQBtAGUAAABT
+AFQAXwA4ADcAZQAwAGIAMQBiADAANgBlADEAYwA0AGEAMgBhAGIAMwA1ADYANQAyADYAYgA0ADQA
+NQBiAGIAOQA1ADAALgBkAGwAbAAAAEgAEgABAEwAZQBnAGEAbABDAG8AcAB5AHIAaQBnAGgAdAAA
+AEMAbwBwAHkAcgBpAGcAaAB0ACAAQAAgACAAMgAwADIAMAAAACoAAQABAEwAZQBnAGEAbABUAHIA
+YQBkAGUAbQBhAHIAawBzAAAAAAAAAAAAeAAoAAEATwByAGkAZwBpAG4AYQBsAEYAaQBsAGUAbgBh
+AG0AZQAAAFMAVABfADgANwBlADAAYgAxAGIAMAA2AGUAMQBjADQAYQAyAGEAYgAzADUANgA1ADIA
+NgBiADQANAA1AGIAYgA5ADUAMAAuAGQAbABsAAAAaAAkAAEAUAByAG8AZAB1AGMAdABOAGEAbQBl
+AAAAAABTAFQAXwA4ADcAZQAwAGIAMQBiADAANgBlADEAYwA0AGEAMgBhAGIAMwA1ADYANQAyADYA
+YgA0ADQANQBiAGIAOQA1ADAAAABCAA8AAQBQAHIAbwBkAHUAYwB0AFYAZQByAHMAaQBvAG4AAAAx
+AC4AMAAuADcANgA2ADAALgAzADUAOQA0ADAAAAAAAEYADwABAEEAcwBzAGUAbQBiAGwAeQAgAFYA
+ZQByAHMAaQBvAG4AAAAxAC4AMAAuADcANgA2ADAALgAzADUAOQA0ADAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAMAAAABDIAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
+        </ScriptProject>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{2FF0EC11-C14C-41DE-97EE-9AB8ECC79773}"
+      DTS:From="Package\Validating task runs only once a day"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Create  file depot folders" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{D952D21A-E096-48C6-8B54-F3E556C8075F}"
+      DTS:From="Package\Copy from Univeris to FILE"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Update control file" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{AA89E8F9-FFD9-4C8F-80BB-2B417B696E58}"
+      DTS:From="Package\Create  file depot folders"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Copy from Univeris to FILE" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Contrainte]"
+      DTS:CreationName=""
+      DTS:DTSID="{75FB2C11-00F6-4C22-957B-8A70CFFA3768}"
+      DTS:From="Package\Update control file"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Contrainte"
+      DTS:To="Package\File System Task" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Cette section CDATA contient des informations sur la disposition du package. Elle comprend des informations telles que les coordonnées (x,y), la largeur et la hauteur.-->
+<!--Si vous modifiez manuellement cette section et commettez une erreur, vous pouvez la supprimer. -->
+<!--Le package pourra toujours se charger normalement, mais les informations de disposition précédente seront perdues et le concepteur réorganisera automatiquement les éléments sur l'aire de conception.-->
+<Objects
+  Version="8">
+  <!--Chaque nœud ci-dessous contiendra des propriétés qui n'affectent pas le comportement d'exécution.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="207,43"
+          Id="Package\Copy from Univeris to FILE"
+          TopLeft="271.500005625188,456.438596568499" />
+        <NodeLayout
+          Size="198,42"
+          Id="Package\Create  file depot folders"
+          TopLeft="281.500005625188,367.438596568499" />
+        <NodeLayout
+          Size="158,42"
+          Id="Package\File System Task"
+          TopLeft="302,668" />
+        <NodeLayout
+          Size="168,42"
+          Id="Package\Update control file"
+          TopLeft="291,562" />
+        <NodeLayout
+          Size="255,42"
+          Id="Package\Validating task runs only once a day"
+          TopLeft="254,249" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="381.000002812594,291">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,76.438596568499"
+              Start="0,0"
+              End="0,68.938596568499">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,68.938596568499" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="375.000002812594,499.438596568499">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,62.561403431501"
+              Start="0,0"
+              End="0,55.061403431501">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,55.061403431501" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="377.666672291855,409.438596568499">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,47"
+              Start="0,0"
+              End="0,39.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Contrainte]"
+          TopLeft="378,604">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,64"
+              Start="0,0"
+              End="0,56.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,56.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Copy from Univeris to FILE">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="129,43"
+          Id="Package\Copy from Univeris to FILE\Data Load"
+          TopLeft="113.250005718321,24.9999977977652" />
+        <NodeLayout
+          Size="173,43"
+          Id="Package\Copy from Univeris to FILE\Flat File Destination"
+          TopLeft="177.499997355044,169.000003181006" />
+        <EdgeLayout
+          Id="Package\Copy from Univeris to FILE.Paths[ADO NET Source Output]"
+          TopLeft="177.916672384988,67.6666644644319">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="86.2499916367229,101.333338716574"
+              Start="0,0"
+              End="86.2499916367229,93.8333387165739">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,46.666669358287" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,46.666669358287"
+                    Point2="0,50.666669358287"
+                    Point3="4,50.666669358287" />
+                  <mssgle:LineSegment
+                    End="82.2499916367229,50.666669358287" />
+                  <mssgle:CubicBezierSegment
+                    Point1="82.2499916367229,50.666669358287"
+                    Point2="86.2499916367229,50.666669358287"
+                    Point3="86.2499916367229,54.666669358287" />
+                  <mssgle:LineSegment
+                    End="86.2499916367229,93.8333387165739" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Copy from Univeris to FILE\Data Load">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

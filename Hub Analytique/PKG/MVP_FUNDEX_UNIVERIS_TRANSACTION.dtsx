@@ -1,0 +1,2723 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="11/27/2020 8:58:28 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="QL310856"
+  DTS:CreatorName="LIADOM01\li2bts"
+  DTS:DTSID="{F58FD04A-3CB2-4784-A37F-C575F3F1478C}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.166"
+  DTS:LocaleID="3084"
+  DTS:ObjectName="MVP_FUNDEX_UNIVERIS_TRANSACTION"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="0"
+  DTS:VersionBuild="158"
+  DTS:VersionGUID="{DF2D97BF-69BC-4F7A-AAE5-96C742790CD6}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[FUNDEX_UNIVERIS_TRANSACTION]"
+      DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{D818479A-7A03-4C7C-AE50-81FEAC58A7D8}"
+      DTS:ObjectName="FUNDEX_UNIVERIS_TRANSACTION">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::cs]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=10.95.0.144;User ID=dei_user;Initial Catalog=fs_mps_fundex_ia2019;Integrated Security=false;Persist Security Info=True;">
+          <DTS:Password
+            DTS:Name="PWD"
+            Sensitive="1"></DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[FUNDEX_UNIVERIS_TRANSACTION.CSV]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{E5B2467B-9742-4FB7-AF29-C438DFBDD6C2}"
+      DTS:ObjectName="FUNDEX_UNIVERIS_TRANSACTION.CSV">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::fileDepotFolder]  + "\\TRANSACTIONS__" +  @[User::formattedCurrentDate] + ".csv"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="3084"
+          DTS:Unicode="True"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="\\ia.iafg.net\R01\Svc\WH\IAW\Prod\MVP\FUNDEX\UNIVERIS\2021-08-05\TRANSACTIONS__2021-08-05.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 0"
+              DTS:DTSID="{B5488659-6B53-493B-8EAA-0960974351DD}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 1"
+              DTS:DTSID="{E0297471-6000-4B38-BDB3-01B101A5CE96}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 2"
+              DTS:DTSID="{286C60A1-283C-4C4F-9D65-630483D5D257}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 3"
+              DTS:DTSID="{9282D29C-B657-4F64-94A4-7B7A699BD893}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 4"
+              DTS:DTSID="{E9D380E6-EB16-41CB-9DCB-797AABB5D15D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 5"
+              DTS:DTSID="{C7FF5D42-ADE7-4684-9F8C-F00FB4E89F0F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 6"
+              DTS:DTSID="{D5640188-9E28-411C-86B3-90F173631408}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 7"
+              DTS:DTSID="{665511F3-AEF7-4EA2-BEEA-66161FED314C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 8"
+              DTS:DTSID="{969C1657-5BF7-48A4-AE83-8AB2C7CDA5F3}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 9"
+              DTS:DTSID="{35123F0E-2B19-40FE-8378-0A8872978E30}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 10"
+              DTS:DTSID="{4E71A09E-BB67-4C6C-8498-38B16EF76791}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 11"
+              DTS:DTSID="{5D7FF7F0-66D0-414C-A4FC-AF080B61812D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 12"
+              DTS:DTSID="{CE2726A5-BCF0-47B8-A454-224CC18858C1}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 13"
+              DTS:DTSID="{BE47AE01-F338-47FA-B6B9-9324F2096540}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 14"
+              DTS:DTSID="{169B18D0-8995-43BF-872F-7A7F7AAFC36D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 15"
+              DTS:DTSID="{1EDACE3B-8F33-4648-BAC0-B4269CBC488C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 16"
+              DTS:DTSID="{DC74A609-960C-4C93-ABDC-C5660C2CA4C2}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 17"
+              DTS:DTSID="{07AF3A88-265D-4EA7-B7CF-3389043B7323}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 18"
+              DTS:DTSID="{D4828430-2C44-466D-9B58-F5D736EE3608}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 19"
+              DTS:DTSID="{9BB3F260-4C38-4D75-836B-FA7634DCAD05}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 20"
+              DTS:DTSID="{45B31272-BBB5-4E0F-9F22-31935C15C402}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 21"
+              DTS:DTSID="{27FE237D-9DFC-4B96-B2AD-AB727D0F7782}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 22"
+              DTS:DTSID="{B2B4F5C7-8A67-4FCA-9831-3A1BA7E46174}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 23"
+              DTS:DTSID="{251583EE-6D96-4385-9F2D-6A996F2C2B5C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 24"
+              DTS:DTSID="{60EB91DA-A0D0-4AC7-BC52-A086D0ACCF58}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 25"
+              DTS:DTSID="{D2A41384-ADFD-4397-9A37-01CC1C9BAB64}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 26"
+              DTS:DTSID="{BA333E9B-E057-4025-A10E-012248A3B658}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Configurations>
+    <DTS:Configuration
+      DTS:ConfigurationString="C:\Projets\HubAnalytiqueGestionPatrimoine\CTRL\FUN.CTRL"
+      DTS:ConfigurationType="1"
+      DTS:CreationName=""
+      DTS:DTSID="{609795D1-09CA-4FBD-A2DE-5C778C65DEB0}"
+      DTS:ObjectName="CONFIGURATION" />
+  </DTS:Configurations>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{67BC45DF-5BAB-4B2E-ACD6-B5A6FF2ABEFD}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="controlFileName">
+      <DTS:VariableValue
+        DTS:DataType="8">fundex_univeris_transaction.control.csv</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{CE94CB6C-8EF0-432D-85E9-252C1437ADD5}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="cs">
+      <DTS:VariableValue
+        DTS:DataType="8">Data Source=10.95.0.144;Integrated Security=false;User ID=dei_user;PWD=hh*3h&amp;DD22DW;Initial Catalog=fs_mps_fundex_ia2019;Persist Security Info=True;</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{B2B2E9DC-1ACD-4F08-9BD3-7848EE068A5F}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="GETDATE()"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="currentDate">
+      <DTS:VariableValue
+        DTS:DataType="7">8/5/2021 4:32:50 PM</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{07FE1107-2832-488D-86ED-C9884320B4C4}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="dataDescription">
+      <DTS:VariableValue
+        DTS:DataType="8">UNIVERIS</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{91295E47-6198-4301-8C03-DBE1F4D92AD6}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="dataOwner">
+      <DTS:VariableValue
+        DTS:DataType="8">FUNDEX</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{33FDAC43-2B90-4B95-AB06-F210321FA5A9}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="destinationFolder">
+      <DTS:VariableValue
+        DTS:DataType="8">\\ia.iafg.net\R01\Svc\WH\IAW\INTG\IN</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{7028EF6C-FE9A-4E7E-ABA0-CBCF6F940EFA}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="destinationFolderMVP">
+      <DTS:VariableValue
+        DTS:DataType="8">\\ia.iafg.net\R01\Svc\WH\IAW\Prod\MVP</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{4FB6DE3D-BB98-4D76-829F-2299A00C3336}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::destinationFolderMVP]  + &quot;\\&quot; +  @[User::dataOwner] + &quot;\\&quot; + @[User::dataDescription] + &quot;\\&quot; +  @[User::formattedCurrentDate]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="fileDepotFolder">
+      <DTS:VariableValue
+        DTS:DataType="8">\\ia.iafg.net\R01\Svc\WH\IAW\Prod\MVP\FUNDEX\UNIVERIS\2021-08-05</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{86E2937D-BAEB-4A78-AE90-8AB81240B742}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="(DT_STR, 4,1254) YEAR(@[User::currentDate])  + &quot;-&quot; + RIGHT(&quot;0&quot; + (DT_STR, 2,1254) MONTH(@[User::currentDate]), 2) +   &quot;-&quot; +  RIGHT(&quot;0&quot; + (DT_STR, 2,1254) DAY(@[User::currentDate]), 2)"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="formattedCurrentDate">
+      <DTS:VariableValue
+        DTS:DataType="8">2021-08-05</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{4DF870E7-71C8-4755-93BC-EAFB5AF989C8}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="nbRows">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{B9F3D760-C6CC-4EC2-8757-62323568DBBB}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="workingFolder">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\Projets\HubAnalytiqueGestionPatrimoine\IN</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:LoggingOptions
+    DTS:LoggingMode="1" />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Copy from Univeris to FILE"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{58787241-6539-4AA6-88DE-B7C33C2382DA}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Copy from Univeris to FILE"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Copy from Univeris to FILE\Flat File TRANSACTION"
+              componentClassID="Microsoft.FlatFileDestination"
+              contactInfo="Flat File Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Destination"
+              localeId="3084"
+              name="Flat File TRANSACTION">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether the data will overwrite or append to the destination file."
+                  name="Overwrite">true</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the text to write to the destination file before any data is written."
+                  expressionType="Notify"
+                  name="Header" />
+                <property
+                  dataType="System.Boolean"
+                  description="When text qualifier is enabled, specifies whether the text qualifier in the data written to the destination file will be escaped or not."
+                  name="EscapeQualifier">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[FUNDEX_UNIVERIS_TRANSACTION.CSV]"
+                  connectionManagerRefId="Package.ConnectionManagers[FUNDEX_UNIVERIS_TRANSACTION.CSV]"
+                  name="FlatFileConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input]"
+                  hasSideEffects="true"
+                  name="Flat File Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].Columns[TRX_SYSID]"
+                      cachedDataType="i4"
+                      cachedName="TRX_SYSID"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].ExternalColumns[Column 0]"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[TRX_SYSID]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].Columns[IVR_SYSID]"
+                      cachedDataType="i4"
+                      cachedName="IVR_SYSID"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].ExternalColumns[Column 1]"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[IVR_SYSID]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].Columns[REP_SYSID]"
+                      cachedDataType="i4"
+                      cachedName="REP_SYSID"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].ExternalColumns[Column 2]"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[REP_SYSID]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].Columns[PLN_SYSID]"
+                      cachedDataType="i4"
+                      cachedName="PLN_SYSID"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].ExternalColumns[Column 3]"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[PLN_SYSID]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].Columns[ACT_SYSID]"
+                      cachedDataType="i4"
+                      cachedName="ACT_SYSID"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].ExternalColumns[Column 4]"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[ACT_SYSID]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].Columns[IVD_SYSID]"
+                      cachedDataType="i4"
+                      cachedName="IVD_SYSID"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].ExternalColumns[Column 5]"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[IVD_SYSID]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].Columns[TRX_STATUS]"
+                      cachedDataType="wstr"
+                      cachedLength="2"
+                      cachedName="TRX_STATUS"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].ExternalColumns[Column 6]"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[TRX_STATUS]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].Columns[TRX_ST_DESC_ENG]"
+                      cachedDataType="nText"
+                      cachedName="TRX_ST_DESC_ENG"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].ExternalColumns[Column 7]"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[TRX_ST_DESC_ENG]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].Columns[TRADE_DT]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="TRADE_DT"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].ExternalColumns[Column 8]"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[TRADE_DT]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].Columns[MGT_CD]"
+                      cachedDataType="nText"
+                      cachedName="MGT_CD"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].ExternalColumns[Column 9]"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[MGT_CD]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].Columns[MGT_NAME_ENG]"
+                      cachedDataType="nText"
+                      cachedName="MGT_NAME_ENG"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].ExternalColumns[Column 10]"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[MGT_NAME_ENG]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].Columns[DLR_SYSID]"
+                      cachedDataType="i4"
+                      cachedName="DLR_SYSID"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].ExternalColumns[Column 11]"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[DLR_SYSID]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].Columns[RGN_SYSID]"
+                      cachedDataType="i4"
+                      cachedName="RGN_SYSID"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].ExternalColumns[Column 12]"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[RGN_SYSID]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].Columns[BRN_SYSID]"
+                      cachedDataType="i4"
+                      cachedName="BRN_SYSID"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].ExternalColumns[Column 13]"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[BRN_SYSID]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].Columns[TRX_GROSS]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="TRX_GROSS"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].ExternalColumns[Column 14]"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[TRX_GROSS]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].Columns[SPR_FACTOR]"
+                      cachedDataType="nText"
+                      cachedName="SPR_FACTOR"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].ExternalColumns[Column 15]"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[SPR_FACTOR]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].Columns[CURRENCY_CD]"
+                      cachedDataType="nText"
+                      cachedName="CURRENCY_CD"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].ExternalColumns[Column 16]"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[CURRENCY_CD]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].Columns[DLR_CD]"
+                      cachedDataType="nText"
+                      cachedName="DLR_CD"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].ExternalColumns[Column 17]"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[DLR_CD]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].Columns[RGN_CD]"
+                      cachedDataType="nText"
+                      cachedName="RGN_CD"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].ExternalColumns[Column 18]"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[RGN_CD]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].Columns[BRN_CD]"
+                      cachedDataType="nText"
+                      cachedName="BRN_CD"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].ExternalColumns[Column 19]"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[BRN_CD]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].Columns[REP_CD]"
+                      cachedDataType="nText"
+                      cachedName="REP_CD"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].ExternalColumns[Column 20]"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[REP_CD]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].Columns[PLN_TYPE]"
+                      cachedDataType="nText"
+                      cachedName="PLN_TYPE"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].ExternalColumns[Column 21]"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[PLN_TYPE]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].Columns[SPR_CTGY]"
+                      cachedDataType="nText"
+                      cachedName="SPR_CTGY"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].ExternalColumns[Column 22]"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[SPR_CTGY]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].Columns[TRX_MNEM_ENG]"
+                      cachedDataType="nText"
+                      cachedName="TRX_MNEM_ENG"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].ExternalColumns[Column 23]"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[TRX_MNEM_ENG]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].Columns[REVERSAL_IND]"
+                      cachedDataType="i2"
+                      cachedName="REVERSAL_IND"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].ExternalColumns[Column 24]"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[REVERSAL_IND]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].Columns[MD_LOADDATE]"
+                      cachedDataType="dbDate"
+                      cachedName="MD_LOADDATE"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].ExternalColumns[Column 25]"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[MD_LOADDATE]" />
+                    <inputColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].Columns[MD_SRCSYSTEM]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="MD_SRCSYSTEM"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].ExternalColumns[Column 26]"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[MD_SRCSYSTEM]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].ExternalColumns[Column 0]"
+                      dataType="wstr"
+                      length="255"
+                      name="Column 0" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].ExternalColumns[Column 1]"
+                      dataType="wstr"
+                      length="255"
+                      name="Column 1" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].ExternalColumns[Column 2]"
+                      dataType="wstr"
+                      length="255"
+                      name="Column 2" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].ExternalColumns[Column 3]"
+                      dataType="wstr"
+                      length="255"
+                      name="Column 3" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].ExternalColumns[Column 4]"
+                      dataType="wstr"
+                      length="255"
+                      name="Column 4" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].ExternalColumns[Column 5]"
+                      dataType="wstr"
+                      length="255"
+                      name="Column 5" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].ExternalColumns[Column 6]"
+                      dataType="wstr"
+                      length="255"
+                      name="Column 6" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].ExternalColumns[Column 7]"
+                      dataType="wstr"
+                      length="255"
+                      name="Column 7" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].ExternalColumns[Column 8]"
+                      dataType="wstr"
+                      length="255"
+                      name="Column 8" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].ExternalColumns[Column 9]"
+                      dataType="wstr"
+                      length="255"
+                      name="Column 9" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].ExternalColumns[Column 10]"
+                      dataType="wstr"
+                      length="255"
+                      name="Column 10" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].ExternalColumns[Column 11]"
+                      dataType="wstr"
+                      length="255"
+                      name="Column 11" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].ExternalColumns[Column 12]"
+                      dataType="wstr"
+                      length="255"
+                      name="Column 12" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].ExternalColumns[Column 13]"
+                      dataType="wstr"
+                      length="255"
+                      name="Column 13" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].ExternalColumns[Column 14]"
+                      dataType="wstr"
+                      length="255"
+                      name="Column 14" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].ExternalColumns[Column 15]"
+                      dataType="wstr"
+                      length="255"
+                      name="Column 15" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].ExternalColumns[Column 16]"
+                      dataType="wstr"
+                      length="255"
+                      name="Column 16" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].ExternalColumns[Column 17]"
+                      dataType="wstr"
+                      length="255"
+                      name="Column 17" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].ExternalColumns[Column 18]"
+                      dataType="wstr"
+                      length="255"
+                      name="Column 18" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].ExternalColumns[Column 19]"
+                      dataType="wstr"
+                      length="255"
+                      name="Column 19" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].ExternalColumns[Column 20]"
+                      dataType="wstr"
+                      length="255"
+                      name="Column 20" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].ExternalColumns[Column 21]"
+                      dataType="wstr"
+                      length="255"
+                      name="Column 21" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].ExternalColumns[Column 22]"
+                      dataType="wstr"
+                      length="255"
+                      name="Column 22" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].ExternalColumns[Column 23]"
+                      dataType="wstr"
+                      length="255"
+                      name="Column 23" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].ExternalColumns[Column 24]"
+                      dataType="wstr"
+                      length="255"
+                      name="Column 24" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].ExternalColumns[Column 25]"
+                      dataType="wstr"
+                      length="255"
+                      name="Column 25" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input].ExternalColumns[Column 26]"
+                      dataType="wstr"
+                      length="255"
+                      name="Column 26" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+            </component>
+            <component
+              refId="Package\Copy from Univeris to FILE\SQL TRANSACTION"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server."
+              name="SQL TRANSACTION"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement used by the component to extract data."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
+	TRX.TRX_SYSID,
+	TRX.IVR_SYSID,
+	TRX.REP_SYSID,
+	TRX.PLN_SYSID,
+	TRX.ACT_SYSID,
+	TRX.IVD_SYSID,
+	TRX.TRX_STATUS,
+	NULLIF(REPLACE(REPLACE(S_TRX_STATUS.TRX_ST_DESC_ENG,CHAR(13), ''), CHAR(10), ''),'') AS TRX_ST_DESC_ENG,
+	TRX.TRADE_DT,
+	NULLIF(REPLACE(REPLACE(TRX.MGT_CD,CHAR(13), ''), CHAR(10), ''),'') AS MGT_CD ,
+	NULLIF(REPLACE(REPLACE(MGT.MGT_NAME_ENG,CHAR(13), ''), CHAR(10), ''),'') AS MGT_NAME_ENG,
+	TRX.DLR_SYSID,
+	TRX.RGN_SYSID,
+	TRX.BRN_SYSID,
+	CAST( TRX.TRX_GROSS*(CASE WHEN isnull(TRX.CURRENCY_CD,'') = 'USD' THEN isnull((select TOP 1 CONV_RATE from CURRENCY_CONV (nolock) WHERE CONV_DT &lt;= TRX.TRADE_DT ORDER BY CONV_DT DESC ),1) ELSE 1 END ) as VARCHAR) AS TRX_GROSS,
+	NULLIF(REPLACE(REPLACE(S_TRX_CD.SPR_FACTOR,CHAR(13), ''), CHAR(10), ''),'') AS SPR_FACTOR,
+	NULLIF(REPLACE(REPLACE(TRX.CURRENCY_CD,CHAR(13), ''), CHAR(10), ''),'') AS CURRENCY_CD,
+	NULLIF(REPLACE(REPLACE(TRX.DLR_CD,CHAR(13), ''), CHAR(10), ''),'') AS DLR_CD,
+	NULLIF(REPLACE(REPLACE(TRX.RGN_CD,CHAR(13), ''), CHAR(10), ''),'') AS RGN_CD,
+	NULLIF(REPLACE(REPLACE(TRX.BRN_CD,CHAR(13), ''), CHAR(10), ''),'') AS BRN_CD,
+	NULLIF(REPLACE(REPLACE(TRX.REP_CD,CHAR(13), ''), CHAR(10), ''),'') AS REP_CD,
+	NULLIF(REPLACE(REPLACE(TRX.PLN_TYPE,CHAR(13), ''), CHAR(10), ''),'') AS PLN_TYPE,
+	NULLIF(REPLACE(REPLACE(S_TRX_CD.SPR_CTGY,CHAR(13), ''), CHAR(10), ''),'') AS SPR_CTGY,
+	NULLIF(REPLACE(REPLACE(S_TRX_CD.TRX_MNEM_ENG,CHAR(13), ''), CHAR(10), ''),'') AS TRX_MNEM_ENG,
+	S_TRX_CD.REVERSAL_IND,
+	CONVERT(DATE, GETDATE()) AS MD_LOADDATE,
+	'FUNDEX-UNIVERIS' AS MD_SRCSYSTEM
+FROM
+	dbo.TRX (nolock)
+	LEFT OUTER JOIN dbo.S_TRX_CD (nolock) ON TRX.TRX_CD=S_TRX_CD.TRX_CD
+	LEFT OUTER JOIN dbo.IVD (nolock) ON TRX.IVD_SYSID=IVD.IVD_SYSID
+	LEFT OUTER JOIN dbo.IVT (nolock) ON IVD.IVT_SYSID=IVT.IVT_SYSID
+	LEFT OUTER JOIN dbo.MGT (nolock) ON IVT.MGT_SYSID=MGT.MGT_SYSID
+	LEFT OUTER JOIN dbo.S_TRX_STATUS (nolock) ON TRX.TRX_STATUS=S_TRX_STATUS.TRX_STATUS
+WHERE MONTH(TRX.TRADE_DT)= MONTH(DATEADD(DAY,-25,GETDATE())) AND YEAR(TRX.TRADE_DT)= YEAR(DATEADD(DAY,-25,GETDATE()))</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether to allow non-string external columns to be implicitly converted to strings at the output columns."
+                  name="AllowImplicitStringConversion">true</property>
+                <property
+                  dataType="System.String"
+                  description="The Source database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the mode to retrieve external column information"
+                  name="AccessMode"
+                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter">2</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.DataReaderSourceAdapter</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[FUNDEX_UNIVERIS_TRANSACTION]"
+                  connectionManagerRefId="Package.ConnectionManagers[FUNDEX_UNIVERIS_TRANSACTION]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output]"
+                  name="ADO NET Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[TRX_SYSID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].ExternalColumns[TRX_SYSID]"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[TRX_SYSID]"
+                      name="TRX_SYSID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[IVR_SYSID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].ExternalColumns[IVR_SYSID]"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[IVR_SYSID]"
+                      name="IVR_SYSID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[REP_SYSID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].ExternalColumns[REP_SYSID]"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[REP_SYSID]"
+                      name="REP_SYSID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[PLN_SYSID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].ExternalColumns[PLN_SYSID]"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[PLN_SYSID]"
+                      name="PLN_SYSID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[ACT_SYSID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].ExternalColumns[ACT_SYSID]"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[ACT_SYSID]"
+                      name="ACT_SYSID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[IVD_SYSID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].ExternalColumns[IVD_SYSID]"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[IVD_SYSID]"
+                      name="IVD_SYSID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[TRX_STATUS]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].ExternalColumns[TRX_STATUS]"
+                      length="2"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[TRX_STATUS]"
+                      name="TRX_STATUS"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[TRX_ST_DESC_ENG]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].ExternalColumns[TRX_ST_DESC_ENG]"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[TRX_ST_DESC_ENG]"
+                      name="TRX_ST_DESC_ENG"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[TRADE_DT]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].ExternalColumns[TRADE_DT]"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[TRADE_DT]"
+                      name="TRADE_DT"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[MGT_CD]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].ExternalColumns[MGT_CD]"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[MGT_CD]"
+                      name="MGT_CD"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[MGT_NAME_ENG]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].ExternalColumns[MGT_NAME_ENG]"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[MGT_NAME_ENG]"
+                      name="MGT_NAME_ENG"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[DLR_SYSID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].ExternalColumns[DLR_SYSID]"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[DLR_SYSID]"
+                      name="DLR_SYSID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[RGN_SYSID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].ExternalColumns[RGN_SYSID]"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[RGN_SYSID]"
+                      name="RGN_SYSID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[BRN_SYSID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].ExternalColumns[BRN_SYSID]"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[BRN_SYSID]"
+                      name="BRN_SYSID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[TRX_GROSS]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].ExternalColumns[TRX_GROSS]"
+                      length="30"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[TRX_GROSS]"
+                      name="TRX_GROSS"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[SPR_FACTOR]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].ExternalColumns[SPR_FACTOR]"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[SPR_FACTOR]"
+                      name="SPR_FACTOR"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[CURRENCY_CD]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].ExternalColumns[CURRENCY_CD]"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[CURRENCY_CD]"
+                      name="CURRENCY_CD"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[DLR_CD]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].ExternalColumns[DLR_CD]"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[DLR_CD]"
+                      name="DLR_CD"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[RGN_CD]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].ExternalColumns[RGN_CD]"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[RGN_CD]"
+                      name="RGN_CD"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[BRN_CD]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].ExternalColumns[BRN_CD]"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[BRN_CD]"
+                      name="BRN_CD"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[REP_CD]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].ExternalColumns[REP_CD]"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[REP_CD]"
+                      name="REP_CD"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[PLN_TYPE]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].ExternalColumns[PLN_TYPE]"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[PLN_TYPE]"
+                      name="PLN_TYPE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[SPR_CTGY]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].ExternalColumns[SPR_CTGY]"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[SPR_CTGY]"
+                      name="SPR_CTGY"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[TRX_MNEM_ENG]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].ExternalColumns[TRX_MNEM_ENG]"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[TRX_MNEM_ENG]"
+                      name="TRX_MNEM_ENG"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[REVERSAL_IND]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].ExternalColumns[REVERSAL_IND]"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[REVERSAL_IND]"
+                      name="REVERSAL_IND"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[MD_LOADDATE]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].ExternalColumns[MD_LOADDATE]"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[MD_LOADDATE]"
+                      name="MD_LOADDATE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[MD_SRCSYSTEM]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].ExternalColumns[MD_SRCSYSTEM]"
+                      length="15"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].Columns[MD_SRCSYSTEM]"
+                      name="MD_SRCSYSTEM"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].ExternalColumns[TRX_SYSID]"
+                      dataType="i4"
+                      name="TRX_SYSID" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].ExternalColumns[IVR_SYSID]"
+                      dataType="i4"
+                      name="IVR_SYSID" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].ExternalColumns[REP_SYSID]"
+                      dataType="i4"
+                      name="REP_SYSID" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].ExternalColumns[PLN_SYSID]"
+                      dataType="i4"
+                      name="PLN_SYSID" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].ExternalColumns[ACT_SYSID]"
+                      dataType="i4"
+                      name="ACT_SYSID" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].ExternalColumns[IVD_SYSID]"
+                      dataType="i4"
+                      name="IVD_SYSID" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].ExternalColumns[TRX_STATUS]"
+                      dataType="wstr"
+                      length="2"
+                      name="TRX_STATUS" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].ExternalColumns[TRX_ST_DESC_ENG]"
+                      dataType="nText"
+                      name="TRX_ST_DESC_ENG" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].ExternalColumns[TRADE_DT]"
+                      dataType="dbTimeStamp"
+                      name="TRADE_DT" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].ExternalColumns[MGT_CD]"
+                      dataType="nText"
+                      name="MGT_CD" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].ExternalColumns[MGT_NAME_ENG]"
+                      dataType="nText"
+                      name="MGT_NAME_ENG" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].ExternalColumns[DLR_SYSID]"
+                      dataType="i4"
+                      name="DLR_SYSID" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].ExternalColumns[RGN_SYSID]"
+                      dataType="i4"
+                      name="RGN_SYSID" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].ExternalColumns[BRN_SYSID]"
+                      dataType="i4"
+                      name="BRN_SYSID" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].ExternalColumns[TRX_GROSS]"
+                      dataType="wstr"
+                      length="30"
+                      name="TRX_GROSS" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].ExternalColumns[SPR_FACTOR]"
+                      dataType="nText"
+                      name="SPR_FACTOR" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].ExternalColumns[CURRENCY_CD]"
+                      dataType="nText"
+                      name="CURRENCY_CD" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].ExternalColumns[DLR_CD]"
+                      dataType="nText"
+                      name="DLR_CD" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].ExternalColumns[RGN_CD]"
+                      dataType="nText"
+                      name="RGN_CD" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].ExternalColumns[BRN_CD]"
+                      dataType="nText"
+                      name="BRN_CD" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].ExternalColumns[REP_CD]"
+                      dataType="nText"
+                      name="REP_CD" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].ExternalColumns[PLN_TYPE]"
+                      dataType="nText"
+                      name="PLN_TYPE" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].ExternalColumns[SPR_CTGY]"
+                      dataType="nText"
+                      name="SPR_CTGY" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].ExternalColumns[TRX_MNEM_ENG]"
+                      dataType="nText"
+                      name="TRX_MNEM_ENG" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].ExternalColumns[REVERSAL_IND]"
+                      dataType="i2"
+                      name="REVERSAL_IND" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].ExternalColumns[MD_LOADDATE]"
+                      dataType="dbDate"
+                      name="MD_LOADDATE" />
+                    <externalMetadataColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output].ExternalColumns[MD_SRCSYSTEM]"
+                      dataType="wstr"
+                      length="15"
+                      name="MD_SRCSYSTEM" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Error Output]"
+                  isErrorOut="true"
+                  name="ADO NET Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Error Output].Columns[TRX_SYSID]"
+                      dataType="i4"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Error Output].Columns[TRX_SYSID]"
+                      name="TRX_SYSID" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Error Output].Columns[IVR_SYSID]"
+                      dataType="i4"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Error Output].Columns[IVR_SYSID]"
+                      name="IVR_SYSID" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Error Output].Columns[REP_SYSID]"
+                      dataType="i4"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Error Output].Columns[REP_SYSID]"
+                      name="REP_SYSID" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Error Output].Columns[PLN_SYSID]"
+                      dataType="i4"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Error Output].Columns[PLN_SYSID]"
+                      name="PLN_SYSID" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Error Output].Columns[ACT_SYSID]"
+                      dataType="i4"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Error Output].Columns[ACT_SYSID]"
+                      name="ACT_SYSID" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Error Output].Columns[IVD_SYSID]"
+                      dataType="i4"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Error Output].Columns[IVD_SYSID]"
+                      name="IVD_SYSID" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Error Output].Columns[TRX_STATUS]"
+                      dataType="wstr"
+                      length="2"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Error Output].Columns[TRX_STATUS]"
+                      name="TRX_STATUS" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Error Output].Columns[TRX_ST_DESC_ENG]"
+                      dataType="nText"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Error Output].Columns[TRX_ST_DESC_ENG]"
+                      name="TRX_ST_DESC_ENG" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Error Output].Columns[TRADE_DT]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Error Output].Columns[TRADE_DT]"
+                      name="TRADE_DT" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Error Output].Columns[MGT_CD]"
+                      dataType="nText"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Error Output].Columns[MGT_CD]"
+                      name="MGT_CD" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Error Output].Columns[MGT_NAME_ENG]"
+                      dataType="nText"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Error Output].Columns[MGT_NAME_ENG]"
+                      name="MGT_NAME_ENG" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Error Output].Columns[DLR_SYSID]"
+                      dataType="i4"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Error Output].Columns[DLR_SYSID]"
+                      name="DLR_SYSID" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Error Output].Columns[RGN_SYSID]"
+                      dataType="i4"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Error Output].Columns[RGN_SYSID]"
+                      name="RGN_SYSID" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Error Output].Columns[BRN_SYSID]"
+                      dataType="i4"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Error Output].Columns[BRN_SYSID]"
+                      name="BRN_SYSID" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Error Output].Columns[TRX_GROSS]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Error Output].Columns[TRX_GROSS]"
+                      name="TRX_GROSS" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Error Output].Columns[SPR_FACTOR]"
+                      dataType="nText"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Error Output].Columns[SPR_FACTOR]"
+                      name="SPR_FACTOR" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Error Output].Columns[CURRENCY_CD]"
+                      dataType="nText"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Error Output].Columns[CURRENCY_CD]"
+                      name="CURRENCY_CD" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Error Output].Columns[DLR_CD]"
+                      dataType="nText"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Error Output].Columns[DLR_CD]"
+                      name="DLR_CD" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Error Output].Columns[RGN_CD]"
+                      dataType="nText"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Error Output].Columns[RGN_CD]"
+                      name="RGN_CD" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Error Output].Columns[BRN_CD]"
+                      dataType="nText"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Error Output].Columns[BRN_CD]"
+                      name="BRN_CD" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Error Output].Columns[REP_CD]"
+                      dataType="nText"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Error Output].Columns[REP_CD]"
+                      name="REP_CD" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Error Output].Columns[PLN_TYPE]"
+                      dataType="nText"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Error Output].Columns[PLN_TYPE]"
+                      name="PLN_TYPE" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Error Output].Columns[SPR_CTGY]"
+                      dataType="nText"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Error Output].Columns[SPR_CTGY]"
+                      name="SPR_CTGY" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Error Output].Columns[TRX_MNEM_ENG]"
+                      dataType="nText"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Error Output].Columns[TRX_MNEM_ENG]"
+                      name="TRX_MNEM_ENG" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Error Output].Columns[REVERSAL_IND]"
+                      dataType="i2"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Error Output].Columns[REVERSAL_IND]"
+                      name="REVERSAL_IND" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Error Output].Columns[MD_LOADDATE]"
+                      dataType="dbDate"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Error Output].Columns[MD_LOADDATE]"
+                      name="MD_LOADDATE" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Error Output].Columns[MD_SRCSYSTEM]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Error Output].Columns[MD_SRCSYSTEM]"
+                      name="MD_SRCSYSTEM" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Copy from Univeris to FILE.Paths[ADO NET Source Output]"
+              endId="Package\Copy from Univeris to FILE\Flat File TRANSACTION.Inputs[Flat File Destination Input]"
+              name="ADO NET Source Output"
+              startId="Package\Copy from Univeris to FILE\SQL TRANSACTION.Outputs[ADO NET Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Create  file depot folders"
+      DTS:CreationName="Microsoft.FileSystemTask"
+      DTS:Description="File System Task"
+      DTS:DTSID="{8A3BFACE-4AA0-4935-A87B-9671830A5429}"
+      DTS:ExecutableType="Microsoft.FileSystemTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Create  file depot folders"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <FileSystemData
+          TaskOperationType="CreateDirectory"
+          TaskOverwriteDestFile="True"
+          TaskSourcePath="User::fileDepotFolder"
+          TaskIsSourceVariable="True" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Update control file"
+      DTS:CreationName="Microsoft.ScriptTask"
+      DTS:Description="Script Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{30FAEAA7-E8EA-45AB-AF4F-D904355EFF6F}"
+      DTS:ExecutableType="Microsoft.ScriptTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Update control file"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ScriptProject
+          Name="ST_6850f2822fc44f6ba6d14bd68b12a07e"
+          VSTAMajorVersion="14"
+          VSTAMinorVersion="0"
+          Language="CSharp"
+          ReadOnlyVariables="User::controlFileName,User::currentDate,User::nbRows,User::workingFolder">
+          <ProjectItem
+            Name="Properties\Resources.resx"
+            Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+</root>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Settings.Designer.cs"
+            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_6850f2822fc44f6ba6d14bd68b12a07e.Properties.Settings.get_Default():ST_6850f2822fc44f6ba6d14bd68b12a07e.Properties.Sett" +
+    "ings")]
+
+namespace ST_6850f2822fc44f6ba6d14bd68b12a07e.Properties {
+    
+    
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+        
+        public static Settings Default {
+            get {
+                return defaultInstance;
+            }
+        }
+    }
+}]]></ProjectItem>
+          <ProjectItem
+            Name="ST_6850f2822fc44f6ba6d14bd68b12a07e.csproj"
+            Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{545DC34D-5A4E-44AD-8133-AA0CB13C708B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ST_6850f2822fc44f6ba6d14bd68b12a07e</RootNamespace>
+    <AssemblyName>ST_6850f2822fc44f6ba6d14bd68b12a07e</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.SqlServer.ManagedDTS, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.ScriptTask, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptMain.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <!-- Include the build rules for a C# project.-->
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}">
+        <ProjectProperties HostName="VSTAHostName" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" />
+        <Host Name="ScriptTask" />
+        <ProjectClient>
+          <HostIdentifier>SSIS_ST130</HostIdentifier>
+        </ProjectClient>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>]]></ProjectItem>
+          <ProjectItem
+            Name="ScriptMain.cs"
+            Encoding="UTF8"><![CDATA[using System;
+using Microsoft.SqlServer.Dts.Runtime;
+using System.IO;
+
+namespace ST_6850f2822fc44f6ba6d14bd68b12a07e
+{
+	[Microsoft.SqlServer.Dts.Tasks.ScriptTask.SSISScriptTaskEntryPointAttribute]
+	public partial class ScriptMain : Microsoft.SqlServer.Dts.Tasks.ScriptTask.VSTARTScriptObjectModelBase
+	{
+
+		public void Main()
+		{
+            string path = (string)Dts.Variables["User::workingFolder"].Value + "\\" + (string)Dts.Variables["User::controlFileName"].Value;
+            DateTime currentDate = (DateTime)Dts.Variables["User::currentDate"].Value;
+
+            Dts.TaskResult = (int)WriteFile(path, currentDate);            
+		}
+
+        private DTSExecResult WriteFile(string path,DateTime currentDate)
+        {
+            string header = "LastUpdates";
+            string colone = currentDate.Date.ToString();
+            StreamWriter writer = null;
+
+            try
+            {
+                writer = new StreamWriter(path, false);
+                writer.WriteLine(header);
+                writer.WriteLine(colone);
+                writer.Close();
+
+                return (int)DTSExecResult.Success;
+            }
+            catch (Exception ex)
+            {
+                Dts.Events.FireError(0, "FUNDEX_UNIVERIS_TRANSACTION - Write control file", ex.Message + "\r\n" + ex.StackTrace, null, 0);
+            }
+            finally
+            {
+                if (writer != null)
+                {
+                    writer.Dispose();
+                }
+            }
+
+            return DTSExecResult.Failure;
+        }
+
+	}
+}]]></ProjectItem>
+          <ProjectItem
+            Name="Project"
+            Encoding="UTF16LE"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="3.0" schemaVersion="1.0">
+	<msb:PropertyGroup>
+		<msb:Language>msBuild</msb:Language>
+		<msb:CodeName>ST_6850f2822fc44f6ba6d14bd68b12a07e</msb:CodeName>
+		<msb:DisplayName>ST_6850f2822fc44f6ba6d14bd68b12a07e</msb:DisplayName>
+		<msb:ProjectId>{0C07D8D5-828E-44AF-9566-86DC34B757F5}</msb:ProjectId>
+	</msb:PropertyGroup>
+	<msb:ItemGroup>
+		<msb:Project Include="ST_6850f2822fc44f6ba6d14bd68b12a07e.csproj"/>
+		<msb:File Include="Properties\Settings.settings"/>
+		<msb:File Include="Properties\AssemblyInfo.cs"/>
+		<msb:File Include="Properties\Resources.resx"/>
+		<msb:File Include="Properties\Resources.Designer.cs"/>
+		<msb:File Include="Properties\Settings.Designer.cs"/>
+		<msb:File Include="ScriptMain.cs"/>
+	</msb:ItemGroup>
+</c:Project>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\AssemblyInfo.cs"
+            Encoding="UTF8"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("ST_6850f2822fc44f6ba6d14bd68b12a07e")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("ST_6850f2822fc44f6ba6d14bd68b12a07e")]
+[assembly: AssemblyCopyright("Copyright @  2020")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Settings.settings"
+            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Resources.Designer.cs"
+            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_6850f2822fc44f6ba6d14bd68b12a07e.Properties.Resources.get_ResourceManager():System.Resources.Resou" +
+    "rceManager")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_6850f2822fc44f6ba6d14bd68b12a07e.Properties.Resources.get_Culture():System.Globalization.CultureIn" +
+    "fo")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_6850f2822fc44f6ba6d14bd68b12a07e.Properties.Resources.set_Culture(System.Globalization.CultureInfo" +
+    "):Void")]
+
+namespace ST_6850f2822fc44f6ba6d14bd68b12a07e.Properties {
+    
+    
+    /// <summary>
+    ///   A strongly-typed resource class, for looking up localized strings, etc.
+    /// </summary>
+    // This class was auto-generated by the StronglyTypedResourceBuilder
+    // class via a tool like ResGen or Visual Studio.
+    // To add or remove a member, edit your .ResX file then rerun ResGen
+    // with the /str option, or rebuild your VS project.
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    internal class Resources {
+        
+        private static global::System.Resources.ResourceManager resourceMan;
+        
+        private static global::System.Globalization.CultureInfo resourceCulture;
+        
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        internal Resources() {
+        }
+        
+        /// <summary>
+        ///   Returns the cached ResourceManager instance used by this class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if ((resourceMan == null)) {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ST_6850f2822fc44f6ba6d14bd68b12a07e.Properties.Resources", typeof(Resources).Assembly);
+                    resourceMan = temp;
+                }
+                return resourceMan;
+            }
+        }
+        
+        /// <summary>
+        ///   Overrides the current thread's CurrentUICulture property for all
+        ///   resource lookups using this strongly typed resource class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
+                return resourceCulture;
+            }
+            set {
+                resourceCulture = value;
+            }
+        }
+    }
+}]]></ProjectItem>
+          <BinaryItem
+            Name="ST_6850f2822fc44f6ba6d14bd68b12a07e.dll">TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDAOBL218AAAAAAAAAAOAAIiALATAAABIAAAAIAAAAAAAAcjAA
+AAAgAAAAQAAAAAAAEAAgAAAAAgAABAAAAAAAAAAGAAAAAAAAAACAAAAAAgAAAAAAAAMAYIUAABAA
+ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAACAwAABPAAAAAEAAAHgEAAAAAAAAAAAAAAAAAAAA
+AAAAAGAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAAeBAAAAAgAAAAEgAAAAIA
+AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAAHgEAAAAQAAAAAYAAAAUAAAAAAAAAAAAAAAAAABAAABA
+LnJlbG9jAAAMAAAAAGAAAAACAAAAGgAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAABU
+MAAAAAAAAEgAAAACAAUA7CEAAHwNAAABAAAAAAAAAGgvAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAABMwBAB9AAAAAQAAEQIoEAAACm8RAAAKcgEAAHBvEgAACm8T
+AAAKdB4AAAFyKQAAcAIoEAAACm8RAAAKci0AAHBvEgAACm8TAAAKdB4AAAEoFAAACgoCKBAAAApv
+EQAACnJZAABwbxIAAApvEwAACqUPAAABCwIoEAAACgIGBygCAAAGbxUAAAoqAAAAGzAGAH0AAAAC
+AAARcn0AAHAKDwIoFgAACg0SAygXAAAKCxQMAxZzGAAACgwIBm8ZAAAKCAdvGQAACghvGgAAChYT
+BN5BEwUCKBAAAApvGwAAChZylQAAcBEFbxwAAApy9wAAcBEFbx0AAAooFAAAChQWbx4AAAom3goI
+LAYIbx8AAArcFyoRBCoAAAABHAAAAAAYACE5ADUSAAABAgAYAFZuAAoAAAAAHgIoIAAACioeAigh
+AAAKKq5+AQAABC0ecv0AAHDQAwAAAigiAAAKbyMAAApzJAAACoABAAAEfgEAAAQqGn4CAAAEKh4C
+gAIAAAQqGn4DAAAEKh4CKCUAAAoqLnMJAAAGgAMAAAQqAABCU0pCAQABAAAAAAAMAAAAdjQuMC4z
+MDMxOQAAAAAFAGwAAAAABAAAI34AAGwEAAD8BQAAI1N0cmluZ3MAAAAAaAoAAHABAAAjVVMA2AsA
+ABAAAAAjR1VJRAAAAOgLAACUAQAAI0Jsb2IAAAAAAAAAAgAAAVcVogEJAQAAAPoBMwAWAAABAAAA
+IwAAAAQAAAADAAAACgAAAAMAAAAlAAAAEAAAAAIAAAACAAAAAwAAAAQAAAABAAAABAAAAAEAAAAA
+AM8DAQAAAAAABgB6AtoEBgAJA9oEBgDGAccEDwBOBQAABgDzAUgEBgBdAkgEBgA+AkgEBgDwAkgE
+BgCaAkgEBgCzAkgEBgAKAkgEBgAlAjcDCgDOAn4DCgAiAX4DBgDCAAAEDgDQBcsABgCYBAoABgBa
+BAAEBgCpAccEBgC9BQAEBgB0BPoEBgBkBDMEEgB5AbkDEgDaAbkDEgA+AR4EBgCOAdoECgCnA34D
+DgCQBcsADgCLAMsABgBTAwAEBgClBAoACgCEBH4DBgD1AAAEBgCUAAAEBgDxBUgEAAAAAAEAAAAA
+AAEAAQABABAAEwQ8ADkAAQABAAAAEAABBV0FUQABAAQAAAEQAJoFXQVlAAMACAARAAcEkAARABIB
+lAARAG8AmABQIAAAAACGABkEBgABANwgAAAAAIEAuACcAAEAhCEAAAAAhhi6BAYAAwCMIQAAAACD
+GLoEBgADAJQhAAAAAJMIcASkAAMAwCEAAAAAkwj6AKkAAwDHIQAAAACTCAYBrgADAM8hAAAAAJYI
+xAW0AAQA1iEAAAAAhhi6BAYABADeIQAAAACRGMAEuQAEAAAAAQBaAwAAAgBtAQAAAQAxAwkAugQB
+ABEAugQGABkAugQKACkAugQQADEAugQQADkAugQQAEEAugQQAEkAugQQAFEAugQQAFkAugQQAGEA
+ugQQAGkAugQGAJkAugQGAMEAugQVANEAugQGAHEAowUhANkAjAUmAOEA9wMrAOkAJwMxAPEAtgU1
+ANkA3gUBAHkAZAFJAHkAUQNOAIkAugRSAPkA6wAQAPkAVgEGANkAqwVYAJEAfwBOAJEAYABOAAEB
+sAReAPkAXAEGAHEAugQGAKEAugQGAAkBpgBnAAkB7QVwAKkAugR2AMkAugQGACkAcwD0AC4ACwDM
+AC4AEwDVAC4AGwD0AC4AIwD9AC4AKwAmAS4AMwAmAS4AOwAmAS4AQwD9AC4ASwAsAS4AUwAmAS4A
+WwBDAUMAYwCNAUkAcwD0AGEAewCNAWMAawCNARsAPAADAAEABAADAAAAdAS9AAAAGgHCAAAAyAXH
+AAIABQADAAIABgAFAAEABwAFAAIACAAHAASAAAABAAAA6B0IMwAAAAAAADwAAAAEAAAAAAAAAAAA
+AAB+ADMAAAAAAA0AAAAAAAAAAAAAAIcAXwMAAAAADQAAAAAAAAAAAAAAhwAUAAAAAAAEAAAAAAAA
+AAAAAAB+AAAEAAAAAAAAAAABAAAACwUAAAAAADxNb2R1bGU+AFN5c3RlbS5JTwBNaWNyb3NvZnQu
+U3FsU2VydmVyLk1hbmFnZWREVFMAbXNjb3JsaWIAU1RfNjg1MGYyODIyZmM0NGY2YmE2ZDE0YmQ2
+OGIxMmEwN2UAZ2V0X1N0YWNrVHJhY2UAZGVmYXVsdEluc3RhbmNlAGdldF9NZXNzYWdlAFZhcmlh
+YmxlAFJ1bnRpbWVUeXBlSGFuZGxlAEdldFR5cGVGcm9tSGFuZGxlAFdyaXRlRmlsZQBEYXRlVGlt
+ZQBNaWNyb3NvZnQuU3FsU2VydmVyLkR0cy5SdW50aW1lAFdyaXRlTGluZQBUeXBlAGdldF9DdWx0
+dXJlAHNldF9DdWx0dXJlAHJlc291cmNlQ3VsdHVyZQBWU1RBUlRTY3JpcHRPYmplY3RNb2RlbEJh
+c2UAQXBwbGljYXRpb25TZXR0aW5nc0Jhc2UAQ2xvc2UARGlzcG9zZQBnZXRfRGF0ZQBjdXJyZW50
+RGF0ZQBFZGl0b3JCcm93c2FibGVTdGF0ZQBDb21waWxlckdlbmVyYXRlZEF0dHJpYnV0ZQBEZWJ1
+Z2dlck5vblVzZXJDb2RlQXR0cmlidXRlAERlYnVnZ2FibGVBdHRyaWJ1dGUARWRpdG9yQnJvd3Nh
+YmxlQXR0cmlidXRlAEFzc2VtYmx5VGl0bGVBdHRyaWJ1dGUAQXNzZW1ibHlUcmFkZW1hcmtBdHRy
+aWJ1dGUAVGFyZ2V0RnJhbWV3b3JrQXR0cmlidXRlAEFzc2VtYmx5Q29uZmlndXJhdGlvbkF0dHJp
+YnV0ZQBBc3NlbWJseURlc2NyaXB0aW9uQXR0cmlidXRlAENvbXBpbGF0aW9uUmVsYXhhdGlvbnNB
+dHRyaWJ1dGUAQXNzZW1ibHlQcm9kdWN0QXR0cmlidXRlAEFzc2VtYmx5Q29weXJpZ2h0QXR0cmli
+dXRlAFNTSVNTY3JpcHRUYXNrRW50cnlQb2ludEF0dHJpYnV0ZQBBc3NlbWJseUNvbXBhbnlBdHRy
+aWJ1dGUAUnVudGltZUNvbXBhdGliaWxpdHlBdHRyaWJ1dGUAZ2V0X1ZhbHVlAHZhbHVlAFN5c3Rl
+bS5SdW50aW1lLlZlcnNpb25pbmcAVG9TdHJpbmcAcGF0aABNaWNyb3NvZnQuU3FsU2VydmVyLlNj
+cmlwdFRhc2sATWljcm9zb2Z0LlNxbFNlcnZlci5EdHMuVGFza3MuU2NyaXB0VGFzawBTY3JpcHRP
+YmplY3RNb2RlbABTeXN0ZW0uQ29tcG9uZW50TW9kZWwAU1RfNjg1MGYyODIyZmM0NGY2YmE2ZDE0
+YmQ2OGIxMmEwN2UuZGxsAGdldF9JdGVtAFN5c3RlbQByZXNvdXJjZU1hbgBTY3JpcHRNYWluAFN5
+c3RlbS5Db25maWd1cmF0aW9uAFN5c3RlbS5HbG9iYWxpemF0aW9uAFN5c3RlbS5SZWZsZWN0aW9u
+AEV4Y2VwdGlvbgBDdWx0dXJlSW5mbwBnZXRfUmVzb3VyY2VNYW5hZ2VyAEV2ZW50c09iamVjdFdy
+YXBwZXIAU3RyZWFtV3JpdGVyAFRleHRXcml0ZXIARmlyZUVycm9yAC5jdG9yAC5jY3RvcgBTeXN0
+ZW0uRGlhZ25vc3RpY3MAU3lzdGVtLlJ1bnRpbWUuQ29tcGlsZXJTZXJ2aWNlcwBTeXN0ZW0uUmVz
+b3VyY2VzAFNUXzY4NTBmMjgyMmZjNDRmNmJhNmQxNGJkNjhiMTJhMDdlLlByb3BlcnRpZXMuUmVz
+b3VyY2VzLnJlc291cmNlcwBEZWJ1Z2dpbmdNb2RlcwBTVF82ODUwZjI4MjJmYzQ0ZjZiYTZkMTRi
+ZDY4YjEyYTA3ZS5Qcm9wZXJ0aWVzAGdldF9WYXJpYWJsZXMAU2V0dGluZ3MAZ2V0X0R0cwBnZXRf
+RXZlbnRzAENvbmNhdABPYmplY3QAZ2V0X0RlZmF1bHQARFRTRXhlY1Jlc3VsdABzZXRfVGFza1Jl
+c3VsdABnZXRfQXNzZW1ibHkAAAAAJ1UAcwBlAHIAOgA6AHcAbwByAGsAaQBuAGcARgBvAGwAZABl
+AHIAAANcAAArVQBzAGUAcgA6ADoAYwBvAG4AdAByAG8AbABGAGkAbABlAE4AYQBtAGUAACNVAHMA
+ZQByADoAOgBjAHUAcgByAGUAbgB0AEQAYQB0AGUAABdMAGEAcwB0AFUAcABkAGEAdABlAHMAAGFG
+AFUATgBEAEUAWABfAFUATgBJAFYARQBSAEkAUwBfAFQAUgBBAE4AUwBBAEMAVABJAE8ATgAgAC0A
+IABXAHIAaQB0AGUAIABjAG8AbgB0AHIAbwBsACAAZgBpAGwAZQABBQ0ACgAAcVMAVABfADYAOAA1
+ADAAZgAyADgAMgAyAGYAYwA0ADQAZgA2AGIAYQA2AGQAMQA0AGIAZAA2ADgAYgAxADIAYQAwADcA
+ZQAuAFAAcgBvAHAAZQByAHQAaQBlAHMALgBSAGUAcwBvAHUAcgBjAGUAcwAAALBDLDRh3VtIgEof
+obVRUNgABCABAQgDIAABBSABARERBCABAQ4FIAEBEV0FBwIOET0EIAASbQQgABJxBSABEnUcAyAA
+HAYAAw4ODg4MBwYODhJFET0RQRJJBCAAET0DIAAOBSACAQ4CBSAAEoCBCCAFAggODg4ICAABEoCF
+EYCJBSAAEoCNByACAQ4SgI0It3pcVhk04IkIiYRdzYCAzJEDBhJVAwYSWQMGEhAHIAIRQQ4RPQQA
+ABJVBAAAElkFAAEBElkEAAASEAMAAAEECAASVQQIABJZBAgAEhAIAQAIAAAAAAAeAQABAFQCFldy
+YXBOb25FeGNlcHRpb25UaHJvd3MBCAEAAgAAAAAAKAEAI1NUXzY4NTBmMjgyMmZjNDRmNmJhNmQx
+NGJkNjhiMTJhMDdlAAAFAQAAAAAWAQARQ29weXJpZ2h0IEAgIDIwMjAAAEkBABouTkVURnJhbWV3
+b3JrLFZlcnNpb249djQuNQEAVA4URnJhbWV3b3JrRGlzcGxheU5hbWUSLk5FVCBGcmFtZXdvcmsg
+NC41BAEAAAAAALQAAADOyu++AQAAAJEAAABsU3lzdGVtLlJlc291cmNlcy5SZXNvdXJjZVJlYWRl
+ciwgbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlU
+b2tlbj1iNzdhNWM1NjE5MzRlMDg5I1N5c3RlbS5SZXNvdXJjZXMuUnVudGltZVJlc291cmNlU2V0
+AgAAAAAAAAAAAAAAUEFEUEFEULQAAABIMAAAAAAAAAAAAABiMAAAACAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAVDAAAAAAAAAAAAAAAABfQ29yRGxsTWFpbgBtc2NvcmVlLmRsbAAAAAAA/yUAIAAQAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAEAEAAAABgAAIAAAAAAAAAAAAAAAAAAAAEAAQAAADAAAIAAAAAAAAAAAAAAAAAAAAEAAAAA
+AEgAAABYQAAAGgQAAAAAAAAAAAAAGgQ0AAAAVgBTAF8AVgBFAFIAUwBJAE8ATgBfAEkATgBGAE8A
+AAAAAL0E7/4AAAEAAAABAAgz6B0AAAEACDPoHT8AAAAAAAAABAAAAAIAAAAAAAAAAAAAAAAAAABE
+AAAAAQBWAGEAcgBGAGkAbABlAEkAbgBmAG8AAAAAACQABAAAAFQAcgBhAG4AcwBsAGEAdABpAG8A
+bgAAAAAAAACwBHoDAAABAFMAdAByAGkAbgBnAEYAaQBsAGUASQBuAGYAbwAAAFYDAAABADAAMAAw
+ADAAMAA0AGIAMAAAABoAAQABAEMAbwBtAG0AZQBuAHQAcwAAAAAAAAAiAAEAAQBDAG8AbQBwAGEA
+bgB5AE4AYQBtAGUAAAAAAAAAAABwACQAAQBGAGkAbABlAEQAZQBzAGMAcgBpAHAAdABpAG8AbgAA
+AAAAUwBUAF8ANgA4ADUAMABmADIAOAAyADIAZgBjADQANABmADYAYgBhADYAZAAxADQAYgBkADYA
+OABiADEAMgBhADAANwBlAAAAPgAPAAEARgBpAGwAZQBWAGUAcgBzAGkAbwBuAAAAAAAxAC4AMAAu
+ADcANgA1ADYALgAxADMAMAA2ADQAAAAAAHAAKAABAEkAbgB0AGUAcgBuAGEAbABOAGEAbQBlAAAA
+UwBUAF8ANgA4ADUAMABmADIAOAAyADIAZgBjADQANABmADYAYgBhADYAZAAxADQAYgBkADYAOABi
+ADEAMgBhADAANwBlAC4AZABsAGwAAABIABIAAQBMAGUAZwBhAGwAQwBvAHAAeQByAGkAZwBoAHQA
+AABDAG8AcAB5AHIAaQBnAGgAdAAgAEAAIAAgADIAMAAyADAAAAAqAAEAAQBMAGUAZwBhAGwAVABy
+AGEAZABlAG0AYQByAGsAcwAAAAAAAAAAAHgAKAABAE8AcgBpAGcAaQBuAGEAbABGAGkAbABlAG4A
+YQBtAGUAAABTAFQAXwA2ADgANQAwAGYAMgA4ADIAMgBmAGMANAA0AGYANgBiAGEANgBkADEANABi
+AGQANgA4AGIAMQAyAGEAMAA3AGUALgBkAGwAbAAAAGgAJAABAFAAcgBvAGQAdQBjAHQATgBhAG0A
+ZQAAAAAAUwBUAF8ANgA4ADUAMABmADIAOAAyADIAZgBjADQANABmADYAYgBhADYAZAAxADQAYgBk
+ADYAOABiADEAMgBhADAANwBlAAAAQgAPAAEAUAByAG8AZAB1AGMAdABWAGUAcgBzAGkAbwBuAAAA
+MQAuADAALgA3ADYANQA2AC4AMQAzADAANgA0AAAAAABGAA8AAQBBAHMAcwBlAG0AYgBsAHkAIABW
+AGUAcgBzAGkAbwBuAAAAMQAuADAALgA3ADYANQA2AC4AMQAzADAANgA0AAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAADAAAAHQwAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
+        </ScriptProject>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Validations"
+      DTS:CreationName="Microsoft.ScriptTask"
+      DTS:Description="Script Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{D48EB3AD-D40A-4185-9677-22E8D9155E8B}"
+      DTS:ExecutableType="Microsoft.ScriptTask"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Validations"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ScriptProject
+          Name="ST_be48938f3e4540d9920966d865510067"
+          VSTAMajorVersion="14"
+          VSTAMinorVersion="0"
+          Language="CSharp"
+          ReadOnlyVariables="User::controlFileName,User::currentDate,User::workingFolder">
+          <ProjectItem
+            Name="Properties\Resources.resx"
+            Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+</root>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Settings.Designer.cs"
+            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_be48938f3e4540d9920966d865510067.Properties.Settings.get_Default():ST_be48938f3e4540d9920966d865510067.Properties.Sett" +
+    "ings")]
+
+namespace ST_be48938f3e4540d9920966d865510067.Properties {
+    
+    
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+        
+        public static Settings Default {
+            get {
+                return defaultInstance;
+            }
+        }
+    }
+}]]></ProjectItem>
+          <ProjectItem
+            Name="ST_be48938f3e4540d9920966d865510067.csproj"
+            Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5476DB27-F2C8-4143-9108-5DCF1FBB054E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ST_be48938f3e4540d9920966d865510067</RootNamespace>
+    <AssemblyName>ST_be48938f3e4540d9920966d865510067</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.SqlServer.ManagedDTS, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.ScriptTask, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptMain.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <!-- Include the build rules for a C# project.-->
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}">
+        <ProjectProperties HostName="VSTAHostName" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" />
+        <Host Name="ScriptTask" />
+        <ProjectClient>
+          <HostIdentifier>SSIS_ST130</HostIdentifier>
+        </ProjectClient>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>]]></ProjectItem>
+          <ProjectItem
+            Name="ScriptMain.cs"
+            Encoding="UTF8"><![CDATA[using System;
+using Microsoft.SqlServer.Dts.Runtime;
+using System.IO;
+
+namespace ST_be48938f3e4540d9920966d865510067
+{
+	[Microsoft.SqlServer.Dts.Tasks.ScriptTask.SSISScriptTaskEntryPointAttribute]
+	public partial class ScriptMain : Microsoft.SqlServer.Dts.Tasks.ScriptTask.VSTARTScriptObjectModelBase
+	{
+        private const string ComponentName = "FUNDEX_UNIVERIS_TRANSACTION - Script task Validations";
+
+		public void Main()
+		{
+            var currentDate = (DateTime)Dts.Variables["currentDate"].Value;
+            var controlFilePath = (string)Dts.Variables["workingFolder"].Value + "\\" + (string)Dts.Variables["controlFileName"].Value;
+
+            if (ISAnyControlFile(controlFilePath) == DTSExecResult.Success)
+            {
+                if (IsNewUpdateRequired(currentDate, controlFilePath) == DTSExecResult.Success)
+                {
+                    Dts.TaskResult = (int)DTSExecResult.Success;
+                    return;
+                }
+            }
+            else
+            {
+                Dts.Events.FireWarning(0, ComponentName, "Control file not found", null, 0);
+                Dts.TaskResult = (int)DTSExecResult.Success;
+                return;
+            }
+
+            Dts.TaskResult = (int)DTSExecResult.Completion;
+		}
+
+        private DTSExecResult ISAnyControlFile(string controlFilePath)
+        {
+            if (File.Exists(controlFilePath) == true)
+            {
+                return DTSExecResult.Success;
+            }
+
+            return DTSExecResult.Failure;
+        }
+        private DTSExecResult IsNewUpdateRequired(DateTime currentDate,string controlFilePath)
+        {
+            StreamReader reader = null;
+
+            try
+            {
+                reader = new StreamReader(controlFilePath);
+                reader.ReadLine();//read the header
+                var values = reader.ReadLine().Split(';');//read the colones
+
+                reader.Close();
+
+                var lastUpdate = DateTime.Parse(values[0]);
+
+                if(lastUpdate.Year == currentDate.Year)
+                {
+                    if(lastUpdate.Month == currentDate.Month)
+                    {
+                        if (lastUpdate.Day == currentDate.Day)
+                        {
+                            return DTSExecResult.Failure;//validations failed
+                        }
+                    }
+                }
+
+                return DTSExecResult.Success;
+            }
+            catch(Exception ex)
+            {
+                Dts.Events.FireError(0, ComponentName, ex.Message + "\r\n" + ex.StackTrace, null, 0);
+            }
+            finally
+            {
+                if(reader != null)
+                {
+                    reader.Dispose();
+                }
+            }
+
+            return DTSExecResult.Failure;
+        }
+    }
+}]]></ProjectItem>
+          <ProjectItem
+            Name="Project"
+            Encoding="UTF16LE"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="3.0" schemaVersion="1.0">
+	<msb:PropertyGroup>
+		<msb:CodeName>ST_be48938f3e4540d9920966d865510067</msb:CodeName>
+		<msb:Language>msBuild</msb:Language>
+		<msb:DisplayName>ST_be48938f3e4540d9920966d865510067</msb:DisplayName>
+		<msb:ProjectId>{5EE9BB99-8A34-46B8-B06D-5280A114A156}</msb:ProjectId>
+	</msb:PropertyGroup>
+	<msb:ItemGroup>
+		<msb:Project Include="ST_be48938f3e4540d9920966d865510067.csproj"/>
+		<msb:File Include="Properties\AssemblyInfo.cs"/>
+		<msb:File Include="Properties\Settings.settings"/>
+		<msb:File Include="Properties\Resources.resx"/>
+		<msb:File Include="Properties\Resources.Designer.cs"/>
+		<msb:File Include="Properties\Settings.Designer.cs"/>
+		<msb:File Include="ScriptMain.cs"/>
+	</msb:ItemGroup>
+</c:Project>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\AssemblyInfo.cs"
+            Encoding="UTF8"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("ST_be48938f3e4540d9920966d865510067")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("ST_be48938f3e4540d9920966d865510067")]
+[assembly: AssemblyCopyright("Copyright @  2020")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Settings.settings"
+            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Resources.Designer.cs"
+            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_be48938f3e4540d9920966d865510067.Properties.Resources.get_ResourceManager():System.Resources.Resou" +
+    "rceManager")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_be48938f3e4540d9920966d865510067.Properties.Resources.get_Culture():System.Globalization.CultureIn" +
+    "fo")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_be48938f3e4540d9920966d865510067.Properties.Resources.set_Culture(System.Globalization.CultureInfo" +
+    "):Void")]
+
+namespace ST_be48938f3e4540d9920966d865510067.Properties {
+    
+    
+    /// <summary>
+    ///   A strongly-typed resource class, for looking up localized strings, etc.
+    /// </summary>
+    // This class was auto-generated by the StronglyTypedResourceBuilder
+    // class via a tool like ResGen or Visual Studio.
+    // To add or remove a member, edit your .ResX file then rerun ResGen
+    // with the /str option, or rebuild your VS project.
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    internal class Resources {
+        
+        private static global::System.Resources.ResourceManager resourceMan;
+        
+        private static global::System.Globalization.CultureInfo resourceCulture;
+        
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        internal Resources() {
+        }
+        
+        /// <summary>
+        ///   Returns the cached ResourceManager instance used by this class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if ((resourceMan == null)) {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ST_be48938f3e4540d9920966d865510067.Properties.Resources", typeof(Resources).Assembly);
+                    resourceMan = temp;
+                }
+                return resourceMan;
+            }
+        }
+        
+        /// <summary>
+        ///   Overrides the current thread's CurrentUICulture property for all
+        ///   resource lookups using this strongly typed resource class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
+                return resourceCulture;
+            }
+            set {
+                resourceCulture = value;
+            }
+        }
+    }
+}]]></ProjectItem>
+          <BinaryItem
+            Name="ST_be48938f3e4540d9920966d865510067.dll">TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDAMFL218AAAAAAAAAAOAAIiALATAAABQAAAAIAAAAAAAAJjIA
+AAAgAAAAQAAAAAAAEAAgAAAAAgAABAAAAAAAAAAGAAAAAAAAAACAAAAAAgAAAAAAAAMAYIUAABAA
+ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAANQxAABPAAAAAEAAAHgEAAAAAAAAAAAAAAAAAAAA
+AAAAAGAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAALBIAAAAgAAAAFAAAAAIA
+AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAAHgEAAAAQAAAAAYAAAAWAAAAAAAAAAAAAAAAAABAAABA
+LnJlbG9jAAAMAAAAAGAAAAACAAAAHAAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAAAI
+MgAAAAAAAEgAAAACAAUAaCIAALQOAAABAAAAAAAAABwxAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAABMwBgDAAAAAAQAAEQIoEAAACm8RAAAKcgEAAHBvEgAACm8T
+AAAKpQ8AAAEKAigQAAAKbxEAAApyGQAAcG8SAAAKbxMAAAp0HgAAAXI1AABwAigQAAAKbxEAAApy
+OQAAcG8SAAAKbxMAAAp0HgAAASgUAAAKCwIHKAIAAAYtFwIGBygDAAAGLTcCKBAAAAoWbxUAAAoq
+AigQAAAKbxYAAAoWclkAAHByxQAAcBQWbxcAAAoCKBAAAAoWbxUAAAoqAigQAAAKGG8VAAAKKjID
+KBgAAAosAhYqFyoAAAAbMAYArAAAAAIAABEUCgRzGQAACgoGbxoAAAomBm8aAAAKF40iAAABJRYf
+O51vGwAACgZvHAAAChaaKB0AAAoLEgEoHgAACg8BKB4AAAozJBIBKB8AAAoPASgfAAAKMxQSASgg
+AAAKDwEoIAAACjMEFwzeQhYM3j4NAigQAAAKbxYAAAoWclkAAHAJbyEAAApy8wAAcAlvIgAACigU
+AAAKFBZvIwAACibeCgYsBgZvJAAACtwXKggqARwAAAAAAgBqbAAyEgAAAQIAAgCcngAKAAAAAB4C
+KCUAAAoqHgIoJgAACiqufgIAAAQtHnL5AABw0AMAAAIoJwAACm8oAAAKcykAAAqAAgAABH4CAAAE
+Khp+AwAABCoeAoADAAAEKhp+BAAABCoeAigqAAAKKi5zCgAABoAEAAAEKgAAQlNKQgEAAQAAAAAA
+DAAAAHY0LjAuMzAzMTkAAAAABQBsAAAAUAQAACN+AAC8BAAAZAYAACNTdHJpbmdzAAAAACALAABs
+AQAAI1VTAIwMAAAQAAAAI0dVSUQAAACcDAAAGAIAACNCbG9iAAAAAAAAAAIAAAFXHaIBCQEAAAD6
+ATMAFgAAAQAAACUAAAAEAAAABAAAAAsAAAAEAAAAKgAAAAEAAAAQAAAAAgAAAAIAAAADAAAABAAA
+AAEAAAAEAAAAAQAAAAAAEwQBAAAAAAAGAJ8CLAUGAC4DLAUGAOsBGQUPAKAFAAAGABgCjAQGAIIC
+jAQGAGMCjAQGABUDjAQGAL8CjAQGANgCjAQGAC8CjAQGAEoCXAMKAPMCwgMKAEoBwgMGAOsARAQO
+AC8G9AAGAMIELgAGAJ4ERAQGAM4BGQUGABYGRAQGAN4ETAUGAKgEdwQSAJ4B/QMSAP8B/QMSAGYB
+YgQGALMBLAUKAOsDwgMOAOIF9AAOAJ8A9AAGAIIDRAQKAO4EwgMGANgALgAGAM8ELgAGAL0ERAQG
+AB0BRAQGAKgARAQGAFgGjAQAAAAAJQAAAAAAAQABAAEAEABXBAEAOQABAAEAAAAQAFMFrwVRAAIA
+BQAAARAA7AWvBWUABAAJAFGA3QAMAREASwQPAREAOgETAREAgwAXAVAgAAAAAIYAXQQGAAEAHCEA
+AAAAgQDMABsBAQAsIQAAAACBAGAAIQECAAAiAAAAAIYYDAUGAAQACCIAAAAAgxgMBQYABAAQIgAA
+AACTCNoEKQEEADwiAAAAAJMIIgEuAQQAQyIAAAAAkwguATMBBABLIgAAAACWCCMGOQEFAFIiAAAA
+AIYYDAUGAAUAWiIAAAAAkRgSBT4BBQAAAAEAiQMAAAEAkgEAAAIAiQMAAAEAVgMJAAwFAQARAAwF
+BgAZAAwFCgApAAwFEAAxAAwFEAA5AAwFEABBAAwFEABJAAwFEABRAAwFEABZAAwFEABhAAwFEABp
+AAwFBgCZAAwFBgDBAAwFFQDRAAwFBgBxAPUFIQDZAN4FJgDhADsEKwDpAEwDMQDxAA8GNQDZAD0G
+AQDZAP0FPAD5AHYDQQABAQgGSgCJAAwFEAAJARQBWgDxAB0GXgAJAX4BBgB5AIwBZQB5ALQEawB5
+AJkDawB5AEwGawCRAJMAWgCRAHQAWgD5AAIFbwAJAYQBBgBxAAwFBgChAAwFBgAZAboAeAAZAVQG
+gQCpAAwFhwDJAAwFBgAOAAQAoQApAHMAeQEuAAsAUQEuABMAWgEuABsAeQEuACMAggEuACsAqwEu
+ADMAqwEuADsAqwEuAEMAggEuAEsAsQEuAFMAqwEuAFsAyAFDAGMAEgJJAHMAeQFjAGsAEgKBAHsA
+EgIbAE8AAwABAAQAAwAAAN4EQgEAAEIBRwEAACcGTAECAAYAAwACAAcABQABAAgABQACAAkABwAE
+gAAAAQAAAOgd+DIAAAAAAAABAAAABAAAAAAAAAAAAAAAjwBXAAAAAAANAAAAAAAAAAAAAACYAKMD
+AAAAAA0AAAAAAAAAAAAAAJgAOAAAAAAABAAAAAAAAAAAAAAAjwBEBAAAAAAAAAAAAQAAAF0FAAAA
+AAAAAFNUX2JlNDg5MzhmM2U0NTQwZDk5MjA5NjZkODY1NTEwMDY3ADxNb2R1bGU+AFN5c3RlbS5J
+TwBNaWNyb3NvZnQuU3FsU2VydmVyLk1hbmFnZWREVFMAbXNjb3JsaWIASXNOZXdVcGRhdGVSZXF1
+aXJlZABnZXRfU3RhY2tUcmFjZQBkZWZhdWx0SW5zdGFuY2UAZ2V0X01lc3NhZ2UAVmFyaWFibGUA
+UnVudGltZVR5cGVIYW5kbGUAR2V0VHlwZUZyb21IYW5kbGUASVNBbnlDb250cm9sRmlsZQBDb21w
+b25lbnROYW1lAERhdGVUaW1lAE1pY3Jvc29mdC5TcWxTZXJ2ZXIuRHRzLlJ1bnRpbWUAUmVhZExp
+bmUAVHlwZQBnZXRfQ3VsdHVyZQBzZXRfQ3VsdHVyZQByZXNvdXJjZUN1bHR1cmUAVlNUQVJUU2Ny
+aXB0T2JqZWN0TW9kZWxCYXNlAEFwcGxpY2F0aW9uU2V0dGluZ3NCYXNlAENsb3NlAERpc3Bvc2UA
+UGFyc2UAY3VycmVudERhdGUARWRpdG9yQnJvd3NhYmxlU3RhdGUAQ29tcGlsZXJHZW5lcmF0ZWRB
+dHRyaWJ1dGUARGVidWdnZXJOb25Vc2VyQ29kZUF0dHJpYnV0ZQBEZWJ1Z2dhYmxlQXR0cmlidXRl
+AEVkaXRvckJyb3dzYWJsZUF0dHJpYnV0ZQBBc3NlbWJseVRpdGxlQXR0cmlidXRlAEFzc2VtYmx5
+VHJhZGVtYXJrQXR0cmlidXRlAFRhcmdldEZyYW1ld29ya0F0dHJpYnV0ZQBBc3NlbWJseUNvbmZp
+Z3VyYXRpb25BdHRyaWJ1dGUAQXNzZW1ibHlEZXNjcmlwdGlvbkF0dHJpYnV0ZQBDb21waWxhdGlv
+blJlbGF4YXRpb25zQXR0cmlidXRlAEFzc2VtYmx5UHJvZHVjdEF0dHJpYnV0ZQBBc3NlbWJseUNv
+cHlyaWdodEF0dHJpYnV0ZQBTU0lTU2NyaXB0VGFza0VudHJ5UG9pbnRBdHRyaWJ1dGUAQXNzZW1i
+bHlDb21wYW55QXR0cmlidXRlAFJ1bnRpbWVDb21wYXRpYmlsaXR5QXR0cmlidXRlAGdldF9WYWx1
+ZQB2YWx1ZQBTeXN0ZW0uUnVudGltZS5WZXJzaW9uaW5nAEZpcmVXYXJuaW5nAFN0cmluZwBjb250
+cm9sRmlsZVBhdGgAZ2V0X01vbnRoAE1pY3Jvc29mdC5TcWxTZXJ2ZXIuU2NyaXB0VGFzawBNaWNy
+b3NvZnQuU3FsU2VydmVyLkR0cy5UYXNrcy5TY3JpcHRUYXNrAFNjcmlwdE9iamVjdE1vZGVsAFN5
+c3RlbS5Db21wb25lbnRNb2RlbABTVF9iZTQ4OTM4ZjNlNDU0MGQ5OTIwOTY2ZDg2NTUxMDA2Ny5k
+bGwAZ2V0X0l0ZW0AU3lzdGVtAHJlc291cmNlTWFuAFNjcmlwdE1haW4AU3lzdGVtLkNvbmZpZ3Vy
+YXRpb24AU3lzdGVtLkdsb2JhbGl6YXRpb24AU3lzdGVtLlJlZmxlY3Rpb24ARXhjZXB0aW9uAEN1
+bHR1cmVJbmZvAGdldF9ZZWFyAENoYXIAU3RyZWFtUmVhZGVyAFRleHRSZWFkZXIAZ2V0X1Jlc291
+cmNlTWFuYWdlcgBFdmVudHNPYmplY3RXcmFwcGVyAEZpcmVFcnJvcgAuY3RvcgAuY2N0b3IAU3lz
+dGVtLkRpYWdub3N0aWNzAFN5c3RlbS5SdW50aW1lLkNvbXBpbGVyU2VydmljZXMAU3lzdGVtLlJl
+c291cmNlcwBTVF9iZTQ4OTM4ZjNlNDU0MGQ5OTIwOTY2ZDg2NTUxMDA2Ny5Qcm9wZXJ0aWVzLlJl
+c291cmNlcy5yZXNvdXJjZXMARGVidWdnaW5nTW9kZXMAU1RfYmU0ODkzOGYzZTQ1NDBkOTkyMDk2
+NmQ4NjU1MTAwNjcuUHJvcGVydGllcwBnZXRfVmFyaWFibGVzAFNldHRpbmdzAGdldF9EdHMAZ2V0
+X0V2ZW50cwBFeGlzdHMAQ29uY2F0AE9iamVjdABTcGxpdABnZXRfRGVmYXVsdABEVFNFeGVjUmVz
+dWx0AHNldF9UYXNrUmVzdWx0AGdldF9EYXkAZ2V0X0Fzc2VtYmx5AAAAAAAXYwB1AHIAcgBlAG4A
+dABEAGEAdABlAAAbdwBvAHIAawBpAG4AZwBGAG8AbABkAGUAcgAAA1wAAB9jAG8AbgB0AHIAbwBs
+AEYAaQBsAGUATgBhAG0AZQAAa0YAVQBOAEQARQBYAF8AVQBOAEkAVgBFAFIASQBTAF8AVABSAEEA
+TgBTAEEAQwBUAEkATwBOACAALQAgAFMAYwByAGkAcAB0ACAAdABhAHMAawAgAFYAYQBsAGkAZABh
+AHQAaQBvAG4AcwABLUMAbwBuAHQAcgBvAGwAIABmAGkAbABlACAAbgBvAHQAIABmAG8AdQBuAGQA
+AAUNAAoAAHFTAFQAXwBiAGUANAA4ADkAMwA4AGYAMwBlADQANQA0ADAAZAA5ADkAMgAwADkANgA2
+AGQAOAA2ADUANQAxADAAMAA2ADcALgBQAHIAbwBwAGUAcgB0AGkAZQBzAC4AUgBlAHMAbwB1AHIA
+YwBlAHMAAABZOTo7m2ccS5fgnAeMhsWhAAQgAQEIAyAAAQUgAQEREQQgAQEOBSABARFdBQcCET0O
+BCAAEm0EIAAScQUgARJ1HAMgABwGAAMODg4OBCAAEn0IIAUBCA4ODggEAAECDgoHBBJFET0RQRJJ
+AyAADgYgAR0OHQMFAAERPQ4DIAAICCAFAggODg4ICAABEoCNEYCRBSAAEoCVByACAQ4SgJUIt3pc
+Vhk04IkIiYRdzYCAzJFqRgBVAE4ARABFAFgAXwBVAE4ASQBWAEUAUgBJAFMAXwBUAFIAQQBOAFMA
+QQBDAFQASQBPAE4AIAAtACAAUwBjAHIAaQBwAHQAIAB0AGEAcwBrACAAVgBhAGwAaQBkAGEAdABp
+AG8AbgBzAAIGDgMGElUDBhJZAwYSEAUgARFBDgcgAhFBET0OBAAAElUEAAASWQUAAQESWQQAABIQ
+AwAAAQQIABJVBAgAElkECAASEAgBAAgAAAAAAB4BAAEAVAIWV3JhcE5vbkV4Y2VwdGlvblRocm93
+cwEIAQACAAAAAAAoAQAjU1RfYmU0ODkzOGYzZTQ1NDBkOTkyMDk2NmQ4NjU1MTAwNjcAAAUBAAAA
+ABYBABFDb3B5cmlnaHQgQCAgMjAyMAAASQEAGi5ORVRGcmFtZXdvcmssVmVyc2lvbj12NC41AQBU
+DhRGcmFtZXdvcmtEaXNwbGF5TmFtZRIuTkVUIEZyYW1ld29yayA0LjUEAQAAAAC0AAAAzsrvvgEA
+AACRAAAAbFN5c3RlbS5SZXNvdXJjZXMuUmVzb3VyY2VSZWFkZXIsIG1zY29ybGliLCBWZXJzaW9u
+PTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4
+OSNTeXN0ZW0uUmVzb3VyY2VzLlJ1bnRpbWVSZXNvdXJjZVNldAIAAAAAAAAAAAAAAFBBRFBBRFC0
+AAAA/DEAAAAAAAAAAAAAFjIAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgyAAAAAAAAAAAAAAAA
+X0NvckRsbE1haW4AbXNjb3JlZS5kbGwAAAAAAP8lACAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAQAQAAAAGAAAgAAAAAAAAAAAAAAAAAAAAQABAAAAMAAAgAAAAAAAAAAAAAAAAAAAAQAAAAAA
+SAAAAFhAAAAaBAAAAAAAAAAAAAAaBDQAAABWAFMAXwBWAEUAUgBTAEkATwBOAF8ASQBOAEYATwAA
+AAAAvQTv/gAAAQAAAAEA+DLoHQAAAQD4MugdPwAAAAAAAAAEAAAAAgAAAAAAAAAAAAAAAAAAAEQA
+AAABAFYAYQByAEYAaQBsAGUASQBuAGYAbwAAAAAAJAAEAAAAVAByAGEAbgBzAGwAYQB0AGkAbwBu
+AAAAAAAAALAEegMAAAEAUwB0AHIAaQBuAGcARgBpAGwAZQBJAG4AZgBvAAAAVgMAAAEAMAAwADAA
+MAAwADQAYgAwAAAAGgABAAEAQwBvAG0AbQBlAG4AdABzAAAAAAAAACIAAQABAEMAbwBtAHAAYQBu
+AHkATgBhAG0AZQAAAAAAAAAAAHAAJAABAEYAaQBsAGUARABlAHMAYwByAGkAcAB0AGkAbwBuAAAA
+AABTAFQAXwBiAGUANAA4ADkAMwA4AGYAMwBlADQANQA0ADAAZAA5ADkAMgAwADkANgA2AGQAOAA2
+ADUANQAxADAAMAA2ADcAAAA+AA8AAQBGAGkAbABlAFYAZQByAHMAaQBvAG4AAAAAADEALgAwAC4A
+NwA2ADUANgAuADEAMwAwADQAOAAAAAAAcAAoAAEASQBuAHQAZQByAG4AYQBsAE4AYQBtAGUAAABT
+AFQAXwBiAGUANAA4ADkAMwA4AGYAMwBlADQANQA0ADAAZAA5ADkAMgAwADkANgA2AGQAOAA2ADUA
+NQAxADAAMAA2ADcALgBkAGwAbAAAAEgAEgABAEwAZQBnAGEAbABDAG8AcAB5AHIAaQBnAGgAdAAA
+AEMAbwBwAHkAcgBpAGcAaAB0ACAAQAAgACAAMgAwADIAMAAAACoAAQABAEwAZQBnAGEAbABUAHIA
+YQBkAGUAbQBhAHIAawBzAAAAAAAAAAAAeAAoAAEATwByAGkAZwBpAG4AYQBsAEYAaQBsAGUAbgBh
+AG0AZQAAAFMAVABfAGIAZQA0ADgAOQAzADgAZgAzAGUANAA1ADQAMABkADkAOQAyADAAOQA2ADYA
+ZAA4ADYANQA1ADEAMAAwADYANwAuAGQAbABsAAAAaAAkAAEAUAByAG8AZAB1AGMAdABOAGEAbQBl
+AAAAAABTAFQAXwBiAGUANAA4ADkAMwA4AGYAMwBlADQANQA0ADAAZAA5ADkAMgAwADkANgA2AGQA
+OAA2ADUANQAxADAAMAA2ADcAAABCAA8AAQBQAHIAbwBkAHUAYwB0AFYAZQByAHMAaQBvAG4AAAAx
+AC4AMAAuADcANgA1ADYALgAxADMAMAA0ADgAAAAAAEYADwABAEEAcwBzAGUAbQBiAGwAeQAgAFYA
+ZQByAHMAaQBvAG4AAAAxAC4AMAAuADcANgA1ADYALgAxADMAMAA0ADgAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAMAAAAKDIAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
+        </ScriptProject>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{96B3E1CB-3DD9-4ACC-A776-CBA2C338CC98}"
+      DTS:From="Package\Validations"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Create  file depot folders" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{309E1838-CD27-4EEE-8EC6-2E347D9B3584}"
+      DTS:From="Package\Copy from Univeris to FILE"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Update control file" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{96963FD3-6516-451E-9B6C-BA436BBBF226}"
+      DTS:From="Package\Create  file depot folders"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Copy from Univeris to FILE" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Cette section CDATA contient des informations sur la disposition du package. Elle comprend des informations telles que les coordonnées (x,y), la largeur et la hauteur.-->
+<!--Si vous modifiez manuellement cette section et commettez une erreur, vous pouvez la supprimer. -->
+<!--Le package pourra toujours se charger normalement, mais les informations de disposition précédente seront perdues et le concepteur réorganisera automatiquement les éléments sur l'aire de conception.-->
+<Objects
+  Version="8">
+  <!--Chaque nœud ci-dessous contiendra des propriétés qui n'affectent pas le comportement d'exécution.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="211,42"
+          Id="Package\Copy from Univeris to FILE"
+          TopLeft="649,451" />
+        <NodeLayout
+          Size="198,42"
+          Id="Package\Create  file depot folders"
+          TopLeft="659,362" />
+        <NodeLayout
+          Size="168,42"
+          Id="Package\Update control file"
+          TopLeft="676,560" />
+        <NodeLayout
+          Size="133,42"
+          Id="Package\Validations"
+          TopLeft="689,256" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="756.75,298">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,64"
+              Start="0,0"
+              End="0,56.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,56.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="757.25,493">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,67"
+              Start="0,0"
+              End="0,59.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,59.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="756.25,404">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,47"
+              Start="0,0"
+              End="0,39.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Copy from Univeris to FILE">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Copy from Univeris to FILE\SQL TRANSACTION"
+          TopLeft="512,130" />
+        <NodeLayout
+          Size="200,42"
+          Id="Package\Copy from Univeris to FILE\Flat File TRANSACTION"
+          TopLeft="493,300" />
+        <EdgeLayout
+          Id="Package\Copy from Univeris to FILE.Paths[ADO NET Source Output]"
+          TopLeft="595.25,172">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,128"
+              Start="0,0"
+              End="0,120.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,120.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Copy from Univeris to FILE\SQL TRANSACTION">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
