@@ -1,0 +1,10 @@
+$configFiles = Get-ChildItem C:\ADF_Migration\IAW *.json -rec
+foreach ($file in $configFiles)
+{
+    (Get-Content $file.PSPath) |
+    Foreach-Object { $_ -replace "IAF_SF", "ls_snowflake_keyvault_auth" } |
+    Foreach-Object { $_ -replace "Snowflake1", "ls_snowflake_keyvault_auth" } |
+    Foreach-Object { $_ -replace "concat\(\'call DB_IAWT_\',pipeline\(\).globalParameters.ENV,\'_DWH.TOOLS.SP_STG_COUNT\(", "concat('call DB_IAWT_',pipeline().globalParameters.ENV,'_DWH.TOOLS.SP_CONV_STG_COUNT(',pipeline().parameters.temp_JobName,',',pipeline().parameters.temp_dataStartDate,'," } |
+    Foreach-Object { $_ -replace "output.resultSets\[0\]\['rows'\]\[0\].SP_STG_COUNT", "output.resultSets[0]['rows'][0].SP_CONV_STG_COUNT" } |
+    Set-Content $file.PSPath
+}

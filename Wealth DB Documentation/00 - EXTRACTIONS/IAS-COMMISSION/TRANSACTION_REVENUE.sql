@@ -1,0 +1,50 @@
+SELECT 
+t.transId, 
+t.extTransId, 
+t.processDate, 
+t.transDate, 
+t.sourceCode, 
+CAST(t.cancelInd as DECIMAL) as cancelInd, 
+t.repId, 
+t.currency, 
+CAST(t.exchangeRate as CHAR) as exchangeRate,
+t.entryType, 
+CAST(t.commission as CHAR) as commission,
+CAST(t.commissionCAD as CHAR) as commissionCAD,
+CAST(t.overrideInd as DECIMAL) as overrideInd, 
+CAST(t.accurateInd as DECIMAL) as accurateInd, 
+t.description, 
+t.numberOfOrders, 
+CAST(t.netCommission as CHAR) as netCommission,
+CAST(t.transFee as CHAR) as transFee,
+CAST(t.shareInd as DECIMAL) as shareInd, 
+CAST(t.affectGrossCommInd as DECIMAL) as affectGrossCommInd, 
+CAST(t.revenueOnlyInd as DECIMAL) as revenueOnlyInd, 
+REPLACE(t.note, '|', '/') as note, 
+t.revNo, 
+t.stamp, 
+t.userId,
+'IAS-COMMISSION' AS MD_SRCSYSTEM, 
+CURDATE() AS MD_LOADDATE,
+if(a.ASC_3_Managed_Type = 'X', "Diversiflex Plus",
+if(a.ASC_3_Managed_Type = 'L', "Diversiflex Balanced",
+if(a.ASC_3_Managed_Type = 'M', "Managed Program",
+if(a.ASC_3_Managed_Type = 'Q', "Managed Low Fee",
+if(a.ASC_3_Managed_Type = 'S', "Fee Based Program",
+if(a.ASC_3_Managed_Type = 'R', "Fee Based Low Fee ",
+if(a.ASC_3_Managed_Type = 'V', "Vintage",
+if(a.ASC_3_Managed_Type = 'N', "Vintage Non-Discretionary",
+if(a.ASC_3_Managed_Type = 'J', "iAS Strategic Portfolios",
+if(rt.managedInd, "Managed",
+if(rt.fixedFeeInd, "Fee Based",
+"Commission"))))))))))) as programType,
+t.accountId,
+t.qty,
+t.transtype
+from COMMISSION.transaction t 
+left join IAVM.rep rt on
+ t.repId = rt.repId
+left join BACKOFFICE.IAVMACT a on
+ a.A_C_ID = t.accountId
+where
+t.stamp between SUBDATE(CURDATE(), 1) and SUBDATE(CURDATE(), interval 1 second)

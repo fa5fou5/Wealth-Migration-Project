@@ -1,0 +1,11 @@
+SELECT DISTINCT 'Wealth' AS COMPANY_CD,
+		'iA Wealth Management' AS COMPANY_NAME,
+		'IIROC' AS REGULATORY_ORG_CD,  
+		'Investment Industry Regulatory Organization of Canada' AS REGULATORY_ORG_NAME, 
+		REPLACE(REPLACE(AC.A_C_Representative, CHAR(13), ''), CHAR(10), '') AS A_C_Representative,
+	CURDATE() AS MD_LOADDATE,
+	'IAS' AS MD_SRCSYSTEM 
+		FROM IAVMACT AC
+		ORDER BY A_C_Representative 
+#		INTO OUTFILE 'C:\\BW_IAS_EXPORT_ACCP\\ADVISORS.bcp' FIELDS TERMINATED BY '|' LINES TERMINATED BY '\r\n';
+		
