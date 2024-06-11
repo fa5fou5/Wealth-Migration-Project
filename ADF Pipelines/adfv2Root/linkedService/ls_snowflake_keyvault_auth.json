@@ -1,0 +1,30 @@
+{
+	"name": "ls_snowflake_keyvault_auth",
+	"properties": {
+		"parameters": {
+			"DBName": {
+				"type": "String",
+				"defaultValue": "DB_IAW_DEV_STG"
+			}
+		},
+		"annotations": [],
+		"type": "Snowflake",
+		"typeProperties": {
+			"authenticationType": "Basic",
+			"connectionString": "jdbc:snowflake://iafg.canada-central.azure.snowflakecomputing.com/?user=SSBIIIAW@ia.iafg.net&db=@{linkedService().DBName}&warehouse=WH_IAW_DEV_ETL&role=GLD_TRV_WH_IAW_I",
+			"password": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "ls_keyvault_managed_identity_auth",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "snowflake"
+			}
+		},
+		"connectVia": {
+			"referenceName": "ir-public-cac",
+			"type": "IntegrationRuntimeReference"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/linkedservices"
+}

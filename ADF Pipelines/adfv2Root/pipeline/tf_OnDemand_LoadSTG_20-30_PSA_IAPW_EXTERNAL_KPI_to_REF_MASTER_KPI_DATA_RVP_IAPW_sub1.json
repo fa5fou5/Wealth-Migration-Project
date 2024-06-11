@@ -1,0 +1,178 @@
+{
+	"name": "tf_OnDemand_LoadSTG_20-30_PSA_IAPW_EXTERNAL_KPI_to_REF_MASTER_KPI_DATA_RVP_IAPW_sub1",
+	"properties": {
+		"activities": [
+			{
+				"name": "dcn_StartJob_Result",
+				"type": "IfCondition",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@contains(pipeline().parameters.Start_Audit_Output,'SUCCESS')",
+						"type": "Expression"
+					},
+					"ifFalseActivities": [
+						{
+							"name": "Fail_2",
+							"type": "Fail",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"message": "AUDIT_JOB_FAILED",
+								"errorCode": "FAILED"
+							}
+						}
+					],
+					"ifTrueActivities": [
+						{
+							"name": "dt_LoadSTG_PSA_IAPW_To_STG_REF_MASTER_KPI_DATA_RVP_IAPW",
+							"type": "Script",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"linkedServiceName": {
+								"referenceName": "ls_snowflake_keyvault_auth",
+								"type": "LinkedServiceReference",
+								"parameters": {
+									"DBName": "DB_IAW_DEV_STG"
+								}
+							},
+							"typeProperties": {
+								"scripts": [
+									{
+										"type": "Query",
+										"text": {
+											"value": "@concat('call DB_IAW_',pipeline().globalParameters.ENV,'_STG.EXTERNAL_KPI.SP_CONV_LOADSTG_PSA_IAPW_TO_STG_REF_MASTER_KPI_DATA_RVP_IAPW(''',pipeline().globalParameters.ENV,''',''',pipeline().parameters.io_PATH,''')')",
+											"type": "Expression"
+										}
+									}
+								]
+							}
+						},
+						{
+							"name": "mt_STG_count",
+							"type": "Script",
+							"dependsOn": [
+								{
+									"activity": "dt_LoadSTG_PSA_IAPW_To_STG_REF_MASTER_KPI_DATA_RVP_IAPW",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"linkedServiceName": {
+								"referenceName": "ls_snowflake_keyvault_auth",
+								"type": "LinkedServiceReference",
+								"parameters": {
+									"DBName": "DB_IAW_DEV_STG"
+								}
+							},
+							"typeProperties": {
+								"scripts": [
+									{
+										"type": "Query",
+										"text": {
+											"value": "@concat('call DB_IAW_',pipeline().globalParameters.ENV,'_DWH.TOOLS.SP_CONV_STG_COUNT(',pipeline().parameters.temp_JobName,',',pipeline().parameters.temp_dataStartDate,',''',pipeline().globalParameters.ENV,''',''EXTERNAL_KPI'', ''REF_MASTER_KPI_DATA_RVP_IAPW''',')')",
+											"type": "Expression"
+										}
+									}
+								]
+							}
+						},
+						{
+							"name": "dt_Audit_EndJob",
+							"type": "Script",
+							"dependsOn": [
+								{
+									"activity": "mt_STG_count",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"linkedServiceName": {
+								"referenceName": "ls_snowflake_keyvault_auth",
+								"type": "LinkedServiceReference",
+								"parameters": {
+									"DBName": "DB_IAW_DEV_STG"
+								}
+							},
+							"typeProperties": {
+								"scripts": [
+									{
+										"type": "Query",
+										"text": {
+											"value": "@concat('call DB_IAW_',pipeline().globalParameters.ENV,'_DWH.TOOLS.USP_AUDIT_END_JOB(',pipeline().parameters.temp_JobName,',',pipeline().parameters.temp_dataStartDate,',',pipeline().parameters.temp_tf_Audit_ID,',','''SUCCESS''',',','''Successful execution''',')')",
+											"type": "Expression"
+										}
+									}
+								]
+							}
+						}
+					]
+				}
+			}
+		],
+		"parameters": {
+			"input_filename": {
+				"type": "string",
+				"defaultValue": "MASTER_KPI_DATA_RVP_IAPW__2023-02-23.csv"
+			},
+			"input_filepath": {
+				"type": "string",
+				"defaultValue": "raw/EXTERNAL_KPI/2023/02/23"
+			},
+			"Start_Audit_Output": {
+				"type": "string"
+			},
+			"temp_dataStartDate": {
+				"type": "string"
+			},
+			"temp_tf_Audit_ID": {
+				"type": "string"
+			},
+			"Pipeline_Name": {
+				"type": "string"
+			},
+			"Audit_Run_ID": {
+				"type": "string"
+			},
+			"temp_JobName": {
+				"type": "string"
+			},
+			"io_PATH": {
+				"type": "string",
+				"defaultValue": "RAW/EXTERNAL_KPI"
+			}
+		},
+		"folder": {
+			"name": "IAW/20-30_STG_EXTERNAL_KPI/MASTER_KPI_DATA_RVP_IAPW"
+		},
+		"annotations": [],
+		"lastPublishTime": "2022-11-03T14:34:45Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

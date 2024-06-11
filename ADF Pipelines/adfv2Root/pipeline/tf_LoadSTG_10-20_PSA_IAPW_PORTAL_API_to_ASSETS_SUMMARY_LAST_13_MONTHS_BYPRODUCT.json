@@ -1,0 +1,172 @@
+{
+	"name": "tf_LoadSTG_10-20_PSA_IAPW_PORTAL_API_to_ASSETS_SUMMARY_LAST_13_MONTHS_BYPRODUCT",
+	"properties": {
+		"activities": [
+			{
+				"name": "Dcn_AdvisorCERTSFILE",
+				"type": "IfCondition",
+				"dependsOn": [
+					{
+						"activity": "assign_Filename",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@contains(variables('temp_filename'),'ByProduct_13months__')",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "temp_dataStartDate",
+							"type": "SetVariable",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "temp_dataStartDate",
+								"value": {
+									"value": "@concat('''',split(split(pipeline().parameters.input_filename,'__')[1],'.')[0],'''')",
+									"type": "Expression"
+								}
+							}
+						},
+						{
+							"name": "temp_JobName",
+							"type": "SetVariable",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "temp_JobName",
+								"value": {
+									"value": "@concat('''',pipeline().Pipeline,'''')",
+									"type": "Expression"
+								}
+							}
+						},
+						{
+							"name": "temp_tf_Audit_ID",
+							"type": "SetVariable",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "temp_tf_Audit_ID",
+								"value": {
+									"value": "@concat('''',pipeline().Pipeline,'-',pipeline().RunId,'''')",
+									"type": "Expression"
+								}
+							}
+						},
+						{
+							"name": "tf_LASSETS_SUMMARY_LAST_13_MONTHS_BYPRODUCT_S",
+							"type": "ExecutePipeline",
+							"dependsOn": [
+								{
+									"activity": "temp_JobName",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								},
+								{
+									"activity": "temp_tf_Audit_ID",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								},
+								{
+									"activity": "temp_dataStartDate",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_LoadSTG_10-20_PSA_IAPW_PORTAL_API_to_ASSETS_SUMMARY_LAST_13_MONTHS_BYPRODUCT_sub1",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"input_filename": {
+										"value": "@pipeline().parameters.input_filename",
+										"type": "Expression"
+									},
+									"input_filepath": {
+										"value": "@pipeline().parameters.input_filepath",
+										"type": "Expression"
+									},
+									"temp_dataStartDate": {
+										"value": "@variables('temp_dataStartDate')",
+										"type": "Expression"
+									},
+									"temp_JobName": {
+										"value": "@variables('temp_JobName')",
+										"type": "Expression"
+									},
+									"temp_tf_Audit_ID": {
+										"value": "@variables('temp_tf_Audit_ID')",
+										"type": "Expression"
+									},
+									"io_PATH": {
+										"value": "@pipeline().parameters.input_filepath",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "assign_Filename",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "temp_filename",
+					"value": {
+						"value": "@pipeline().parameters.input_filename",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"parameters": {
+			"input_filename": {
+				"type": "string",
+				"defaultValue": "'ByProduct_13months__2022-03-23.dat'"
+			},
+			"input_filepath": {
+				"type": "string",
+				"defaultValue": "raw/IAS/IAPW/2022/11/29"
+			}
+		},
+		"variables": {
+			"temp_dataStartDate": {
+				"type": "String"
+			},
+			"temp_JobName": {
+				"type": "String"
+			},
+			"temp_tf_Audit_ID": {
+				"type": "String"
+			},
+			"temp_filename": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "IAW/20-30-RDV_IAPW_PORTAL_API/ASSETS_SUMMARY_LAST_13_MONTHS_BYPRODUCT"
+		},
+		"annotations": [
+			"STRATEGIC",
+			"IAPW_PORTAL_API",
+			"STAGING"
+		],
+		"lastPublishTime": "2022-07-28T12:24:19Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,613 @@
+{
+	"name": "tf_LoadDM_65_Reconciliation",
+	"properties": {
+		"activities": [
+			{
+				"name": "temp_JobName",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "temp_JobName",
+					"value": {
+						"value": "@concat('''',pipeline().Pipeline,'''')",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "temp_tf_Audit_ID",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "temp_tf_Audit_ID",
+					"value": {
+						"value": "@concat('''',pipeline().Pipeline,'-',pipeline().RunId,'''')",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "mt_audit_startJob_NextDate_Pre",
+				"type": "Script",
+				"dependsOn": [
+					{
+						"activity": "temp_JobName",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "temp_tf_Audit_ID",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"linkedServiceName": {
+					"referenceName": "ls_snowflake_keyvault_auth",
+					"type": "LinkedServiceReference"
+				},
+				"typeProperties": {
+					"scripts": [
+						{
+							"type": "Query",
+							"text": {
+								"value": "@concat('call DB_IAW_',pipeline().globalParameters.ENV,'_DWH.TOOLS.USP_AUDIT_START_JOB_NEXT_DATE(',variables('temp_JobName'),',',variables('temp_tf_Audit_ID'),')')",
+								"type": "Expression"
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "mt_audit_startJob_NextDate",
+				"type": "Script",
+				"dependsOn": [
+					{
+						"activity": "temp_JobStartDate",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"linkedServiceName": {
+					"referenceName": "ls_snowflake_keyvault_auth",
+					"type": "LinkedServiceReference"
+				},
+				"typeProperties": {
+					"scripts": [
+						{
+							"type": "Query",
+							"text": {
+								"value": "@concat('call DB_IAW_',pipeline().globalParameters.ENV,'_DWH.TOOLS.USP_AUDIT_START_JOB_Variable_Set(',variables('temp_JobName'),',',variables('temp_dataStartDate'),')')",
+								"type": "Expression"
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "dcn_StartJob_Result",
+				"type": "IfCondition",
+				"dependsOn": [
+					{
+						"activity": "mt_audit_startJob_NextDate",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@contains(activity('mt_audit_startJob_NextDate').output.resultSets[0]['rows'][0].USP_AUDIT_START_JOB_VARIABLE_SET,'SUCCESS')",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "dt_Audit_EndJob",
+							"type": "Script",
+							"dependsOn": [
+								{
+									"activity": "dt_Recon_Trxn",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								},
+								{
+									"activity": "dt_Recon_Revenue",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								},
+								{
+									"activity": "dt_Recon_Advisor",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								},
+								{
+									"activity": "dt_Recon_KPI_Clarington",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								},
+								{
+									"activity": "dt_Recon_KPI_Investia",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								},
+								{
+									"activity": "dt_Recon_KPI_IAPW",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								},
+								{
+									"activity": "dt_Recon_Depart_Adv",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								},
+								{
+									"activity": "dt_Recon_New_Adv",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								},
+								{
+									"activity": "dt_Recon_AUA",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"linkedServiceName": {
+								"referenceName": "ls_snowflake_keyvault_auth",
+								"type": "LinkedServiceReference",
+								"parameters": {
+									"DBName": "DB_IAW_DEV_STG"
+								}
+							},
+							"typeProperties": {
+								"scripts": [
+									{
+										"type": "Query",
+										"text": {
+											"value": "@concat('call DB_IAW_',pipeline().globalParameters.ENV,'_DWH.TOOLS.USP_AUDIT_END_JOB(',variables('temp_JobName'),',',variables('temp_dataStartDate'),',',variables('temp_tf_Audit_ID'),',','''SUCCESS''',',','''Successful execution''',')')",
+											"type": "Expression"
+										}
+									}
+								]
+							}
+						},
+						{
+							"name": "dt_Recon_Trxn",
+							"type": "Script",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"linkedServiceName": {
+								"referenceName": "ls_snowflake_keyvault_auth",
+								"type": "LinkedServiceReference",
+								"parameters": {
+									"DBName": "DB_IAW_DEV_STG"
+								}
+							},
+							"typeProperties": {
+								"scripts": [
+									{
+										"type": "Query",
+										"text": {
+											"value": "@concat('call DB_IAW_',pipeline().globalParameters.ENV,'_DM.reconciliation.SP_conv_reconciliation(''',pipeline().globalParameters.ENV,''',',variables('temp_tf_Audit_ID'),',',variables('temp_dataStartDate'),',''',variables('temp_name'),''',''',variables('temp_pattern'),''')')",
+											"type": "Expression"
+										}
+									}
+								],
+								"scriptBlockExecutionTimeout": "02:00:00"
+							}
+						},
+						{
+							"name": "dt_Recon_Revenue",
+							"type": "Script",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"linkedServiceName": {
+								"referenceName": "ls_snowflake_keyvault_auth",
+								"type": "LinkedServiceReference",
+								"parameters": {
+									"DBName": "DB_IAW_DEV_STG"
+								}
+							},
+							"typeProperties": {
+								"scripts": [
+									{
+										"type": "Query",
+										"text": {
+											"value": "@concat('call DB_IAW_',pipeline().globalParameters.ENV,'_DM.reconciliation.SP_conv_reconciliation(''',pipeline().globalParameters.ENV,''',',variables('temp_tf_Audit_ID'),',',variables('temp_dataStartDate'),',''',variables('temp_name_revn'),''',''',variables('temp_pattern_revn'),''')')",
+											"type": "Expression"
+										}
+									}
+								],
+								"scriptBlockExecutionTimeout": "02:00:00"
+							}
+						},
+						{
+							"name": "dt_Recon_Advisor",
+							"type": "Script",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"linkedServiceName": {
+								"referenceName": "ls_snowflake_keyvault_auth",
+								"type": "LinkedServiceReference",
+								"parameters": {
+									"DBName": "DB_IAW_DEV_STG"
+								}
+							},
+							"typeProperties": {
+								"scripts": [
+									{
+										"type": "Query",
+										"text": {
+											"value": "@concat('call DB_IAW_',pipeline().globalParameters.ENV,'_DM.reconciliation.SP_conv_reconciliation(''',pipeline().globalParameters.ENV,''',',variables('temp_tf_Audit_ID'),',',variables('temp_dataStartDate'),',''',variables('temp_name_adv_start_date'),''',''',variables('temp_pattern_adv_start_date'),''')')",
+											"type": "Expression"
+										}
+									}
+								],
+								"scriptBlockExecutionTimeout": "02:00:00"
+							}
+						},
+						{
+							"name": "dt_Recon_KPI_Clarington",
+							"type": "Script",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"linkedServiceName": {
+								"referenceName": "ls_snowflake_keyvault_auth",
+								"type": "LinkedServiceReference",
+								"parameters": {
+									"DBName": "DB_IAW_DEV_STG"
+								}
+							},
+							"typeProperties": {
+								"scripts": [
+									{
+										"type": "Query",
+										"text": {
+											"value": "@concat('call DB_IAW_',pipeline().globalParameters.ENV,'_DM.reconciliation.SP_conv_reconciliation(''',pipeline().globalParameters.ENV,''',',variables('temp_tf_Audit_ID'),',',variables('temp_dataStartDate'),',''',variables('temp_name_kpi_clarington'),''',''',variables('temp_pattern_kpi_clarington'),''')')",
+											"type": "Expression"
+										}
+									}
+								],
+								"scriptBlockExecutionTimeout": "02:00:00"
+							}
+						},
+						{
+							"name": "dt_Recon_KPI_Investia",
+							"type": "Script",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"linkedServiceName": {
+								"referenceName": "ls_snowflake_keyvault_auth",
+								"type": "LinkedServiceReference",
+								"parameters": {
+									"DBName": "DB_IAW_DEV_STG"
+								}
+							},
+							"typeProperties": {
+								"scripts": [
+									{
+										"type": "Query",
+										"text": {
+											"value": "@concat('call DB_IAW_',pipeline().globalParameters.ENV,'_DM.reconciliation.SP_conv_reconciliation(''',pipeline().globalParameters.ENV,''',',variables('temp_tf_Audit_ID'),',',variables('temp_dataStartDate'),',''',variables('temp_name_kpi_investia'),''',''',variables('temp_pattern_kpi_investia'),''')')",
+											"type": "Expression"
+										}
+									}
+								],
+								"scriptBlockExecutionTimeout": "02:00:00"
+							}
+						},
+						{
+							"name": "dt_Recon_KPI_IAPW",
+							"type": "Script",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"linkedServiceName": {
+								"referenceName": "ls_snowflake_keyvault_auth",
+								"type": "LinkedServiceReference",
+								"parameters": {
+									"DBName": "DB_IAW_DEV_STG"
+								}
+							},
+							"typeProperties": {
+								"scripts": [
+									{
+										"type": "Query",
+										"text": {
+											"value": "@concat('call DB_IAW_',pipeline().globalParameters.ENV,'_DM.reconciliation.SP_conv_reconciliation(''',pipeline().globalParameters.ENV,''',',variables('temp_tf_Audit_ID'),',',variables('temp_dataStartDate'),',''',variables('temp_name_kpi_IAPW'),''',''',variables('temp_pattern_kpi_IAPW'),''')')",
+											"type": "Expression"
+										}
+									}
+								],
+								"scriptBlockExecutionTimeout": "02:00:00"
+							}
+						},
+						{
+							"name": "dt_Recon_Depart_Adv",
+							"type": "Script",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"linkedServiceName": {
+								"referenceName": "ls_snowflake_keyvault_auth",
+								"type": "LinkedServiceReference",
+								"parameters": {
+									"DBName": "DB_IAW_DEV_STG"
+								}
+							},
+							"typeProperties": {
+								"scripts": [
+									{
+										"type": "Query",
+										"text": {
+											"value": "@concat('call DB_IAW_',pipeline().globalParameters.ENV,'_DM.reconciliation.SP_conv_reconciliation(''',pipeline().globalParameters.ENV,''',',variables('temp_tf_Audit_ID'),',',variables('temp_dataStartDate'),',''',variables('temp_name_depart_adv'),''',''',variables('temp_pattern_depart_adv'),''')')",
+											"type": "Expression"
+										}
+									}
+								],
+								"scriptBlockExecutionTimeout": "02:00:00"
+							}
+						},
+						{
+							"name": "dt_Recon_New_Adv",
+							"type": "Script",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"linkedServiceName": {
+								"referenceName": "ls_snowflake_keyvault_auth",
+								"type": "LinkedServiceReference",
+								"parameters": {
+									"DBName": "DB_IAW_DEV_STG"
+								}
+							},
+							"typeProperties": {
+								"scripts": [
+									{
+										"type": "Query",
+										"text": {
+											"value": "@concat('call DB_IAW_',pipeline().globalParameters.ENV,'_DM.reconciliation.SP_conv_reconciliation(''',pipeline().globalParameters.ENV,''',',variables('temp_tf_Audit_ID'),',',variables('temp_dataStartDate'),',''',variables('temp_name_new_adv'),''',''',variables('temp_pattern_new_adv'),''')')",
+											"type": "Expression"
+										}
+									}
+								],
+								"scriptBlockExecutionTimeout": "02:00:00"
+							}
+						},
+						{
+							"name": "dt_Recon_AUA",
+							"type": "Script",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"linkedServiceName": {
+								"referenceName": "ls_snowflake_keyvault_auth",
+								"type": "LinkedServiceReference",
+								"parameters": {
+									"DBName": "DB_IAW_DEV_STG"
+								}
+							},
+							"typeProperties": {
+								"scripts": [
+									{
+										"type": "Query",
+										"text": {
+											"value": "@concat('call DB_IAW_',pipeline().globalParameters.ENV,'_DM.reconciliation.SP_conv_reconciliation(''',pipeline().globalParameters.ENV,''',',variables('temp_tf_Audit_ID'),',',variables('temp_dataStartDate'),',''',variables('temp_name_new_AUA'),''',''',variables('temp_pattern_aua'),''')')",
+											"type": "Expression"
+										}
+									}
+								],
+								"scriptBlockExecutionTimeout": "02:00:00"
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "temp_JobStartDate",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "mt_audit_startJob_NextDate_Pre",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "temp_dataStartDate",
+					"value": {
+						"value": "@concat('''',activity('mt_audit_startJob_NextDate_Pre').output.resultSets[0]['rows'][0].USP_AUDIT_START_JOB_NEXT_DATE,'''')",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"variables": {
+			"temp_dataStartDate": {
+				"type": "String"
+			},
+			"temp_JobName": {
+				"type": "String"
+			},
+			"temp_tf_Audit_ID": {
+				"type": "String"
+			},
+			"temp_name": {
+				"type": "String",
+				"defaultValue": "VAL001_IAPW_DWH_TRANSLINK_FINANCIAL_TRANSACTION_MISSING_TRANSACTION_TYPE"
+			},
+			"temp_pattern": {
+				"type": "String",
+				"defaultValue": "TRANSACTION_MISSING"
+			},
+			"temp_name_revn": {
+				"type": "String",
+				"defaultValue": "VAL002_IAPW_DM_FACT_REVENUE_REVENUES_AMOUNTS_MISMATCHED"
+			},
+			"temp_pattern_revn": {
+				"type": "String",
+				"defaultValue": "FACT_REVENUE_REVENUES_AMOUNTS_MISMATCHED"
+			},
+			"temp_name_adv_start_date": {
+				"type": "String",
+				"defaultValue": "VAL003_IAPW_DM_DIM_ADVISOR_MISSING_START_DATE"
+			},
+			"temp_pattern_adv_start_date": {
+				"type": "String",
+				"defaultValue": "DIM_ADVISOR_MISSING_START_DATE"
+			},
+			"temp_name_kpi_clarington": {
+				"type": "String",
+				"defaultValue": "VAL004_IAPW_DM_MASTER_KPI_DATA_CLARINGTON_MISMATCHED"
+			},
+			"temp_pattern_kpi_clarington": {
+				"type": "String",
+				"defaultValue": "DM_MASTER_KPI_DATA_CLARINGTON_MISMATCHED"
+			},
+			"temp_name_kpi_investia": {
+				"type": "String",
+				"defaultValue": "VAL005_IAPW_DM_MASTER_KPI_DATA_INVESTIA_MISMATCHED"
+			},
+			"temp_pattern_kpi_investia": {
+				"type": "String",
+				"defaultValue": "DM_MASTER_KPI_DATA_INVESTIA_MISMATCHED"
+			},
+			"temp_name_kpi_IAPW": {
+				"type": "String",
+				"defaultValue": "VAL006_IAPW_DM_MASTER_KPI_DATA_IAPW_MISMATCHED"
+			},
+			"temp_pattern_kpi_IAPW": {
+				"type": "String",
+				"defaultValue": "DM_MASTER_KPI_DATA_IAPW_MISMATCHED"
+			},
+			"temp_name_depart_adv": {
+				"type": "String",
+				"defaultValue": "VAL008_IAPW_DM_DEPART_ADVISOR_ROW_MISMATCHED"
+			},
+			"temp_pattern_depart_adv": {
+				"type": "String",
+				"defaultValue": "DM_DEPART_ADVISOR_ROW_MISMATCHED"
+			},
+			"temp_name_new_adv": {
+				"type": "String",
+				"defaultValue": "VAL007_IAPW_DM_NEW_ADVISOR_ROW_MISMATCHED"
+			},
+			"temp_pattern_new_adv": {
+				"type": "String",
+				"defaultValue": "DM_NEW_ADVISOR_ROW_MISMATCHED"
+			},
+			"temp_name_new_AUA": {
+				"type": "String",
+				"defaultValue": "VAL009_IAPW_DM_FACT_HOLDINGS_VS_API_AUA_MISMATCHED"
+			},
+			"temp_pattern_aua": {
+				"type": "String",
+				"defaultValue": "AUA_MISMATCHED"
+			}
+		},
+		"folder": {
+			"name": "IAW/65_RECONCILIATION/RECONCILIATION"
+		},
+		"annotations": [],
+		"lastPublishTime": "2022-10-31T15:34:03Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

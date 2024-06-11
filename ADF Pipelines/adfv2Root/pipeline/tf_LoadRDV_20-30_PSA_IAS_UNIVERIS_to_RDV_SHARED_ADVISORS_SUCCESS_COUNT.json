@@ -1,0 +1,278 @@
+{
+	"name": "tf_LoadRDV_20-30_PSA_IAS_UNIVERIS_to_RDV_SHARED_ADVISORS_SUCCESS_COUNT",
+	"properties": {
+		"activities": [
+			{
+				"name": "dcn_row_count",
+				"type": "IfCondition",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@greater(int(pipeline().parameters.STG_COUNT),0)",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "ASSIGN SEL_DATA_11",
+							"type": "SetVariable",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "SEL_DATA_11",
+								"value": {
+									"value": "@concat(variables('SEL_DATA_1'),'''''', replace(pipeline().parameters.temp_tf_Audit_ID,'''',''),'#',pipeline().parameters.Pipeline_Name,'-',pipeline().parameters.Audit_Run_ID,'''''''')",
+									"type": "Expression"
+								}
+							}
+						},
+						{
+							"name": "ASSIGN SEL_TEMP_1",
+							"type": "SetVariable",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "SEL_TEMP_1",
+								"value": {
+									"value": "@concat(variables('SEL_TEMP'),'''''', replace(pipeline().parameters.temp_tf_Audit_ID,'''',''),'#',pipeline().parameters.Pipeline_Name,'-',pipeline().parameters.Audit_Run_ID,'''''''')",
+									"type": "Expression"
+								}
+							}
+						},
+						{
+							"name": "mt_LoadRDV_STG_IAS_UNIVERIS_To_SAT_REGISTERED_insert",
+							"description": "mt_LoadRDV_STG_IAS_UNIVERIS_To_SAT_REGISTERED_REPRESENTATIVE_IAS_UNIVERIS_insert",
+							"type": "Script",
+							"dependsOn": [
+								{
+									"activity": "ASSIGN SEL_DATA_11",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"linkedServiceName": {
+								"referenceName": "ls_snowflake_keyvault_auth",
+								"type": "LinkedServiceReference"
+							},
+							"typeProperties": {
+								"scripts": [
+									{
+										"type": "Query",
+										"text": {
+											"value": "@concat('call DB_IAW_',pipeline().globalParameters.ENV,'_DWH.TOOLS.SP_CONV_DATAVAULT_LOADSATELLITE_INSERT_AUDIT_ID(',variables('INS_DATA_1'), ',' , variables('SEL_DATA_11'), ',' ,'''DB_IAW_',pipeline().globalParameters.ENV,'_STG.IAS_UNIVERIS.REGISTERED_REPRESENTATIVE'',''DB_IAW_',pipeline().globalParameters.ENV,'_DWH.SHARED_RDV.SAT_REGISTERED_REPRESENTATIVE_IAS_UNIVERIS''',',',variables('TRUNC_TBL'),')')",
+											"type": "Expression"
+										}
+									}
+								]
+							}
+						},
+						{
+							"name": "mt_LoadRDV_STG_IAS_UNIVERIS_To_Shared_HUB",
+							"description": "mt_LoadRDV_STG_IAS_UNIVERIS_To_Shared_HUB_REGISTERED_REPRESENTATIVE",
+							"type": "Script",
+							"dependsOn": [
+								{
+									"activity": "ASSIGN SEL_TEMP_1",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"linkedServiceName": {
+								"referenceName": "ls_snowflake_keyvault_auth",
+								"type": "LinkedServiceReference"
+							},
+							"typeProperties": {
+								"scripts": [
+									{
+										"type": "Query",
+										"text": {
+											"value": "@concat('call DB_IAW_',pipeline().globalParameters.ENV,'_DWH.TOOLS.SP_CONV_DATAVAULT_LOADHUB_AUDIT_ID(',variables('INS_TEMP'), ',' , variables('SEL_TEMP_1'), ',' ,'''DB_IAW_',pipeline().globalParameters.ENV,'_STG.IAS_UNIVERIS.REGISTERED_REPRESENTATIVE'',''DB_IAW_',pipeline().globalParameters.ENV,'_DWH.SHARED_RDV.HUB_REGISTERED_REPRESENTATIVE''',',',variables('TRUNC_TBL'),')')",
+											"type": "Expression"
+										}
+									}
+								]
+							}
+						},
+						{
+							"name": "ASSIGN SEL_DATA_22",
+							"type": "SetVariable",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "SEL_DATA_22",
+								"value": {
+									"value": "@concat(variables('SEL_DATA_2'),'''',pipeline().parameters.temp_dataStartDate,'''',variables('comma'),'''''', replace(pipeline().parameters.temp_tf_Audit_ID,'''',''),'#',pipeline().parameters.Pipeline_Name,'-',pipeline().parameters.Audit_Run_ID,'''''''')",
+									"type": "Expression"
+								}
+							}
+						},
+						{
+							"name": "mt_LoadRDV_STG_IAS_UNIVERIS_To_Shared_SAT_delete",
+							"description": "mt_LoadRDV_STG_IAS_UNIVERIS_To_Shared_SAT_REGISTERED_REPRESENTATIVE_IAS_UNIVERIS_delete",
+							"type": "Script",
+							"dependsOn": [
+								{
+									"activity": "ASSIGN SEL_DATA_22",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"linkedServiceName": {
+								"referenceName": "ls_snowflake_keyvault_auth",
+								"type": "LinkedServiceReference"
+							},
+							"typeProperties": {
+								"scripts": [
+									{
+										"type": "Query",
+										"text": {
+											"value": "@concat('call DB_IAW_',pipeline().globalParameters.ENV,'_DWH.TOOLS.SP_CONV_DATAVAULT_LOADSATELLITE_DELETE_AUDIT_ID(',variables('INS_DATA_2'), ',' , variables('SEL_DATA_22'), ',' ,'''DB_IAW_',pipeline().globalParameters.ENV,'_STG.IAS_UNIVERIS.REGISTERED_REPRESENTATIVE'',''DB_IAW_',pipeline().globalParameters.ENV,'_DWH.SHARED_RDV.SAT_REGISTERED_REPRESENTATIVE_IAS_UNIVERIS''',',',variables('TRUNC_TBL'),')')",
+											"type": "Expression"
+										}
+									}
+								]
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "dt_Audit_EndJob",
+				"type": "Script",
+				"dependsOn": [
+					{
+						"activity": "dcn_row_count",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"linkedServiceName": {
+					"referenceName": "ls_snowflake_keyvault_auth",
+					"type": "LinkedServiceReference"
+				},
+				"typeProperties": {
+					"scripts": [
+						{
+							"type": "Query",
+							"text": {
+								"value": "@concat('call DB_IAW_',pipeline().globalParameters.ENV,'_DWH.TOOLS.USP_AUDIT_END_JOB(',pipeline().parameters.temp_JobName,',',pipeline().parameters.temp_dataStartDate,',',pipeline().parameters.temp_tf_Audit_ID,',','''SUCCESS''',',','''Successful execution''',')')",
+								"type": "Expression"
+							}
+						}
+					]
+				}
+			}
+		],
+		"parameters": {
+			"input_filename": {
+				"type": "string"
+			},
+			"input_filepath": {
+				"type": "string"
+			},
+			"STG_COUNT": {
+				"type": "string"
+			},
+			"temp_dataStartDate": {
+				"type": "string"
+			},
+			"temp_JobName": {
+				"type": "string"
+			},
+			"temp_tf_Audit_ID": {
+				"type": "string"
+			},
+			"Audit_Run_ID": {
+				"type": "string"
+			},
+			"Pipeline_Name": {
+				"type": "string"
+			}
+		},
+		"variables": {
+			"TRUNC_TBL": {
+				"type": "String",
+				"defaultValue": "'N'"
+			},
+			"SEL_TEMP": {
+				"type": "String",
+				"defaultValue": "'STG.HK_HUB,STG.MD_SOURCE,STG.MD_SRC_SYSTEM,STG.MD_EXTRACT_DT,STG.NK_REP_CD,CURRENT_TIMESTAMP,"
+			},
+			"INS_TEMP": {
+				"type": "String",
+				"defaultValue": "'HK_HUB,MD_SOURCE,MD_SRC_SYSTEM,MD_EXTRACT_DT,RR_CD,MD_CREATION_DT,MD_CREATION_AUDIT_ID'"
+			},
+			"SEL_TEMP_1": {
+				"type": "String"
+			},
+			"SEL_DATA_1": {
+				"type": "String",
+				"defaultValue": "'STG.HK_HUB,STG.MD_START_DT,STG.MD_HASHDIFF,STG.MD_SOURCE,STG.MD_SRC_SYSTEM,STG.MD_EXTRACT_DT,''A'',STG.COMPANY_CD,STG.COMPANY_NAME,STG.REGULATORY_ORG_CD,STG.REGULATORY_ORG_NAME,STG.DLR_SYSID,STG.DLR_CD,STG.DLR_NAME_ENG,STG.RGN_SYSID,STG.RGN_CD,STG.RGN_NAME,STG.RGN_MGR,STG.BRN_SYSID,STG.BRN_CD,STG.BRN_NAME,STG.REP_TEAM_CD,STG.REP_TEAM_NAME,STG.REP_SYSID,STG.NK_REP_CORP_NAME,STG.REP_LNAME,STG.REP_FNAME,STG.REP_ST_NAME,STG.REP_GRP_RSP,CURRENT_TIMESTAMP,"
+			},
+			"SEL_DATA_11": {
+				"type": "String"
+			},
+			"INS_DATA_1": {
+				"type": "String",
+				"defaultValue": "'HK_HUB,MD_START_DT,MD_HASHDIFF,MD_SOURCE,MD_SRC_SYSTEM,MD_EXTRACT_DT,MD_ACTIVE,COMPANY_CD,COMPANY_NAME,REGULATORY_ORG_CD,REGULATORY_ORG_NAME,DLR_SYSID,DLR_CD,DLR_NAME_ENG,RGN_SYSID,RGN_CD,RGN_NAME,RGN_MGR,BRN_SYSID,BRN_CD,BRN_NAME,REP_TEAM_CD,REP_TEAM_NAME,REP_SYSID,NK_REP_CORP_NAME,REP_LNAME,REP_FNAME,REP_ST_NAME,REP_GRP_RSP,MD_CREATION_DT,MD_CREATION_AUDIT_ID'"
+			},
+			"SEL_DATA_2": {
+				"type": "String",
+				"defaultValue": "'SAT.HK_HUB,SAT.MD_HASHDIFF,SAT.MD_SOURCE,SAT.MD_SRC_SYSTEM,SAT.MD_EXTRACT_DT,''D'',SAT.COMPANY_CD,SAT.COMPANY_NAME,SAT.REGULATORY_ORG_CD,SAT.REGULATORY_ORG_NAME,SAT.DLR_SYSID,SAT.DLR_CD,SAT.DLR_NAME_ENG,SAT.RGN_SYSID,SAT.RGN_CD,SAT.RGN_NAME,SAT.RGN_MGR,SAT.BRN_SYSID,SAT.BRN_CD,SAT.BRN_NAME,SAT.REP_TEAM_CD,SAT.REP_TEAM_NAME,SAT.REP_SYSID,SAT.NK_REP_CORP_NAME,SAT.REP_LNAME,SAT.REP_FNAME,SAT.REP_ST_NAME,SAT.REP_GRP_RSP,CURRENT_TIMESTAMP,"
+			},
+			"SEL_DATA_22": {
+				"type": "String"
+			},
+			"INS_DATA_2": {
+				"type": "String",
+				"defaultValue": "'HK_HUB,MD_HASHDIFF,MD_SOURCE,MD_SRC_SYSTEM,MD_EXTRACT_DT,MD_ACTIVE,COMPANY_CD,COMPANY_NAME,REGULATORY_ORG_CD,REGULATORY_ORG_NAME,DLR_SYSID,DLR_CD,DLR_NAME_ENG,RGN_SYSID,RGN_CD,RGN_NAME,RGN_MGR,BRN_SYSID,BRN_CD,BRN_NAME,REP_TEAM_CD,REP_TEAM_NAME,REP_SYSID,NK_REP_CORP_NAME,REP_LNAME,REP_FNAME,REP_ST_NAME,REP_GRP_RSP,MD_CREATION_DT,MD_START_DT,MD_CREATION_AUDIT_ID'"
+			},
+			"comma": {
+				"type": "String",
+				"defaultValue": ","
+			}
+		},
+		"folder": {
+			"name": "IAW/20-30_RDV_IAS_UNIVERIS/SHARED_ADVISORS"
+		},
+		"annotations": [],
+		"lastPublishTime": "2022-11-04T18:11:02Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

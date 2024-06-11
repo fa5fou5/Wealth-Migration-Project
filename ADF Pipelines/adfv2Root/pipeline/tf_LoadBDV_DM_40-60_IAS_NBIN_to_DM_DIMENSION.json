@@ -1,0 +1,107 @@
+{
+	"name": "tf_LoadBDV_DM_40-60_IAS_NBIN_to_DM_DIMENSION",
+	"properties": {
+		"activities": [
+			{
+				"name": "tf_LoadBDV_45_Shared_PartyRoleAccountHolder_AUASeg",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "tf_LoadBDV_45_Shared_PartyRoleAccountHolder_AUASeg",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "tf_LoadBDV_45_Shared_PartyRoleAdvisor_AUASeg",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "tf_LoadBDV_45_Shared_PartyRoleAdvisor_AUASeg",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "Set Dummy",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "tf_LoadBDV_45_Shared_PartyRoleAccountHolder_AUASeg",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "tf_LoadBDV_45_Shared_PartyRoleAdvisor_AUASeg",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "Dummy",
+					"value": "'A'"
+				}
+			},
+			{
+				"name": "tf_LoadDM_60_Shared_DimAdvisors",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Set Dummy",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "tf_LoadDM_60_Shared_DimAdvisors",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "tf_LoadDM_60_Shared_DimClients",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Set Dummy",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "tf_LoadDM_60_Shared_DimClients",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			}
+		],
+		"variables": {
+			"Dummy": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "IAW/INITIAL_LOADING_IAPW/INITIAL_LOADING_40_60_DIMENSIONS"
+		},
+		"annotations": [],
+		"lastPublishTime": "2022-10-31T15:34:12Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

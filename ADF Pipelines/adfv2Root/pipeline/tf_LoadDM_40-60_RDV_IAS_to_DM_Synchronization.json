@@ -1,0 +1,771 @@
+{
+	"name": "tf_LoadDM_40-60_RDV_IAS_to_DM_Synchronization",
+	"properties": {
+		"activities": [
+			{
+				"name": "temp_JobName",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "temp_JobName",
+					"value": {
+						"value": "@concat('''',pipeline().Pipeline,'''')",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "temp_tf_Audit_ID",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "temp_tf_Audit_ID",
+					"value": {
+						"value": "@concat('''',pipeline().Pipeline,'-',pipeline().RunId,'''')",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "mt_audit_startJob_NextDate_Pre",
+				"type": "Script",
+				"dependsOn": [
+					{
+						"activity": "temp_JobName",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "temp_tf_Audit_ID",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"linkedServiceName": {
+					"referenceName": "ls_snowflake_keyvault_auth",
+					"type": "LinkedServiceReference"
+				},
+				"typeProperties": {
+					"scripts": [
+						{
+							"type": "Query",
+							"text": {
+								"value": "@concat('call DB_IAW_',pipeline().globalParameters.ENV,'_DWH.TOOLS.USP_AUDIT_START_JOB_NEXT_DATE(',variables('temp_JobName'),',',variables('temp_tf_Audit_ID'),')')",
+								"type": "Expression"
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "temp_JobStartDate",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "mt_audit_startJob_NextDate_Pre",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "temp_dataStartDate",
+					"value": {
+						"value": "@concat('''',activity('mt_audit_startJob_NextDate_Pre').output.resultSets[0]['rows'][0].USP_AUDIT_START_JOB_NEXT_DATE,'''')",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "mt_audit_startJob_NextDate",
+				"type": "Script",
+				"dependsOn": [
+					{
+						"activity": "temp_JobStartDate",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"linkedServiceName": {
+					"referenceName": "ls_snowflake_keyvault_auth",
+					"type": "LinkedServiceReference"
+				},
+				"typeProperties": {
+					"scripts": [
+						{
+							"type": "Query",
+							"text": {
+								"value": "@concat('call DB_IAW_',pipeline().globalParameters.ENV,'_DWH.TOOLS.USP_AUDIT_START_JOB_Variable_Set(',variables('temp_JobName'),',',variables('temp_dataStartDate'),')')",
+								"type": "Expression"
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "dcn_StartJob_Result",
+				"type": "IfCondition",
+				"dependsOn": [
+					{
+						"activity": "mt_audit_startJob_NextDate",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@contains(activity('mt_audit_startJob_NextDate').output.resultSets[0]['rows'][0].USP_AUDIT_START_JOB_VARIABLE_SET,'SUCCESS')",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "tf_LoadBDV_40_Shared_PartyRoleAccountHolder",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_LoadBDV_40_Shared_PartyRoleAccountHolder",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true
+							}
+						},
+						{
+							"name": "tf_LoadBDV_40_Shared_ExchangeRate",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_LoadBDV_40_Shared_ExchangeRate",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true
+							}
+						},
+						{
+							"name": "tf_LoadBDV_40_Shared_InvestmentProductType",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_LoadBDV_40_Shared_InvestmentProductType",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true
+							}
+						},
+						{
+							"name": "tf_LoadBDV_40_Shared_InvestmentSavingProgramType",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_LoadBDV_40_Shared_InvestmentSavingProgramType",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true
+							}
+						},
+						{
+							"name": "tf_LoadBDV_40_STEWARDSHIP_SERVICING_CODES",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_LoadBDV_40_STEWARDSHIP_SERVICING_CODES",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true
+							}
+						},
+						{
+							"name": "tf_LoadBDV_41_Shared_PartyRoleAdvisor",
+							"type": "ExecutePipeline",
+							"dependsOn": [
+								{
+									"activity": "tf_LoadBDV_40_Shared_PartyRoleAccountHolder",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								},
+								{
+									"activity": "tf_LoadBDV_40_Shared_ExchangeRate",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								},
+								{
+									"activity": "tf_LoadBDV_40_Shared_InvestmentProductType",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								},
+								{
+									"activity": "tf_LoadBDV_40_Shared_InvestmentSavingProgramType",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								},
+								{
+									"activity": "tf_LoadBDV_40_STEWARDSHIP_SERVICING_CODES",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_LoadBDV_41_Shared_PartyRoleAdvisor",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true
+							}
+						},
+						{
+							"name": "tf_LoadBDV_42_Shared_InvestmentContract",
+							"type": "ExecutePipeline",
+							"dependsOn": [
+								{
+									"activity": "tf_LoadBDV_41_Shared_PartyRoleAdvisor",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_LoadBDV_42_Shared_InvestmentContract",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true
+							}
+						},
+						{
+							"name": "Set Dummy",
+							"description": "",
+							"type": "SetVariable",
+							"dependsOn": [
+								{
+									"activity": "tf_LoadBDV_43_Revenues_Revenues",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "Dummy",
+								"value": "'A\""
+							}
+						},
+						{
+							"name": "tf_LoadBDV_43_Transactions_Transactions",
+							"type": "ExecutePipeline",
+							"dependsOn": [
+								{
+									"activity": "Set Coverge",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_LoadBDV_43_Transactions_Transactions",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true
+							}
+						},
+						{
+							"name": "tf_LoadBDV_43_Holdings_Holdings",
+							"type": "ExecutePipeline",
+							"dependsOn": [
+								{
+									"activity": "Set Coverge",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_LoadBDV_43_Holdings_Holdings",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true
+							}
+						},
+						{
+							"name": "tf_LoadBDV_43_Revenues_Revenues",
+							"type": "ExecutePipeline",
+							"dependsOn": [
+								{
+									"activity": "tf_LoadBDV_43_Transactions_Transactions",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								},
+								{
+									"activity": "tf_LoadBDV_43_Holdings_Holdings",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_LoadBDV_43_Revenues_Revenues",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true
+							}
+						},
+						{
+							"name": "tf_LoadBDV_45_Shared_PartyRoleAccountHolder_AUASeg",
+							"type": "ExecutePipeline",
+							"dependsOn": [
+								{
+									"activity": "Set Dummy",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_LoadBDV_45_Shared_PartyRoleAccountHolder_AUASeg",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true
+							}
+						},
+						{
+							"name": "tf_LoadBDV_45_Shared_PartyRoleAdvisor_AUASeg",
+							"type": "ExecutePipeline",
+							"dependsOn": [
+								{
+									"activity": "Set Dummy",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_LoadBDV_45_Shared_PartyRoleAdvisor_AUASeg",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true
+							}
+						},
+						{
+							"name": "Set Dummy2",
+							"description": "",
+							"type": "SetVariable",
+							"dependsOn": [
+								{
+									"activity": "tf_LoadBDV_45_Shared_PartyRoleAdvisor_AUASeg",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								},
+								{
+									"activity": "tf_LoadBDV_45_Shared_PartyRoleAccountHolder_AUASeg",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								},
+								{
+									"activity": "tf_LoadBDV_45_Shared_Contracts_AUASeg",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "Dummy",
+								"value": "'A\""
+							}
+						},
+						{
+							"name": "tf_LoadDM_60_Shared_DimPlans",
+							"type": "ExecutePipeline",
+							"dependsOn": [
+								{
+									"activity": "Set Dummy2",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_LoadDM_60_Shared_DimPlans",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true
+							}
+						},
+						{
+							"name": "tf_LoadDM_60_Shared_DimFinancialInstruments",
+							"type": "ExecutePipeline",
+							"dependsOn": [
+								{
+									"activity": "Set Dummy2",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_LoadDM_60_Shared_DimFinancialInstruments",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true
+							}
+						},
+						{
+							"name": "tf_LoadDM_60_Shared_DimClients",
+							"type": "ExecutePipeline",
+							"dependsOn": [
+								{
+									"activity": "Set Dummy2",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_LoadDM_60_Shared_DimClients",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true
+							}
+						},
+						{
+							"name": "tf_LoadDM_60_Shared_DimAdvisors",
+							"type": "ExecutePipeline",
+							"dependsOn": [
+								{
+									"activity": "Set Dummy2",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_LoadDM_60_Shared_DimAdvisors",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true
+							}
+						},
+						{
+							"name": "Set Dummy3",
+							"description": "",
+							"type": "SetVariable",
+							"dependsOn": [
+								{
+									"activity": "tf_LoadDM_60_Shared_DimClients",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								},
+								{
+									"activity": "tf_LoadDM_60_Shared_DimAdvisors",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								},
+								{
+									"activity": "tf_LoadDM_60_Shared_DimFinancialInstruments",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								},
+								{
+									"activity": "tf_LoadDM_60_Shared_DimPlans",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								},
+								{
+									"activity": "tf_LoadDM_60_Shared_DimAccounts",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "Dummy",
+								"value": "'A\""
+							}
+						},
+						{
+							"name": "tf_LoadDM_60_Revenues_FactRevenues",
+							"type": "ExecutePipeline",
+							"dependsOn": [
+								{
+									"activity": "Set Dummy3",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_LoadDM_60_Revenues_FactRevenues",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true
+							}
+						},
+						{
+							"name": "tf_LoadDM_60_Transactions_FactTransactions",
+							"type": "ExecutePipeline",
+							"dependsOn": [
+								{
+									"activity": "Set Dummy3",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_LoadDM_60_Transactions_FactTransactions",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true
+							}
+						},
+						{
+							"name": "tf_LoadDM_60_Holdings_FactHoldings",
+							"type": "ExecutePipeline",
+							"dependsOn": [
+								{
+									"activity": "Set Dummy3",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_LoadDM_60_Holdings_FactHoldings",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true
+							}
+						},
+						{
+							"name": "dt_Audit_EndJob",
+							"type": "Script",
+							"dependsOn": [
+								{
+									"activity": "tf_LoadDM_60_Revenues_FactRevenues",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								},
+								{
+									"activity": "tf_LoadDM_60_Transactions_FactTransactions",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								},
+								{
+									"activity": "tf_LoadDM_60_Holdings_FactHoldings",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"linkedServiceName": {
+								"referenceName": "ls_snowflake_keyvault_auth",
+								"type": "LinkedServiceReference"
+							},
+							"typeProperties": {
+								"scripts": [
+									{
+										"type": "Query",
+										"text": {
+											"value": "@concat('call DB_IAW_',pipeline().globalParameters.ENV,'_DWH.TOOLS.USP_AUDIT_END_JOB(',variables('temp_JobName'),',',variables('temp_dataStartDate'),',',variables('temp_tf_Audit_ID'),',','''SUCCESS''',',','''Successful execution''',')')",
+											"type": "Expression"
+										}
+									}
+								]
+							}
+						},
+						{
+							"name": "tf_LoadBDV_42_Shared_AccountPlans",
+							"type": "ExecutePipeline",
+							"dependsOn": [
+								{
+									"activity": "tf_LoadBDV_41_Shared_PartyRoleAdvisor",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_LoadBDV_42_Shared_AccountPlans",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true
+							}
+						},
+						{
+							"name": "Set Coverge",
+							"type": "SetVariable",
+							"dependsOn": [
+								{
+									"activity": "tf_LoadBDV_42_Shared_AccountPlans",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								},
+								{
+									"activity": "tf_LoadBDV_42_Shared_InvestmentContract",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "v_Dummy",
+								"value": {
+									"value": "'X'",
+									"type": "Expression"
+								}
+							}
+						},
+						{
+							"name": "tf_LoadBDV_45_Shared_Contracts_AUASeg",
+							"type": "ExecutePipeline",
+							"dependsOn": [
+								{
+									"activity": "Set Dummy",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_LoadBDV_45_Shared_Contracts_AUASeg",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true
+							}
+						},
+						{
+							"name": "tf_LoadDM_60_Shared_DimAccounts",
+							"type": "ExecutePipeline",
+							"dependsOn": [
+								{
+									"activity": "Set Dummy2",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_LoadDM_60_Shared_DimAccounts",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true
+							}
+						}
+					]
+				}
+			}
+		],
+		"variables": {
+			"temp_dataStartDate": {
+				"type": "String"
+			},
+			"temp_JobName": {
+				"type": "String"
+			},
+			"temp_tf_Audit_ID": {
+				"type": "String"
+			},
+			"Dummy": {
+				"type": "String"
+			},
+			"v_Dummy": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "IAW/60_DM_IAWEALTH/SYNCHRONIZATION_TASKFLOW"
+		},
+		"annotations": [],
+		"lastPublishTime": "2022-11-07T17:47:31Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

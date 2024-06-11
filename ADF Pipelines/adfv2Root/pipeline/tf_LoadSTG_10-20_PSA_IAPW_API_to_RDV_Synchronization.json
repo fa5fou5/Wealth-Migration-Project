@@ -1,0 +1,496 @@
+{
+	"name": "tf_LoadSTG_10-20_PSA_IAPW_API_to_RDV_Synchronization",
+	"properties": {
+		"activities": [
+			{
+				"name": "assetsSummaryByProduct",
+				"type": "IfCondition",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@contains(pipeline().parameters.temp_filename,'assetsSummaryByProduct__')",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "tf_LoadSTG_10-20_PSA_IAPW_PORTAL_API_to_ASET_SUMARY_BCT",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_LoadSTG_10-20_PSA_IAPW_PORTAL_API_to_ASSETS_SUMMARY_BYPRODUCT",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"input_filename": {
+										"value": "@pipeline().parameters.temp_filename",
+										"type": "Expression"
+									},
+									"input_filepath": {
+										"value": "@pipeline().parameters.temp_filepath",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "assetsSummaryByProduct_RVP",
+				"type": "IfCondition",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@contains(pipeline().parameters.temp_filename,'assetsSummaryByProduct_RVP#7')",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "tf_LoadSTG_10-20_PSA_IAPW_PORAL_API_to_AST_SRY_BPRT_RVP",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_LoadSTG_10-20_PSA_IAPW_PORTAL_API_to_ASSETS_SUMMARY_BYPRODUCT_RVP",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"input_filename": {
+										"value": "@pipeline().parameters.temp_filename",
+										"type": "Expression"
+									},
+									"input_filepath": {
+										"value": "@pipeline().parameters.temp_filepath",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "assetsSummaryByProvince",
+				"type": "IfCondition",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@contains(pipeline().parameters.temp_filename,'assetsSummaryByProvince__')\n",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "tf_LoadSTG_10-20_PSA_IAPW_PORTAL_API_to_ASET_SRY_BPRVCE",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_LoadSTG_10-20_PSA_IAPW_PORTAL_API_to_ASSETS_SUMMARY_BYPROVINCE",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"input_filename": {
+										"value": "@pipeline().parameters.temp_filename",
+										"type": "Expression"
+									},
+									"input_filepath": {
+										"value": "@pipeline().parameters.temp_filepath",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "assetsSummaryByProvince_RVP",
+				"type": "IfCondition",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@contains(pipeline().parameters.temp_filename,'assetsSummaryByProvince_RVP#7')\n",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "tf_LoadSTG_10-20_PSA_IAPW_PORTAL_API_t_AST_SUY_BPRE_RVP",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_LoadSTG_10-20_PSA_IAPW_PORTAL_API_to_ASSETS_SUMMARY_BYPROVINCE_RVP",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"input_filename": {
+										"value": "@pipeline().parameters.temp_filename",
+										"type": "Expression"
+									},
+									"input_filepath": {
+										"value": "@pipeline().parameters.temp_filepath",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "assetsSummary_ByAccountType",
+				"type": "IfCondition",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@contains(pipeline().parameters.temp_filename,'assetsSummaryByAccountType__')\n",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "tf_LoadSTG_10-20_PSA_IAPW_PORTAL_API_to_AST_SRY_BYACTYE",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_LoadSTG_10-20_PSA_IAPW_PORTAL_API_to_ASSETS_SUMMARY_BYACCOUNTTYPE",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"input_filename": {
+										"value": "@pipeline().parameters.temp_filename",
+										"type": "Expression"
+									},
+									"input_filepath": {
+										"value": "@pipeline().parameters.temp_filepath",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "assetsSummaryByAccountType_RVP",
+				"type": "IfCondition",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@contains(pipeline().parameters.temp_filename,'assetsSummaryByAccountType_RVP#7')\n",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "tf_LoadSTG_10-20_PSA_IAPW_PORTAL_API_t_AST_SRY_BACT_RVP",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_LoadSTG_10-20_PSA_IAPW_PORTAL_API_to_ASSETS_SUMMARY_BYACCOUNTTYPE_RVP",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"input_filename": {
+										"value": "@pipeline().parameters.temp_filename",
+										"type": "Expression"
+									},
+									"input_filepath": {
+										"value": "@pipeline().parameters.temp_filepath",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "assetsSummaryByCommTypeAndProduct_RVP",
+				"type": "IfCondition",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@contains(pipeline().parameters.temp_filename,'assetsSummaryByCommTypeAndProduct_RVP#7')\n",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "tf_LoadSTG_10-20_PSA_IAPW_PORTAL_API_t_A_S_B_C_A_PT_RVP",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_LoadSTG_10-20_PSA_IAPW_PORTAL_API_to_ASSETS_SUMMARY_BY_COMMISSIONTYPE_AND_PRODUCT_RVP",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"input_filename": {
+										"value": "@pipeline().parameters.temp_filename",
+										"type": "Expression"
+									},
+									"input_filepath": {
+										"value": "@pipeline().parameters.temp_filepath",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "assetsSummaryByCommTypeAndProduct",
+				"type": "IfCondition",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@contains(pipeline().parameters.temp_filename,'assetsSummaryByCommTypeAndProduct__')\n",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "tf_LoadSTG_10-20_PSA_IAPW_PORTAL_API_to_A_SY_B_CT_A_PRT",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_LoadSTG_10-20_PSA_IAPW_PORTAL_API_to_ASSETS_SUMMARY_BY_COMMISSIONTYPE_AND_PRODUCT",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"input_filename": {
+										"value": "@pipeline().parameters.temp_filename",
+										"type": "Expression"
+									},
+									"input_filepath": {
+										"value": "@pipeline().parameters.temp_filepath",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "assetsSummaryByCommType",
+				"type": "IfCondition",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@contains(pipeline().parameters.temp_filename,'assetsSummaryByCommType__')\n",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "tf_LoadSTG_10-20_PSA_IAPW_PORTAL_API_t_AT_SY_B_COMMTYPE",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_LoadSTG_10-20_PSA_IAPW_PORTAL_API_to_ASSETS_SUMMARY_BY_COMMISSIONTYPE",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"input_filename": {
+										"value": "@pipeline().parameters.temp_filename",
+										"type": "Expression"
+									},
+									"input_filepath": {
+										"value": "@pipeline().parameters.temp_filepath",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "assetsSummaryByCommType_RVP",
+				"type": "IfCondition",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@contains(pipeline().parameters.temp_filename,'assetsSummaryByCommType_RVP#7')\n",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "tf_LoadSTG_10-20_PSA_IAPW_PORTAL_API_t_AT_SY_B_COMT_RVP",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_LoadSTG_10-20_PSA_IAPW_PORTAL_API_to_ASSETS_SUMMARY_BY_COMMISSIONTYPE_RVP",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"input_filename": {
+										"value": "@pipeline().parameters.temp_filename",
+										"type": "Expression"
+									},
+									"input_filepath": {
+										"value": "@pipeline().parameters.temp_filepath",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "accountsAndClientsSummary",
+				"type": "IfCondition",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@contains(pipeline().parameters.temp_filename,'accountsAndClientsSummary__')\n",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "tf_LoadSTG_10-20_PSA_IAPW_PORTAL_API_t_ACOTS_CLIT_SUMRY",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_LoadSTG_10-20_PSA_IAPW_PORTAL_API_to_ACCOUNTS_CLIENTS_SUMMARY",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"input_filename": {
+										"value": "@pipeline().parameters.temp_filename",
+										"type": "Expression"
+									},
+									"input_filepath": {
+										"value": "@pipeline().parameters.temp_filepath",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "accountsAndClientsSummary_RVP",
+				"type": "IfCondition",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@contains(pipeline().parameters.temp_filename,'accountsAndClientsSummary_RVP#7')\n",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "tf_LoadSTG_10-20_PSA_IAPW_PORTAL_API_t_ACT_CLT_SUMY_RVP",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_LoadSTG_10-20_PSA_IAPW_PORTAL_API_to_ACCOUNTS_CLIENTS_SUMMARY_RVP",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"input_filename": {
+										"value": "@pipeline().parameters.temp_filename",
+										"type": "Expression"
+									},
+									"input_filepath": {
+										"value": "@pipeline().parameters.temp_filepath",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					]
+				}
+			}
+		],
+		"parameters": {
+			"temp_filename": {
+				"type": "string",
+				"defaultValue": "assetsSummaryByAccountType_RVP#7__2022-11-30.json"
+			},
+			"temp_filepath": {
+				"type": "string",
+				"defaultValue": "raw/IAS/IAPW_PORTAL_API/2022/11/30"
+			}
+		},
+		"variables": {
+			"temp_dataStartDate": {
+				"type": "String"
+			},
+			"temp_JobName": {
+				"type": "String"
+			},
+			"temp_tf_Audit_ID": {
+				"type": "String"
+			},
+			"temp_filename": {
+				"type": "String"
+			},
+			"index_assetSummaryByProductRVP": {
+				"type": "String",
+				"defaultValue": "'0'"
+			},
+			"increment_assetSummaryByProductRVP": {
+				"type": "String",
+				"defaultValue": "'0'"
+			},
+			"RVP Number": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "IAW/20-30-RDV_IAPW_PORTAL_API/00_SYNCHRONIZATION_TASKFLOW"
+		},
+		"annotations": [
+			"STRATEGIC",
+			"IAPW_PORTAL_API",
+			"STAGING"
+		],
+		"lastPublishTime": "2022-08-01T07:53:30Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

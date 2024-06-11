@@ -1,0 +1,149 @@
+{
+	"name": "tf_LoadSTG_10-20_PSA_IAPW_PORTAL_API_to_ASSETS_SUMMARY_BY_COMMISSIONTYPE_AND_PRODUCT_RVP",
+	"properties": {
+		"activities": [
+			{
+				"name": "dcn_ASSETS_SUMMARY_BY_COMMISSIONTYPE_AND_PRODUCT_RVP",
+				"type": "IfCondition",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@contains(pipeline().parameters.input_filename,'ByCommTypeAndProduct_RVP')",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "temp_dataStartDate",
+							"type": "SetVariable",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "temp_dataStartDate",
+								"value": {
+									"value": "@concat('''',split(split(pipeline().parameters.input_filename,'__')[1],'.')[0],'''')",
+									"type": "Expression"
+								}
+							}
+						},
+						{
+							"name": "temp_JobName",
+							"type": "SetVariable",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "temp_JobName",
+								"value": {
+									"value": "@concat('''',pipeline().Pipeline,'''')",
+									"type": "Expression"
+								}
+							}
+						},
+						{
+							"name": "temp_tf_Audit_ID",
+							"type": "SetVariable",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "temp_tf_Audit_ID",
+								"value": {
+									"value": "@concat('''',pipeline().Pipeline,'-',pipeline().RunId,'''')",
+									"type": "Expression"
+								}
+							}
+						},
+						{
+							"name": "tf_LoadSTG_10-20_PSA_IAPW_PORTAL_API_to_ASSETS",
+							"description": "tf_LoadSTG_10-20_PSA_IAPW_PORTAL_API_to_ASSETS_SUMMARY_BY_COMMISSIONTYPE_AND_PRODUCT_RVP_sub1",
+							"type": "ExecutePipeline",
+							"dependsOn": [
+								{
+									"activity": "temp_JobName",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								},
+								{
+									"activity": "temp_tf_Audit_ID",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								},
+								{
+									"activity": "temp_dataStartDate",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_LoadSTG_10-20_PSA_IAPW_PORTAL_API_to_ASSETS_SUMMARY_BY_COMMISSIONTYPE_AND_PRODUCT_RVP_sub1",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"input_filename": {
+										"value": "@pipeline().parameters.input_filename",
+										"type": "Expression"
+									},
+									"input_filepath": {
+										"value": "@pipeline().parameters.input_filepath",
+										"type": "Expression"
+									},
+									"temp_dataStartDate": {
+										"value": "@variables('temp_dataStartDate')",
+										"type": "Expression"
+									},
+									"temp_JobName": {
+										"value": "@variables('temp_JobName')",
+										"type": "Expression"
+									},
+									"temp_tf_Audit_ID": {
+										"value": "@variables('temp_tf_Audit_ID')",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					]
+				}
+			}
+		],
+		"parameters": {
+			"input_filename": {
+				"type": "string",
+				"defaultValue": "assetsSummaryByCommTypeAndProduct_RVP#1__2022-11-29"
+			},
+			"input_filepath": {
+				"type": "string",
+				"defaultValue": "raw/IAS/IAPW/2022/11/29"
+			}
+		},
+		"variables": {
+			"temp_dataStartDate": {
+				"type": "String"
+			},
+			"temp_JobName": {
+				"type": "String"
+			},
+			"temp_tf_Audit_ID": {
+				"type": "String"
+			},
+			"temp_filename": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "IAW/20-30-RDV_IAPW_PORTAL_API/ASSETS_SUMMARY_BY_COMMISSIONTYPE_AND_PRODUCT_RVP"
+		},
+		"annotations": [
+			"STRATEGIC",
+			"IAPW_PORTAL_API",
+			"STAGING"
+		],
+		"lastPublishTime": "2022-07-28T15:56:56Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,23 @@
+{
+	"name": "ls_blob_sas_auth",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureBlobStorage",
+		"typeProperties": {
+			"sasUri": "https://BlobStorageName.blob.core.windows.net/",
+			"sasToken": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "ls_keyvault_managed_identity_auth",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "sastoken"
+			}
+		},
+		"connectVia": {
+			"referenceName": "ir-managed-virtual-network-cac",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

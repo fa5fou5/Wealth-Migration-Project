@@ -1,0 +1,286 @@
+{
+	"name": "tf_Initial_Load_43_BDV_Revenues_Link_Revenue",
+	"properties": {
+		"activities": [
+			{
+				"name": "dcn_StartJob_Result",
+				"type": "IfCondition",
+				"dependsOn": [
+					{
+						"activity": "mt_audit_startJob_NextDate",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@contains(activity('mt_audit_startJob_NextDate').output.resultSets[0]['rows'][0].USP_AUDIT_START_JOB_VARIABLE_SET,'SUCCESS')",
+						"type": "Expression"
+					},
+					"ifFalseActivities": [
+						{
+							"name": "Throw_Error_Start_Job",
+							"type": "Fail",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"message": "AUDIT_JOB_FAILED",
+								"errorCode": {
+									"value": "@activity('mt_audit_startJob_NextDate_Pre').output.resultSets[0]['rows'][0].USP_AUDIT_START_JOB_NEXT_DATE",
+									"type": "Expression"
+								}
+							}
+						}
+					],
+					"ifTrueActivities": [
+						{
+							"name": "IL_RDV_2_BDV_LINK_REVENUE",
+							"type": "Script",
+							"dependsOn": [
+								{
+									"activity": "ASSIGN AUDIT_ID TO SEL1",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"linkedServiceName": {
+								"referenceName": "ls_snowflake_keyvault_auth",
+								"type": "LinkedServiceReference",
+								"parameters": {
+									"DBName": "DB_IAW_DEV_STG"
+								}
+							},
+							"typeProperties": {
+								"scripts": [
+									{
+										"type": "Query",
+										"text": {
+											"value": "@concat('call DB_IAW_',pipeline().globalParameters.ENV,'_DWH.REVENUES_BDV.SP_INITIAL_LOAD_RDV_TO_BDV_LINK_REVENUE(''',pipeline().globalParameters.ENV, ''',' , variables('temp_JobName'), ',', variables('temp_tf_Audit_ID'), ',''',pipeline().RunId, ''')')",
+											"type": "Expression"
+										}
+									}
+								]
+							}
+						},
+						{
+							"name": "ASSIGN AUDIT_ID TO SEL1",
+							"type": "SetVariable",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "SEL1",
+								"value": {
+									"value": "@concat(variables('SEL011'),'''',variables('temp_tf_Audit_ID'),'''''')",
+									"type": "Expression"
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "temp_JobName",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "temp_JobName",
+					"value": {
+						"value": "@concat('''',pipeline().Pipeline,'''')",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "temp_tf_Audit_ID",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "temp_tf_Audit_ID",
+					"value": {
+						"value": "@concat('''',pipeline().Pipeline,'-',pipeline().RunId,'''')",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "temp_JobStartDate",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "mt_audit_startJob_NextDate_Pre",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "temp_dataStartDate",
+					"value": {
+						"value": "@concat('''',activity('mt_audit_startJob_NextDate_Pre').output.resultSets[0]['rows'][0].USP_AUDIT_START_JOB_NEXT_DATE,'''')",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "mt_audit_startJob_NextDate_Pre",
+				"type": "Script",
+				"dependsOn": [
+					{
+						"activity": "temp_tf_Audit_ID",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "temp_JobName",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"linkedServiceName": {
+					"referenceName": "ls_snowflake_keyvault_auth",
+					"type": "LinkedServiceReference",
+					"parameters": {
+						"DBName": "DB_IAW_DEV_STG"
+					}
+				},
+				"typeProperties": {
+					"scripts": [
+						{
+							"type": "Query",
+							"text": {
+								"value": "@concat('call DB_IAW_',pipeline().globalParameters.ENV,'_DWH.TOOLS.USP_AUDIT_START_JOB_NEXT_DATE(',variables('temp_JobName'),',',variables('temp_tf_Audit_ID'),')')",
+								"type": "Expression"
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "mt_audit_startJob_NextDate",
+				"type": "Script",
+				"dependsOn": [
+					{
+						"activity": "temp_JobStartDate",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"linkedServiceName": {
+					"referenceName": "ls_snowflake_keyvault_auth",
+					"type": "LinkedServiceReference"
+				},
+				"typeProperties": {
+					"scripts": [
+						{
+							"type": "Query",
+							"text": {
+								"value": "@concat('call DB_IAW_',pipeline().globalParameters.ENV,'_DWH.TOOLS.USP_AUDIT_START_JOB_Variable_Set(',variables('temp_JobName'),',',variables('temp_dataStartDate'),')')",
+								"type": "Expression"
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "dt_Audit_EndJob",
+				"type": "Script",
+				"dependsOn": [
+					{
+						"activity": "dcn_StartJob_Result",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"linkedServiceName": {
+					"referenceName": "ls_snowflake_keyvault_auth",
+					"type": "LinkedServiceReference"
+				},
+				"typeProperties": {
+					"scripts": [
+						{
+							"type": "Query",
+							"text": {
+								"value": "@concat('call DB_IAW_',pipeline().globalParameters.ENV,'_DWH.TOOLS.USP_AUDIT_END_JOB(',variables('temp_JobName'),',',variables('temp_dataStartDate'),',',variables('temp_tf_Audit_ID'),',','''SUCCESS''',',','''Successful execution''',')')",
+								"type": "Expression"
+							}
+						}
+					]
+				}
+			}
+		],
+		"variables": {
+			"temp_dataStartDate": {
+				"type": "String"
+			},
+			"temp_JobName": {
+				"type": "String"
+			},
+			"temp_tf_Audit_ID": {
+				"type": "String"
+			},
+			"TRUNC_TBL": {
+				"type": "String",
+				"defaultValue": "'N'"
+			},
+			"INS011": {
+				"type": "String",
+				"defaultValue": "'HK_LINK,HK_HUB_PARTY_ROLE_ACCOUNT_HOLDER,HK_HUB_PARTY_ROLE_ADVISOR,HK_HUB_REF_INVESTMENT_SAVING_PROGRAM_TYPES,HK_HUB_INVESTMENT_PRODUCT_TYPE,HK_HUB_CONTRACT,MD_START_DT,MD_SOURCE,MD_SRC_SYSTEM,MD_EXTRACT_DT,CLIENT_ID,MASTER_CODE,MARKETPRODUCT_ID,CONTRACT_ID,ADVISOR_ID,PAYMENT_DATE,REVENUE,REVENUE_TYPE,REVENUE_SUBTYPE,AUA,ENTRY_TYPE,STAMP,INSURANCE_REVENUE,TRANSID,ADVISOR_REVENUE_AMOUNT,MD_CREATION_DT,MD_CREATION_AUDIT_ID'"
+			},
+			"SEL011": {
+				"type": "String",
+				"defaultValue": "'STG.HK_LINK,STG.HK_HUB_PARTY_ROLE_ACCOUNT_HOLDER,STG.HK_HUB_PARTY_ROLE_ADVISOR,STG.HK_HUB_REF_INVESTMENT_SAVING_PROGRAM_TYPES,STG.HK_HUB_INVESTMENT_PRODUCT_TYPE,STG.HK_HUB_CONTRACT,STG.MD_START_DT,STG.MD_SOURCE,STG.MD_SRC_SYSTEM,STG.MD_EXTRACT_DT,STG.CLIENT_ID,STG.MASTER_CODE,STG.MARKETPRODUCT_ID,STG.CONTRACT_ID,STG.ADVISOR_ID,STG.PAYMENT_DATE,STG.REVENUE,STG.REVENUE_TYPE,STG.REVENUE_SUBTYPE,STG.AUA,STG.ENTRY_TYPE,STG.STAMP,STG.INSURANCE_REVENUE,STG.TRANSID,STG.ADVISOR_REVENUE_AMOUNT,CURRENT_TIMESTAMP,"
+			},
+			"SEL1": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "IAW/INITIAL_LOADING_IAPW/INITIAL_LOADING_43_BDV_REVENUES"
+		},
+		"annotations": [],
+		"lastPublishTime": "2022-10-31T15:34:03Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

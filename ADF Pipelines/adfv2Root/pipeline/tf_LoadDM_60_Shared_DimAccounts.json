@@ -1,0 +1,526 @@
+{
+	"name": "tf_LoadDM_60_Shared_DimAccounts",
+	"properties": {
+		"activities": [
+			{
+				"name": "temp_JobName",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "temp_JobName",
+					"value": {
+						"value": "@concat('''',pipeline().Pipeline,'''')",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "temp_tf_Audit_ID",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "temp_tf_Audit_ID",
+					"value": {
+						"value": "@concat('''',pipeline().Pipeline,'-',pipeline().RunId,'''')",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "mt_audit_startJob_NextDate_Pre",
+				"type": "Script",
+				"dependsOn": [
+					{
+						"activity": "temp_JobName",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "temp_tf_Audit_ID",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"linkedServiceName": {
+					"referenceName": "ls_snowflake_keyvault_auth",
+					"type": "LinkedServiceReference"
+				},
+				"typeProperties": {
+					"scripts": [
+						{
+							"type": "Query",
+							"text": {
+								"value": "@concat('call DB_IAW_',pipeline().globalParameters.ENV,'_DWH.TOOLS.USP_AUDIT_START_JOB_NEXT_DATE(',variables('temp_JobName'),',',variables('temp_tf_Audit_ID'),')')",
+								"type": "Expression"
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "temp_JobStartDate",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "mt_audit_startJob_NextDate_Pre",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "temp_dataStartDate",
+					"value": {
+						"value": "@concat('''',activity('mt_audit_startJob_NextDate_Pre').output.resultSets[0]['rows'][0].USP_AUDIT_START_JOB_NEXT_DATE,'''')",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "mt_audit_startJob_NextDate",
+				"type": "Script",
+				"dependsOn": [
+					{
+						"activity": "temp_JobStartDate",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"linkedServiceName": {
+					"referenceName": "ls_snowflake_keyvault_auth",
+					"type": "LinkedServiceReference"
+				},
+				"typeProperties": {
+					"scripts": [
+						{
+							"type": "Query",
+							"text": {
+								"value": "@concat('call DB_IAW_',pipeline().globalParameters.ENV,'_DWH.TOOLS.USP_AUDIT_START_JOB_Variable_Set(',variables('temp_JobName'),',',variables('temp_dataStartDate'),')')",
+								"type": "Expression"
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "dcn_StartJob_Result",
+				"type": "IfCondition",
+				"dependsOn": [
+					{
+						"activity": "mt_audit_startJob_NextDate",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@contains(activity('mt_audit_startJob_NextDate').output.resultSets[0]['rows'][0].USP_AUDIT_START_JOB_VARIABLE_SET,'SUCCESS')",
+						"type": "Expression"
+					},
+					"ifFalseActivities": [
+						{
+							"name": "Fail1",
+							"type": "Fail",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"message": {
+									"value": "@activity('mt_audit_startJob_NextDate_Pre').output.resultSets[0]['rows'][0].USP_AUDIT_START_JOB_NEXT_DATE",
+									"type": "Expression"
+								},
+								"errorCode": "100"
+							}
+						}
+					],
+					"ifTrueActivities": [
+						{
+							"name": "Set AUDIT FOR SEL",
+							"type": "SetVariable",
+							"dependsOn": [
+								{
+									"activity": "Set Dummy Variable",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "SEL",
+								"value": {
+									"value": "@concat(variables('SEL_TEMP'),'''',variables('temp_dataStartDate'),'''',',','''',variables('temp_tf_Audit_ID'),'''''')",
+									"type": "Expression"
+								}
+							}
+						},
+						{
+							"name": "mt_LoadDM_DM_Wt_To_DM_DimAccounts_Close",
+							"type": "Script",
+							"dependsOn": [
+								{
+									"activity": "Set AUDIT FOR SEL",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								},
+								{
+									"activity": "Set AUDIT FOR SEL_MER",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"linkedServiceName": {
+								"referenceName": "ls_snowflake_keyvault_auth",
+								"type": "LinkedServiceReference",
+								"parameters": {
+									"DBName": "DB_IAW_DEV_STG"
+								}
+							},
+							"typeProperties": {
+								"scripts": [
+									{
+										"type": "Query",
+										"text": {
+											"value": "@concat('call DB_IAW_',pipeline().globalParameters.ENV,'_DM.TOOLS.SP_CONV_SCD_CLOSE(''DB_IAW_',pipeline().globalParameters.ENV,'_DM.SHARED.WT_DIM_ACCOUNTS'',''DB_IAW_',pipeline().globalParameters.ENV,'_DM.SHARED.DIM_ACCOUNTS''',',',variables('temp_dataStartDate'),',',variables('temp_tf_Audit_ID'),')')",
+											"type": "Expression"
+										}
+									}
+								]
+							}
+						},
+						{
+							"name": "Set AUDIT FOR SEL_MER",
+							"type": "SetVariable",
+							"dependsOn": [
+								{
+									"activity": "Set Dummy Variable",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "MER_COLS",
+								"value": {
+									"value": "@concat(variables('MER_TEMP_COLS'),'''',variables('temp_dataStartDate'),'''',',','''',variables('temp_tf_Audit_ID'),'''''')",
+									"type": "Expression"
+								}
+							}
+						},
+						{
+							"name": "mt_LoadDM_RDV_BDV_NBIN_Shared_To_DM_Wt_DimAccount",
+							"type": "Script",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"linkedServiceName": {
+								"referenceName": "ls_snowflake_keyvault_auth",
+								"type": "LinkedServiceReference",
+								"parameters": {
+									"DBName": "DB_IAW_DEV_STG"
+								}
+							},
+							"typeProperties": {
+								"scripts": [
+									{
+										"type": "Query",
+										"text": {
+											"value": "@concat('call DB_IAW_',pipeline().globalParameters.ENV,'_DM.SHARED.SP_CONV_LOADDM_RDV_BDV_NBIN_SHARED_TO_DM_WT_DIMACCOUNT(''',pipeline().globalParameters.ENV,''',',variables('temp_dataStartDate'),',',variables('temp_tf_Audit_ID'),')')",
+											"type": "Expression"
+										}
+									}
+								]
+							}
+						},
+						{
+							"name": "mt_LoadDM_RDV_BDV_IAS_Shared_To_DM_Wt_DimAccount",
+							"type": "Script",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"linkedServiceName": {
+								"referenceName": "ls_snowflake_keyvault_auth",
+								"type": "LinkedServiceReference",
+								"parameters": {
+									"DBName": "DB_IAW_DEV_STG"
+								}
+							},
+							"typeProperties": {
+								"scripts": [
+									{
+										"type": "Query",
+										"text": {
+											"value": "@concat('call DB_IAW_',pipeline().globalParameters.ENV,'_DM.SHARED.SP_CONV_LOADDM_RDV_BDV_IAS_UNIVERIS_SHARED_TO_DM_WT_DIMACCOUNT(''',pipeline().globalParameters.ENV,''',',variables('temp_dataStartDate'),',',variables('temp_tf_Audit_ID'),')')",
+											"type": "Expression"
+										}
+									}
+								]
+							}
+						},
+						{
+							"name": "mt_LoadDM_RDV_BDV_INV_UNIV_Shared_To_DM_Wt_DimAccounts",
+							"description": "mt_LoadDM_RDV_BDV_INVESTIA_UNIVERIS_Shared_To_DM_Wt_DimCAccounts",
+							"type": "Script",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"linkedServiceName": {
+								"referenceName": "ls_snowflake_keyvault_auth",
+								"type": "LinkedServiceReference",
+								"parameters": {
+									"DBName": "DB_IAW_DEV_STG"
+								}
+							},
+							"typeProperties": {
+								"scripts": [
+									{
+										"type": "Query",
+										"text": {
+											"value": "@concat('call DB_IAW_',pipeline().globalParameters.ENV,'_DM.SHARED.SP_CONV_LOADDM_RDV_BDV_INVESTIA_SHARED_TO_DM_WT_DIMACCOUNT(''',pipeline().globalParameters.ENV,''',',variables('temp_dataStartDate'),',',variables('temp_tf_Audit_ID'),')')",
+											"type": "Expression"
+										}
+									}
+								]
+							}
+						},
+						{
+							"name": "Set Dummy Variable",
+							"description": "Step Added to streamline Flow",
+							"type": "SetVariable",
+							"dependsOn": [
+								{
+									"activity": "mt_LoadDM_RDV_BDV_NBIN_Shared_To_DM_Wt_DimAccount",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								},
+								{
+									"activity": "mt_LoadDM_RDV_BDV_IAS_Shared_To_DM_Wt_DimAccount",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								},
+								{
+									"activity": "mt_LoadDM_RDV_BDV_INV_UNIV_Shared_To_DM_Wt_DimAccounts",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "Dummy",
+								"value": {
+									"value": "@variables('temp_JobName')",
+									"type": "Expression"
+								}
+							}
+						},
+						{
+							"name": "Set AUDIT FOR SEL_INS",
+							"type": "SetVariable",
+							"dependsOn": [
+								{
+									"activity": "Set Dummy Variable",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "SEL_INS",
+								"value": {
+									"value": "@concat(variables('SEL_TEMP_INS'),'''',variables('temp_dataStartDate'),'''',',','''',variables('temp_tf_Audit_ID'),'''''')",
+									"type": "Expression"
+								}
+							}
+						},
+						{
+							"name": "mt_LoadDM_DM_Wt_To_DM_DimAccounts_Insert",
+							"type": "Script",
+							"dependsOn": [
+								{
+									"activity": "Set AUDIT FOR SEL_INS",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"linkedServiceName": {
+								"referenceName": "ls_snowflake_keyvault_auth",
+								"type": "LinkedServiceReference",
+								"parameters": {
+									"DBName": "DB_IAW_DEV_STG"
+								}
+							},
+							"typeProperties": {
+								"scripts": [
+									{
+										"type": "Query",
+										"text": {
+											"value": "@concat('call DB_IAW_',pipeline().globalParameters.ENV,'_DM.TOOLS.SP_CONV_SCD_INSERT_AUDIT_ID(',variables('INS_INS'), ',' , variables('SEL_INS'), ',' ,'''DB_IAW_',pipeline().globalParameters.ENV,'_DM.SHARED.WT_DIM_ACCOUNTS'',''DB_IAW_',pipeline().globalParameters.ENV,'_DM.SHARED.DIM_ACCOUNTS''',',',variables('TRUNC_TBL'),')')",
+											"type": "Expression"
+										}
+									}
+								]
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "dt_Audit_EndJob",
+				"type": "Script",
+				"dependsOn": [
+					{
+						"activity": "dcn_StartJob_Result",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"linkedServiceName": {
+					"referenceName": "ls_snowflake_keyvault_auth",
+					"type": "LinkedServiceReference"
+				},
+				"typeProperties": {
+					"scripts": [
+						{
+							"type": "Query",
+							"text": {
+								"value": "@concat('call DB_IAW_',pipeline().globalParameters.ENV,'_DWH.TOOLS.USP_AUDIT_END_JOB(',variables('temp_JobName'),',',variables('temp_dataStartDate'),',',variables('temp_tf_Audit_ID'),',','''SUCCESS''',',','''Successful execution''',')')",
+								"type": "Expression"
+							}
+						}
+					]
+				}
+			}
+		],
+		"variables": {
+			"temp_dataStartDate": {
+				"type": "String"
+			},
+			"temp_JobName": {
+				"type": "String"
+			},
+			"temp_tf_Audit_ID": {
+				"type": "String"
+			},
+			"SEL": {
+				"type": "String"
+			},
+			"INS": {
+				"type": "String",
+				"defaultValue": "'MD_START_DT,MD_HASH_NAT_KEYS,MD_HASHDIFF_TYPE2,MD_MODIFY_DT,MD_END_DT,MD_MODIFY_AUDIT_ID'"
+			},
+			"SEL_TEMP": {
+				"type": "String",
+				"defaultValue": "'DIM.MD_START_DT,DIM.MD_HASH_NAT_KEYS,DIM.MD_HASHDIFF_TYPE2,CURRENT_TIMESTAMP,"
+			},
+			"TRUNC_TBL": {
+				"type": "String",
+				"defaultValue": "'N'"
+			},
+			"Dummy": {
+				"type": "String"
+			},
+			"SEL_INS": {
+				"type": "String"
+			},
+			"INS_INS": {
+				"type": "String",
+				"defaultValue": "'HK_HUB,MD_END_DT,MD_HASH_NAT_KEYS,MD_HASHDIFF_TYPE1,MD_HASHDIFF_TYPE2,MD_MODIFY_DT,MD_MODIFY_AUDIT_ID,MD_SOURCE,MD_SRC_SYSTEM,MD_EXTRACT_DT,MD_SECURITY_TYPE,CONTRACT_ID,UNIVERIS_PLAN_ID,UNIVERIS_CLIENT_ID,PLAN_CODE,PLAN_LABEL,ACCOUNT_TYPE,OPEN_DATE,CLOSE_DATE,GROUP_TYPE_CODE,ACCUMULATION_TYPE,ADMINISTRATOR_TYPE,ACCOUNT_AUA_SEGMENT,ACCOUNT_AUA_SEGMENT_ORDER,ACCOUNT_IND,CASH_EQLT_PROFILE_PCT,INCOME_PROFILE_PCT,GROWTH_PROFILE_PCT,SPECULATION_PROFILE_PCT,UNKNOWN_PROFILE_PCT,LOW_RISK_PCT,MEDIUM_RISK_PCT,HIGH_RISK_PCT,UNKNOWN_RISK_PCT,NBIN_CLIENT_ID, ACCNT_PRG, ACCNT_PRG_TYPE, ACCNT_MGMT_TYPE, KYC_DOC_LAST_UPD, KYC_DOC_NEXT_UPD, MD_CREATION_DT,MD_START_DT,MD_CREATION_AUDIT_ID'"
+			},
+			"SEL_TEMP_INS": {
+				"type": "String",
+				"defaultValue": "'SRC.HK_HUB,SRC.MD_END_DT,SRC.MD_HASH_NAT_KEYS,SRC.MD_HASHDIFF_TYPE1,SRC.MD_HASHDIFF_TYPE2,SRC.MD_MODIFY_DT,SRC.MD_MODIFY_AUDIT_ID,SRC.MD_SOURCE,SRC.MD_SRC_SYSTEM,SRC.MD_EXTRACT_DT,SRC.MD_SECURITY_TYPE,SRC.CONTRACT_ID,SRC.UNIVERIS_PLAN_ID,SRC.UNIVERIS_CLIENT_ID,SRC.PLAN_CODE,SRC.PLAN_LABEL ,SRC.ACCOUNT_TYPE,SRC.OPEN_DATE,SRC.CLOSE_DATE,SRC.GROUP_TYPE_CODE,SRC.ACCUMULATION_TYPE,SRC.ADMINISTRATOR_TYPE,SRC.ACCOUNT_AUA_SEGMENT,SRC.ACCOUNT_AUA_SEGMENT_ORDER,SRC.ACCOUNT_IND,SRC.CASH_EQLT_PROFILE_PCT,SRC.INCOME_PROFILE_PCT,SRC.GROWTH_PROFILE_PCT,SRC.SPECULATION_PROFILE_PCT,SRC.UNKNOWN_PROFILE_PCT,SRC.LOW_RISK_PCT,SRC.MEDIUM_RISK_PCT,SRC.HIGH_RISK_PCT,SRC.UNKNOWN_RISK_PCT,SRC.NBIN_CLIENT_ID,SRC.ACCNT_PRG, SRC.ACCNT_PRG_TYPE, SRC.ACCNT_MGMT_TYPE, SRC.KYC_DOC_LAST_UPD, SRC.KYC_DOC_NEXT_UPD, CURRENT_TIMESTAMP,"
+			},
+			"UPD_COLS": {
+				"type": "String",
+				"defaultValue": "'TGT.MD_HASH_NAT_KEYS = MER.MD_HASH_NAT_KEYS , TGT.MD_START_DT = MER.MD_START_DT'"
+			},
+			"MER_TEMP_COLS": {
+				"type": "String",
+				"defaultValue": "'MER.MD_START_DT,MER.MD_HASH_NAT_KEYS,MER.MD_HASHDIFF_TYPE2,CURRENT_TIMESTAMP,"
+			},
+			"MER_COLS": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "IAW/60_DM_IAWEALTH/SHARED_CONTRACTS"
+		},
+		"annotations": [],
+		"lastPublishTime": "2022-10-31T15:34:04Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

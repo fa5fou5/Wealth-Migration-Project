@@ -1,0 +1,214 @@
+{
+	"name": "tf_LoadRDV_20-30_PSA_INVESTIA_UNIVERIS_to_RDV_REVENUE_TRAILER_FEES_SUCCESS_COUNT",
+	"properties": {
+		"activities": [
+			{
+				"name": "dcn_row_count",
+				"type": "IfCondition",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@greater(int(pipeline().parameters.STG_COUNT),0)",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "mt_LoadRDV_STG_PLN_SRF_INVESTIA_UNIVERIS_To_LINK_REV_RR",
+							"type": "Script",
+							"dependsOn": [
+								{
+									"activity": "ASSIGN SEL_TEMP",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"linkedServiceName": {
+								"referenceName": "ls_snowflake_keyvault_auth",
+								"type": "LinkedServiceReference"
+							},
+							"typeProperties": {
+								"scripts": [
+									{
+										"type": "Query",
+										"text": {
+											"value": "@concat('call DB_IAW_',pipeline().globalParameters.ENV,'_DWH.TOOLS.SP_CONV_DATAVAULT_LOADLINK_AUDIT_ID_RK(',variables('INS'), ',' , variables('SEL_TEMP_1'), ',' ,'''DB_IAW_',pipeline().globalParameters.ENV,'_STG.INVESTIA_UNIVERIS.PLN_SRF'',''DB_IAW_',pipeline().globalParameters.ENV,'_DWH.REVENUES_RDV.LINK_REVENUE_RR''',',',variables('TRUNC_TBL'),')')\n",
+											"type": "Expression"
+										}
+									}
+								]
+							}
+						},
+						{
+							"name": "mt_LoadRDV_STG_PLN_SRF_INVESTIA_UN_T_S_L_R_T_F_R_I_U_In",
+							"type": "Script",
+							"dependsOn": [
+								{
+									"activity": "ASSIGN SEL_DATA",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"linkedServiceName": {
+								"referenceName": "ls_snowflake_keyvault_auth",
+								"type": "LinkedServiceReference"
+							},
+							"typeProperties": {
+								"scripts": [
+									{
+										"type": "Query",
+										"text": {
+											"value": "@concat('call DB_IAW_',pipeline().globalParameters.ENV,'_DWH.TOOLS.SP_CONV_DATAVAULT_LOADSATLINK_INSERT_AUDIT_ID(',variables('INS_DATA'), ',' , variables('SEL_DATA_1'), ',' ,'''DB_IAW_',pipeline().globalParameters.ENV,'_STG.INVESTIA_UNIVERIS.PLN_SRF'',''DB_IAW_',pipeline().globalParameters.ENV,'_DWH.REVENUES_RDV.SAT_LINK_REVENUE_TRAILER_FEES_RR_INVESTIA_UNIVERIS''',',',variables('TRUNC_TBL'),')')\n",
+											"type": "Expression"
+										}
+									}
+								]
+							}
+						},
+						{
+							"name": "ASSIGN SEL_TEMP",
+							"type": "SetVariable",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "SEL_TEMP_1",
+								"value": {
+									"value": "@concat(variables('SEL_TEMP'),'''''', replace(pipeline().parameters.temp_tf_Audit_ID,'''',''),'#',pipeline().parameters.Pipeline_Name,'-',pipeline().parameters.Audit_Run_ID,'''''''')",
+									"type": "Expression"
+								}
+							}
+						},
+						{
+							"name": "ASSIGN SEL_DATA",
+							"type": "SetVariable",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "SEL_DATA_1",
+								"value": {
+									"value": "@concat(variables('SEL_DATA'),'''''', replace(pipeline().parameters.temp_tf_Audit_ID,'''',''),'#',pipeline().parameters.Pipeline_Name,'-',pipeline().parameters.Audit_Run_ID,'''''''')",
+									"type": "Expression"
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "dt_Audit_EndJob",
+				"type": "Script",
+				"dependsOn": [
+					{
+						"activity": "dcn_row_count",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"linkedServiceName": {
+					"referenceName": "ls_snowflake_keyvault_auth",
+					"type": "LinkedServiceReference"
+				},
+				"typeProperties": {
+					"scripts": [
+						{
+							"type": "Query",
+							"text": {
+								"value": "@concat('call DB_IAW_',pipeline().globalParameters.ENV,'_DWH.TOOLS.USP_AUDIT_END_JOB(',pipeline().parameters.temp_JobName,',',pipeline().parameters.temp_dataStartDate,',',pipeline().parameters.temp_tf_Audit_ID,',','''SUCCESS''',',','''Successful execution''',')')",
+								"type": "Expression"
+							}
+						}
+					]
+				}
+			}
+		],
+		"parameters": {
+			"input_filename": {
+				"type": "string",
+				"defaultValue": "PLN_SRF__2019-03-18"
+			},
+			"input_filepath": {
+				"type": "string",
+				"defaultValue": "RAW/INVESTIA/UNIVERIS/2021/10/12"
+			},
+			"STG_COUNT": {
+				"type": "string"
+			},
+			"temp_dataStartDate": {
+				"type": "string"
+			},
+			"temp_JobName": {
+				"type": "string"
+			},
+			"temp_tf_Audit_ID": {
+				"type": "string"
+			},
+			"Audit_Run_ID": {
+				"type": "string"
+			},
+			"Pipeline_Name": {
+				"type": "string"
+			}
+		},
+		"variables": {
+			"SEL_TEMP": {
+				"type": "String",
+				"defaultValue": "'STG.HK_LINK,STG.HK_HUB_CONTRACT,STG.HK_HUB_INVESTMENT_PRODUCT_TYPE,STG.MD_START_DT,STG.MD_SOURCE,STG.MD_SRC_SYSTEM,STG.MD_EXTRACT_DT,STG.PLN_SRF_SYSID,STG.TO_DT,STG.PLN_SYSID,STG.IVR_SYSID,STG.IVD_SYSID,CURRENT_TIMESTAMP,"
+			},
+			"INS": {
+				"type": "String",
+				"defaultValue": "'HK_LINK,HK_HUB_CONTRACT,HK_HUB_INVESTMENT_PRODUCT_TYPE,MD_START_DT,MD_SOURCE,MD_SRC_SYSTEM,MD_EXTRACT_DT,PAY_SYSID,PAYMENT_DT,PLN_SYSID,IVR_SYSID,IVD_SYSID,MD_CREATION_DT,MD_CREATION_AUDIT_ID'"
+			},
+			"TRUNC_TBL": {
+				"type": "String",
+				"defaultValue": "'N'"
+			},
+			"INS_DATA": {
+				"type": "String",
+				"defaultValue": "'HK_LINK,MD_START_DT,MD_HASHDIFF,MD_SOURCE,MD_SRC_SYSTEM,MD_EXTRACT_DT,FAS_FILE_NAME,FROM_DT,MGT_CD,CURRENCY_CD,INCOME_TYPE,REP_CODE,COM_PYBL,EXCH_DT,EXCH_RATE,LAST_UPD_DT,USR_SYSID,FISCAL_SYSID,JUR_CD,ACT_TAX_COLLCTD,DLR_SYSID,RGN_SYSID,BRN_SYSID,REP_SYSID,MD_CREATION_DT,MD_ACTIVE,MD_CREATION_AUDIT_ID'"
+			},
+			"SEL_DATA": {
+				"type": "String",
+				"defaultValue": "'SRC.HK_LINK,SRC.MD_START_DT,SRC.MD_HASHDIFF,SRC.MD_SOURCE,SRC.MD_SRC_SYSTEM,SRC.MD_EXTRACT_DT,SRC.FAS_FILE_NAME,SRC.FROM_DT,SRC.MGT_CD,SRC.CURRENCY_CD,SRC.INCOME_TYPE,SRC.REP_CODE,SRC.COM_PYBL,SRC.EXCH_DT,SRC.EXCH_RATE,SRC.LAST_UPD_DT,SRC.USR_SYSID,SRC.FISCAL_SYSID,SRC.JUR_CD,SRC.ACT_TAX_COLLCTD,SRC.DLR_SYSID,SRC.RGN_SYSID,SRC.BRN_SYSID,SRC.REP_SYSID,CURRENT_TIMESTAMP,''A'',"
+			},
+			"SEL_TEMP_1": {
+				"type": "String"
+			},
+			"SEL_DATA_1": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "IAW/20-30_RDV_INVESTIA_UNIVERIS/REVENUE_TRAILER_FEES"
+		},
+		"annotations": [],
+		"lastPublishTime": "2022-10-31T15:34:12Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

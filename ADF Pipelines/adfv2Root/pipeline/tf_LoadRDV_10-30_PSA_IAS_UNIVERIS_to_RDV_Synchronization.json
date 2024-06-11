@@ -1,0 +1,488 @@
+{
+	"name": "tf_LoadRDV_10-30_PSA_IAS_UNIVERIS_to_RDV_Synchronization",
+	"properties": {
+		"activities": [
+			{
+				"name": "temp_filename",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "temp_filename",
+					"value": {
+						"value": "@replace(concat(pipeline().parameters.input_filepath,'/',pipeline().parameters.input_filename),concat(split(pipeline().parameters.input_filepath,'/')[0],'/'),'')",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "dcn_revenue_payable_received",
+				"type": "IfCondition",
+				"dependsOn": [
+					{
+						"activity": "temp_filename",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@contains(variables('temp_filename'),'REVENUE_PAYABLE__')",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "Revenue_payable",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_LoadRDV_20-30_PSA_IAS_UNIVERIS_to_RDV_REVENUE_PAYABLE",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"input_filename": {
+										"value": "@pipeline().parameters.input_filename",
+										"type": "Expression"
+									},
+									"input_filepath": {
+										"value": "@pipeline().parameters.input_filepath",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "dcn_revenue_trailer_fees_received",
+				"type": "IfCondition",
+				"dependsOn": [
+					{
+						"activity": "temp_filename",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@contains(variables('temp_filename'),'PLN_SRF__')",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "Revenues Trailer Fees",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_LoadRDV_20-30_PSA_IAS_UNIVERIS_to_RDV_REVENUE_TRAILER_FEES",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"input_filename": {
+										"value": "@pipeline().parameters.input_filename",
+										"type": "Expression"
+									},
+									"input_filepath": {
+										"value": "@pipeline().parameters.input_filepath",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "dcn_com_prod_received",
+				"type": "IfCondition",
+				"dependsOn": [
+					{
+						"activity": "temp_filename",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@contains(variables('temp_filename'),'S_COM_PROD__')",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "Com Prod",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_LoadRDV_20-30_PSA_IAS_UNIVERIS_to_RDV_REF_COM_PROD",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"input_filename": {
+										"value": "@pipeline().parameters.input_filename",
+										"type": "Expression"
+									},
+									"input_filepath": {
+										"value": "@pipeline().parameters.input_filepath",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "dcn_holding_received",
+				"type": "IfCondition",
+				"dependsOn": [
+					{
+						"activity": "temp_filename",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@contains(variables('temp_filename'),'HOLDINGS__')",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "Holdings",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_LoadRDV_20-30_PSA_IAS_UNIVERIS_to_RDV_HOLDINGS",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"input_filename": {
+										"value": "@pipeline().parameters.input_filename",
+										"type": "Expression"
+									},
+									"input_filepath": {
+										"value": "@pipeline().parameters.input_filepath",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "dcn_clients_received",
+				"type": "IfCondition",
+				"dependsOn": [
+					{
+						"activity": "temp_filename",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@contains(variables('temp_filename'),'CLIENTS__')",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "Clients",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_LoadRDV_20-30_PSA_IAS_UNIVERIS_to_RDV_SHARED_CLIENTS",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"input_filename": {
+										"value": "@pipeline().parameters.input_filename",
+										"type": "Expression"
+									},
+									"input_filepath": {
+										"value": "@pipeline().parameters.input_filepath",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "dcn_accounts_received",
+				"type": "IfCondition",
+				"dependsOn": [
+					{
+						"activity": "temp_filename",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@contains(variables('temp_filename'),'ACCOUNTS__')",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "Accounts",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_LoadRDV_20-30_PSA_IAS_UNIVERIS_to_RDV_SHARED_CONTRACTS",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"input_filename": {
+										"value": "@pipeline().parameters.input_filename",
+										"type": "Expression"
+									},
+									"input_filepath": {
+										"value": "@pipeline().parameters.input_filepath",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "dcn_investment_product_type_received",
+				"type": "IfCondition",
+				"dependsOn": [
+					{
+						"activity": "temp_filename",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@contains(variables('temp_filename'),'MARKETPRODUCTS__')",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "Products",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_LoadRDV_20-30_PSA_IAS_UNIVERIS_to_RDV_SHARED_INVESTMENT_PRODUCT_TYPE",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"input_filename": {
+										"value": "@pipeline().parameters.input_filename",
+										"type": "Expression"
+									},
+									"input_filepath": {
+										"value": "@pipeline().parameters.input_filepath",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "dcn_plans_received",
+				"type": "IfCondition",
+				"dependsOn": [
+					{
+						"activity": "temp_filename",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@contains(variables('temp_filename'),'PLANS__')",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "Plans",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_LoadRDV_20-30_PSA_IAS_UNIVERIS_to_RDV_SHARED_PLANS",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"input_filename": {
+										"value": "@pipeline().parameters.input_filename",
+										"type": "Expression"
+									},
+									"input_filepath": {
+										"value": "@pipeline().parameters.input_filepath",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "dcn_transactions_received",
+				"type": "IfCondition",
+				"dependsOn": [
+					{
+						"activity": "temp_filename",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@contains(variables('temp_filename'),'TRANSACTIONS__')",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "Transactions",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_LoadRDV_20-30_PSA_IAS_UNIVERIS_to_RDV_FINANCIAL_TRANSACTIONS",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"input_filename": {
+										"value": "@pipeline().parameters.input_filename",
+										"type": "Expression"
+									},
+									"input_filepath": {
+										"value": "@pipeline().parameters.input_filepath",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "dcn_registered_representative_received",
+				"type": "IfCondition",
+				"dependsOn": [
+					{
+						"activity": "temp_filename",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@contains(variables('temp_filename'),'REGISTERED_REPRESENTATIVE__')",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "Advisors",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_LoadRDV_20-30_PSA_IAS_UNIVERIS_to_RDV_SHARED_ADVISORS",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"input_filename": {
+										"value": "@pipeline().parameters.input_filename",
+										"type": "Expression"
+									},
+									"input_filepath": {
+										"value": "@pipeline().parameters.input_filepath",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					]
+				}
+			}
+		],
+		"parameters": {
+			"input_filename": {
+				"type": "string"
+			},
+			"input_filepath": {
+				"type": "string"
+			}
+		},
+		"variables": {
+			"temp_dataStartDate": {
+				"type": "String"
+			},
+			"temp_JobName": {
+				"type": "String"
+			},
+			"temp_tf_Audit_ID": {
+				"type": "String"
+			},
+			"temp_filename": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "IAW/20-30_RDV_IAS_UNIVERIS/00_SYNCHRONIZATION_TASKFLOW"
+		},
+		"annotations": [],
+		"lastPublishTime": "2022-10-31T15:34:15Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

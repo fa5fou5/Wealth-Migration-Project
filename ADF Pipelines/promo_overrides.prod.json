@@ -1,0 +1,12 @@
+{  
+   "_desc 01" : "============================================================================================",
+   "_desc 02" : " Explicit values set below will overwrite param file values during promo deployment         ",
+   "_desc 03" : " 1. Parameters found in this file will be selected exclusively for PROD promotions          ",
+   "_desc 04" : " 2. Both ARM Template Parameter Values And Global Parameters can be defined for replacement ",
+   "_desc 05" : " 3. To request an override, set the parameter key and replacement value as a string         ",
+   "_desc 06" : " 4. Keys starting with an underscore will be ignored during conversion                      ",
+   "_desc 07" : " 5. Precedence is awarded to the target env file when a parameter is set in many files      ",
+   "_desc 08" : "============================================================================================",
+
+   "_example" : "this string would replace the '_example' parameter value if underscores weren't ignored    " 
+}

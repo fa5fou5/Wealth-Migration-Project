@@ -1,0 +1,248 @@
+{
+	"name": "tf_INITIAL_LOADING_INVESTIA_LoadRDV_20-30_INVESTIA_UNIVERIS_to_RDV_REVENUE_PAYABLE_sub1",
+	"properties": {
+		"activities": [
+			{
+				"name": "ForEach1",
+				"type": "ForEach",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@pipeline().parameters.iteration_items",
+						"type": "Expression"
+					},
+					"isSequential": true,
+					"activities": [
+						{
+							"name": "mt_LoadSTG_INVESTIA_UNIVERIS_To_STG_REVENUE_PAYABLE",
+							"type": "Script",
+							"dependsOn": [
+								{
+									"activity": "temp_Filename",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"linkedServiceName": {
+								"referenceName": "ls_snowflake_keyvault_auth",
+								"type": "LinkedServiceReference"
+							},
+							"typeProperties": {
+								"scripts": [
+									{
+										"parameters": [
+											{
+												"name": "item",
+												"type": "String",
+												"value": {
+													"value": "@item()",
+													"type": "Expression"
+												},
+												"direction": "Input"
+											}
+										],
+										"type": "Query",
+										"text": {
+											"value": "@concat('call DB_IAW_',pipeline().globalParameters.ENV,'_STG.INVESTIA_UNIVERIS.SP_CONV_LOADSTG_INVESTIA_UNIVERIS_TO_STG_REVENUE_PAYABLE(''',pipeline().globalParameters.ENV,''',''',variables('temp_Filename'),''')')\n",
+											"type": "Expression"
+										}
+									}
+								]
+							}
+						},
+						{
+							"name": "temp_Filename",
+							"type": "SetVariable",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "temp_Filename",
+								"value": {
+									"value": "@concat('.*REVENUE_PAYABLE__',item(),'.*.csv')",
+									"type": "Expression"
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "SET AUDIT FOR SEL",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "ForEach1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "SEL",
+					"value": {
+						"value": "@concat(variables('SEL_TEMP'),'''''', replace(variables('temp_tf_Audit_ID'),'''',''),'#',pipeline().Pipeline,'-',pipeline().RunId,'''''''')",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "LoadRDV_STG_INVESTIA_UNIVERIS_To_LINK_REVENUE_RR",
+				"type": "Script",
+				"dependsOn": [
+					{
+						"activity": "SET AUDIT FOR SEL",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"linkedServiceName": {
+					"referenceName": "ls_snowflake_keyvault_auth",
+					"type": "LinkedServiceReference"
+				},
+				"typeProperties": {
+					"scripts": [
+						{
+							"type": "Query",
+							"text": {
+								"value": "@concat('call DB_IAW_',pipeline().globalParameters.ENV,'_DWH.TOOLS.SP_CONV_DATAVAULT_LOADLINK_AUDIT_ID_SC(',variables('INS'), ',' , variables('SEL'), ',' ,'''DB_IAW_',pipeline().globalParameters.ENV,'_STG.INVESTIA_UNIVERIS.REVENUE_PAYABLE'',''DB_IAW_',pipeline().globalParameters.ENV,'_DWH.REVENUES_RDV.LINK_REVENUE_RR''',',',variables('TRUNC_TBL'),')')",
+								"type": "Expression"
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "Set variable SEL_SAT",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "ForEach1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "SEL_SAT",
+					"value": {
+						"value": "@concat(variables('SEL_TEMP_SAT'),'''''', replace(variables('temp_tf_Audit_ID'),'''',''),'#',pipeline().Pipeline,'-',pipeline().RunId,'''''''')",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Load_To_SAT_LINK_REVENUE_PAYABLE_RR_INVESTIA_UNIVERIS",
+				"type": "Script",
+				"dependsOn": [
+					{
+						"activity": "Set variable SEL_SAT",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"linkedServiceName": {
+					"referenceName": "ls_snowflake_keyvault_auth",
+					"type": "LinkedServiceReference"
+				},
+				"typeProperties": {
+					"scripts": [
+						{
+							"type": "Query",
+							"text": {
+								"value": "@concat('call DB_IAW_',pipeline().globalParameters.ENV,'_DWH.TOOLS.SP_CONV_DATAVAULT_LOADSATLINK_INSERT_AUDIT_ID(',variables('INS_SAT'), ',' , variables('SEL_SAT'), ',' ,'''DB_IAW_',pipeline().globalParameters.ENV,'_STG.INVESTIA_UNIVERIS.REVENUE_PAYABLE'',''DB_IAW_',pipeline().globalParameters.ENV,'_DWH.REVENUES_RDV.SAT_LINK_REVENUE_PAYABLE_RR_INVESTIA_UNIVERIS''',',',variables('TRUNC_TBL'),')')",
+								"type": "Expression"
+							}
+						}
+					]
+				}
+			}
+		],
+		"parameters": {
+			"iteration_items": {
+				"type": "array",
+				"defaultValue": [
+					1,
+					2,
+					3
+				]
+			}
+		},
+		"variables": {
+			"temp_dataStartDate": {
+				"type": "String"
+			},
+			"temp_JobName": {
+				"type": "String"
+			},
+			"temp_tf_Audit_ID": {
+				"type": "String"
+			},
+			"SEL_TEMP": {
+				"type": "String",
+				"defaultValue": "'Src.HK_LINK,Src.HK_HUB_CONTRACT,Src.HK_HUB_INVESTMENT_PRODUCT_TYPE,Src.MD_START_DT,Src.MD_SOURCE,Src.MD_SRC_SYSTEM,Src.MD_EXTRACT_DT,Src.PAY_SYSID,Src.PAID_DT,Src.PLN_SYSID,Src.IVR_SYSID,Src.IVD_SYSID,Src.PROC_DT,CURRENT_TIMESTAMP,"
+			},
+			"INS": {
+				"type": "String",
+				"defaultValue": "'HK_LINK,HK_HUB_CONTRACT,HK_HUB_INVESTMENT_PRODUCT_TYPE,MD_START_DT,MD_SOURCE,MD_SRC_SYSTEM,MD_EXTRACT_DT,PAY_SYSID,PAYMENT_DT,PLN_SYSID,IVR_SYSID,IVD_SYSID,PROCESS_DT,MD_CREATION_DT,MD_CREATION_AUDIT_ID'"
+			},
+			"TRUNC_TBL": {
+				"type": "String",
+				"defaultValue": "'N'"
+			},
+			"SEL": {
+				"type": "String"
+			},
+			"temp_Filename": {
+				"type": "String",
+				"defaultValue": "'REVENUE_PAYABLE__.csv'"
+			},
+			"INS_SAT": {
+				"type": "String",
+				"defaultValue": "'HK_LINK,MD_START_DT,MD_HASHDIFF,MD_SOURCE,MD_SRC_SYSTEM,MD_EXTRACT_DT,PYBL_STATUS,EVENT_PROC_SYSID,EVENT_RPT_SYSID,BEN_SYSID,REP_SYSID,DEAL_SYSID,COM_SYSID,DIST_SYSID,TRX_SYSID,ACT_SYSID,MGT_CD,TRX_CD,PAY_PERIOD,TAX_YEAR,TRADE_DT,GRSS_AMT,COM_DLR,COM_PYBL,COM_BEN_PYBL,TICKET_CHG,PAY_CD,COM_PRODUCTION_CD,AMOUNT,USR_SYSID,OTX_SYSID,DISPLAY_FLAG,DLR_MINIMUM,ORIG_PAY_PER,IVT_TYPE,COM_PAY_SYSID,INTERNAL_COMM,WRHS_IND,MD_CREATION_DT,MD_ACTIVE, MD_CREATION_AUDIT_ID'"
+			},
+			"SEL_SAT": {
+				"type": "String"
+			},
+			"SEL_TEMP_SAT": {
+				"type": "String",
+				"defaultValue": "'Src.HK_LINK,Src.MD_START_DT,Src.MD_HASHDIFF,Src.MD_SOURCE,Src.MD_SRC_SYSTEM,Src.MD_EXTRACT_DT,Src.PYBL_STATUS,Src.EVENT_PROC_SYSID,Src.EVENT_RPT_SYSID,Src.BEN_SYSID,Src.REP_SYSID,Src.DEAL_SYSID,Src.COM_SYSID,Src.DIST_SYSID,Src.TRX_SYSID,Src.ACT_SYSID,Src.MGT_CD,Src.TRX_CD,Src.PAY_PERIOD,Src.TAX_YEAR,Src.TRADE_DT,Src.GRSS_AMT,Src.COM_DLR,Src.COM_PYBL,Src.COM_BEN_PYBL,Src.TICKET_CHG,Src.PAY_CD,Src.COM_PRODUCTION_CD,Src.AMOUNT,Src.USR_SYSID,Src.OTX_SYSID,Src.DISPLAY_FLAG,Src.DLR_MINIMUM,Src.ORIG_PAY_PER,Src.IVT_TYPE,Src.COM_PAY_SYSID,Src.INTERNAL_COMM,Src.WRHS_IND,CURRENT_TIMESTAMP,''A'',"
+			}
+		},
+		"folder": {
+			"name": "IAW/INITIAL_LOADING_INVESTIA_UNIVERIS/INITIAL_LOADING_20-30_RDV_INVESTIA_REVENUE_PAYABLE"
+		},
+		"annotations": [],
+		"lastPublishTime": "2022-10-31T15:34:03Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

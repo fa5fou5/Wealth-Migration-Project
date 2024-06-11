@@ -1,0 +1,195 @@
+{
+	"name": "tf_LoadRDV_20-30_PSA_IAS_COMISSION_to_RDV_SHARED_ADVISORS_SUCCESS",
+	"properties": {
+		"activities": [
+			{
+				"name": "dcn_StartJob_Result",
+				"type": "IfCondition",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@contains(pipeline().parameters.START_AUDIT_OUTPUT,'SUCCESS')",
+						"type": "Expression"
+					},
+					"ifFalseActivities": [
+						{
+							"name": "Fail_Success",
+							"type": "Fail",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"message": "Failed as per IICS",
+								"errorCode": {
+									"value": "@pipeline().parameters.ErrorCode",
+									"type": "Expression"
+								}
+							}
+						}
+					],
+					"ifTrueActivities": [
+						{
+							"name": "Execute Count Pipeline",
+							"type": "ExecutePipeline",
+							"dependsOn": [
+								{
+									"activity": "mt_STG_count",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_LoadRDV_20-30_PSA_IAS_COMISSION_to_RDV_SHARED_ADVISORS_SUCCESS_COUNT",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"input_filename": {
+										"value": "@pipeline().parameters.input_filename",
+										"type": "Expression"
+									},
+									"input_filepath": {
+										"value": "@pipeline().parameters.input_filepath",
+										"type": "Expression"
+									},
+									"STG_COUNT": {
+										"value": "@int(activity('mt_STG_count').output.resultSets[0]['rows'][0].SP_STG_COUNT)",
+										"type": "Expression"
+									},
+									"temp_dataStartDate": {
+										"value": "@pipeline().parameters.temp_dataStartDate",
+										"type": "Expression"
+									},
+									"temp_JobName": {
+										"value": "@pipeline().parameters.temp_JobName",
+										"type": "Expression"
+									},
+									"temp_tf_Audit_ID": {
+										"value": "@pipeline().parameters.temp_tf_Audit_ID",
+										"type": "Expression"
+									},
+									"Audit_Run_ID": {
+										"value": "@pipeline().parameters.Audit_Run_ID",
+										"type": "Expression"
+									},
+									"Pipeline_Name": {
+										"value": "@pipeline().parameters.Pipeline_Name",
+										"type": "Expression"
+									}
+								}
+							}
+						},
+						{
+							"name": "m_LdSTG_PSA_IAS_COMSN_To_STG_Reg_Rep_Comm_RECEPTION",
+							"description": "m_LoadSTG_PSA_IAS_COMMISSION_To_STG_Registered_Representative_Commission_RECEPTION",
+							"type": "Script",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"linkedServiceName": {
+								"referenceName": "ls_snowflake_keyvault_auth",
+								"type": "LinkedServiceReference",
+								"parameters": {
+									"DBName": "DB_IAW_DEV_STG"
+								}
+							},
+							"typeProperties": {
+								"scripts": [
+									{
+										"type": "Query",
+										"text": {
+											"value": "@concat('call DB_IAW_',pipeline().globalParameters.ENV,'_STG.IAS_COMMISSION.SP_CONV_LDSTG_PSA_IAS_COMSN_TO_STG_REG_REP_COMM_REC(''',pipeline().globalParameters.ENV,''',''',pipeline().parameters.input_filepath,''')')",
+											"type": "Expression"
+										}
+									}
+								]
+							}
+						},
+						{
+							"name": "mt_STG_count",
+							"type": "Script",
+							"dependsOn": [
+								{
+									"activity": "m_LdSTG_PSA_IAS_COMSN_To_STG_Reg_Rep_Comm_RECEPTION",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"linkedServiceName": {
+								"referenceName": "ls_snowflake_keyvault_auth",
+								"type": "LinkedServiceReference",
+								"parameters": {
+									"DBName": "DB_IAW_DEV_STG"
+								}
+							},
+							"typeProperties": {
+								"scripts": [
+									{
+										"type": "Query",
+										"text": {
+											"value": "@concat('call DB_IAW_',pipeline().globalParameters.ENV,'_DWH.TOOLS.SP_STG_COUNT(',pipeline().parameters.temp_JobName,',',pipeline().parameters.temp_dataStartDate,',''',pipeline().globalParameters.ENV,''',''IAS_COMMISSION'', ''REGISTERED_REPRESENTATIVE_RECEPTION''',')')",
+											"type": "Expression"
+										}
+									}
+								]
+							}
+						}
+					]
+				}
+			}
+		],
+		"parameters": {
+			"input_filename": {
+				"type": "string"
+			},
+			"input_filepath": {
+				"type": "string"
+			},
+			"temp_JobName": {
+				"type": "string"
+			},
+			"temp_dataStartDate": {
+				"type": "string"
+			},
+			"temp_tf_Audit_ID": {
+				"type": "string"
+			},
+			"Audit_Run_ID": {
+				"type": "string"
+			},
+			"START_AUDIT_OUTPUT": {
+				"type": "string"
+			},
+			"Pipeline_Name": {
+				"type": "string"
+			},
+			"ErrorCode": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "IAW/20-30_RDV_IAS_COMMISSION/SHARED_ADVISORS"
+		},
+		"annotations": [],
+		"lastPublishTime": "2022-11-03T20:22:52Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

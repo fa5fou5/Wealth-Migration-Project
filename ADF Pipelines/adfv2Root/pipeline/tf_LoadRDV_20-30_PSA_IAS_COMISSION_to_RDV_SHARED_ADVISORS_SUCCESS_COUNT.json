@@ -1,0 +1,339 @@
+{
+	"name": "tf_LoadRDV_20-30_PSA_IAS_COMISSION_to_RDV_SHARED_ADVISORS_SUCCESS_COUNT",
+	"properties": {
+		"activities": [
+			{
+				"name": "dcn_row_count",
+				"type": "IfCondition",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@greater(int(pipeline().parameters.STG_COUNT),0)",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "ASSIGN SEL_DATA_11",
+							"type": "SetVariable",
+							"dependsOn": [
+								{
+									"activity": "m_LoadSTG_PSA_IAS_COMMISSION_To_STG_RegRep",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "SEL_DATA_11",
+								"value": {
+									"value": "@concat(variables('SEL_DATA_1'),'''''', replace(pipeline().parameters.temp_tf_Audit_ID,'''',''),'#',pipeline().parameters.Pipeline_Name,'-',pipeline().parameters.Audit_Run_ID,'''''''')",
+									"type": "Expression"
+								}
+							}
+						},
+						{
+							"name": "ASSIGN SEL_TEMP_1",
+							"type": "SetVariable",
+							"dependsOn": [
+								{
+									"activity": "m_LoadSTG_PSA_IAS_COMMISSION_To_STG_RegRep",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "SEL_TEMP_1",
+								"value": {
+									"value": "@concat(variables('SEL_TEMP'),'''''', replace(pipeline().parameters.temp_tf_Audit_ID,'''',''),'#',pipeline().parameters.Pipeline_Name,'-',pipeline().parameters.Audit_Run_ID,'''''''')",
+									"type": "Expression"
+								}
+							}
+						},
+						{
+							"name": "ASSIGN SEL_DATA_22",
+							"type": "SetVariable",
+							"dependsOn": [
+								{
+									"activity": "m_LoadSTG_PSA_IAS_COMMISSION_To_STG_RegRep",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "SEL_DATA_22",
+								"value": {
+									"value": "@concat(variables('SEL_DATA_2'),'''',pipeline().parameters.temp_dataStartDate,'''',',','''',pipeline().parameters.temp_tf_Audit_ID,'''''')",
+									"type": "Expression"
+								}
+							}
+						},
+						{
+							"name": "m_LoadSTG_PSA_IAS_COMMISSION_To_STG_RegRep",
+							"description": "m_LoadSTG_PSA_IAS_COMMISSION_To_STG_RegistredRepresentative",
+							"type": "Script",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"linkedServiceName": {
+								"referenceName": "ls_snowflake_keyvault_auth",
+								"type": "LinkedServiceReference",
+								"parameters": {
+									"DBName": "DB_IAW_DEV_STG"
+								}
+							},
+							"typeProperties": {
+								"scripts": [
+									{
+										"type": "Query",
+										"text": {
+											"value": "@concat('call DB_IAW_',pipeline().globalParameters.ENV,'_STG.IAS_COMMISSION.SP_CONV_LoadSTG_PSA_IAS_COMMISSION_To_STG_RegRep(''',pipeline().globalParameters.ENV,''')')",
+											"type": "Expression"
+										}
+									}
+								]
+							}
+						},
+						{
+							"name": "mt_LdRDV_STG_IAS_COM_To_Shared_HubRegRep",
+							"description": "mt_LoadRDV_STG_IAS_COMMISSION_To_Shared_HubRegisteredRepresentative",
+							"type": "Script",
+							"dependsOn": [
+								{
+									"activity": "ASSIGN SEL_DATA_11",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"linkedServiceName": {
+								"referenceName": "ls_snowflake_keyvault_auth",
+								"type": "LinkedServiceReference",
+								"parameters": {
+									"DBName": "DB_IAW_DEV_STG"
+								}
+							},
+							"typeProperties": {
+								"scripts": [
+									{
+										"type": "Query",
+										"text": {
+											"value": "@concat('call DB_IAW_',pipeline().globalParameters.ENV,'_DWH.TOOLS.SP_CONV_DATAVAULT_LOADSATELLITE_MULTIACTIVE_INSERT_AUDIT_ID(',variables('INS_DATA_1'), ',' , variables('SEL_DATA_11'), ',' ,'''DB_IAW_',pipeline().globalParameters.ENV,'_STG.IAS_COMMISSION.REGISTERED_REPRESENTATIVE'',''DB_IAW_',pipeline().globalParameters.ENV,'_DWH.SHARED_RDV.SAT_REGISTERED_REPRESENTATIVE_COMMISSION''',',',variables('TRUNC_TBL'),')')",
+											"type": "Expression"
+										}
+									}
+								]
+							}
+						},
+						{
+							"name": "mt_LdRDV_STG_IAS_COM_To_Shared_SatRegRep_insert",
+							"description": "mt_LoadRDV_STG_IAS_COMMISSION_To_Shared_SatRegisteredRepresentative_insert",
+							"type": "Script",
+							"dependsOn": [
+								{
+									"activity": "ASSIGN SEL_TEMP_1",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"linkedServiceName": {
+								"referenceName": "ls_snowflake_keyvault_auth",
+								"type": "LinkedServiceReference",
+								"parameters": {
+									"DBName": "DB_IAW_DEV_STG"
+								}
+							},
+							"typeProperties": {
+								"scripts": [
+									{
+										"type": "Query",
+										"text": {
+											"value": "@concat('call DB_IAW_',pipeline().globalParameters.ENV,'_DWH.TOOLS.SP_CONV_DATAVAULT_LOADHUB_AUDIT_ID(',variables('INS_TEMP'), ',' , variables('SEL_TEMP_1'), ',' ,'''DB_IAW_',pipeline().globalParameters.ENV,'_STG.IAS_COMMISSION.VW_HUB_REGISTERED_REPRESENTAVIVE'',''DB_IAW_',pipeline().globalParameters.ENV,'_DWH.SHARED_RDV.HUB_REGISTERED_REPRESENTATIVE''',',',variables('TRUNC_TBL'),')')",
+											"type": "Expression"
+										}
+									}
+								]
+							}
+						},
+						{
+							"name": "mt_LdRDV_STG_IAS_COM_To_Shared_SatRegRep_Delete",
+							"description": "mt_LoadRDV_STG_IAS_COMMISSION_To_Shared_SatRegisteredRepresentative_delete",
+							"type": "Script",
+							"dependsOn": [
+								{
+									"activity": "ASSIGN SEL_DATA_22",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"linkedServiceName": {
+								"referenceName": "ls_snowflake_keyvault_auth",
+								"type": "LinkedServiceReference",
+								"parameters": {
+									"DBName": "DB_IAW_DEV_STG"
+								}
+							},
+							"typeProperties": {
+								"scripts": [
+									{
+										"type": "Query",
+										"text": {
+											"value": "@concat('call DB_IAW_',pipeline().globalParameters.ENV,'_DWH.TOOLS.SP_CONV_DATAVAULT_LOADSATELLITE_MULTIACTIVE_DELETE_AUDIT_ID(',variables('INS_DATA_2'), ',' , variables('SEL_DATA_22'), ',' ,'''DB_IAW_',pipeline().globalParameters.ENV,'_STG.IAS_COMMISSION.REGISTERED_REPRESENTATIVE'',''DB_IAW_',pipeline().globalParameters.ENV,'_DWH.SHARED_RDV.SAT_REGISTERED_REPRESENTATIVE_COMMISSION''',',',variables('TRUNC_TBL'),')')",
+											"type": "Expression"
+										}
+									}
+								]
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "dt_Audit_EndJob",
+				"type": "Script",
+				"dependsOn": [
+					{
+						"activity": "dcn_row_count",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"linkedServiceName": {
+					"referenceName": "ls_snowflake_keyvault_auth",
+					"type": "LinkedServiceReference",
+					"parameters": {
+						"DBName": "DB_IAW_DEV_STG"
+					}
+				},
+				"typeProperties": {
+					"scripts": [
+						{
+							"type": "Query",
+							"text": {
+								"value": "@concat('call DB_IAW_',pipeline().globalParameters.ENV,'_DWH.TOOLS.USP_AUDIT_END_JOB(',pipeline().parameters.temp_JobName,',',pipeline().parameters.temp_dataStartDate,',',pipeline().parameters.temp_tf_Audit_ID,',','''SUCCESS''',',','''Successful execution''',')')",
+								"type": "Expression"
+							}
+						}
+					]
+				}
+			}
+		],
+		"parameters": {
+			"input_filename": {
+				"type": "string"
+			},
+			"input_filepath": {
+				"type": "string"
+			},
+			"STG_COUNT": {
+				"type": "string"
+			},
+			"temp_dataStartDate": {
+				"type": "string"
+			},
+			"temp_JobName": {
+				"type": "string"
+			},
+			"temp_tf_Audit_ID": {
+				"type": "string"
+			},
+			"Audit_Run_ID": {
+				"type": "string"
+			},
+			"Pipeline_Name": {
+				"type": "string"
+			}
+		},
+		"variables": {
+			"TRUNC_TBL": {
+				"type": "String",
+				"defaultValue": "'N'"
+			},
+			"SEL_TEMP": {
+				"type": "String",
+				"defaultValue": "'STG.HK_HUB,STG.MD_SOURCE,STG.MD_SRC_SYSTEM,STG.MD_EXTRACT_DT,STG.REPID,CURRENT_TIMESTAMP,"
+			},
+			"INS_TEMP": {
+				"type": "String",
+				"defaultValue": "'HK_HUB,MD_SOURCE,MD_SRC_SYSTEM,MD_EXTRACT_DT,RR_CD,MD_CREATION_DT,MD_CREATION_AUDIT_ID'"
+			},
+			"SEL_TEMP_1": {
+				"type": "String"
+			},
+			"SEL_DATA_1": {
+				"type": "String",
+				"defaultValue": "'STG.HK_HUB,STG.HK_SAT,STG.MD_START_DT,STG.MD_HASHDIFF,STG.MD_SOURCE,STG.MD_SRC_SYSTEM,STG.MD_EXTRACT_DT,STG.REPNAME,STG.FIRSTNAME,STG.LASTNAME,STG.BRANCHCODE,STG.BRANCHNAME,STG.GROUPID,STG.GROUPDESCRIPTION,STG.FIXEDFEEIND,STG.MANAGEDIND,STG.REFIND,STG.ACTIVEIND,STG.SEGFUNDIND,STG.REVNO,STG.STAMP,STG.USERID,STG.ACTIVE,STG.ADVISOR_ID,STG.COMMRATEPCT,STG.SHAREGROSSCOMMIND,STG.STARTDATE,STG.MAINREPCODE,STG.ADVISOR_ROLE,''A'',CURRENT_TIMESTAMP,"
+			},
+			"SEL_DATA_11": {
+				"type": "String"
+			},
+			"INS_DATA_1": {
+				"type": "String",
+				"defaultValue": "'HK_HUB,HK_SAT,MD_START_DT,MD_HASHDIFF,MD_SOURCE,MD_SRC_SYSTEM,MD_EXTRACT_DT,REPNAME,FIRSTNAME,LASTNAME,BRANCHCODE,BRANCHNAME,GROUPID,GROUPDESCRIPTION,FIXEDFEEIND,MANAGEDIND,REFIND,ACTIVEIND,SEGFUNDIND,REVNO,STAMP,USERID,ACTIVE,ADVISOR_ID,COMMRATEPCT,SHAREGROSSCOMMIND,STARTDATE,MAINREPCODE,ADVISOR_ROLE,MD_ACTIVE,MD_CREATION_DT,MD_CREATION_AUDIT_ID'"
+			},
+			"SEL_DATA_2": {
+				"type": "String",
+				"defaultValue": "'SAT.HK_HUB,SAT.HK_SAT,SAT.MD_HASHDIFF,SAT.MD_SOURCE,SAT.MD_SRC_SYSTEM,SAT.MD_EXTRACT_DT,SAT.REPNAME,SAT.FIRSTNAME,SAT.LASTNAME,SAT.BRANCHCODE,SAT.BRANCHNAME,SAT.GROUPID,SAT.GROUPDESCRIPTION,SAT.FIXEDFEEIND,SAT.MANAGEDIND,SAT.REFIND,SAT.ACTIVEIND,SAT.SEGFUNDIND,SAT.REVNO,SAT.STAMP,SAT.USERID,SAT.ACTIVE,SAT.ADVISOR_ID,SAT.COMMRATEPCT,SAT.SHAREGROSSCOMMIND,SAT.STARTDATE,SAT.MAINREPCODE,SAT.ADVISOR_ROLE,''D'',CURRENT_TIMESTAMP,"
+			},
+			"SEL_DATA_22": {
+				"type": "String"
+			},
+			"INS_DATA_2": {
+				"type": "String",
+				"defaultValue": "'HK_HUB,HK_SAT,MD_HASHDIFF,MD_SOURCE,MD_SRC_SYSTEM,MD_EXTRACT_DT,REPNAME,FIRSTNAME,LASTNAME,BRANCHCODE,BRANCHNAME,GROUPID,GROUPDESCRIPTION,FIXEDFEEIND,MANAGEDIND,REFIND,ACTIVEIND,SEGFUNDIND,REVNO,STAMP,USERID,ACTIVE,ADVISOR_ID,COMMRATEPCT,SHAREGROSSCOMMIND,STARTDATE,MAINREPCODE,ADVISOR_ROLE,MD_ACTIVE,MD_CREATION_DT,MD_START_DT,MD_CREATION_AUDIT_ID'"
+			}
+		},
+		"folder": {
+			"name": "IAW/20-30_RDV_IAS_COMMISSION/SHARED_ADVISORS"
+		},
+		"annotations": [],
+		"lastPublishTime": "2022-11-04T15:17:50Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

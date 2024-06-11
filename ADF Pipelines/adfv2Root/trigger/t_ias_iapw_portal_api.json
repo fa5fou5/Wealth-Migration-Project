@@ -1,0 +1,30 @@
+{
+	"name": "t_ias_iapw_portal_api",
+	"properties": {
+		"description": "Trigger for /IAS/IAPW_PORTAL_API/",
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "tf_LoadSTG_10-20_PSA_IAPW_API_to_RDV_Synchronization",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"temp_filename": "@triggerBody().fileName",
+					"temp_filepath": "@triggerBody().folderPath"
+				}
+			}
+		],
+		"type": "BlobEventsTrigger",
+		"typeProperties": {
+			"blobPathBeginsWith": "/raw/blobs/IAS/IAPW_PORTAL_API/",
+			"blobPathEndsWith": ".json",
+			"ignoreEmptyBlobs": false,
+			"scope": "/subscriptions/8b005915-4c8b-4a41-89af-6f44a22296e0/resourceGroups/iagdatad01-cac-rg-iaw-01/providers/Microsoft.Storage/storageAccounts/iagdatad01iaw02",
+			"events": [
+				"Microsoft.Storage.BlobCreated"
+			]
+		}
+	}
+}

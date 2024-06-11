@@ -1,0 +1,530 @@
+{
+	"name": "tf_LoadRDV_20-30_PSA_INVESTIA_UNIVERIS_to_RDV_Synchronization",
+	"properties": {
+		"activities": [
+			{
+				"name": "Revenue_payable",
+				"type": "IfCondition",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@contains(pipeline().parameters.input_filename,'REVENUE_PAYABLE__')",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "tf_LoadRDV_20-30_PSA_INVESTIA_UNIVERIS_to_RDV_REV_PAY",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_LoadRDV_20-30_PSA_INVESTIA_UNIVERIS_to_RDV_REVENUE_PAYABLE",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"input_filename": {
+										"value": "@pipeline().parameters.input_filename",
+										"type": "Expression"
+									},
+									"input_filepath": {
+										"value": "@pipeline().parameters.input_filepath",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "Revenues Trailer Fees",
+				"type": "IfCondition",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@contains(pipeline().parameters.input_filename,'PLN_SRF__')",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "tf_LoadRDV_20-30_PSA_INVESTIA_UNIVERIS_to_RDV_REV",
+							"description": "tf_LoadRDV_20-30_PSA_INVESTIA_UNIVERIS_to_RDV_REVENUE_TRAILER_FEES",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_LoadRDV_20-30_PSA_INVESTIA_UNIVERIS_to_RDV_REVENUE_TRAILER_FEES",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"input_filename": {
+										"value": "@pipeline().parameters.input_filename",
+										"type": "Expression"
+									},
+									"input_filepath": {
+										"value": "@pipeline().parameters.input_filepath",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "S_com_production",
+				"type": "IfCondition",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@contains(pipeline().parameters.input_filename,'S_COM_PROD__')",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "tf_LoadRDV_20-30_PSA_INVESTIA_UNIVERIS_to_RDV_REF_COM",
+							"description": "tf_LoadRDV_20-30_PSA_INVESTIA_UNIVERIS_to_RDV_REF_COM_PROD",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_LoadRDV_20-30_PSA_INVESTIA_UNIVERIS_to_RDV_REF_COM_PROD",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"input_filename": {
+										"value": "@pipeline().parameters.input_filename",
+										"type": "Expression"
+									},
+									"input_filepath": {
+										"value": "@pipeline().parameters.input_filepath",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "Holdings",
+				"type": "IfCondition",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@contains(pipeline().parameters.input_filename,'HOLDINGS__')",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "tf_LoadRDV_20-30_PSA_INVESTIA_UNIVERIS_to_RDV_HOLDINGS",
+							"description": "tf_LoadRDV_20-30_PSA_INVESTIA_UNIVERIS_to_RDV_HOLDINGS",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_LoadRDV_20-30_PSA_INVESTIA_UNIVERIS_to_RDV_HOLDINGS",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"input_filename": {
+										"value": "@pipeline().parameters.input_filename",
+										"type": "Expression"
+									},
+									"input_filepath": {
+										"value": "@pipeline().parameters.input_filepath",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "Clients",
+				"type": "IfCondition",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@contains(pipeline().parameters.input_filename,'CLIENTS__')",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "tf_LoadRDV_20-30_PSA_INVESTIA_UNI_to_RDV_SHARED_CLI",
+							"description": "tf_LoadRDV_20-30_PSA_INVESTIA_UNIVERIS_to_RDV_SHARED_CLIENTS",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_LoadRDV_20-30_PSA_INVESTIA_UNIVERIS_to_RDV_SHARED_CLIENTS",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"input_filename": {
+										"value": "@pipeline().parameters.input_filename",
+										"type": "Expression"
+									},
+									"input_filepath": {
+										"value": "@pipeline().parameters.input_filepath",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "Accounts",
+				"type": "IfCondition",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@contains(pipeline().parameters.input_filename,'ACCOUNTS__')",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "tf_LoadRDV_20-30_PSA_INVESTIA_UNIVERIS_to_RDV_SHA_CON",
+							"description": "tf_LoadRDV_20-30_PSA_INVESTIA_UNIVERIS_to_RDV_SHARED_CONTRACTS",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_LoadRDV_20-30_PSA_INVESTIA_UNIVERIS_to_RDV_SHARED_CONTRACTS",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"input_filename": {
+										"value": "@pipeline().parameters.input_filename",
+										"type": "Expression"
+									},
+									"input_filepath": {
+										"value": "@pipeline().parameters.input_filepath",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "Products",
+				"type": "IfCondition",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@contains(pipeline().parameters.input_filename,'MARKETPRODUCTS__')",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "tf_LoadRDV_20-30_PSA_INVESTIA_to_RDV_SHARED_INV",
+							"description": "tf_LoadRDV_20-30_PSA_INVESTIA_to_RDV_SHARED_INVESTMENT_PRODUCT_TYPE",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_LoadRDV_20-30_PSA_INVESTIA_to_RDV_SHARED_INVESTMENT_PRODUCT_TYPE",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"input_filename": {
+										"value": "@pipeline().parameters.input_filename",
+										"type": "Expression"
+									},
+									"input_filepath": {
+										"value": "@pipeline().parameters.input_filepath",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "Plans",
+				"type": "IfCondition",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@contains(pipeline().parameters.input_filename,'PLANS__')",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "tf_LoadRDV_20-30_PSA_INVESTIA_to_RDV_SHARED_PLANS_p3",
+							"description": "tf_LoadRDV_20-30_PSA_INVESTIA_UNIVERIS_to_RDV_SHARED_PLANS_p3",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_LoadRDV_20-30_PSA_INVESTIA_UNIVERIS_to_RDV_SHARED_PLANS",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"input_filename": {
+										"value": "@pipeline().parameters.input_filename",
+										"type": "Expression"
+									},
+									"input_filepath": {
+										"value": "@pipeline().parameters.input_filepath",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "Transactions",
+				"type": "IfCondition",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@contains(pipeline().parameters.input_filename,'TRANSACTIONS__')",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "tf_LoadRDV_20-30_PSA_INVESTIA_UNIVERIS_to_RDV_FIN_TRAN",
+							"description": "tf_LoadRDV_20-30_PSA_INVESTIA_UNIVERIS_to_RDV_FINANCIAL_TRANSACTIONS",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_LoadRDV_20-30_PSA_INVESTIA_UNIVERIS_to_RDV_FINANCIAL_TRANSACTIONS",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"input_filename": {
+										"value": "@pipeline().parameters.input_filename",
+										"type": "Expression"
+									},
+									"input_filepath": {
+										"value": "@pipeline().parameters.input_filepath",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "Advisors",
+				"type": "IfCondition",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@contains(pipeline().parameters.input_filename,'REGISTERED_REPRESENTATIVE__')",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "tf_LoadRDV_20-30_PSA_INVESTIA_UNIVERIS_to_RDV_SHA_ADV",
+							"description": "tf_LoadRDV_20-30_PSA_INVESTIA_UNIVERIS_to_RDV_SHARED_ADVISORS",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_LoadRDV_20-30_PSA_INVESTIA_UNIVERIS_to_RDV_SHARED_ADVISORS",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"input_filename": {
+										"value": "@pipeline().parameters.input_filename",
+										"type": "Expression"
+									},
+									"input_filepath": {
+										"value": "@pipeline().parameters.input_filepath",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "Province",
+				"type": "IfCondition",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@contains(pipeline().parameters.input_filename,'PROVINCE__')",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "tf_LoadRDV_20-30_PSA_INVESTIA_UNIVERIS_to_RDV_REF_PROV",
+							"description": "tf_LoadRDV_20-30_PSA_INVESTIA_UNIVERIS_to_RDV_REF_PROVINCE",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_LoadRDV_20-30_PSA_INVESTIA_UNIVERIS_to_RDV_REF_PROVINCE",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"input_filename": {
+										"value": "@pipeline().parameters.input_filename",
+										"type": "Expression"
+									},
+									"input_filepath": {
+										"value": "@pipeline().parameters.input_filepath",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "Share",
+				"type": "IfCondition",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@contains(pipeline().parameters.input_filename,'x_DBB_MASTER_REP__')",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "tf_LoadRDV_20-30_PSA_INVESTIA_UNIVERIS_to_RDV_SHARED_SH",
+							"description": "tf_LoadRDV_20-30_PSA_INVESTIA_UNIVERIS_to_RDV_SHARED_SHARE",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_LoadRDV_20-30_PSA_INVESTIA_UNIVERIS_to_RDV_SHARED_SHARE",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"input_filename": {
+										"value": "@pipeline().parameters.input_filename",
+										"type": "Expression"
+									},
+									"input_filepath": {
+										"value": "@pipeline().parameters.input_filepath",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "Revenues wrap fees",
+				"type": "IfCondition",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@contains(pipeline().parameters.input_filename,'WRAP_FEE__')",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "tf_LoadRDV_20-30_PSA_INVESTIA_UNIVERIS_to_RDV_REV_WRAP",
+							"description": "tf_LoadRDV_20-30_PSA_INVESTIA_UNIVERIS_to_RDV_REVENUE_WRAP_FEES",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_LoadRDV_20-30_PSA_INVESTIA_UNIVERIS_to_RDV_REVENUE_WRAP_FEES",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"input_filename": {
+										"value": "@pipeline().parameters.input_filename",
+										"type": "Expression"
+									},
+									"input_filepath": {
+										"value": "@pipeline().parameters.input_filepath",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					]
+				}
+			}
+		],
+		"parameters": {
+			"input_filename": {
+				"type": "string",
+				"defaultValue": "PLANS__2022-04-15.dat"
+			},
+			"input_filepath": {
+				"type": "string",
+				"defaultValue": "raw/INVESTIA/UNIVERIS"
+			}
+		},
+		"variables": {
+			"temp_dataStartDate": {
+				"type": "String"
+			},
+			"temp_JobName": {
+				"type": "String"
+			},
+			"temp_tf_Audit_ID": {
+				"type": "String"
+			},
+			"temp_filename": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "IAW/20-30_RDV_INVESTIA_UNIVERIS/00_SYNCHRONIZATION_TASKFLOW"
+		},
+		"annotations": [],
+		"lastPublishTime": "2022-11-04T19:46:50Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,168 @@
+{
+	"name": "tf_OnDemand_LoadRDV_20-30_PSA_IAS_IAVM_to_RDV_REF_MAPPING_PRODUCT_TYPE",
+	"properties": {
+		"activities": [
+			{
+				"name": "dcn_MappingProductTypeFile",
+				"type": "IfCondition",
+				"dependsOn": [
+					{
+						"activity": "assign_Filename",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@contains(variables('temp_filename'),'PRODUCT_TYPE__')\n",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "temp_dataStartDate",
+							"type": "SetVariable",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "temp_dataStartDate",
+								"value": {
+									"value": "@concat('''',split(split(pipeline().parameters.input_filename,'__')[1],'.')[0],'''')\n",
+									"type": "Expression"
+								}
+							}
+						},
+						{
+							"name": "temp_JobName",
+							"type": "SetVariable",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "temp_JobName",
+								"value": {
+									"value": "@concat('''',pipeline().Pipeline,'''')",
+									"type": "Expression"
+								}
+							}
+						},
+						{
+							"name": "temp_tf_Audit_ID",
+							"type": "SetVariable",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "temp_tf_Audit_ID",
+								"value": {
+									"value": "@concat('''',pipeline().Pipeline,'-',pipeline().RunId,'''')",
+									"type": "Expression"
+								}
+							}
+						},
+						{
+							"name": "tf_OnDemand_LoadRDV_20-30_PSA_IAS_IAVM_to_REF_MAP_PRDT",
+							"type": "ExecutePipeline",
+							"dependsOn": [
+								{
+									"activity": "temp_dataStartDate",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								},
+								{
+									"activity": "temp_JobName",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								},
+								{
+									"activity": "temp_tf_Audit_ID",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_OnDemand_LoadRDV_20-30_PSA_IAS_IAVM_to_RDV_REF_MAPPING_PRODUCT_TYPE_sub1",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"input_filename": {
+										"value": "@pipeline().parameters.input_filename",
+										"type": "Expression"
+									},
+									"input_filepath": {
+										"value": "@pipeline().parameters.input_filepath",
+										"type": "Expression"
+									},
+									"temp_dataStartDate": {
+										"value": "@variables('temp_dataStartDate')",
+										"type": "Expression"
+									},
+									"temp_JobName": {
+										"value": "@variables('temp_JobName')",
+										"type": "Expression"
+									},
+									"temp_tf_Audit_ID": {
+										"value": "@variables('temp_tf_Audit_ID')",
+										"type": "Expression"
+									},
+									"io_PATH": {
+										"value": "@pipeline().parameters.input_filepath",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "assign_Filename",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "temp_filename",
+					"value": {
+						"value": "@pipeline().parameters.input_filename",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"parameters": {
+			"input_filename": {
+				"type": "string",
+				"defaultValue": "PRODUCT_TYPE__2022-04-15.dat"
+			},
+			"input_filepath": {
+				"type": "string",
+				"defaultValue": "RAW/IAS/IAVM/2021/04/26"
+			}
+		},
+		"variables": {
+			"temp_dataStartDate": {
+				"type": "String"
+			},
+			"temp_JobName": {
+				"type": "String"
+			},
+			"temp_tf_Audit_ID": {
+				"type": "String"
+			},
+			"temp_filename": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "IAW/20-30_RDV_IAS_IAVM/SHARED_INVESTMENT_PRODUCT_TYPE"
+		},
+		"annotations": [],
+		"lastPublishTime": "2022-10-31T15:34:14Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

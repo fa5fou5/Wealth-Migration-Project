@@ -1,0 +1,168 @@
+{
+	"name": "tf_OnDemand_LoadRDV_20-30_PSA_IAPW_STEWARDSHIP_to_RDV_REF_NEW_ADVISOR",
+	"properties": {
+		"activities": [
+			{
+				"name": "dcn_NEW_ADVISOR_File",
+				"type": "IfCondition",
+				"dependsOn": [
+					{
+						"activity": "asgn_Filename",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@contains(variables('temp_filename'),'NEW_ADVISOR__')",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "temp_dataStartDate",
+							"type": "SetVariable",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "temp_dataStartDate",
+								"value": {
+									"value": "@concat('''',split(split(pipeline().parameters.input_filename,'__')[1],'.')[0],'''')",
+									"type": "Expression"
+								}
+							}
+						},
+						{
+							"name": "temp_JobName",
+							"type": "SetVariable",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "temp_JobName",
+								"value": {
+									"value": "@concat('''',pipeline().Pipeline,'''')",
+									"type": "Expression"
+								}
+							}
+						},
+						{
+							"name": "temp_tf_Audit_ID",
+							"type": "SetVariable",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "temp_tf_Audit_ID",
+								"value": {
+									"value": "@concat('''',pipeline().Pipeline,'-',pipeline().RunId,'''')",
+									"type": "Expression"
+								}
+							}
+						},
+						{
+							"name": "tf_OnDem_LoadRDV_20-30_PSA_IAPW_STE_to_RDV_REF_NEW_ADV",
+							"type": "ExecutePipeline",
+							"dependsOn": [
+								{
+									"activity": "temp_dataStartDate",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								},
+								{
+									"activity": "temp_JobName",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								},
+								{
+									"activity": "temp_tf_Audit_ID",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_OnDemand_LoadRDV_20-30_PSA_IAPW_STEWARDSHIP_to_RDV_REF_NEW_ADVISOR_sub1",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"input_filename": {
+										"value": "@pipeline().parameters.input_filename",
+										"type": "Expression"
+									},
+									"input_filepath": {
+										"value": "@pipeline().parameters.input_filepath",
+										"type": "Expression"
+									},
+									"temp_dataStartDate": {
+										"value": "@variables('temp_dataStartDate')",
+										"type": "Expression"
+									},
+									"temp_JobName": {
+										"value": "@variables('temp_JobName')",
+										"type": "Expression"
+									},
+									"temp_tf_Audit_ID": {
+										"value": "@variables('temp_tf_Audit_ID')",
+										"type": "Expression"
+									},
+									"io_PATH": {
+										"value": "@pipeline().parameters.input_filepath",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "asgn_Filename",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "temp_filename",
+					"value": {
+						"value": "@pipeline().parameters.input_filename",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"parameters": {
+			"input_filename": {
+				"type": "string",
+				"defaultValue": "NEW_ADVISOR__2022-04-15.dat"
+			},
+			"input_filepath": {
+				"type": "string",
+				"defaultValue": "raw/IAS/STEWARDSHIP/2022"
+			}
+		},
+		"variables": {
+			"temp_dataStartDate": {
+				"type": "String"
+			},
+			"temp_JobName": {
+				"type": "String"
+			},
+			"temp_tf_Audit_ID": {
+				"type": "String"
+			},
+			"temp_filename": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "IAW/20-30_RDV_STEWARDSHIP/NEW_ADVISORS"
+		},
+		"annotations": [],
+		"lastPublishTime": "2022-10-31T15:34:14Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

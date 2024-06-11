@@ -1,0 +1,30 @@
+{
+	"name": "t_ias_iavm",
+	"properties": {
+		"description": "Trigger for IAS/IAVM",
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "tf_LoadRDV_10-30_PSA_IAS_IAVM_to_RDV_Synchronization",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"temp_filename": "@triggerBody().fileName",
+					"temp_filepath": "@triggerBody().folderPath"
+				}
+			}
+		],
+		"type": "BlobEventsTrigger",
+		"typeProperties": {
+			"blobPathBeginsWith": "/raw/blobs/IAS/IAVM/",
+			"blobPathEndsWith": ".csv",
+			"ignoreEmptyBlobs": false,
+			"scope": "/subscriptions/8b005915-4c8b-4a41-89af-6f44a22296e0/resourceGroups/iagdatad01-cac-rg-iaw-01/providers/Microsoft.Storage/storageAccounts/iagdatad01iaw02",
+			"events": [
+				"Microsoft.Storage.BlobCreated"
+			]
+		}
+	}
+}

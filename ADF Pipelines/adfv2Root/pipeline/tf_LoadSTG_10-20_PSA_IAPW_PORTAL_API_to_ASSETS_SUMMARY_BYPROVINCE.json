@@ -1,0 +1,240 @@
+{
+	"name": "tf_LoadSTG_10-20_PSA_IAPW_PORTAL_API_to_ASSETS_SUMMARY_BYPROVINCE",
+	"properties": {
+		"activities": [
+			{
+				"name": "dcn_AssetSummyByProvince",
+				"type": "IfCondition",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@contains(pipeline().parameters.input_filename,'assetsSummaryByProvince__')",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "temp_dataStartDate",
+							"type": "SetVariable",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "temp_dataStartDate",
+								"value": {
+									"value": "@concat('''',split(split(pipeline().parameters.input_filename,'__')[1],'.')[0],'''')",
+									"type": "Expression"
+								}
+							}
+						},
+						{
+							"name": "temp_JobName",
+							"type": "SetVariable",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "temp_JobName",
+								"value": {
+									"value": "@concat('''',pipeline().Pipeline,'''')",
+									"type": "Expression"
+								}
+							}
+						},
+						{
+							"name": "temp_tf_Audit_ID",
+							"type": "SetVariable",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "temp_tf_Audit_ID",
+								"value": {
+									"value": "@concat('''',pipeline().Pipeline,'-',pipeline().RunId,'''')",
+									"type": "Expression"
+								}
+							}
+						},
+						{
+							"name": "Execute Pipeline1",
+							"type": "ExecutePipeline",
+							"dependsOn": [
+								{
+									"activity": "dt_Audit_StartJob",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_LoadSTG_10-20_PSA_IAPW_PORTAL_API_to_ASSETS_SUMMARY_BYPROVINCE_SUCCESS",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"input_filename": {
+										"value": "@pipeline().parameters.input_filename",
+										"type": "Expression"
+									},
+									"input_filepath": {
+										"value": "@pipeline().parameters.input_filepath",
+										"type": "Expression"
+									},
+									"Start_Audit_Output": {
+										"value": "@activity('dt_Audit_StartJob').output.resultSets[0]['rows'][0].USP_AUDIT_START_JOB_VARIABLE_SET",
+										"type": "Expression"
+									},
+									"temp_dataStartDate": {
+										"value": "@variables('temp_dataStartDate')",
+										"type": "Expression"
+									},
+									"temp_JobName": {
+										"value": "@variables('temp_JobName')",
+										"type": "Expression"
+									},
+									"temp_tf_Audit_ID": {
+										"value": "@variables('temp_tf_Audit_ID')",
+										"type": "Expression"
+									},
+									"Pipeline_Name": {
+										"value": "@pipeline().Pipeline",
+										"type": "Expression"
+									},
+									"Audit_Run_ID": {
+										"value": "@pipeline().RunId",
+										"type": "Expression"
+									},
+									"ErrorCode": {
+										"value": "@activity('dt_Audit_StartJob_Pre').output.resultSets[0]['rows'][0].USP_AUDIT_START_JOB",
+										"type": "Expression"
+									}
+								}
+							}
+						},
+						{
+							"name": "dt_Audit_StartJob_Pre",
+							"type": "Script",
+							"dependsOn": [
+								{
+									"activity": "temp_dataStartDate",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								},
+								{
+									"activity": "temp_JobName",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								},
+								{
+									"activity": "temp_tf_Audit_ID",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"linkedServiceName": {
+								"referenceName": "ls_snowflake_keyvault_auth",
+								"type": "LinkedServiceReference",
+								"parameters": {
+									"DBName": "DB_IAW_DEV_STG"
+								}
+							},
+							"typeProperties": {
+								"scripts": [
+									{
+										"type": "Query",
+										"text": {
+											"value": "@concat('call DB_IAW_',pipeline().globalParameters.ENV,'_DWH.TOOLS.USP_AUDIT_START_JOB(',variables('temp_JobName'),',',variables('temp_dataStartDate'),',',variables('temp_tf_Audit_ID'),')')",
+											"type": "Expression"
+										}
+									}
+								]
+							}
+						},
+						{
+							"name": "dt_Audit_StartJob",
+							"type": "Script",
+							"dependsOn": [
+								{
+									"activity": "dt_Audit_StartJob_Pre",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"linkedServiceName": {
+								"referenceName": "ls_snowflake_keyvault_auth",
+								"type": "LinkedServiceReference",
+								"parameters": {
+									"DBName": "DB_IAW_DEV_STG"
+								}
+							},
+							"typeProperties": {
+								"scripts": [
+									{
+										"type": "Query",
+										"text": {
+											"value": "@concat('call DB_IAW_',pipeline().globalParameters.ENV,'_DWH.TOOLS.USP_AUDIT_START_JOB_Variable_Set(',variables('temp_JobName'),',',variables('temp_dataStartDate'),')')",
+											"type": "Expression"
+										}
+									}
+								]
+							}
+						}
+					]
+				}
+			}
+		],
+		"parameters": {
+			"input_filename": {
+				"type": "string",
+				"defaultValue": "assetsSummaryByProvince__2022-11-29"
+			},
+			"input_filepath": {
+				"type": "string",
+				"defaultValue": "raw/IAS/IAPW/2022/11/29"
+			}
+		},
+		"variables": {
+			"temp_dataStartDate": {
+				"type": "String"
+			},
+			"temp_JobName": {
+				"type": "String"
+			},
+			"temp_tf_Audit_ID": {
+				"type": "String"
+			},
+			"temp_filename": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "IAW/20-30-RDV_IAPW_PORTAL_API/ASSETS_SUMMARY_BYPROVINCE"
+		},
+		"annotations": [
+			"STRATEGIC",
+			"IAPW_PORTAL_API",
+			"STAGING"
+		],
+		"lastPublishTime": "2022-07-28T06:52:15Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

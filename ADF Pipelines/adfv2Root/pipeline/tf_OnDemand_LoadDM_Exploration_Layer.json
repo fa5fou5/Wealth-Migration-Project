@@ -1,0 +1,115 @@
+{
+	"name": "tf_OnDemand_LoadDM_Exploration_Layer",
+	"properties": {
+		"activities": [
+			{
+				"name": "Loading_IAS_COMISSION_REVENUES",
+				"type": "Script",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"linkedServiceName": {
+					"referenceName": "ls_snowflake_keyvault_auth",
+					"type": "LinkedServiceReference"
+				},
+				"typeProperties": {
+					"scripts": [
+						{
+							"type": "Query",
+							"text": {
+								"value": "@concat('call DB_IAW_',pipeline().globalParameters.ENV,'_DM.EXPLORATION.SP_CONV_LoadSTG_STG_IAS_COMMISSION_To_DM_EXPLORATION_REVENUES(''',pipeline().globalParameters.ENV,''')')",
+								"type": "Expression"
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "Loading_IAS_HOLDINGS",
+				"type": "Script",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"linkedServiceName": {
+					"referenceName": "ls_snowflake_keyvault_auth",
+					"type": "LinkedServiceReference"
+				},
+				"typeProperties": {
+					"scripts": [
+						{
+							"type": "Query",
+							"text": {
+								"value": "@concat('call DB_IAW_',pipeline().globalParameters.ENV,'_DM.EXPLORATION.SP_CONV_LoadSTG_STG_IAS_To_DM_EXPLORATION_HOLDINGS(''',pipeline().globalParameters.ENV,''')')",
+								"type": "Expression"
+							}
+						}
+					]
+				}
+			}
+		],
+		"variables": {
+			"temp_dataStartDate": {
+				"type": "String",
+				"defaultValue": "'01/01/2000'"
+			},
+			"temp_JobName": {
+				"type": "String"
+			},
+			"temp_tf_Audit_ID": {
+				"type": "String"
+			},
+			"SEL": {
+				"type": "String",
+				"defaultValue": "'STG.HK_LINK,STG.HK_HUB_CONTRACT,STG.HK_HUB_INVESTMENT_PRODUCT_TYPE,STG.HK_HUB_PARTY_ROLE_ADVISOR,STG.HK_HUB_PARTY_ROLE_ACCOUNT_HOLDER,STG.HK_HUB_INVESTMENT_SAVING_PROGRAM_TYPES,STG.MD_SEQ,SYSTIMESTAMP(),STG.MD_SOURCE,STG.MD_SRC_SYSTEM,STG.MD_EXTRACT_DT,STG.CONTRACT_ID,STG.MASTER_CODE,STG.INVESTMENT_PRODUCT_ID,STG.CLIENT_ID,STG.PLN_MNEM,STG.ACCOUNT_RAP_CODE,STG.RETAIL_PLAN,STG.ASC_1_RESP_PLAN_TYPES,STG.UNIVERIS_PLAN_ID,"
+			},
+			"INS": {
+				"type": "String",
+				"defaultValue": "'HK_LINK,HK_HUB_CONTRACT,HK_HUB_INVESTMENT_PRODUCT_TYPE,HK_HUB_PARTY_ROLE_ADVISOR,HK_HUB_PARTY_ROLE_ACCOUNT_HOLDER,HK_HUB_INVESTMENT_SAVING_PROGRAM_TYPES,MD_SEQ,MD_CREATION_DT,MD_SOURCE,MD_SRC_SYSTEM,MD_EXTRACT_DT,CONTRACT_ID,MASTER_CODE,INVESTMENT_PRODUCT_ID,CLIENT_ID,PLN_MNEM,ACCOUNT_RAP_CODE,RETAIL_PLAN,ASC_1_RESP_PLAN_TYPES,UNIVERIS_PLAN_ID,MD_CREATION_AUDIT_ID'"
+			},
+			"SEL_TEMP": {
+				"type": "String"
+			},
+			"SEL2": {
+				"type": "String",
+				"defaultValue": "'src.HK_LINK,src.MD_START_DT,src.MD_HASHDIFF,SYSTIMESTAMP(),src.MD_SOURCE,src.MD_SRC_SYSTEM,src.MD_EXTRACT_DT,''A'',src.RR_CD,src.PLN_SYSID,src.BALANCE_DATE,src.HOLDING_VALUE,src.AUA,src.AUM,src.AUM_CLARINGTON,src.AUM_IA,src.CASH_POSITION,src.PROGRAM_TYPE,src.ACCOUNT_PROGRAM_TYPE,src.ADMINISTRATORY_TYPE,"
+			},
+			"INS2": {
+				"type": "String",
+				"defaultValue": "'HK_LINK,MD_START_DT,MD_HASHDIFF,MD_CREATION_DT,MD_SOURCE,MD_SRC_SYSTEM,MD_EXTRACT_DT,MD_ACTIVE,RR_CD,PLN_SYSID,BALANCE_DATE,HOLDING_VALUE,AUA,AUM,AUM_CLARINGTON,AUM_IA,CASH_POSITION,PROGRAM_TYPE,ACCOUNT_PROGRAM_TYPE,ADMINISTRATORY_TYPE,MD_CREATION_AUDIT_ID'"
+			},
+			"SEL_TEMP2": {
+				"type": "String"
+			},
+			"TRUNC_TBL": {
+				"type": "String",
+				"defaultValue": "'N'"
+			},
+			"SINGLE_QUOTE": {
+				"type": "String",
+				"defaultValue": "'"
+			},
+			"IO_RESULT": {
+				"type": "String",
+				"defaultValue": "'SUCCESS'"
+			}
+		},
+		"folder": {
+			"name": "IAW/20-30_RDV_INVESTIA_UNIVERIS/SHARED_PLANS"
+		},
+		"annotations": [],
+		"lastPublishTime": "2022-10-31T15:34:12Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

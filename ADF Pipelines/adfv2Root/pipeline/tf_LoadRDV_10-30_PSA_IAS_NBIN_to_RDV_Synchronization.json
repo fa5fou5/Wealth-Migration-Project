@@ -1,0 +1,297 @@
+{
+	"name": "tf_LoadRDV_10-30_PSA_IAS_NBIN_to_RDV_Synchronization",
+	"properties": {
+		"activities": [
+			{
+				"name": "Cash_Holdings",
+				"type": "IfCondition",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@contains(pipeline().parameters.temp_filename,'CASH_HOLDINGS__')",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "tf_LoadRDV_20-30_PSA_IAS_NBIN_to_RDV_CASH_HOLDINGS",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_LoadRDV_20-30_PSA_IAS_NBIN_to_RDV_CASH_HOLDINGS",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"input_filename": {
+										"value": "@pipeline().parameters.temp_filename",
+										"type": "Expression"
+									},
+									"input_filepath": {
+										"value": "@pipeline().parameters.temp_filepath",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "Holdings",
+				"type": "IfCondition",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@startswith(pipeline().parameters.temp_filename,'HOLDINGS__')",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "tf_LoadRDV_20-30_PSA_IAS_NBIN_to_RDV_HOLDINGS",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_LoadRDV_20-30_PSA_IAS_NBIN_to_RDV_HOLDINGS",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"input_filename": {
+										"value": "@pipeline().parameters.temp_filename",
+										"type": "Expression"
+									},
+									"input_filepath": {
+										"value": "@pipeline().parameters.temp_filepath",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "Clients",
+				"type": "IfCondition",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@contains(pipeline().parameters.temp_filename,'CLIENTS__')",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "tf_LoadRDV_20-30_PSA_IAS_NBIN_to_RDV_SHARED_CLIENTS",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_LoadRDV_20-30_PSA_IAS_NBIN_to_RDV_SHARED_CLIENTS",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"input_filename": {
+										"value": "@pipeline().parameters.temp_filename",
+										"type": "Expression"
+									},
+									"input_filepath": {
+										"value": "@pipeline().parameters.temp_filepath",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "Contracts",
+				"description": "This allows to reload the Contract Staging Table to finally load all related RDV tables (HUB_CONTRACT, SAT_CONTRACT_IAS_NBIN, LINK_INVESTMENT_CONTRACT_RR and SAT_LINK_INVESTMENT_CONTRACT_IAS_NBIN)",
+				"type": "IfCondition",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@contains(pipeline().parameters.temp_filename,'ACCOUNTS__')",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "tf_LoadRDV_20-30_PSA_IAS_NBIN_to_RDV_SHARED_CONTRACTS",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_LoadRDV_20-30_PSA_IAS_NBIN_to_RDV_SHARED_CONTRACTS",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"input_filename": {
+										"value": "@pipeline().parameters.temp_filename",
+										"type": "Expression"
+									},
+									"input_filepath": {
+										"value": "@pipeline().parameters.temp_filepath",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "Investment_Product_Types",
+				"type": "IfCondition",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@contains(pipeline().parameters.temp_filename,'MARKETPRODUCTS__')",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "tf_LoadRDV_20-30_PSA_IAS_NBIN_to_RDV_SHA_INV_PROD_TYPE",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_LoadRDV_20-30_PSA_IAS_NBIN_to_RDV_SHARED_INVESTMENT_PRODUCT_TYPE",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"input_filename": {
+										"value": "@pipeline().parameters.temp_filename",
+										"type": "Expression"
+									},
+									"input_filepath": {
+										"value": "@pipeline().parameters.temp_filepath",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "Plans",
+				"type": "IfCondition",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@contains(pipeline().parameters.temp_filename,'PLANS__')",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "tf_LoadRDV_20-30_PSA_IAS_NBIN_to_RDV_SHARED_PLANS",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_LoadRDV_20-30_PSA_IAS_NBIN_to_RDV_SHARED_PLANS",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"input_filename": {
+										"value": "@pipeline().parameters.temp_filename",
+										"type": "Expression"
+									},
+									"input_filepath": {
+										"value": "@pipeline().parameters.temp_filepath",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "BK_Transactions",
+				"type": "IfCondition",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@contains(pipeline().parameters.temp_filename,'BK_TRANSACTIONS__')",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "tf_LoadRDV_20-30_PSA_IAS_NBIN_to_RDV_TRANSACTIONS",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_LoadRDV_20-30_PSA_IAS_NBIN_to_RDV_TRANSACTIONS",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"input_filename": {
+										"value": "@pipeline().parameters.temp_filename",
+										"type": "Expression"
+									},
+									"input_filepath": {
+										"value": "@pipeline().parameters.temp_filepath",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					]
+				}
+			}
+		],
+		"parameters": {
+			"temp_filename": {
+				"type": "string",
+				"defaultValue": "CASH_HOLDINGS__2022-04-15.dat"
+			},
+			"temp_filepath": {
+				"type": "string",
+				"defaultValue": "raw/IAS/NBIN"
+			}
+		},
+		"variables": {
+			"temp_dataStartDate": {
+				"type": "String"
+			},
+			"temp_JobName": {
+				"type": "String"
+			},
+			"temp_tf_Audit_ID": {
+				"type": "String"
+			},
+			"temp_filename": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "IAW/20-30_RDV_IAS_NBIN/00_SYNCHRONIZATION_TASKFLOW"
+		},
+		"annotations": [],
+		"lastPublishTime": "2022-11-03T14:34:46Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,171 @@
+{
+	"name": "tf_LoadRDV_10-30_PSA_IAS_Commission_to_RDV_Synchronization",
+	"properties": {
+		"activities": [
+			{
+				"name": "dcn_Share_received",
+				"type": "IfCondition",
+				"dependsOn": [
+					{
+						"activity": "temp_filename",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@contains(variables('temp_filename'),'SHARE__')",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "Share",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_LoadRDV_20-30_PSA_IAS_COMISSION_to_RDV_SHARED_SHARE",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"input_filename": {
+										"value": "@pipeline().parameters.input_filename",
+										"type": "Expression"
+									},
+									"input_filepath": {
+										"value": "@pipeline().parameters.input_filepath",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "dcn_Registered_representative_received",
+				"type": "IfCondition",
+				"dependsOn": [
+					{
+						"activity": "temp_filename",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@contains(variables('temp_filename'),'REGISTERED_REPRESENTATIVE__')",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "Registered_representatives",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_LoadRDV_20-30_PSA_IAS_COMISSION_to_RDV_SHARED_ADVISORS",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"input_filename": {
+										"value": "@pipeline().parameters.input_filename",
+										"type": "Expression"
+									},
+									"input_filepath": {
+										"value": "@pipeline().parameters.input_filepath",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "temp_filename",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "temp_filename",
+					"value": {
+						"value": "@replace(concat(pipeline().parameters.input_filepath,'/',pipeline().parameters.input_filename),concat(split(pipeline().parameters.input_filepath,'/')[0],'/'),'')",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "dcn_Trxn_Revenues_received",
+				"type": "IfCondition",
+				"dependsOn": [
+					{
+						"activity": "temp_filename",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@contains(variables('temp_filename'),'TRANSACTION_REVENUES__')",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "Trxn_Revenues",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_LoadRDV_20-30_PSA_IAS_COMISSION_to_RDV_TRANSACTION_REVENUES",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"input_filename": {
+										"value": "@pipeline().parameters.input_filename",
+										"type": "Expression"
+									},
+									"input_filepath": {
+										"value": "@pipeline().parameters.input_filepath",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					]
+				}
+			}
+		],
+		"parameters": {
+			"input_filename": {
+				"type": "string"
+			},
+			"input_filepath": {
+				"type": "string"
+			}
+		},
+		"variables": {
+			"temp_filename": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "IAW/20-30_RDV_IAS_COMMISSION/00_SYNCHRONIZATION_TASKFLOW"
+		},
+		"annotations": [],
+		"lastPublishTime": "2022-10-31T15:34:15Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

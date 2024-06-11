@@ -1,0 +1,39 @@
+{
+	"name": "tf_LoadDM_60_IAS_NBIN_BDV_to_DM_CLIENT_ADVISOR",
+	"properties": {
+		"activities": [
+			{
+				"name": "tf_LoadDM_60_Shared_DimAdvisors",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "tf_LoadDM_60_Shared_DimAdvisors",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "tf_LoadDM_60_Shared_DimClients",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "tf_LoadDM_60_Shared_DimClients",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			}
+		],
+		"folder": {
+			"name": "IAW/INITIAL_LOADING_IAPW/INITIAL_LOADING_40_60_DIMENSIONS"
+		},
+		"annotations": [],
+		"lastPublishTime": "2022-10-31T15:34:12Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,317 @@
+{
+	"name": "tf_LoadDM_60_STRATEGIC_INITIAL_LOADING",
+	"properties": {
+		"activities": [
+			{
+				"name": "temp_JobName",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "temp_JobName",
+					"value": {
+						"value": "@concat('''',pipeline().Pipeline,'''')",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "temp_tf_Audit_ID",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "temp_tf_Audit_ID",
+					"value": {
+						"value": "@concat('''',pipeline().Pipeline,'-',pipeline().RunId,'''')",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "mt_audit_startJob_NextDate_Pre",
+				"type": "Script",
+				"dependsOn": [
+					{
+						"activity": "temp_JobName",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "temp_tf_Audit_ID",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"linkedServiceName": {
+					"referenceName": "ls_snowflake_keyvault_auth",
+					"type": "LinkedServiceReference"
+				},
+				"typeProperties": {
+					"scripts": [
+						{
+							"type": "Query",
+							"text": {
+								"value": "@concat('call DB_IAW_',pipeline().globalParameters.ENV,'_DWH.TOOLS.USP_AUDIT_START_JOB_NEXT_DATE(',variables('temp_JobName'),',',variables('temp_tf_Audit_ID'),')')",
+								"type": "Expression"
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "temp_JobStartDate",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "mt_audit_startJob_NextDate_Pre",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "temp_dataStartDate",
+					"value": {
+						"value": "@concat('''',activity('mt_audit_startJob_NextDate_Pre').output.resultSets[0]['rows'][0].USP_AUDIT_START_JOB_NEXT_DATE,'''')",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "mt_audit_startJob_NextDate",
+				"type": "Script",
+				"dependsOn": [
+					{
+						"activity": "temp_JobStartDate",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"linkedServiceName": {
+					"referenceName": "ls_snowflake_keyvault_auth",
+					"type": "LinkedServiceReference"
+				},
+				"typeProperties": {
+					"scripts": [
+						{
+							"type": "Query",
+							"text": {
+								"value": "@concat('call DB_IAW_',pipeline().globalParameters.ENV,'_DWH.TOOLS.USP_AUDIT_START_JOB_Variable_Set(',variables('temp_JobName'),',',variables('temp_dataStartDate'),')')",
+								"type": "Expression"
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "dcn_StartJob_Result",
+				"type": "IfCondition",
+				"dependsOn": [
+					{
+						"activity": "mt_audit_startJob_NextDate",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@contains(activity('mt_audit_startJob_NextDate').output.resultSets[0]['rows'][0].USP_AUDIT_START_JOB_VARIABLE_SET,'SUCCESS')",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "mt_LoadDM_Assest_Summary_ByCommissionType",
+							"description": "",
+							"type": "Script",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"linkedServiceName": {
+								"referenceName": "ls_snowflake_keyvault_auth",
+								"type": "LinkedServiceReference"
+							},
+							"typeProperties": {
+								"scripts": [
+									{
+										"type": "Query",
+										"text": {
+											"value": "@concat('call DB_IAW_',pipeline().globalParameters.ENV,'_DM.STRATEGIC.SP_CONV_LoadDM_Assest_Summary_ByCommissionType(''',pipeline().globalParameters.ENV,''')')",
+											"type": "Expression"
+										}
+									}
+								]
+							}
+						},
+						{
+							"name": "mt_LoadDM_Assest_Summary_ByProduct",
+							"description": "",
+							"type": "Script",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"linkedServiceName": {
+								"referenceName": "ls_snowflake_keyvault_auth",
+								"type": "LinkedServiceReference"
+							},
+							"typeProperties": {
+								"scripts": [
+									{
+										"type": "Query",
+										"text": {
+											"value": "@concat('call DB_IAW_',pipeline().globalParameters.ENV,'_DM.STRATEGIC.SP_CONV_LoadDM_Assest_Summary_ByProduct(''',pipeline().globalParameters.ENV,''')')",
+											"type": "Expression"
+										}
+									}
+								]
+							}
+						},
+						{
+							"name": "dt_Audit_EndJob",
+							"type": "Script",
+							"dependsOn": [
+								{
+									"activity": "mt_LoadDM_Assest_Summary_ByCommissionType",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								},
+								{
+									"activity": "mt_LoadDM_Assest_Summary_ByProduct",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"linkedServiceName": {
+								"referenceName": "ls_snowflake_keyvault_auth",
+								"type": "LinkedServiceReference"
+							},
+							"typeProperties": {
+								"scripts": [
+									{
+										"type": "Query",
+										"text": {
+											"value": "@concat('call DB_IAW_',pipeline().globalParameters.ENV,'_DWH.TOOLS.USP_AUDIT_END_JOB(',variables('temp_JobName'),',',variables('temp_dataStartDate'),',',variables('temp_tf_Audit_ID'),',','''SUCCESS''',',','''Successful execution''',')')",
+											"type": "Expression"
+										}
+									}
+								]
+							}
+						}
+					]
+				}
+			}
+		],
+		"parameters": {
+			"input_filename": {
+				"type": "string",
+				"defaultValue": "Strategic Initial Loading"
+			}
+		},
+		"variables": {
+			"temp_dataStartDate": {
+				"type": "String"
+			},
+			"temp_JobName": {
+				"type": "String"
+			},
+			"temp_tf_Audit_ID": {
+				"type": "String"
+			},
+			"comma": {
+				"type": "String",
+				"defaultValue": ","
+			},
+			"TRUNC_TBL": {
+				"type": "String",
+				"defaultValue": "'N'"
+			},
+			"INS_TEMP": {
+				"type": "String",
+				"defaultValue": "'HK_HUB,MD_HASH_NAT_KEYS,MD_HASHDIFF_TYPE1,MD_HASHDIFF_TYPE2,MD_MODIFY_DT,MD_MODIFY_AUDIT_ID,MD_SOURCE,MD_SRC_SYSTEM,MD_EXTRACT_DT,MD_SECURITY_TYPE,SRC_ID,MASTER_CODE,COMPANY_CODE,COMPANY_NAME,REGULATORY_ORGANIZATION_NAME,REGULATORY_ORGANIZATION_CODE,DEALER_CODE,DEALER_NAME,REGION_CODE,REGION_NAME,REGION_VP,BRANCHCODE,BRANCHNAME,TEAM_CODE,TEAM_NAME,ADVISOR_FULLNAME,FIRSTNAME,LASTNAME,ADVISOR_CORPORATION_NAME,STATUS,GROUP_RSP_INDICATOR,PROVINCE_CODE,PROVINCE,ADVISOR_AUA_SEGMENT,ADVISOR_AUA_SEGMENT_ORDER,ADVISOR_START_DATE,NEW_ADVISOR,ADVISOR_EFFECIVENESS_DT,DEPARTED_ADVISOR_IND,PRIMARY_ROLE,END_DATE,REASON,NEW_FIRM,NEW_FIRM_TYPE,NEW_FIRM_BACK_OFFICE,PRESTIGE_STATUS,TRANSITION_PERIOD_END_DATE,DEAL_ASSESTS,EXPECTED_ASSESTS,PREVIOUS_FIRM,PREVIOUS_FIRM_TYPE,AGE_SEGMENT,AGE_SEGMENT_ORD,SUSPENDED_IND,MD_CREATION_DT,MD_START_DT,MD_CREATION_AUDIT_ID'"
+			},
+			"SEL_TEMP": {
+				"type": "String",
+				"defaultValue": "'SRC.HK_HUB,SRC.MD_HASH_NAT_KEYS,SRC.MD_HASHDIFF_TYPE1,SRC.MD_HASHDIFF_TYPE2,SRC.MD_MODIFY_DT,SRC.MD_MODIFY_AUDIT_ID,SRC.MD_SOURCE,SRC.MD_SRC_SYSTEM,SRC.MD_EXTRACT_DT,SRC.MD_SECURITY_TYPE,SRC.ID,SRC.MASTER_CODE,SRC.COMPANY_CODE,SRC.COMPANY_NAME,SRC.REGULATORY_ORGANIZATION_NAME,SRC.REGULATORY_ORGANIZATION_CODE,SRC.DEALER_CODE,SRC.DEALER_NAME,SRC.REGION_CODE,SRC.REGION_NAME,SRC.REGION_VP,SRC.BRANCHCODE,SRC.BRANCHNAME,SRC.TEAM_CODE,SRC.TEAM_NAME,SRC.ADVISOR_FULLNAME,SRC.FIRSTNAME,SRC.LASTNAME,SRC.ADVISOR_CORPORATION_NAME,SRC.STATUS,SRC.GROUP_RSP_INDICATOR,SRC.PROVINCE_CODE,SRC.PROVINCE,SRC.ADVISOR_AUA_SEGMENT,SRC.ADVISOR_AUA_SEGMENT_ORDER,SRC.ADVISOR_START_DATE,SRC.NEW_ADVISOR,SRC.ADVISOR_EFFECTIVENESS_DT,SRC.DEPARTED_ADVISOR_IND,SRC.PRIMARY_ROLE,SRC.END_DATE,SRC.REASON,SRC.NEW_FIRM,SRC.NEW_FIRM_TYPE,SRC.NEW_FIRM_BACK_OFFICE,SRC.PRESTIGE_STATUS,SRC.TRANSITION_PERIOD_END_DATE,SRC.DEAL_ASSESTS,SRC.EXPECTED_ASSESTS,SRC.PREVIOUS_FIRM,SRC.PREVIOUS_FIRM_TYPE,SRC.AGE_SEGMENT,SRC.AGE_SEGMENT_ORD,SRC.SUSPENDED_IND,CURRENT_TIMESTAMP,"
+			},
+			"SEL_TEMP_1": {
+				"type": "String"
+			},
+			"INS_DATA_1": {
+				"type": "String",
+				"defaultValue": "'MD_START_DT,MD_HASH_NAT_KEYS,MD_HASHDIFF_TYPE2,MD_MODIFY_DT,MD_MODIFY_AUDIT_ID,MD_END_DT'"
+			},
+			"SEL_DATA_1": {
+				"type": "String",
+				"defaultValue": "'DIM.MD_START_DT,DIM.MD_HASH_NAT_KEYS,DIM.MD_HASHDIFF_TYPE2,CURRENT_TIMESTAMP,-1,"
+			},
+			"SEL_DATA_11": {
+				"type": "String"
+			},
+			"INS_DATA_2": {
+				"type": "String",
+				"defaultValue": "'MD_HASH_NAT_KEYS,MD_HASHDIFF_TYPE1,MD_MODIFY_DT,MD_MODIFY_AUDIT_ID,END_DATE,REASON,NEW_FIRM,NEW_FIRM_TYPE,NEW_FIRM_BACK_OFFICE,PRESTIGE_STATUS,TRANSITION_PERIOD_END_DATE,DEAL_ASSESTS,EXPECTED_ASSESTS,PREVIOUS_FIRM,PREVIOUS_FIRM_TYPE'"
+			},
+			"SEL_DATA_20": {
+				"type": "String",
+				"defaultValue": "'SRC.MD_HASH_NAT_KEYS,SRC.MD_HASHDIFF_TYPE1,CURRENT_TIMESTAMP,"
+			},
+			"SEL_DATA_21": {
+				"type": "String",
+				"defaultValue": ",SRC.END_DATE,SRC.REASON,SRC.NEW_FIRM,SRC.NEW_FIRM_TYPE,SRC.NEW_FIRM_BACK_OFFICE,SRC.PRESTIGE_STATUS,SRC.TRANSITION_PERIOD_END_DATE,SRC.DEAL_ASSESTS,SRC.EXPECTED_ASSESTS,SRC.PREVIOUS_FIRM,SRC.PREVIOUS_FIRM_TYPE'"
+			},
+			"SEL_DATA_22": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "IAW/60_DM_IAWEALTH/STRATEGIC_INITIAL_LOADING"
+		},
+		"annotations": [],
+		"lastPublishTime": "2022-10-31T15:34:03Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

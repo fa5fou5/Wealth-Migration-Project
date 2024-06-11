@@ -1,0 +1,15 @@
+{
+	"name": "iagdatad01-cac-adf-iaw-01",
+	"properties": {
+		"globalParameters": {
+			"ENV": {
+				"type": "string",
+				"value": "DEV"
+			}
+		},
+		"globalConfigurations": {
+			"PipelineBillingEnabled": "false"
+		}
+	},
+	"location": "canadacentral"
+}

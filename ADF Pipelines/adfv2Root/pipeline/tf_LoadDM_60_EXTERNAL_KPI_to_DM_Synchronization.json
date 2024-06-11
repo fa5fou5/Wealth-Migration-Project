@@ -1,0 +1,332 @@
+{
+	"name": "tf_LoadDM_60_EXTERNAL_KPI_to_DM_Synchronization",
+	"properties": {
+		"activities": [
+			{
+				"name": "CLARINGTON",
+				"type": "IfCondition",
+				"dependsOn": [
+					{
+						"activity": "temp_dataStartDate",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@contains(pipeline().parameters.temp_filename,'MASTER_KPI_DATA_CLARINGTON__')\n",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "Load STG_20-30 KPI CLARINGTON",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_OnDemand_LoadRDV_20-30_PSA_IAPW_EXTERNAL_KPI_to_REFMASTER_KPI_DATA_CLARINGTON",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"input_filename": {
+										"value": "@pipeline().parameters.temp_filename",
+										"type": "Expression"
+									},
+									"input_filepath": {
+										"value": "@pipeline().parameters.temp_filepath",
+										"type": "Expression"
+									}
+								}
+							}
+						},
+						{
+							"name": "Load DM_20-30 KPI CLARINGTON",
+							"type": "ExecutePipeline",
+							"dependsOn": [
+								{
+									"activity": "Load STG_20-30 KPI CLARINGTON",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_OnDemand_LoadDM_60_STG_To_DM_MASTER_KPI_DATA_CLARINGTON",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"p_DATA_START_DATE": {
+										"value": "@variables('temp_dataStartDate')",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "IAPW",
+				"type": "IfCondition",
+				"dependsOn": [
+					{
+						"activity": "temp_dataStartDate",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@contains(pipeline().parameters.temp_filename,'MASTER_KPI_DATA_IAPW__')\n",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "Load STG_20-30 KPI IAPW",
+							"description": " ",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_OnDemand_LoadSTG_20-30_PSA_IAPW_EXTERNAL_KPI_to_REF_MASTER_KPI_DATA_IAPW",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"input_filename": {
+										"value": "@pipeline().parameters.temp_filename",
+										"type": "Expression"
+									},
+									"input_filepath": {
+										"value": "@pipeline().parameters.temp_filepath",
+										"type": "Expression"
+									}
+								}
+							}
+						},
+						{
+							"name": "Load DM_20-30 KPI IAPW",
+							"description": " ",
+							"type": "ExecutePipeline",
+							"dependsOn": [
+								{
+									"activity": "Load STG_20-30 KPI IAPW",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_OnDemand_LoadDM_60_STG_To_DM_MASTER_KPI_DATA_IAPW",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"p_DATA_START_DATE": {
+										"value": "@variables('temp_dataStartDate')",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "INVESTIA",
+				"type": "IfCondition",
+				"dependsOn": [
+					{
+						"activity": "temp_dataStartDate",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@contains(pipeline().parameters.temp_filename,'MASTER_KPI_DATA_INVESTIA__')\n\n",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "Load STG_20-30 KPI INVESTIA",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_OnDemand_LoadSTG_20-30_PSA_EXTERNAL_KPI_to_REF_MASTER_KPI_DATA_INVESTIA",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"input_filename": {
+										"value": "@pipeline().parameters.temp_filename",
+										"type": "Expression"
+									},
+									"input_filepath": {
+										"value": "@pipeline().parameters.temp_filepath",
+										"type": "Expression"
+									}
+								}
+							}
+						},
+						{
+							"name": "Load DM_20-30 KPI INVESTIA",
+							"type": "ExecutePipeline",
+							"dependsOn": [
+								{
+									"activity": "Load STG_20-30 KPI INVESTIA",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_OnDemand_LoadDM_60_STG_To_DM_MASTER_KPI_DATA_INVESTIA",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"p_DATA_START_DATE": {
+										"value": "@variables('temp_dataStartDate')",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "temp_dataStartDate",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "temp_dataStartDate",
+					"value": {
+						"value": "@concat('',split(split(pipeline().parameters.temp_filename,'__')[1],'.')[0],'')",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "RVP_IAPW",
+				"type": "IfCondition",
+				"dependsOn": [
+					{
+						"activity": "temp_dataStartDate",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@contains(pipeline().parameters.temp_filename,'MASTER_KPI_DATA_IAPW__')\n",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "Load STG_20-30 KPI RVP_IAPW",
+							"description": " ",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_OnDemand_LoadSTG_20-30_PSA_IAPW_EXTERNAL_KPI_to_REF_MASTER_KPI_DATA_RVP_IAPW",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"input_filename": {
+										"value": "@pipeline().parameters.temp_filename",
+										"type": "Expression"
+									},
+									"input_filepath": {
+										"value": "@pipeline().parameters.temp_filepath",
+										"type": "Expression"
+									}
+								}
+							}
+						},
+						{
+							"name": "Load DM_20-30 KPI RVP_IAPW",
+							"description": " ",
+							"type": "ExecutePipeline",
+							"dependsOn": [
+								{
+									"activity": "Load STG_20-30 KPI RVP_IAPW",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "tf_OnDemand_LoadDM_60_STG_To_DM_MASTER_KPI_DATA_RVP_IAPW",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"p_DATA_START_DATE": {
+										"value": "@variables('temp_dataStartDate')",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					]
+				}
+			}
+		],
+		"parameters": {
+			"temp_filename": {
+				"type": "string"
+			},
+			"temp_filepath": {
+				"type": "string"
+			}
+		},
+		"variables": {
+			"temp_dataStartDate": {
+				"type": "String"
+			},
+			"temp_JobName": {
+				"type": "String"
+			},
+			"temp_tf_Audit_ID": {
+				"type": "String"
+			},
+			"temp_filename": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "IAW/60_DM_IAWEALTH/EXTERNAL_KPI"
+		},
+		"annotations": [],
+		"lastPublishTime": "2022-11-03T14:34:47Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

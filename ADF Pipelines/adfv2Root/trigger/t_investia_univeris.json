@@ -1,0 +1,30 @@
+{
+	"name": "t_investia_univeris",
+	"properties": {
+		"description": "Trigger for INVESTIA/UNIVERIS",
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "tf_LoadRDV_20-30_PSA_INVESTIA_UNIVERIS_to_RDV_Synchronization",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"input_filename": "@triggerBody().fileName",
+					"input_filepath": "@triggerBody().folderPath"
+				}
+			}
+		],
+		"type": "BlobEventsTrigger",
+		"typeProperties": {
+			"blobPathBeginsWith": "/raw/blobs/INVESTIA/UNIVERIS/",
+			"blobPathEndsWith": ".csv",
+			"ignoreEmptyBlobs": false,
+			"scope": "/subscriptions/8b005915-4c8b-4a41-89af-6f44a22296e0/resourceGroups/iagdatad01-cac-rg-iaw-01/providers/Microsoft.Storage/storageAccounts/iagdatad01iaw02",
+			"events": [
+				"Microsoft.Storage.BlobCreated"
+			]
+		}
+	}
+}

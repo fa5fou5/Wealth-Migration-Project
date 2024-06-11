@@ -1,0 +1,15 @@
+{
+	"name": "ls_keyvault_managed_identity_auth",
+	"properties": {
+		"annotations": [],
+		"type": "AzureKeyVault",
+		"typeProperties": {
+			"baseUrl": "https://iagdatad01-cac-kv-iaw.vault.azure.net/"
+		},
+		"connectVia": {
+			"referenceName": "ir-managed-virtual-network-cac",
+			"type": "IntegrationRuntimeReference"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/linkedservices"
+}
