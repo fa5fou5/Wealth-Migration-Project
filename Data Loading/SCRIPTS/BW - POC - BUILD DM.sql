@@ -1,0 +1,47 @@
+
+
+DROP TABLE "DB_IAW_PROD_DATAMART"."HOLDINGS"."FACT_HOLDINGS";
+DROP TABLE "DB_IAW_PROD_DATAMART"."REVENUES"."FACT_REVENUES";
+DROP TABLE "DB_IAW_PROD_DATAMART"."SHARED"."DIM_ACCOUNTS";
+DROP TABLE "DB_IAW_PROD_DATAMART"."SHARED"."DIM_ADVISORS";
+DROP TABLE "DB_IAW_PROD_DATAMART"."SHARED"."DIM_CLIENTS";
+DROP TABLE "DB_IAW_PROD_DATAMART"."SHARED"."DIM_MARKETPRODUCTS";
+DROP TABLE "DB_IAW_PROD_DATAMART"."SHARED"."DIM_PLANS";
+drop table "DB_IAW_PROD_DATAMART"."TRANSACTIONS"."FACT_TRANSACTIONS"
+drop table "DB_IAW_PROD_DATAMART"."HOLDINGS"."FACT_HOLDINGS_AGG"
+drop table "DB_IAW_PROD_DATAMART"."TRANSACTIONS"."FACT_TRANSACTION_AGG"
+
+create or replace table HOLDINGS.FACT_HOLDINGS_AGG as select * from  HOLDINGS.VW_FACT_HOLDINGS_AGG order by SK_DIM_CLIENTS, SK_DIM_ADVISORS, SK_DIM_REGISTERED_REPRESENTATIVES,SK_DIM_ACCOUNTS;
+create or replace table HOLDINGS.FACT_HOLDINGS as select * from  HOLDINGS.VW_FACT_HOLDINGS order by SK_DIM_CLIENTS, SK_DIM_ADVISORS, SK_DIM_MARKETPRODUCTS, SK_DIM_REGISTERED_REPRESENTATIVES;
+create or replace table SHARED.DIM_ADVISORS as select * from  SHARED.VW_DIM_ADVISORS order by "Master code","Company name","Regulatory organization code","Dealer name","Region name","Region VP","Branch name","Advisor fullname";
+create or replace table SHARED.DIM_CLIENTS as select * from  SHARED.VW_DIM_CLIENTS order by ID,"Client type","Province","Country";
+create or replace table SHARED.DIM_MARKETPRODUCTS as 
+SELECT DISTINCT MD_SRCSYSTEM, ID, "Symbol", FIRST_VALUE("Name") OVER (PARTITION BY ID ORDER BY "Name") AS "Name", "Asset category", "Category", "Group", "Issuer company code", "Issuer company name", MD_LOADDATE 
+FROM "SHARED".VW_DIM_MARKETPRODUCTS order by ID,"Group";
+create or replace table SHARED.DIM_PLANS as select * from  SHARED.VW_DIM_PLANS order by "Plan code","Account type","Group type code","Plan label";
+create or replace table REVENUES.FACT_REVENUES as select * from  REVENUES.VW_FACT_REVENUES order by SK_DIM_MARKETPRODUCTS,SK_ADVISORS,SK_DIM_CLIENTS,SK_DIM_PLANS,"Revenue type";
+create or replace table TRANSACTIONS.FACT_TRANSACTIONS as select * from  TRANSACTIONS.VW_FACT_TRANSACTIONS order by SK_DIM_MARKETPRODUCTS,SK_DIM_ADVISORS,SK_DIM_CLIENTS,SK_DIM_PLANS,"Transaction type";
+create or replace table TRANSACTIONS.FACT_TRANSACTION_AGG as select * from  TRANSACTIONS.VW_FACT_TRANSACTION_AGG order by SK_DIM_CLIENTS, SK_DIM_ADVISORS, SK_DIM_PLANS, "Trade date";
+
+
+		delete from "DB_IAW_PROD_DATAMART"."SHARED"."DIM_ADVISORS"
+		Where "Master code"='JROS' AND "Region VP"='Fisher, Stacie'
+		
+		
+		delete from "DB_IAW_PROD_DATAMART"."SHARED"."DIM_ADVISORS"
+Where "Master code"='SBP6' AND "Region VP"='Wilkinson, Geoffrey'
+
+alter table "DB_IAW_PROD_DATAMART"."TRANSACTIONS"."FACT_TRANSACTIONS" drop column
+"from_GA", "from_GA_Cash" ,"from_greatest_price", "from_position", "from_tran_user_desc"
+
+
+create table  "DB_IAW_PROD_DATAMART"."TRANSACTIONS"."FACT_TRANSACTIONS_BKP_10_09_2021"
+AS SELECT * FROM "DB_IAW_PROD_DATAMART"."TRANSACTIONS"."FACT_TRANSACTIONS"
+WHERE 1=1
+
+DELETE FROM "DB_IAW_PROD_DATAMART"."TRANSACTIONS"."FACT_TRANSACTIONS"
+WHERE CASH_FLOW_TYPE='OTHER';
+
+UPDATE "DB_IAW_PROD_DATAMART"."SHARED"."DIM_MARKETPRODUCTS"
+SET "Name" = 'IAS CASH', "Issuer company code" = 'NA', "Issuer company name" = 'Not applicable'
+WHERE ID = 'IASCASH';
